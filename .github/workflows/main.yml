@@ -35,5 +35,5 @@ jobs:
             docker rm adminjo || true
             cd ~/apps/adminjo/application
             docker build -t adminjo .
-            docker run -d --name clientjo -p 3000:3000 adminjo
+            docker run -d --name clientjo -p 3001:3000 adminjo
           EOF
