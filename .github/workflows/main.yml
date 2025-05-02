@@ -1,0 +1,39 @@
+name: Deploiement AdminJO en Production
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Deployer sur le serveur
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: etape 1 recupération du code
+        uses: actions/checkout@v3
+
+      - name: etape 2 connexion SSH au serveur
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: etape 3 Pull sur serveur
+        run: |
+          ssh -o StrictHostKeyChecking=no deploy@167.172.53.237 <<'EOF'
+            cd ~/apps/adminjo
+            git checkout main
+            git pull origin main
+            git pull origin main
+          EOF
+
+      - name: etape 4 Gestion Docker
+        run: |
+          ssh -o StrictHostKeyChecking=no deploy@167.172.53.237 <<'EOF'
+            docker stop adminjo || true
+            docker rm adminjo || true
+            cd ~/apps/adminjo/application
+            docker build -t adminjo .
+            docker run -d --name clientjo -p 3000:3000 adminjo
+          EOF
