@@ -31,9 +31,11 @@ jobs:
       - name: etape 4 Gestion Docker
         run: |
           ssh -o StrictHostKeyChecking=no deploy@167.172.53.237 <<'EOF'
+            systemctl is-active docker || sudo systemctl start docker
             docker stop adminjo || true
             docker rm adminjo || true
             cd ~/apps/adminjo/application
             docker build -t adminjo .
-            docker run -d --name adminjo -p 3001:3000 adminjo
+            docker run -d --name adminjo -p 3001:3000 --restart unless-stopped adminjo
+            docker image prune -af
           EOF
