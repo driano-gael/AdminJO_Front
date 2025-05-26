@@ -1,4 +1,4 @@
-name: Deploiement AdminJO en Production
+name: Build and Deploy React App
 
 on:
   push:
@@ -6,36 +6,83 @@ on:
       - main
 
 jobs:
-  deploy:
-    name: Deployer sur le serveur
+  job:
     runs-on: ubuntu-latest
-
     steps:
-      - name: etape 1 recupération du code
-        uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - name: etape 2 connexion SSH au serveur
-        uses: webfactory/ssh-agent@v0.9.0
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          node-version: "22"
 
-      - name: etape 3 Pull sur serveur
-        run: |
-          ssh -o StrictHostKeyChecking=no deploy@167.172.53.237 <<'EOF'
-            cd ~/apps/adminjo
-            git checkout main
-            git pull origin main
-            git pull origin main
-          EOF
+      - name: Install dependencies
+        working-directory: ./application
+        run: npm ci
 
-      - name: etape 4 Gestion Docker
-        run: |
-          ssh -o StrictHostKeyChecking=no deploy@167.172.53.237 <<'EOF'
-            systemctl is-active docker || sudo systemctl start docker
-            docker stop adminjo || true
-            docker rm adminjo || true
-            cd ~/apps/adminjo/application
-            docker build -t adminjo .
-            docker run -d --name adminjo -p 3001:3000 --restart unless-stopped adminjo
-            docker image prune -af
-          EOF
+      - name: Run Jest tests
+        working-directory: ./application
+        run: npm test
+
+      - name: Build React app
+        working-directory: ./application
+        run: npm run build
+
+      - name: Create build archive
+        run: tar -czf out.tar.gz -C application/out .
+
+      - name: Backup current out folder
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            if [ -d /var/www/adminjo/out ]; then
+              rm -rf /var/www/adminjo/out_backup
+              cp -r /var/www/adminjo/out /var/www/adminjo/out_backup
+            fi
+
+      - name: Remove old out folder
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            rm -rf /var/www/adminjo/out
+
+      - name: Upload build archive
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: "out.tar.gz"
+          target: "/var/www/adminjo"
+
+      - name: Extract archive on server
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            mkdir -p /var/www/adminjo/out
+            tar -xzf /var/www/adminjo/out.tar.gz -C /var/www/adminjo/out
+            rm /var/www/adminjo/out.tar.gz
+
+      - name: Restart Nginx
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            sudo systemctl restart nginx || (echo "Failed to restart nginx" && exit 1)
+            sudo systemctl is-active nginx
+            echo "Nginx restarted successfully"
+
+      - name: Notify deployment success
+        run: echo "Deployment to server successful!"
