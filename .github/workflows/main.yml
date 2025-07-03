@@ -27,6 +27,10 @@ jobs:
 
       - name: Build React app
         working-directory: ./application
+        env:
+          NEXT_PUBLIC_AUTH_TOKEN_KEY: ${{ secrets.NEXT_PUBLIC_AUTH_TOKEN_KEY }}
+          NEXT_PUBLIC_AUTH_REFRESH_TOKEN_KEY: ${{ secrets.NEXT_PUBLIC_AUTH_REFRESH_TOKEN_KEY }}
+          NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
         run: npm run build
 
       - name: Create build archive
@@ -86,6 +90,3 @@ jobs:
 
       - name: Notify deployment success
         run: echo "Deployment to server successful!"
-
-
-        
