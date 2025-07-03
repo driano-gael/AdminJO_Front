@@ -6,7 +6,11 @@ const nextConfig: NextConfig = {
     unoptimized: true
   },
   experimental: {
-    optimizeCss: true,
+    optimizeCss: {
+      preload: true,
+      mergeStylesheets: true,
+      external: false
+    },
   },
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
