@@ -102,7 +102,7 @@ export default function Dashboard() {
       <main className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-2xl font-bold text-gray-900 mb-4">
-            Tableau de bord d'administration
+            Tableau de bord d&apos;administration
           </h2>
           <p className="text-lg text-gray-600">
             Sélectionnez une section pour commencer la gestion

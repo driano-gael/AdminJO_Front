@@ -37,7 +37,7 @@ export default function LoginAdminForm() {
             Ticket JO 2024 <br/>Administration
           </h2>
           <p className="mt-2 text-sm text-gray-600">
-            Connectez-vous pour accéder à l'interface d'administration
+            Connectez-vous pour accéder à l&apos;interface d&apos;administration
           </p>
         </div>
 

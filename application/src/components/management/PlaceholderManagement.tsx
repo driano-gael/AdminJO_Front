@@ -49,7 +49,7 @@ export default function PlaceholderManagement({
           <div className="space-y-4">
             <h3 className="text-xl font-semibold text-gray-900">Fonctionnalités prévues :</h3>
             <ul className="text-left max-w-md mx-auto space-y-2 text-gray-600">
-              <li>• Création et modification d'éléments</li>
+              <li>• Création et modification d&apos;éléments</li>
               <li>• Recherche et filtrage avancés</li>
               <li>• Gestion des permissions</li>
               <li>• Export et import de données</li>

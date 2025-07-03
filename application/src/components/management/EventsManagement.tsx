@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 interface SportEvent {
   id: number;
@@ -52,8 +52,7 @@ interface EventsManagementProps {
 }
 
 export default function EventsManagement({ onBack }: EventsManagementProps) {
-  const [events, setEvents] = useState<SportEvent[]>(mockEvents);
-  const [isLoading, setIsLoading] = useState(false);
+  const [events] = useState<SportEvent[]>(mockEvents);
   const [searchTerm, setSearchTerm] = useState('');
 
   const filteredEvents = events.filter(event =>
