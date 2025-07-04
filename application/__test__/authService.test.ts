@@ -148,11 +148,6 @@ describe('authService', () => {
 
   describe('logout', () => {
     it('supprime tous les tokens', () => {
-      // Debug pour voir les variables d'environnement
-      console.log('AUTH_TOKEN_KEY:', process.env.NEXT_PUBLIC_AUTH_TOKEN_KEY);
-      console.log('REFRESH_TOKEN_KEY:', process.env.NEXT_PUBLIC_AUTH_REFRESH_TOKEN_KEY);
-      console.log('window defined:', typeof window !== 'undefined');
-      
       logout();
 
       // clearTokens() supprime les deux tokens

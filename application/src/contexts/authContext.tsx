@@ -3,7 +3,7 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { login as loginService, logout as logoutService } from '@/lib/api/auth/authService';
 import { setSessionExpiredCallback } from '@/lib/api/core/tokenHelpers';
-import SessionExpiredModal from '@/components/auth/SessionExpiredModal';
+import SessionExpiredModal from '@/components/connexion/SessionExpiredModal';
 
 /**
  * Interface représentant un utilisateur connecté
