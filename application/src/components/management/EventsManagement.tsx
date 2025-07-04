@@ -1,46 +1,64 @@
 'use client';
 
-import { useState } from 'react';
-
+import { useState, useEffect } from 'react';
+// Interface mise à jour pour correspondre aux types de l'API
 interface SportEvent {
   id: number;
-  name: string;
-  sport: string;
+  description: string;
+  lieu: {
+    id: number;
+    nom: string;
+  };
   date: string;
-  venue: string;
-  status: 'upcoming' | 'ongoing' | 'completed';
-  capacity: number;
-  ticketsSold: number;
+  horraire: string;
+  // Champs additionnels pour l'affichage
+  sport?: string;
+  venue?: string;
+  status?: 'upcoming' | 'ongoing' | 'completed';
+  capacity?: number;
+  ticketsSold?: number;
 }
 
-// Données mockées pour l'exemple
+// Données mockées adaptées à la nouvelle interface
 const mockEvents: SportEvent[] = [
   {
     id: 1,
-    name: 'Finale 100m Hommes',
-    sport: 'Athlétisme',
+    description: 'Finale 100m Hommes',
+    lieu: {
+      id: 1,
+      nom: 'Stade de France'
+    },
     date: '2024-08-15',
-    venue: 'Stade de France',
+    horraire: '20:00',
+    sport: 'Athlétisme',
     status: 'upcoming',
     capacity: 80000,
     ticketsSold: 75000
   },
   {
     id: 2,
-    name: 'Finale Natation 50m Libre',
-    sport: 'Natation',
+    description: 'Finale Natation 50m Libre',
+    lieu: {
+      id: 2,
+      nom: 'Centre Aquatique'
+    },
     date: '2024-08-12',
-    venue: 'Centre Aquatique',
+    horraire: '19:30',
+    sport: 'Natation',
     status: 'completed',
     capacity: 15000,
     ticketsSold: 15000
   },
   {
     id: 3,
-    name: 'Match de Basketball - Finale',
-    sport: 'Basketball',
+    description: 'Match de Basketball - Finale',
+    lieu: {
+      id: 3,
+      nom: 'Bercy Arena'
+    },
     date: '2024-08-20',
-    venue: 'Bercy Arena',
+    horraire: '21:00',
+    sport: 'Basketball',
     status: 'ongoing',
     capacity: 20000,
     ticketsSold: 18500
@@ -52,13 +70,40 @@ interface EventsManagementProps {
 }
 
 export default function EventsManagement({ onBack }: EventsManagementProps) {
-  const [events] = useState<SportEvent[]>(mockEvents);
+  const [events, setEvents] = useState<SportEvent[]>(mockEvents);
   const [searchTerm, setSearchTerm] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  // Fonction pour charger les événements depuis l'API
+  const loadEvents = async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      
+      // Appel API - décommentez quand l'API sera prête
+      // const apiEvents = await evenementApi.getAll();
+      // setEvents(apiEvents);
+      
+      // Pour l'instant, on utilise les données mockées
+      console.log('Événements chargés (données mockées)');
+    } catch (err) {
+      setError('Erreur lors du chargement des événements');
+      console.error('Erreur chargement événements:', err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Charger les événements au montage du composant
+  useEffect(() => {
+    loadEvents();
+  }, []);
 
   const filteredEvents = events.filter(event =>
-    event.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    event.sport.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    event.venue.toLowerCase().includes(searchTerm.toLowerCase())
+    event.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    (event.sport && event.sport.toLowerCase().includes(searchTerm.toLowerCase())) ||
+    event.lieu.nom.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const getStatusColor = (status: SportEvent['status']) => {
@@ -137,9 +182,19 @@ export default function EventsManagement({ onBack }: EventsManagementProps) {
         {/* Events List */}
         <div className="bg-white rounded-lg shadow-md overflow-hidden">
           <div className="px-6 py-4 border-b border-gray-200">
-            <h2 className="text-xl font-semibold text-gray-900">
-              Événements ({filteredEvents.length})
-            </h2>
+            <div className="flex justify-between items-center">
+              <h2 className="text-xl font-semibold text-gray-900">
+                Événements ({filteredEvents.length})
+              </h2>
+              {loading && (
+                <div className="text-sm text-gray-500">Chargement...</div>
+              )}
+            </div>
+            {error && (
+              <div className="mt-2 text-sm text-red-600 bg-red-50 p-2 rounded">
+                {error}
+              </div>
+            )}
           </div>
           
           <div className="overflow-x-auto">
@@ -173,34 +228,41 @@ export default function EventsManagement({ onBack }: EventsManagementProps) {
                 {filteredEvents.map((event) => (
                   <tr key={event.id} className="hover:bg-gray-50">
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm font-medium text-gray-900">{event.name}</div>
+                      <div className="text-sm font-medium text-gray-900">{event.description}</div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-900">{event.sport}</div>
+                      <div className="text-sm text-gray-900">{event.sport || 'Non spécifié'}</div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="text-sm text-gray-900">
                         {new Date(event.date).toLocaleDateString('fr-FR')}
                       </div>
+                      <div className="text-xs text-gray-500">{event.horraire}</div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-900">{event.venue}</div>
+                      <div className="text-sm text-gray-900">{event.lieu.nom}</div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${getStatusColor(event.status)}`}>
-                        {getStatusText(event.status)}
+                      <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${getStatusColor(event.status || 'upcoming')}`}>
+                        {getStatusText(event.status || 'upcoming')}
                       </span>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-900">
-                        {event.ticketsSold.toLocaleString()} / {event.capacity.toLocaleString()}
-                      </div>
-                      <div className="w-full bg-gray-200 rounded-full h-2 mt-1">
-                        <div 
-                          className="bg-blue-600 h-2 rounded-full" 
-                          style={{ width: `${(event.ticketsSold / event.capacity) * 100}%` }}
-                        ></div>
-                      </div>
+                      {event.capacity && event.ticketsSold ? (
+                        <>
+                          <div className="text-sm text-gray-900">
+                            {event.ticketsSold.toLocaleString()} / {event.capacity.toLocaleString()}
+                          </div>
+                          <div className="w-full bg-gray-200 rounded-full h-2 mt-1">
+                            <div 
+                              className="bg-blue-600 h-2 rounded-full" 
+                              style={{ width: `${(event.ticketsSold / event.capacity) * 100}%` }}
+                            ></div>
+                          </div>
+                        </>
+                      ) : (
+                        <div className="text-sm text-gray-500">Non disponible</div>
+                      )}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                       <button className="text-blue-600 hover:text-blue-900 mr-3">
