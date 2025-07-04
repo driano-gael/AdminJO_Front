@@ -2,7 +2,7 @@
 
 import { useAuth } from '@/contexts/authContext';
 import { useState } from 'react';
-import ManagementDashboard from '@/components/management/ManagementDashboard';
+import ManagementDashboard from '@/components/dashboard/ManagementDashboard';
 import PlaceholderManagement from '@/components/management/PlaceholderManagement';
 import { 
     dashboardSections, 

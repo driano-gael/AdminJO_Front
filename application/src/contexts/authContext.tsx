@@ -22,6 +22,9 @@ interface AuthContextType {
   login: (email: string, password: string) => Promise<void>; // Fonction de connexion
   logout: () => void;          // Fonction de déconnexion manuelle
   forceLogout: () => void;     // Fonction de déconnexion forcée (quand session expire)
+  currentRoute: string | null; // Route actuelle sauvegardée pour persistance après reconnexion
+  saveCurrentRoute: (route: string) => void; // Fonction pour sauvegarder la route actuelle
+  getAndClearSavedRoute: () => string | null; // Fonction pour récupérer et effacer la route sauvegardée
 }
 
 /**
@@ -59,6 +62,10 @@ export function AuthProvider({ children }: AuthProviderProps) {
   
   // État pour contrôler l'affichage du modal d'expiration de session
   const [showSessionExpiredModal, setShowSessionExpiredModal] = useState(false);
+  
+  // État pour sauvegarder la route actuelle lors de l'expiration de session
+  // Permet de revenir à la même page après reconnexion
+  const [currentRoute, setCurrentRoute] = useState<string | null>(null);
 
   // Calculer si l'utilisateur est authentifié
   const isAuthenticated = !!user;
@@ -67,6 +74,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
    * Fonction de déconnexion forcée utilisée quand la session expire
    * 
    * Cette fonction :
+   * - Sauvegarde la route actuelle pour y revenir après reconnexion
    * - Nettoie les tokens d'authentification
    * - Supprime les informations utilisateur du localStorage
    * - Réinitialise l'état utilisateur
@@ -75,6 +83,17 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const forceLogout = () => {
     if (process.env.NODE_ENV === 'development') {
       console.log('🔒 Session expirée, déconnexion forcée');
+    }
+    
+    // Sauvegarder la route actuelle pour y revenir après reconnexion
+    if (typeof window !== 'undefined') {
+      const currentPath = window.location.pathname;
+      if (currentPath !== '/' && currentPath !== '/login') {
+        setCurrentRoute(currentPath);
+        if (process.env.NODE_ENV === 'development') {
+          console.log('📍 Route sauvegardée pour reconnexion:', currentPath);
+        }
+      }
     }
     
     // Nettoyer les tokens côté serveur
@@ -175,6 +194,21 @@ export function AuthProvider({ children }: AuthProviderProps) {
       
       // Mettre à jour l'état utilisateur
       setUser({ email });
+      
+      // Si nous avons une route sauvegardée (après expiration de session),
+      // rediriger vers cette route après un délai pour laisser le temps aux états de se mettre à jour
+      if (currentRoute) {
+        setTimeout(() => {
+          if (typeof window !== 'undefined') {
+            const routeToRestore = currentRoute;
+            setCurrentRoute(null); // Effacer la route sauvegardée
+            if (process.env.NODE_ENV === 'development') {
+              console.log('🔄 Redirection vers la route sauvegardée:', routeToRestore);
+            }
+            window.location.href = routeToRestore;
+          }
+        }, 100);
+      }
     } catch (error) {
       // Propager l'erreur pour que le composant appelant puisse la gérer
       throw error;
@@ -202,6 +236,28 @@ export function AuthProvider({ children }: AuthProviderProps) {
     setUser(null);
   };
 
+  /**
+   * Fonction pour sauvegarder la route actuelle
+   * Utilisée avant l'expiration de session pour pouvoir y revenir après reconnexion
+   * 
+   * @param route - Route à sauvegarder
+   */
+  const saveCurrentRoute = (route: string) => {
+    setCurrentRoute(route);
+  };
+
+  /**
+   * Fonction pour récupérer et effacer la route sauvegardée
+   * Utilisée après reconnexion pour revenir à la page précédente
+   * 
+   * @returns string | null - La route sauvegardée ou null
+   */
+  const getAndClearSavedRoute = () => {
+    const savedRoute = currentRoute;
+    setCurrentRoute(null);
+    return savedRoute;
+  };
+
   // Créer l'objet de valeur du contexte
   const value = {
     user,
@@ -210,6 +266,9 @@ export function AuthProvider({ children }: AuthProviderProps) {
     login,
     logout,
     forceLogout,
+    currentRoute,
+    saveCurrentRoute,
+    getAndClearSavedRoute,
   };
 
   return (

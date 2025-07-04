@@ -1,11 +1,11 @@
 'use client';
 
 import { useState } from 'react';
-import EventsManagement from './EventsManagement';
-import LieuxManagement from './LieuxManagement';
-import DisciplinesManagement from './DisciplinesManagement';
-import EpreuvesManagement from './EpreuvesManagement';
-import AuthGuard from './AuthGuard';
+import EventsManagement from '../management/EventsManagement';
+import LieuxManagement from '../management/LieuxManagement';
+import DisciplinesManagement from '../management/DisciplinesManagement';
+import EpreuvesManagement from '../management/EpreuvesManagement';
+import AuthGuard from '../connexion/authGuard';
 import { useSessionExpiry } from '@/hooks/useSessionExpiry';
 import { useAuth } from '@/contexts/authContext';
 
@@ -24,7 +24,7 @@ interface ManagementDashboardProps {
  * 
  * Fonctionnalités :
  * - Navigation entre les différentes sections de gestion (événements, lieux, disciplines, épreuves)
- * - Protection par authentification via AuthGuard
+ * - Protection par authentification via AuthGuard centralisé
  * - Gestion automatique de l'expiration de session
  * - Interface unifiée pour la gestion des données olympiques
  * - Bouton de test d'expiration de session (uniquement en développement)
@@ -61,7 +61,7 @@ export default function ManagementDashboard({ onBack }: ManagementDashboardProps
 
   // Rendu avec protection par authentification
   return (
-    <AuthGuard onBack={onBack}>
+    <AuthGuard>
       {/* Rendu conditionnel basé sur la section active */}
       {activeSection === 'events' && <EventsManagement onBack={handleBackToDashboard} />}
       {activeSection === 'lieux' && <LieuxManagement onBack={handleBackToDashboard} />}
