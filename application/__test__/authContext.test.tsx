@@ -1,18 +1,15 @@
 import { render, screen, act, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { AuthProvider, useAuth } from '@/contexts/authContext';
+import * as authService from '@/lib/api/auth/authService';
 
-// Mock du service d'auth - déclaration avant jest.mock()
-const mockLogin = jest.fn();
-const mockLogout = jest.fn();
-
-jest.mock('@/lib/api/authService', () => ({
+// Mock du service d'auth
+jest.mock('@/lib/api/auth/authService', () => ({
   login: jest.fn(),
   logout: jest.fn(),
 }));
 
 // Import du module mocké pour récupérer les fonctions
-import * as authService from '@/lib/api/authService';
 const mockedAuthService = authService as jest.Mocked<typeof authService>;
 
 // Mock localStorage
@@ -323,5 +320,64 @@ describe('AuthContext', () => {
       expect(screen.getByTestId('is-authenticated')).toHaveTextContent('false');
     });
     expect(screen.getByTestId('user')).toHaveTextContent('null');
+  });
+
+  it('maintient la cohérence des états isAuthenticated et user', async () => {
+    const TestStateConsistency = () => {
+      const { user, isAuthenticated } = useAuth();
+      
+      return (
+        <div>
+          <div data-testid="consistency-check">
+            {(!!user) === isAuthenticated ? 'consistent' : 'inconsistent'}
+          </div>
+          <div data-testid="user-state">{user ? user.email : 'null'}</div>
+          <div data-testid="auth-state">{isAuthenticated.toString()}</div>
+        </div>
+      );
+    };
+
+    render(
+      <AuthProvider>
+        <TestStateConsistency />
+      </AuthProvider>
+    );
+
+    await waitFor(() => {
+      expect(screen.getByTestId('consistency-check')).toHaveTextContent('consistent');
+    });
+
+    // Vérifier que l'état initial est cohérent
+    expect(screen.getByTestId('user-state')).toHaveTextContent('null');
+    expect(screen.getByTestId('auth-state')).toHaveTextContent('false');
+  });
+
+  it('gère les erreurs de localStorage gracieusement', async () => {
+    // Mock localStorage pour lever une erreur
+    const originalGetItem = localStorageMock.getItem;
+    localStorageMock.getItem.mockImplementation(() => {
+      throw new Error('localStorage non disponible');
+    });
+
+    // Mock console.warn pour éviter les logs pendant les tests
+    const consoleSpy = jest.spyOn(console, 'warn').mockImplementation(() => {});
+
+    render(
+      <AuthProvider>
+        <TestComponent />
+      </AuthProvider>
+    );
+
+    await waitFor(() => {
+      expect(screen.getByTestId('is-loading')).toHaveTextContent('false');
+    });
+
+    expect(screen.getByTestId('user')).toHaveTextContent('null');
+    expect(screen.getByTestId('is-authenticated')).toHaveTextContent('false');
+    expect(consoleSpy).toHaveBeenCalledWith('localStorage non disponible:', expect.any(Error));
+
+    // Restaurer les fonctions
+    localStorageMock.getItem.mockImplementation(originalGetItem);
+    consoleSpy.mockRestore();
   });
 });

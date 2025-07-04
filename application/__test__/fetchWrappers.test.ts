@@ -1,10 +1,14 @@
-import { fetchApi } from '@/lib/api/fetchWrappers';
-import { makeRequest, tryRefreshToken } from '@/lib/api/authHelpers';
+import { fetchApi } from '@/lib/api/core/fetchWrappers';
+import { makeRequest } from '@/lib/api/core/httpHelpers';
 
-// Mock du module authHelpers
-jest.mock('@/lib/api/authHelpers', () => ({
+// Mock du module httpHelpers
+jest.mock('@/lib/api/core/httpHelpers', () => ({
   makeRequest: jest.fn(),
-  tryRefreshToken: jest.fn(),
+}));
+
+// Mock du module authService pour le refresh automatique
+jest.mock('@/lib/api/auth/authService', () => ({
+  refreshToken: jest.fn(),
 }));
 
 // Mock des variables d'environnement
@@ -24,7 +28,8 @@ afterEach(() => {
 
 describe('fetchWrappers', () => {
   const mockMakeRequest = makeRequest as jest.MockedFunction<typeof makeRequest>;
-  const mockTryRefreshToken = tryRefreshToken as jest.MockedFunction<typeof tryRefreshToken>;
+  // Import du service mocké pour le refresh
+  const mockRefreshToken = require('@/lib/api/auth/authService').refreshToken;
 
   beforeEach(() => {
     jest.clearAllMocks();
@@ -162,23 +167,23 @@ describe('fetchWrappers', () => {
         mockMakeRequest
           .mockResolvedValueOnce(unauthorizedResponse)
           .mockResolvedValueOnce(mockSuccessResponse);
-        mockTryRefreshToken.mockResolvedValue(true);
+        mockRefreshToken.mockResolvedValue({ access: 'new-token', refresh: 'new-refresh' });
 
         const result = await fetchApi('/protected', {}, true);
 
         expect(mockMakeRequest).toHaveBeenCalledTimes(2);
-        expect(mockTryRefreshToken).toHaveBeenCalledTimes(1);
+        expect(mockRefreshToken).toHaveBeenCalledTimes(1);
         expect(result).toEqual({ data: 'test' });
       });
 
       it('lève une erreur si le rafraîchissement du token échoue', async () => {
         mockMakeRequest.mockResolvedValue(unauthorizedResponse);
-        mockTryRefreshToken.mockResolvedValue(false);
+        mockRefreshToken.mockRejectedValue(new Error('Refresh failed'));
 
         await expect(fetchApi('/protected', {}, true)).rejects.toThrow('Session expirée. Veuillez vous reconnecter.');
 
         expect(mockMakeRequest).toHaveBeenCalledTimes(1);
-        expect(mockTryRefreshToken).toHaveBeenCalledTimes(1);
+        expect(mockRefreshToken).toHaveBeenCalledTimes(1);
       });
 
       it('ne tente pas de rafraîchir le token si auth n\'est pas requise', async () => {
@@ -187,7 +192,7 @@ describe('fetchWrappers', () => {
         await expect(fetchApi('/public', {}, false)).rejects.toThrow('(401) Token invalide');
 
         expect(mockMakeRequest).toHaveBeenCalledTimes(1);
-        expect(mockTryRefreshToken).not.toHaveBeenCalled();
+        expect(mockRefreshToken).not.toHaveBeenCalled();
       });
 
       it('ne tente pas de rafraîchir le token si le statut n\'est pas 401', async () => {
@@ -201,7 +206,7 @@ describe('fetchWrappers', () => {
         await expect(fetchApi('/forbidden', {}, true)).rejects.toThrow('(403) Token invalide');
 
         expect(mockMakeRequest).toHaveBeenCalledTimes(1);
-        expect(mockTryRefreshToken).not.toHaveBeenCalled();
+        expect(mockRefreshToken).not.toHaveBeenCalled();
       });
     });
 
@@ -265,7 +270,7 @@ describe('fetchWrappers', () => {
       
       expect(() => {
         jest.isolateModules(() => {
-          require('@/lib/api/fetchWrappers');
+          require('@/lib/api/core/fetchWrappers');
         });
       }).toThrow('API base URL is not défini.');
     });
@@ -275,7 +280,7 @@ describe('fetchWrappers', () => {
       
       expect(() => {
         jest.isolateModules(() => {
-          require('@/lib/api/fetchWrappers');
+          require('@/lib/api/core/fetchWrappers');
         });
       }).toThrow('NEXT_PUBLIC_AUTH_TOKEN_KEY est manquant.');
     });
@@ -285,7 +290,7 @@ describe('fetchWrappers', () => {
       
       expect(() => {
         jest.isolateModules(() => {
-          require('@/lib/api/fetchWrappers');
+          require('@/lib/api/core/fetchWrappers');
         });
       }).toThrow('NEXT_PUBLIC_AUTH_REFRESH_TOKEN_KEY est manquant.');
     });
@@ -314,13 +319,13 @@ describe('fetchWrappers', () => {
       mockMakeRequest
         .mockResolvedValueOnce(unauthorizedResponse)
         .mockResolvedValueOnce(successResponse);
-      mockTryRefreshToken.mockResolvedValue(true);
+      mockRefreshToken.mockResolvedValue({ access: 'new-token', refresh: 'new-refresh' });
 
       const result = await fetchApi('/protected-resource', { method: 'GET' }, true);
 
       expect(result).toEqual({ message: 'Succès après rafraîchissement' });
       expect(mockMakeRequest).toHaveBeenCalledTimes(2);
-      expect(mockTryRefreshToken).toHaveBeenCalledTimes(1);
+      expect(mockRefreshToken).toHaveBeenCalledTimes(1);
     });
   });
 });

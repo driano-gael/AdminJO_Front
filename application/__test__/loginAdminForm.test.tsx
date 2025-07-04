@@ -15,7 +15,7 @@ Object.defineProperty(window, 'localStorage', {
 });
 
 // Mock du service d'authentification
-jest.mock('@/lib/api/authService', () => ({
+jest.mock('@/lib/api/auth/authService', () => ({
   login: jest.fn(),
 }));
 
@@ -64,7 +64,7 @@ describe('LoginAdminForm', () => {
   });
 
   it('affiche l\'état de chargement lors de la soumission du formulaire', async () => {
-    const { login } = require('@/lib/api/authService');
+    const { login } = require('@/lib/api/auth/authService');
     login.mockImplementation(() => new Promise(resolve => setTimeout(resolve, 100)));
 
     render(
@@ -86,7 +86,7 @@ describe('LoginAdminForm', () => {
   });
 
   it('affiche une notification d\'erreur en cas d\'échec de connexion', async () => {
-    const { login } = require('@/lib/api/authService');
+    const { login } = require('@/lib/api/auth/authService');
     login.mockRejectedValue(new Error('Identifiants invalides'));
 
     render(
@@ -109,7 +109,7 @@ describe('LoginAdminForm', () => {
   });
 
   it('appelle la fonction de connexion avec les bonnes informations d\'identification', async () => {
-    const { login } = require('@/lib/api/authService');
+    const { login } = require('@/lib/api/auth/authService');
     login.mockResolvedValue({ access: 'fake-token', refresh: 'fake-refresh' });
 
     render(

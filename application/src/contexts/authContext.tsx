@@ -1,11 +1,10 @@
 'use client';
 
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { login as loginService, logout as logoutService } from '@/lib/api/authService';
+import { login as loginService, logout as logoutService } from '@/lib/api/auth/authService';
 
 interface User {
   email: string;
-  // Ajoutez d'autres propriétés utilisateur selon votre API Django
 }
 
 interface AuthContextType {
@@ -30,16 +29,19 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
   useEffect(() => {
     const checkAuth = () => {
-      if (typeof window !== 'undefined') {
-        const token = localStorage.getItem(process.env.NEXT_PUBLIC_AUTH_TOKEN_KEY || 'auth_token');
-        
-        if (token) {
-          // Ici vous pourriez faire un appel API pour récupérer les infos utilisateur
-          // Pour l'instant, on simule avec l'email stocké
-          const storedEmail = localStorage.getItem('user_email');
-          if (storedEmail) {
-            setUser({ email: storedEmail });
+      if (typeof window !== 'undefined' && window.localStorage) {
+        try {
+          const token = localStorage.getItem(process.env.NEXT_PUBLIC_AUTH_TOKEN_KEY || 'auth_token');
+          
+          if (token) {
+            const storedEmail = localStorage.getItem('user_email');
+            if (storedEmail) {
+              setUser({ email: storedEmail });
+            }
           }
+        } catch (error) {
+          // Si localStorage n'est pas disponible ou lève une erreur, on ignore
+          console.warn('localStorage non disponible:', error);
         }
       }
       
@@ -53,8 +55,12 @@ export function AuthProvider({ children }: AuthProviderProps) {
     try {
       await loginService({ email, password });
       
-      if (typeof window !== 'undefined') {
-        localStorage.setItem('user_email', email);
+      if (typeof window !== 'undefined' && window.localStorage) {
+        try {
+          localStorage.setItem('user_email', email);
+        } catch (error) {
+          console.warn('Impossible de sauvegarder l\'email:', error);
+        }
       }
       setUser({ email });
     } catch (error) {
@@ -64,8 +70,12 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
   const logout = () => {
     logoutService();
-    if (typeof window !== 'undefined') {
-      localStorage.removeItem('user_email');
+    if (typeof window !== 'undefined' && window.localStorage) {
+      try {
+        localStorage.removeItem('user_email');
+      } catch (error) {
+        console.warn('Impossible de supprimer l\'email:', error);
+      }
     }
     setUser(null);
   };
