@@ -7,23 +7,20 @@ import { Evenement } from '@/types/apiEvenement/evenement';
 export interface CreateEpreuveRequest {
   libelle: string;
   disciplineId: number;
-  evenementId: number;
 }
 
 export interface UpdateEpreuveRequest {
   id: number;
   libelle: string;
   disciplineId: number;
-  evenementId: number;
 }
 
 export interface EpreuveFilters {
   libelle?: string;
   disciplineId?: number;
-  evenementId?: number;
   page?: number;
   limit?: number;
-  sortBy?: 'libelle' | 'discipline' | 'evenement';
+  sortBy?: 'nom' | 'discipline';
   sortOrder?: 'asc' | 'desc';
 }
 
@@ -32,7 +29,7 @@ export class EpreuveService {
   private static readonly BASE_PATH = '/epreuve';
 
   /**
-   * Récupère toutes les épreuves
+   * Récupère toutes les épreuves avec filtres optionnels
    * Route Django: path('epreuve/', EpreuveListView.as_view(), name='epreuve-list')
    */
   static async getAllEpreuves(filters?: EpreuveFilters): Promise<Epreuve[]> {
@@ -40,9 +37,8 @@ export class EpreuveService {
     
     if (filters) {
       const params = new URLSearchParams();
-      if (filters.libelle) params.append('libelle', filters.libelle);
+      if (filters.libelle) params.append('search', filters.libelle);
       if (filters.disciplineId) params.append('disciplineId', filters.disciplineId.toString());
-      if (filters.evenementId) params.append('evenementId', filters.evenementId.toString());
       if (filters.page) params.append('page', filters.page.toString());
       if (filters.limit) params.append('limit', filters.limit.toString());
       if (filters.sortBy) params.append('sortBy', filters.sortBy);

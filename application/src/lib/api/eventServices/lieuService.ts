@@ -30,7 +30,7 @@ export class LieuService {
     
     if (filters) {
       const params = new URLSearchParams();
-      if (filters.nom) params.append('nom', filters.nom);
+      if (filters.nom) params.append('search', filters.nom);
       if (filters.page) params.append('page', filters.page.toString());
       if (filters.limit) params.append('limit', filters.limit.toString());
       

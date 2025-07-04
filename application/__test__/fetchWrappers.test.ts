@@ -49,16 +49,16 @@ describe('fetchWrappers', () => {
 
       const result = await fetchApi('/test', { method: 'GET' });
 
-      expect(mockMakeRequest).toHaveBeenCalledWith('/test', { method: 'GET' }, false);
+      expect(mockMakeRequest).toHaveBeenCalledWith('/test', { method: 'GET' }, true);
       expect(result).toEqual({ data: 'test' });
     });
 
-    it('effectue une requête sans authentification par défaut', async () => {
+    it('effectue une requête avec authentification par défaut', async () => {
       mockMakeRequest.mockResolvedValue(mockSuccessResponse);
 
       await fetchApi('/test');
 
-      expect(mockMakeRequest).toHaveBeenCalledWith('/test', {}, false);
+      expect(mockMakeRequest).toHaveBeenCalledWith('/test', {}, true);
     });
 
     it('effectue une requête avec authentification quand requis', async () => {
@@ -229,7 +229,7 @@ describe('fetchWrappers', () => {
 
         await fetchApi('/default');
 
-        expect(mockMakeRequest).toHaveBeenCalledWith('/default', {}, false);
+        expect(mockMakeRequest).toHaveBeenCalledWith('/default', {}, true);
       });
     });
 

@@ -81,6 +81,9 @@ export default function Notification({ message, type = 'error', onClose, duratio
       }
     };
   }, [handleClose, adjustedDuration]);
+      }
+    };
+  }, [handleClose, adjustedDuration]);
 
   // Effet pour marquer le composant comme démonté lors du cleanup
   useEffect(() => {

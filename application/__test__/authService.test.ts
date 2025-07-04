@@ -75,7 +75,7 @@ describe('authService', () => {
       expect(mockFetchApi).toHaveBeenCalledWith('/auth/login/', {
         method: 'POST',
         body: JSON.stringify(mockLoginData),
-      });
+      }, false);
 
       expect(localStorageMock.setItem).toHaveBeenCalledWith('test_auth_token', 'test-access-token');
       expect(localStorageMock.setItem).toHaveBeenCalledWith('test_refresh_token', 'test-refresh-token');
@@ -121,7 +121,7 @@ describe('authService', () => {
       expect(mockFetchApi).toHaveBeenCalledWith('/auth/login/', {
         method: 'POST',
         body: JSON.stringify(customLoginData),
-      });
+      }, false);
     });
 
     it('appelle fetchApi avec requireAuth = false', async () => {
@@ -131,7 +131,8 @@ describe('authService', () => {
 
       expect(mockFetchApi).toHaveBeenCalledWith(
         expect.any(String),
-        expect.any(Object)
+        expect.any(Object),
+        false
       );
     });
 
@@ -154,16 +155,10 @@ describe('authService', () => {
       
       logout();
 
-      // Debug pour voir combien de fois removeItem a été appelé
-      console.log('removeItem call count:', localStorageMock.removeItem.mock.calls.length);
-      console.log('removeItem calls:', localStorageMock.removeItem.mock.calls);
-
-      // Ajuster le test selon la réalité observée : seulement 1 appel
-      expect(localStorageMock.removeItem).toHaveBeenCalledTimes(1);
+      // clearTokens() supprime les deux tokens
+      expect(localStorageMock.removeItem).toHaveBeenCalledTimes(2);
       expect(localStorageMock.removeItem).toHaveBeenCalledWith('test_auth_token');
-      
-      // Commenter temporairement le test du refresh token
-      // expect(localStorageMock.removeItem).toHaveBeenCalledWith('test_refresh_token');
+      expect(localStorageMock.removeItem).toHaveBeenCalledWith('test_refresh_token');
     });
 
     it('ne lève pas d\'erreur même en cas d\'erreur de clearTokens', () => {
@@ -173,8 +168,7 @@ describe('authService', () => {
       });
 
       // Le test doit passer car clearTokens() gère l'erreur en interne
-      // ou alors logout() doit être modifié pour gérer les erreurs
-      expect(() => logout()).toThrow('Erreur de suppression');
+      expect(() => logout()).not.toThrow();
     });
   });
 
@@ -199,7 +193,7 @@ describe('authService', () => {
       expect(mockFetchApi).toHaveBeenCalledWith('/auth/token/refresh/', {
         method: 'POST',
         body: JSON.stringify({ refresh: 'existing-refresh-token' }),
-      });
+      }, false);
       expect(localStorageMock.setItem).toHaveBeenCalledWith('test_auth_token', 'new-access-token');
       expect(result).toEqual(mockRefreshResponse);
     });
@@ -223,11 +217,15 @@ describe('authService', () => {
     });
 
     it('propage les erreurs de l\'API lors du rafraîchissement', async () => {
+      // Réinitialiser les mocks pour éviter l'erreur du test précédent
+      localStorageMock.removeItem.mockRestore();
+      localStorageMock.removeItem = jest.fn();
+      
       localStorageMock.getItem.mockReturnValue('invalid-refresh-token');
       const apiError = new Error('Refresh token invalide');
       mockFetchApi.mockRejectedValue(apiError);
 
-      await expect(refreshToken()).rejects.toThrow('Refresh token invalide');
+      await expect(refreshToken()).rejects.toThrow('Refresh token expiré');
 
       expect(localStorageMock.setItem).not.toHaveBeenCalled();
     });
@@ -240,7 +238,8 @@ describe('authService', () => {
 
       expect(mockFetchApi).toHaveBeenCalledWith(
         expect.any(String),
-        expect.any(Object)
+        expect.any(Object),
+        false
       );
     });
 
@@ -270,10 +269,12 @@ describe('authService', () => {
       
       // Test du login
       mockFetchApi.mockResolvedValueOnce(loginResponse);
-      await login(loginData);        expect(mockFetchApi).toHaveBeenCalledWith('/auth/login/', {
+      await login(loginData);
+      
+      expect(mockFetchApi).toHaveBeenCalledWith('/auth/login/', {
           method: 'POST',
           body: JSON.stringify(loginData),
-        });
+        }, false);
       expect(localStorageMock.setItem).toHaveBeenCalledWith('test_auth_token', 'access-token');
       expect(localStorageMock.setItem).toHaveBeenCalledWith('test_refresh_token', 'refresh-token');
 
@@ -288,7 +289,7 @@ describe('authService', () => {
       expect(mockFetchApi).toHaveBeenCalledWith('/auth/token/refresh/', {
         method: 'POST',
         body: JSON.stringify({ refresh: 'refresh-token' }),
-      });
+      }, false);
       expect(localStorageMock.setItem).toHaveBeenCalledWith('test_auth_token', 'new-access-token');
 
       // Test du logout

@@ -16,6 +16,7 @@ export {
   disciplineApi,
   type CreateDisciplineRequest,
   type UpdateDisciplineRequest,
+  type DisciplineFilters,
 } from './disciplineService';
 
 export {

@@ -2,24 +2,46 @@
 
 import { useAuth } from '@/contexts/authContext';
 import { useState } from 'react';
-import EventsManagement from '@/components/management/EventsManagement';
+import ManagementDashboard from '@/components/management/ManagementDashboard';
 import PlaceholderManagement from '@/components/management/PlaceholderManagement';
 import { 
     dashboardSections, 
     getDashboardSectionById, 
 } from '@/types/dashBoardSections/dashboardSections';
 
+/**
+ * Composant Dashboard principal de l'application d'administration des JO
+ * 
+ * Fonctionnalités :
+ * - Affichage du tableau de bord principal avec les différentes sections
+ * - Navigation vers les modules de gestion (événements, lieux, disciplines, épreuves)
+ * - Affichage des informations utilisateur et bouton de déconnexion
+ * - Statistiques rapides (données factices pour l'exemple)
+ * - Gestion de l'état de navigation entre les sections
+ * 
+ * @returns JSX.Element - Le tableau de bord d'administration
+ */
 export default function Dashboard() {
+    // Récupération des données utilisateur et fonction de déconnexion depuis le contexte auth
     const { user, logout } = useAuth();
+    
+    // État pour gérer quelle section est actuellement sélectionnée
     const [selectedSection, setSelectedSection] = useState<string | null>(null);
 
+    /**
+     * Gestionnaire de clic sur une section du dashboard
+     * @param sectionId - L'ID de la section sélectionnée
+     */
     const handleSectionClick = (sectionId: string) => {
         setSelectedSection(sectionId);
     };
 
-    if (selectedSection === 'events') {
-        return <EventsManagement onBack={() => setSelectedSection(null)} />;
+    // Rendu conditionnel : si la section "management" est sélectionnée, afficher le tableau de bord de gestion
+    if (selectedSection === 'management') {
+        return <ManagementDashboard onBack={() => setSelectedSection(null)} />;
     }
+    
+    // Rendu conditionnel : si une autre section est sélectionnée, afficher le composant placeholder
     if (selectedSection) {
         const section = getDashboardSectionById(selectedSection);
         if (section) {
@@ -34,9 +56,10 @@ export default function Dashboard() {
         }
     }
 
+    // Rendu principal : affichage du tableau de bord avec toutes les sections
     return (
         <div className="min-h-screen bg-base-200">
-          {/* Header */}
+          {/* Header avec informations utilisateur et bouton de déconnexion */}
             <header className="bg-white shadow-md">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center py-6">
@@ -49,6 +72,7 @@ export default function Dashboard() {
                     <span className="text-sm text-gray-600">
                       Connecté en tant que: <strong>{user?.email}</strong>
                     </span>
+                    {/* Bouton de déconnexion qui utilise la fonction logout du contexte auth */}
                     <button
                       onClick={logout}
                       className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors"
@@ -60,8 +84,9 @@ export default function Dashboard() {
               </div>
             </header>
 
-            {/* Main Content */}
+            {/* Contenu principal du tableau de bord */}
             <main className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+                {/* Section d'introduction */}
                 <div className="text-center mb-12">
                     <h2 className="text-2xl font-bold text-gray-900 mb-4">
                       Tableau de bord d&apos;administration
@@ -71,7 +96,7 @@ export default function Dashboard() {
                     </p>
                 </div>
 
-                {/* Dashboard Grid */}
+                {/* Grille des sections du tableau de bord */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
                     {dashboardSections.map((section) => (
                         <div
@@ -94,7 +119,7 @@ export default function Dashboard() {
                     ))}
                 </div>
 
-                {/* Quick Stats */}
+                {/* Section des statistiques rapides (données factices pour l'exemple) */}
                 <div className="mt-16 bg-white rounded-lg shadow-md p-8">
                   <h3 className="text-xl font-bold text-gray-900 mb-6">Statistiques rapides</h3>
                   <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
