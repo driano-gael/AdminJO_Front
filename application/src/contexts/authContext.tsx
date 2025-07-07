@@ -1,6 +1,7 @@
 'use client';
 
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { useRouter } from 'next/navigation';
 import { login as loginService, logout as logoutService } from '@/lib/api/auth/authService';
 import { setSessionExpiredCallback } from '@/lib/api/core/tokenHelpers';
 import SessionExpiredModal from '@/components/connexion/SessionExpiredModal';
@@ -54,6 +55,9 @@ interface AuthProviderProps {
  * @returns JSX.Element - Le provider d'authentification
  */
 export function AuthProvider({ children }: AuthProviderProps) {
+  // Hook pour la navigation Next.js
+  const router = useRouter();
+  
   // État de l'utilisateur connecté (null si non connecté)
   const [user, setUser] = useState<User | null>(null);
   
@@ -123,10 +127,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
     // Fermer le modal
     setShowSessionExpiredModal(false);
     
-    // Rediriger vers la page de connexion
-    if (typeof window !== 'undefined') {
-      window.location.href = '/';
-    }
+    // Rediriger vers la page de connexion avec le router Next.js
+    router.push('/');
   };
 
   /**
@@ -196,17 +198,20 @@ export function AuthProvider({ children }: AuthProviderProps) {
       setUser({ email });
       
       // Si nous avons une route sauvegardée (après expiration de session),
-      // rediriger vers cette route après un délai pour laisser le temps aux états de se mettre à jour
+      // rediriger vers cette route avec le router Next.js
       if (currentRoute) {
         setTimeout(() => {
-          if (typeof window !== 'undefined') {
-            const routeToRestore = currentRoute;
-            setCurrentRoute(null); // Effacer la route sauvegardée
-            if (process.env.NODE_ENV === 'development') {
-              console.log('🔄 Redirection vers la route sauvegardée:', routeToRestore);
-            }
-            window.location.href = routeToRestore;
+          const routeToRestore = currentRoute;
+          setCurrentRoute(null); // Effacer la route sauvegardée
+          if (process.env.NODE_ENV === 'development') {
+            console.log('🔄 Redirection vers la route sauvegardée:', routeToRestore);
           }
+          router.push(routeToRestore);
+        }, 100);
+      } else {
+        // Si pas de route sauvegardée, rediriger vers le dashboard
+        setTimeout(() => {
+          router.push('/dashboard');
         }, 100);
       }
     } catch (error) {
@@ -234,6 +239,9 @@ export function AuthProvider({ children }: AuthProviderProps) {
     
     // Réinitialiser l'état utilisateur
     setUser(null);
+    
+    // Rediriger vers la page de connexion
+    router.push('/');
   };
 
   /**

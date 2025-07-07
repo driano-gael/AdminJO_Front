@@ -23,23 +23,23 @@ export function useSessionExpiry() {
   const { isAuthenticated, forceLogout } = useAuth();
 
   useEffect(() => {
-    // Fonction qui gère l'expiration de session
-    const handleSessionExpired = () => {
-      // Ne déclencher la déconnexion forcée que si l'utilisateur est actuellement connecté
-      if (isAuthenticated) {
-        console.log('🔒 Session expirée détectée, déconnexion forcée');
-        forceLogout();
-      }
-    };
+      // Fonction qui gère l'expiration de session
+      const handleSessionExpired = () => {
+        // Ne déclencher la déconnexion forcée que si l'utilisateur est actuellement connecté
+        if (isAuthenticated) {
+          console.log('🔒 Session expirée détectée, déconnexion forcée');
+          forceLogout();
+        }
+      };
 
-    // Écouter les événements personnalisés de session expirée
-    // Ces événements sont émis par le système d'authentification
-    window.addEventListener('sessionExpired', handleSessionExpired);
+      // Écouter les événements personnalisés de session expirée
+      // Ces événements sont émis par le système d'authentification
+      window.addEventListener('sessionExpired', handleSessionExpired);
 
-    // Nettoyer l'écouteur d'événements quand le composant se démonte
-    return () => {
-      window.removeEventListener('sessionExpired', handleSessionExpired);
-    };
+      // Nettoyer l'écouteur d'événements quand le composant se démonte
+      return () => {
+        window.removeEventListener('sessionExpired', handleSessionExpired);
+      };
   }, [isAuthenticated, forceLogout]); // Recréer l'effet si l'état d'authentification change
 }
 

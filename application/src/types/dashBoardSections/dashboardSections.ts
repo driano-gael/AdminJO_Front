@@ -10,7 +10,7 @@
  */
 export interface DashboardSection {
   /** ID unique de la section (utilisé pour la navigation) */
-  id: string;
+  url: string;
   
   /** Titre affiché pour la section */
   title: string;
@@ -33,28 +33,28 @@ export interface DashboardSection {
  */
 export const dashboardSections: DashboardSection[] = [
   {
-    id: 'management',
+    url: 'management/',
     title: 'Gestion Complète',
     description: 'Gérer événements, lieux, disciplines et épreuves',
     icon: '🏛️', // Correction de l'icône corrompue
     color: 'bg-indigo-500 hover:bg-indigo-600'
   },
   {
-    id: 'users',
+    url: 'users/',
     title: 'Gestion des Utilisateurs',
     description: 'Administrer les comptes utilisateurs et leurs permissions',
     icon: '👥',
     color: 'bg-green-500 hover:bg-green-600'
   },
   {
-    id: 'offers',
+    url: 'offers/',
     title: 'Gestion des Offres',
     description: 'Configurer les offres de billets et tarifications',
     icon: '🎫',
     color: 'bg-purple-500 hover:bg-purple-600'
   },
   {
-    id: 'employees',
+    url: 'employees/',
     title: 'Gestion des Employés',
     description: 'Gérer le personnel et les équipes d\'organisation',
     icon: '👨‍💼',
@@ -63,13 +63,13 @@ export const dashboardSections: DashboardSection[] = [
 ];
 
 /**
- * Fonction utilitaire pour récupérer une section par son ID
+ * Fonction utilitaire pour récupérer une section par son url
  * 
- * @param id - ID de la section recherchée
+ * @param url - url de la section recherchée
  * @returns La section correspondante ou undefined si non trouvée
  */
-export const getDashboardSectionById = (id: string): DashboardSection | undefined => {
-  return dashboardSections.find(section => section.id === id);
+export const getDashboardSectionByUrl = (url: string): DashboardSection | undefined => {
+  return dashboardSections.find(section => section.url === url);
 };
 
 /**
