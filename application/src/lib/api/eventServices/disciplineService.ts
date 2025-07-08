@@ -1,5 +1,5 @@
 import { fetchApi } from '@/lib/api/core/fetchWrappers';
-import { Discipline } from '@/types/apiEvenement/discipline';
+import { Discipline } from '@/types/sportEvenement/discipline';
 
 /**
  * Service API pour la gestion des disciplines sportives

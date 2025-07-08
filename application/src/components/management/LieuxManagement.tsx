@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { lieuApi } from '@/lib/api/eventServices';
-import { Lieu } from '@/types/apiEvenement/lieu';
+import { Lieu } from '@/types/sportEvenement/lieu';
 import { CreateLieuRequest } from '@/lib/api/eventServices/lieuService';
 import Notification from '@/components/notification';
 import { useAuth } from '@/contexts/authContext';

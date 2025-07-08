@@ -33,30 +33,38 @@ export interface DashboardSection {
  */
 export const dashboardSections: DashboardSection[] = [
   {
-    url: 'management/',
+    url: '/management',
     title: 'Gestion Complète',
     description: 'Gérer événements, lieux, disciplines et épreuves',
     icon: '🏛️', // Correction de l'icône corrompue
     color: 'bg-indigo-500 hover:bg-indigo-600'
   },
   {
-    url: 'users/',
+    url: '/users',
     title: 'Gestion des Utilisateurs',
     description: 'Administrer les comptes utilisateurs et leurs permissions',
     icon: '👥',
     color: 'bg-green-500 hover:bg-green-600'
   },
   {
-    url: 'offers/',
+    url: '/offers',
     title: 'Gestion des Offres',
     description: 'Configurer les offres de billets et tarifications',
     icon: '🎫',
     color: 'bg-purple-500 hover:bg-purple-600'
   },
   {
-    url: 'employees/',
+    url: '/employees',
     title: 'Gestion des Employés',
     description: 'Gérer le personnel et les équipes d\'organisation',
+    icon: '👨‍💼',
+    color: 'bg-orange-500 hover:bg-orange-600'
+  },
+  
+  {
+    url: '/test',
+    title: "ajout d'un test dashboard",
+    description: 'Test de section pour le dashboard',
     icon: '👨‍💼',
     color: 'bg-orange-500 hover:bg-orange-600'
   }
@@ -70,13 +78,4 @@ export const dashboardSections: DashboardSection[] = [
  */
 export const getDashboardSectionByUrl = (url: string): DashboardSection | undefined => {
   return dashboardSections.find(section => section.url === url);
-};
-
-/**
- * Fonction utilitaire pour récupérer toutes les sections
- * 
- * @returns Tableau de toutes les sections du dashboard
- */
-export const getAllDashboardSections = (): DashboardSection[] => {
-  return dashboardSections;
 };

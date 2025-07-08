@@ -40,7 +40,7 @@ export default function DashboardPage() {
                 {dashboardSections.map((section) => (
                     <Link
                         key={section.url}
-                        href={getDestinationUrl(section.url)}
+                        href={section.url}
                         className={`${section.color} text-white rounded-lg p-8 cursor-pointer transform transition-all duration-200 hover:scale-105 shadow-lg hover:shadow-xl block`}
                     >
                         <div className="text-center">

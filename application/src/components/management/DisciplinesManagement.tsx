@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { disciplineApi } from '@/lib/api/eventServices';
-import { Discipline } from '@/types/apiEvenement/discipline';
+import { Discipline } from '@/types/sportEvenement/discipline';
 import { CreateDisciplineRequest } from '@/lib/api/eventServices/disciplineService';
 import Notification from '@/components/notification';
 import { useAuth } from '@/contexts/authContext';

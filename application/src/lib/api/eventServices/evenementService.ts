@@ -12,8 +12,8 @@
  */
 
 import { fetchApi } from '@/lib/api/core/fetchWrappers';
-import { Evenement } from '@/types/apiEvenement/evenement';
-import { Lieu } from '@/types/apiEvenement/lieu';
+import { Evenement } from '@/types/sportEvenement/evenement';
+import { Lieu } from '@/types/sportEvenement/lieu';
 
 /**
  * Interface pour les données de création d'un événement

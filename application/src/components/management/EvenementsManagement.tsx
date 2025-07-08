@@ -6,7 +6,7 @@ import EventsHeader from './events/EventsHeader';
 import SearchAndFilters from './events/SearchAndFilters';
 import EventsTable from './events/EventsTable';
 import CreateEventModal from './events/CreateEventModal';
-import { useEventsManagement } from './events/useEventsManagement';
+import { useEventsManagement } from '../../hooks/useEventsManagement';
 
 /**
  * Props pour le composant EventsManagement

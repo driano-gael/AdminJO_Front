@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import { epreuveApi, disciplineApi } from '@/lib/api/eventServices';
-import { Epreuve } from '@/types/apiEvenement/epreuve';
-import { Discipline } from '@/types/apiEvenement/discipline';
+import { Epreuve } from '@/types/sportEvenement/epreuve';
+import { Discipline } from '@/types/sportEvenement/discipline';
 import { CreateEpreuveRequest } from '@/lib/api/eventServices/epreuveService';
 import Notification from '@/components/notification';
 import { useAuth } from '@/contexts/authContext';

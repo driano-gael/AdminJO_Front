@@ -1,5 +1,5 @@
 import { fetchApi } from '@/lib/api/core/fetchWrappers';
-import { Lieu } from '@/types/apiEvenement/lieu';
+import { Lieu } from '@/types/sportEvenement/lieu';
 
 // Types pour les requêtes
 export interface CreateLieuRequest {
