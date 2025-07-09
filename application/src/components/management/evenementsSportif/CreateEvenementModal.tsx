@@ -1,28 +1,55 @@
-import { useState } from 'react';
-import { Lieu } from '@/types/sportEvenement/lieu';
-import { CreateEvenementRequest } from '@/lib/api/eventServices/evenementService';
+import { useState, useEffect } from 'react';
+import { lieuApi } from '@/lib/api/services/evenementSports/lieuService';
+import { epreuveApi } from '@/lib/api/services/evenementSports/epreuveService';
+import { Lieu } from '@/types/sportEvenement/lieu'; 
+import { Epreuve } from '@/types/sportEvenement/epreuve';
+import { CreateEvenementRequest } from '@/lib/api/services/evenementSports/evenementService';
 
-interface CreateEventModalProps {
-  lieux: Lieu[];
+interface Props {
   onClose: () => void;
   onCreate: (eventData: CreateEvenementRequest) => void;
   loading: boolean;
   error: string | null;
 }
 
-export default function CreateEventModal({ 
-  lieux, 
+export default function EvenementModal({ 
   onClose, 
   onCreate, 
   loading, 
   error 
-}: CreateEventModalProps) {
+}: Props) {
   const [formData, setFormData] = useState<CreateEvenementRequest>({
     description: '',
     lieuId: 0,
     date: '',
     horraire: ''
   });
+
+  const [lieux, setLieux] = useState<Lieu[]>([]);
+const [epreuves, setEpreuves] = useState<Epreuve[]>([]);
+
+useEffect(() => {
+  const fetchLieux = async () => {
+    try {
+      const apiLieux = await lieuApi.getAll();
+      setLieux(apiLieux);
+    } catch (err) {
+      console.error('Erreur chargement lieux:', err);
+    }
+  };
+
+  const fetchEpreuves = async () => {
+    try {
+      const apiEpreuves = await epreuveApi.getAll();
+      setEpreuves(apiEpreuves);
+    } catch (err) {
+      console.error('Erreur chargement épreuves:', err);
+    }
+  };
+
+  fetchLieux();
+  fetchEpreuves();
+}, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -34,7 +61,7 @@ export default function CreateEventModal({
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
       <div className="bg-white rounded-lg p-6 w-full max-w-md mx-4">
-        <h3 className="text-lg font-semibold mb-4">Créer un nouvel événement</h3>
+        <h3 className="text-lg text-black font-semibold mb-4">Créer un nouvel événement</h3>
         
         {error && (
           <div className="mb-4 text-sm text-red-600 bg-red-50 p-2 rounded">
@@ -51,7 +78,7 @@ export default function CreateEventModal({
               type="text"
               value={formData.description}
               onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 text-black border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
           </div>
@@ -70,6 +97,25 @@ export default function CreateEventModal({
               {lieux.map(lieu => (
                 <option key={lieu.id} value={lieu.id}>
                   {lieu.nom}
+                </option>
+              ))}
+            </select>
+          </div>
+
+                    <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Epreuve
+            </label>
+            <select
+              value={formData.lieuId}
+              onChange={(e) => setFormData({ ...formData, lieuId: Number(e.target.value) })}
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
+            >
+              <option value={0}>Sélectionnez une epreuve</option>
+              {epreuves.map(epreuve => (
+                <option key={epreuve.id} value={epreuve.id}>
+                  {epreuve.libelle}
                 </option>
               ))}
             </select>

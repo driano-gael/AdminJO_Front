@@ -2,16 +2,16 @@
 
 import { useState } from 'react';
 import Notification from '@/components/notification';
-import EventsHeader from './events/EventsHeader';
-import SearchAndFilters from './events/SearchAndFilters';
-import EventsTable from './events/EventsTable';
-import CreateEventModal from './events/CreateEventModal';
-import { useEventsManagement } from '../../hooks/useEventsManagement';
+import EventsHeader from './EvenementsHeader';
+import SearchAndFilters from './EvenementsSearchAndFilters';
+import EventsTable from './EvenementsTable';
+import EvenementModal from './CreateEvenementModal';
+import { useEventsManagement } from '../../../hooks/useEvenementManagement';
 
 /**
  * Props pour le composant EventsManagement
  */
-interface EventsManagementProps {
+interface Props {
   onBack: () => void; // Fonction pour revenir au dashboard de gestion
 }
 
@@ -27,7 +27,7 @@ interface EventsManagementProps {
  * - Gestion des erreurs et notifications
  * - Interface responsive avec design moderne
  */
-export default function EventsManagement({ onBack }: EventsManagementProps) {
+export default function EventsManagement({ onBack }: Props) {
   const {
     events,
     lieux,
@@ -45,7 +45,7 @@ export default function EventsManagement({ onBack }: EventsManagementProps) {
   } = useEventsManagement();
 
   // États pour l'UI
-  const [showCreateForm, setShowCreateForm] = useState(false);
+  const [showEvenementForm, setShowEvenementForm] = useState(false);
   const [notification, setNotification] = useState<{
     message: string;
     type: 'success' | 'error' | 'info';
@@ -54,13 +54,16 @@ export default function EventsManagement({ onBack }: EventsManagementProps) {
   const handleCreateEvent = async (eventData: any) => {
     try {
       await createEvent(eventData);
-      setShowCreateForm(false);
+      setShowEvenementForm(false);
       setNotification({
-        message: 'Événement créé avec succès !',
-        type: 'success'
+        message: "Événement créé avec succès !",
+        type: "success"
       });
     } catch (err) {
-      // L'erreur est gérée dans le hook
+      setNotification({
+        message: "Erreur lors de la création de l'évenement!",
+        type: 'error'
+      });
     }
   };
 
@@ -80,7 +83,7 @@ export default function EventsManagement({ onBack }: EventsManagementProps) {
   };
 
   const handleCloseModal = () => {
-    setShowCreateForm(false);
+    setShowEvenementForm(false);
     setCreateError(null);
   };
 
@@ -88,7 +91,7 @@ export default function EventsManagement({ onBack }: EventsManagementProps) {
     <div className="min-h-screen bg-base-200">
       <EventsHeader 
         onBack={onBack} 
-        onCreateEvent={() => setShowCreateForm(true)} 
+        onCreateEvent={() => setShowEvenementForm(true)} 
       />
 
       <main className="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
@@ -114,9 +117,8 @@ export default function EventsManagement({ onBack }: EventsManagementProps) {
         />
       </main>
 
-      {showCreateForm && (
-        <CreateEventModal 
-          lieux={lieux}
+      {showEvenementForm && (
+        <EvenementModal 
           onClose={handleCloseModal}
           onCreate={handleCreateEvent}
           loading={createLoading}

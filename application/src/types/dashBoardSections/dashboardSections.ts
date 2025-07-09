@@ -9,28 +9,13 @@
  * Interface représentant une section du tableau de bord
  */
 export interface DashboardSection {
-  /** ID unique de la section (utilisé pour la navigation) */
   url: string;
-  
-  /** Titre affiché pour la section */
   title: string;
-  
-  /** Description détaillée de la section */
   description: string;
-  
-  /** Icône emoji ou caractère Unicode à afficher */
   icon: string;
-  
-  /** Classes CSS pour les couleurs de fond et les effets hover */
   color: string;
 }
 
-/**
- * Configuration des sections du tableau de bord
- * 
- * Chaque section correspond à une fonctionnalité principale de l'application
- * avec ses propres couleurs et icônes pour une identification visuelle claire.
- */
 export const dashboardSections: DashboardSection[] = [
   {
     url: '/management',

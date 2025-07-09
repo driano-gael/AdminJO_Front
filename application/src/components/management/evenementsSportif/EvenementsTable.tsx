@@ -1,10 +1,10 @@
 'use client';
 
 import { ExtendEvenement } from '@/types/sportEvenement/evenement';
-import EventsTableRow from './EventsTableRow';
+import EvenementsTableRow from './EvenementsTableRow';
 import Spinner from '@/components/spinner';
 
-interface EventsTableProps {
+interface Props {
   events: ExtendEvenement[];
   loading: boolean;
   searchTerm: string;
@@ -12,13 +12,13 @@ interface EventsTableProps {
   onRefresh: () => void;
 }
 
-export default function EventsTable({ 
+export default function EvenementsTable({ 
     events, 
     loading, 
     searchTerm, 
     onDeleteEvent, 
     onRefresh 
-}: EventsTableProps) {
+}: Props) {
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden">
       <div className="px-6 py-4 border-b border-gray-200">
@@ -64,9 +64,6 @@ export default function EventsTable({
                 Statut
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Billets
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Actions
               </th>
             </tr>
@@ -95,7 +92,7 @@ export default function EventsTable({
               </tr>
             ) : (
               events.map((event) => (
-                <EventsTableRow
+                <EvenementsTableRow
                   key={event.id}
                   event={event}
                   onDelete={onDeleteEvent}

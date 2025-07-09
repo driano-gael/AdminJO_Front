@@ -1,9 +1,12 @@
 import { useState, useEffect } from 'react';
-import { evenementApi, lieuApi, epreuveApi } from '@/lib/api/eventServices';
+import { evenementApi } from '@/lib/api/services/evenementSports/evenementService';
+import { lieuApi } from '@/lib/api/services/evenementSports/lieuService';
+import { epreuveApi } from '@/lib/api/services/evenementSports/epreuveService';
 import { Lieu } from '@/types/sportEvenement/lieu';
 import { Epreuve } from '@/types/sportEvenement/epreuve';
-import { CreateEvenementRequest } from '@/lib/api/eventServices/evenementService';
+import { CreateEvenementRequest } from '@/lib/api/services/evenementSports/evenementService';
 import { ExtendEvenement } from '@/types/sportEvenement/evenement';
+import { getEventStatus } from '@/utils/evenement/statutEvenement';
 
 export function useEventsManagement() {
   const [events, setEvents] = useState<ExtendEvenement[]>([]);
@@ -15,24 +18,6 @@ export function useEventsManagement() {
   const [createLoading, setCreateLoading] = useState(false);
   const [createError, setCreateError] = useState<string | null>(null);
 
-  /**
-   * Détermine le statut d'un événement basé sur la date et l'heure
-   */
-  const getEventStatus = (eventDate: string, eventTime: string): ExtendEvenement['status'] => {
-    const now = new Date();
-    const eventDateTime = new Date(`${eventDate}T${eventTime}`);
-    
-    // Créer une date pour la fin de l'événement (supposons 2 heures de durée)
-    const eventEndDateTime = new Date(eventDateTime.getTime() + (2 * 60 * 60 * 1000));
-    
-    if (now < eventDateTime) {
-      return 'à venir'; // L'événement n'a pas encore commencé
-    } else if (now >= eventDateTime && now <= eventEndDateTime) {
-      return 'en cours'; // L'événement est en cours
-    } else {
-      return 'terminé'; // L'événement est terminé
-    }
-  };
 
   /**
    * Fonction pour charger les événements depuis l'API avec recherche
@@ -50,15 +35,14 @@ export function useEventsManagement() {
         ...event,
         sports: event.epreuves.map(epreuve => epreuve.libelle).join(', ') || 'Non spécifié',
         status: getEventStatus(event.date, event.horraire),
+        // Ajout de données fictives pour la capacité et les tickets vendus
         capacity: Math.floor(Math.random() * 50000) + 10000,
         ticketsSold: Math.floor(Math.random() * 40000) + 5000
       }));
       
       setEvents(eventsWithExtras);
-      console.log('Événements chargés depuis l\'API:', eventsWithExtras);
     } catch (err) {
       setError('Erreur lors du chargement des événements');
-      console.error('Erreur chargement événements:', err);
     } finally {
       setLoading(false);
     }
@@ -77,9 +61,6 @@ export function useEventsManagement() {
     }
   };
 
-  /**
-   * Fonction pour charger les épreuves depuis l'API
-   */
   const loadEpreuves = async () => {
     try {
       const apiEpreuves = await epreuveApi.getAll();

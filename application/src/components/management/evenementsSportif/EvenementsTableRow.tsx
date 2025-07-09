@@ -1,21 +1,20 @@
-import { ExtendEvenement} from '@/types/sportEvenement/evenement';
-import EventStatus from './EventStatus';
-import EventEpreuves from './EventEpreuves';
-import EventTickets from './EventTickets';
+import { Evenement} from '@/types/sportEvenement/evenement';
+import EventStatus from './EvenementsStatus';
+import EvenementEpreuve from './EvenementEpreuves';
 
-interface EventsTableRowProps {
-  event: ExtendEvenement;
+interface Props {
+  event: Evenement;
   onDelete: (id: number) => void;
 }
 
-export default function EventsTableRow({ event, onDelete }: EventsTableRowProps) {
+export default function EvenementsTableRow({ event, onDelete }: Props) {
   return (
     <tr className="hover:bg-gray-50">
       <td className="px-6 py-4 whitespace-nowrap">
         <div className="text-sm font-medium text-gray-900">{event.description}</div>
       </td>
       <td className="px-6 py-4">
-        <EventEpreuves epreuves={event.epreuves} />
+        <EvenementEpreuve epreuves={event.epreuves} />
       </td>
       <td className="px-6 py-4 whitespace-nowrap">
         <div className="text-sm text-gray-900">
@@ -28,9 +27,6 @@ export default function EventsTableRow({ event, onDelete }: EventsTableRowProps)
       </td>
       <td className="px-6 py-4 whitespace-nowrap">
         <EventStatus date={event.date} time={event.horraire} />
-      </td>
-      <td className="px-6 py-4 whitespace-nowrap">
-        <EventTickets capacity={event.capacity} ticketsSold={event.ticketsSold} />
       </td>
       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
         <button className="text-blue-600 hover:text-blue-900 mr-3">

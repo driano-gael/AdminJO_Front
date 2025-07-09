@@ -1,9 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { lieuApi } from '@/lib/api/eventServices';
+import { lieuApi } from '@/lib/api/services/evenementSports/lieuService';
 import { Lieu } from '@/types/sportEvenement/lieu';
-import { CreateLieuRequest } from '@/lib/api/eventServices/lieuService';
+import { CreateLieuRequest } from '@/lib/api/services/evenementSports/lieuService';
 import Notification from '@/components/notification';
 import { useAuth } from '@/contexts/authContext';
 import { useSessionExpiry } from '@/hooks/useSessionExpiry';

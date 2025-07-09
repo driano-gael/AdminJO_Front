@@ -1,10 +1,11 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { epreuveApi, disciplineApi } from '@/lib/api/eventServices';
+import { epreuveApi } from '@/lib/api/services/evenementSports/epreuveService';
+import { disciplineApi } from '@/lib/api/services/evenementSports/disciplineService';
 import { Epreuve } from '@/types/sportEvenement/epreuve';
 import { Discipline } from '@/types/sportEvenement/discipline';
-import { CreateEpreuveRequest } from '@/lib/api/eventServices/epreuveService';
+import { CreateEpreuveRequest } from '@/lib/api/services/evenementSports/epreuveService';
 import Notification from '@/components/notification';
 import { useAuth } from '@/contexts/authContext';
 import { useSessionExpiry } from '@/hooks/useSessionExpiry';

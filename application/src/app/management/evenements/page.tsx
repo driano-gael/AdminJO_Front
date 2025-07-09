@@ -1,6 +1,6 @@
 'use client';
 
-import EventsManagement from '@/components/management/EvenementsManagement';
+import EventsManagement from '@/components/management/evenementsSportif/EvenementsManagement';
 import PageTemplate from '@/components/layout/PageTemplate';
 
 /**

@@ -25,9 +25,7 @@ export function useSessionExpiry() {
   useEffect(() => {
       // Fonction qui gère l'expiration de session
       const handleSessionExpired = () => {
-        // Ne déclencher la déconnexion forcée que si l'utilisateur est actuellement connecté
         if (isAuthenticated) {
-          console.log('🔒 Session expirée détectée, déconnexion forcée');
           forceLogout();
         }
       };
@@ -59,7 +57,6 @@ export function useSessionExpiry() {
  */
 export function emitSessionExpired() {
   if (typeof window !== 'undefined') {
-    console.log('📢 Émission d\'un événement de session expirée');
     window.dispatchEvent(new CustomEvent('sessionExpired'));
   }
 }
