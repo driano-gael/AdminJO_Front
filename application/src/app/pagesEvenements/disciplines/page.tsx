@@ -12,7 +12,7 @@ export default function DisciplinesPage() {
     return (
         <PageTemplate
             title="🏆 Gestion des Disciplines"
-            backUrl="/management"
+            backUrl="/pagesEvenements"
             backLabel="Retour à la Gestion"
             breadcrumbs={[
                 { label: 'Dashboard', href: '/dashboard' },

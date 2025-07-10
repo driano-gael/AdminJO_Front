@@ -18,7 +18,7 @@ export interface DashboardSection {
 
 export const dashboardSections: DashboardSection[] = [
   {
-    url: '/management',
+    url: '/pagesEvenements',
     title: 'Gestion Complète',
     description: 'Gérer événements, lieux, disciplines et épreuves',
     icon: '🏛️', // Correction de l'icône corrompue

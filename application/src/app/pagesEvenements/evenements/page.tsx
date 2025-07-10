@@ -1,7 +1,8 @@
 'use client';
 
-import EventsManagement from '@/components/management/evenementsSportif/EvenementsManagement';
+import EvenementsManagement from '@/components/componentsEvenement/evenements/EvenementsManagement';
 import PageTemplate from '@/components/layout/PageTemplate';
+import { useRouter } from 'next/navigation';
 
 /**
  * Page Gestion des Événements - Route: /management/events
@@ -9,10 +10,12 @@ import PageTemplate from '@/components/layout/PageTemplate';
  * Interface dédiée à la gestion des événements olympiques
  */
 export default function EventsPage() {
+    const router = useRouter();
+
     return (
         <PageTemplate
-            title="🏃‍♂️ Gestion des Événements"
-            backUrl="/management"
+            title="Gestion des Événements sportifs"
+            backUrl="/pagesEvenements"
             backLabel="Retour à la Gestion"
             breadcrumbs={[
                 { label: 'Dashboard', href: '/dashboard' },
@@ -20,8 +23,7 @@ export default function EventsPage() {
                 { label: 'Événements' }
             ]}
         >
-            {/* Composant de gestion des événements */}
-            <EventsManagement onBack={() => {}} />
+            <EvenementsManagement onBack={() => router.push('/dashboard')} />
         </PageTemplate>
     );
 }

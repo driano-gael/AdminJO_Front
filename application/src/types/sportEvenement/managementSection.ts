@@ -16,7 +16,7 @@
             description: 'Créer, modifier et supprimer les événements olympiques',
             icon: '🏃‍♂️',
             color: 'bg-blue-600 hover:bg-blue-700',
-            href: '/management/evenements'
+            href: '/pagesEvenements/evenements'
         },
         {
             id: 'lieux',
@@ -24,7 +24,7 @@
             description: 'Administrer les sites et venues olympiques',
             icon: '🏟️',
             color: 'bg-green-600 hover:bg-green-700',
-            href: '/management/lieux'
+            href: '/pagesEvenements/lieux'
         },
         {
             id: 'disciplines',
@@ -32,7 +32,7 @@
             description: 'Organiser les disciplines sportives',
             icon: '🏆',
             color: 'bg-purple-600 hover:bg-purple-700',
-            href: '/management/disciplines'
+            href: '/pagesEvenements/disciplines'
         },
         {
             id: 'epreuves',
@@ -40,6 +40,6 @@
             description: 'Configurer les épreuves et compétitions',
             icon: '🥇',
             color: 'bg-orange-600 hover:bg-orange-700',
-            href: '/management/epreuves'
+            href: '/pagesEvenements/epreuves'
         }
     ];

@@ -57,6 +57,17 @@ body {
   }
 }
 
+@keyframes slide-out {
+  0% {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(100%, 0, 0);
+    opacity: 0;
+  }
+}
+
 @keyframes progress {
   0% {
     width: 100%;
@@ -73,12 +84,9 @@ body {
   perspective: 1000px;
 }
 
-.animate-progress {
-  animation: progress 3s linear forwards;
-  will-change: width;
-  transform: translateZ(0);
-}
-
-.animate-progress.success {
-  animation: progress 2.5s linear forwards;
+.animate-slide-out {
+  animation: slide-out 0.3s ease-in forwards;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  perspective: 1000px;
 }

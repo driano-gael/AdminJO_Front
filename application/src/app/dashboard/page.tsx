@@ -35,7 +35,6 @@ export default function DashboardPage() {
                 description: "Sélectionnez une section pour commencer la gestion"
             }}
         >
-            {/* Grille des sections du tableau de bord */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
                 {dashboardSections.map((section) => (
                     <Link
@@ -58,7 +57,6 @@ export default function DashboardPage() {
                 ))}
             </div>
 
-            {/* Section des statistiques rapides */}
             <div className="mt-16 bg-white rounded-lg shadow-md p-8">
                 <h3 className="text-xl font-bold text-gray-900 mb-6">Statistiques rapides</h3>
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-6">

@@ -27,7 +27,7 @@ interface Props {
  * - Gestion des erreurs et notifications
  * - Interface responsive avec design moderne
  */
-export default function EventsManagement({ onBack }: Props) {
+export default function EvenementsManagement({ onBack }: Props) {
   const {
     events,
     lieux,

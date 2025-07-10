@@ -12,7 +12,7 @@ export default function EpreuvesPage() {
     return (
         <PageTemplate
             title="🥇 Gestion des Épreuves"
-            backUrl="/management"
+            backUrl="/pagesEvenements"
             backLabel="Retour à la Gestion"
             breadcrumbs={[
                 { label: 'Dashboard', href: '/dashboard' },

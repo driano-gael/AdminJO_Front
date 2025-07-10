@@ -1,98 +1,50 @@
-/**
- * Composant Notification - Affichage de messages temporaires
- * 
- * Ce composant affiche des notifications temporaires en overlay avec différents types
- * (erreur, succès, info) et une fermeture automatique après une durée configurable.
- * 
- * Fonctionnalités :
- * - Types de notification (error, success, info) avec couleurs appropriées
- * - Fermeture automatique avec timer configurable
- * - Bouton de fermeture manuel
- * - Barre de progression pour indiquer le temps restant
- * - Animations d'apparition et de disparition
- * - Gestion des fuites mémoire avec cleanup
- * - Accessible avec attributs ARIA
- * 
- * Utilisation :
- * <Notification 
- *   message="Opération réussie !" 
- *   type="success" 
- *   onClose={() => setNotification(null)} 
- *   duration={3000} 
- * />
- */
-
 'use client';
 
-import { useEffect, useCallback, useRef } from 'react';
+import { useEffect, useCallback, useRef, useState } from 'react';
 
-/**
- * Props pour le composant Notification
- */
 type Props = {
-  /** Message à afficher dans la notification */
   message: string;
-  /** Type de notification qui détermine la couleur et l'icône */
   type?: 'error' | 'success' | 'info';
-  /** Fonction appelée lors de la fermeture de la notification */
   onClose: () => void;
-  /** Durée d'affichage en millisecondes (3000ms par défaut) */
   duration?: number;
 }
 
-/**
- * Composant Notification - Affichage de messages temporaires
- * 
- * @param props - Les propriétés du composant
- * @returns JSX.Element - La notification avec styles et animations
- */
-export default function Notification({ message, type = 'error', onClose, duration = 3000 }: Props) {
-  // Référence pour le timer de fermeture automatique
+export default function Notification({ message, type = 'error', onClose, duration = 1000 }: Props) {
   const timerRef = useRef<NodeJS.Timeout | null>(null);
-  // Référence pour vérifier si le composant est encore monté
-  const mountedRef = useRef(true);
+  const [isExiting, setIsExiting] = useState(false);
 
-  // Ajuster la durée selon le type (les succès restent plus longtemps visibles)
-  const adjustedDuration = type === 'success' ? Math.max(duration, 2500) : duration;
-
-  /**
-   * Fonction de fermeture sécurisée qui vérifie si le composant est encore monté
-   */
   const handleClose = useCallback(() => {
-    if (mountedRef.current) {
+    console.log('🔔 handleClose appelé dans Notification');
+    
+    // Déclencher l'animation de sortie
+    setIsExiting(true);
+    
+    // Attendre la fin de l'animation (300ms) puis fermer réellement
+    setTimeout(() => {
+      console.log('🔔 Calling onClose after exit animation');
       onClose();
-    }
+    }, 300);
   }, [onClose]);
 
-  // Effet pour gérer le timer de fermeture automatique
   useEffect(() => {
-    // Nettoyer le timer existant si présent
+    console.log('🔔 Setting up timer with duration:', duration);
     if (timerRef.current) {
       clearTimeout(timerRef.current);
     }
 
-    // Créer un nouveau timer pour la fermeture automatique
-    timerRef.current = setTimeout(handleClose, adjustedDuration);
+    timerRef.current = setTimeout(() => {
+      console.log('🔔 Timer expired, calling handleClose');
+      handleClose();
+    }, duration);
 
-    // Cleanup : nettoyer le timer quand le composant se démonte ou change
     return () => {
       if (timerRef.current) {
+        console.log('🔔 Cleaning up timer');
         clearTimeout(timerRef.current);
       }
     };
-  }, [handleClose, adjustedDuration]);
+  }, [handleClose, duration]);
 
-  // Effet pour marquer le composant comme démonté lors du cleanup
-  useEffect(() => {
-    return () => {
-      mountedRef.current = false;
-    };
-  }, []);
-
-  /**
-   * Détermine les styles CSS en fonction du type de notification
-   * @returns string - Classes CSS pour les couleurs et bordures
-   */
   const getTypeStyles = useCallback(() => {
     switch (type) {
       case 'error':
@@ -107,10 +59,15 @@ export default function Notification({ message, type = 'error', onClose, duratio
   }, [type]);
 
   return (
-    <div className={`fixed top-4 right-4 z-[60] ${getTypeStyles()} text-white px-4 py-3 rounded-lg shadow-lg border-l-4 min-w-[300px] max-w-[400px] animate-slide-in`}>
+    <div 
+      className={`fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[60] ${getTypeStyles()} text-white px-4 py-3 rounded-lg shadow-lg border-l-4 min-w-[300px] max-w-[400px] transition-all duration-300 ease-in-out ${
+        isExiting 
+          ? 'animate-slide-out' 
+          : 'animate-slide-in'
+      }`}
+    >
       <div className="flex items-center justify-between">
         <p className="text-sm font-medium">{message}</p>
-        {/* Bouton de fermeture manuel */}
         <button
           onClick={handleClose}
           className="ml-3 text-white hover:text-gray-200 font-bold text-lg"
@@ -119,8 +76,13 @@ export default function Notification({ message, type = 'error', onClose, duratio
           ×
         </button>
       </div>
-      {/* Barre de progression pour indiquer le temps restant */}
-      <div className={`absolute bottom-0 left-0 h-1 ${type === 'error' ? 'bg-red-300' : type === 'success' ? 'bg-green-300' : 'bg-blue-300'} animate-progress${type === 'success' ? ' success' : ''}`}></div>
+      <div 
+        className={`absolute bottom-0 left-0 h-1 ${type === 'error' ? 'bg-red-300' : type === 'success' ? 'bg-green-300' : 'bg-blue-300'}`}
+        style={{
+          animation: `progress ${duration}ms linear forwards`,
+          animationPlayState: isExiting ? 'paused' : 'running'
+        }}
+      ></div>
     </div>
   );
 }
