@@ -23,18 +23,12 @@ export function useSessionExpiry() {
   const { isAuthenticated, forceLogout } = useAuth();
 
   useEffect(() => {
-      // Fonction qui gère l'expiration de session
       const handleSessionExpired = () => {
         if (isAuthenticated) {
           forceLogout();
         }
       };
-
-      // Écouter les événements personnalisés de session expirée
-      // Ces événements sont émis par le système d'authentification
       window.addEventListener('sessionExpired', handleSessionExpired);
-
-      // Nettoyer l'écouteur d'événements quand le composant se démonte
       return () => {
         window.removeEventListener('sessionExpired', handleSessionExpired);
       };

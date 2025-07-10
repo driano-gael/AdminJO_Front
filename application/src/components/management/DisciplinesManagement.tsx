@@ -1,9 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { disciplineApi } from '@/lib/api/services/evenementSports';
+import { disciplineApi, CreateDisciplineRequest } from '@/lib/api/services/evenementSports/disciplineService';
 import { Discipline } from '@/types/sportEvenement/discipline';
-import { CreateDisciplineRequest } from '@/lib/api/services/evenementSports/disciplineService';
 import Notification from '@/components/notification';
 import { useAuth } from '@/contexts/authContext';
 import { useSessionExpiry } from '@/hooks/useSessionExpiry';
@@ -15,9 +14,7 @@ interface DisciplinesManagementProps {
 export default function DisciplinesManagement({ onBack }: DisciplinesManagementProps) {
   const { isAuthenticated } = useAuth();
   
-  // Gérer l'expiration de session
   useSessionExpiry();
-  
   const [disciplines, setDisciplines] = useState<Discipline[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [loading, setLoading] = useState(true);
