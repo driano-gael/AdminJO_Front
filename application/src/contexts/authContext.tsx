@@ -24,6 +24,7 @@ interface AuthContextType {
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
+
 interface Props {
   children: ReactNode; 
 }
@@ -80,19 +81,19 @@ export function AuthProvider({ children }: Props) {
             if (storedEmail) {
               setUser({ email: storedEmail });
               if (process.env.NODE_ENV === 'development') {
-                console.log('🔑 Token valide, utilisateur connecté:', storedEmail);
+                console.log('🔑 AuthContext: Token valide, utilisateur connecté:', storedEmail);
               }
             } else {
               // Token valide mais pas d'email sauvé, déconnexion
               if (process.env.NODE_ENV === 'development') {
-                console.log('🔑 Token valide mais pas d\'email sauvé');
+                console.log('🔑 AuthContext: Token valide mais pas d\'email sauvé');
               }
               logoutService();
             }
           } else {
             // Token invalide ou expiré, tenter de le rafraîchir
             if (process.env.NODE_ENV === 'development') {
-              console.log('🔑 Token invalide ou expiré, tentative de refresh...');
+              console.log('🔑 AuthContext: Token invalide ou expiré, tentative de refresh...');
             }
             
             try {
@@ -104,18 +105,18 @@ export function AuthProvider({ children }: Props) {
               if (storedEmail) {
                 setUser({ email: storedEmail });
                 if (process.env.NODE_ENV === 'development') {
-                  console.log('✅ Token refreshé avec succès, utilisateur connecté:', storedEmail);
+                  console.log('✅ AuthContext: Token refreshé avec succès, utilisateur connecté:', storedEmail);
                 }
               } else {
                 if (process.env.NODE_ENV === 'development') {
-                  console.log('🔑 Token refreshé mais pas d\'email sauvé');
+                  console.log('🔑 AuthContext: Token refreshé mais pas d\'email sauvé');
                 }
                 logoutService();
               }
             } catch (error) {
               // Refresh échoué, déconnexion
               if (process.env.NODE_ENV === 'development') {
-                console.log('❌ Échec du refresh token:', error);
+                console.log('❌ AuthContext: Échec du refresh token:', error);
               }
               logoutService();
             }
@@ -127,9 +128,30 @@ export function AuthProvider({ children }: Props) {
       }
       setIsLoading(false);
     };
+
+    // Écouter les événements de refresh de token pour synchroniser l'état
+    const handleTokenRefreshed = () => {
+      if (process.env.NODE_ENV === 'development') {
+        console.log('🔄 AuthContext: Token refreshé par un autre composant');
+      }
+      // Pas besoin de recharger l'utilisateur, juste confirmer que le token est valide
+    };
     
     setSessionExpiredCallback(forceLogout);
+    
+    // Ajouter l'écouteur d'événements pour le refresh de token
+    if (typeof window !== 'undefined') {
+      window.addEventListener('tokenRefreshed', handleTokenRefreshed);
+    }
+    
     checkAuth();
+
+    // Nettoyer l'écouteur d'événements
+    return () => {
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('tokenRefreshed', handleTokenRefreshed);
+      }
+    };
   }, []); 
 
 

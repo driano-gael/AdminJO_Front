@@ -32,37 +32,17 @@ export function clearTokens(): void {
   }
 }
 
-/**
- * Vérifie si le token d'accès est valide (non expiré)
- * 
- * @returns boolean - true si le token est valide, false sinon
- */
+
 export function isTokenValid(): boolean {
   const token = getAuthToken();
   if (!token) return false;
   
   try {
-    // Décoder le payload du JWT
     const payload = JSON.parse(atob(token.split('.')[1]));
-    
-    // Vérifier l'expiration (exp est en secondes, Date.now() en millisecondes)
     const now = Math.floor(Date.now() / 1000);
     const isValid = payload.exp > now;
-    
-    if (process.env.NODE_ENV === 'development') {
-      console.log('🔑 Token validation:', {
-        hasToken: !!token,
-        expiresAt: new Date(payload.exp * 1000).toISOString(),
-        currentTime: new Date(now * 1000).toISOString(),
-        isValid
-      });
-    }
-    
     return isValid;
-  } catch (error) {
-    if (process.env.NODE_ENV === 'development') {
-      console.warn('🔑 Token validation failed:', error);
-    }
+  }catch (error) {
     return false;
   }
 }

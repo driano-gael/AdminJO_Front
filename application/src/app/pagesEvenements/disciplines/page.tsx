@@ -1,6 +1,6 @@
 'use client';
 
-import DisciplinesManagement from '@/components/management/DisciplinesManagement';
+import DisciplinesManagement from '@/components/componentsEvenement/discipline/DisciplinesManagement';
 import PageTemplate from '@/components/layout/PageTemplate';
 
 /**

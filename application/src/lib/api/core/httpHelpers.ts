@@ -31,7 +31,6 @@ export function buildHeaders(
             }
         }
     }
-    
     return headers;
 }
 
