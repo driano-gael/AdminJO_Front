@@ -8,31 +8,20 @@ import { useSessionExpiry } from '@/hooks/useSessionExpiry';
 /**
  * Props pour le composant AuthenticatedLayout
  */
-interface AuthenticatedLayoutProps {
+interface Props {
   children: ReactNode;
   title: string;
   backUrl?: string;
   backLabel?: string;
 }
 
-/**
- * Layout pour toutes les pages authentifiées
- * 
- * Gère automatiquement :
- * - Protection par AuthGuard
- * - Header avec user info et déconnexion
- * - Session expiry monitoring
- * - Structure HTML commune
- */
 export default function AuthenticatedLayout({ 
     children, 
     title, 
     backUrl, 
     backLabel 
-}: AuthenticatedLayoutProps) {
-    // Activation de la gestion automatique de l'expiration de session
+}: Props) {
     useSessionExpiry();
-
     return (
         <AuthGuard>
             <div className="bg-base-200">

@@ -11,7 +11,7 @@ export default function ManagementPage() {
         <PageTemplate
             title="🔧 Gestion Administrative"
             backUrl="/dashboard"
-            backLabel="Retour au Dashboard"
+            backLabel="Retour au Gestion Sportive"
             breadcrumbs={[
                 { label: 'Dashboard', href: '/dashboard' },
                 { label: 'Gestion' }

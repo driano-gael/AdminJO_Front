@@ -42,7 +42,7 @@ export default function AppHeader({ title, backUrl, backLabel }: AppHeaderProps)
                     
                     <div className="absolute right-0 pr-4 flex items-center space-x-4">
                         <span className="text-sm text-gray-600">
-                            Connecté en tant que: <strong>{user?.email}</strong>
+                            <strong>{user?.email}</strong>
                         </span>
                         <button
                             onClick={logout}

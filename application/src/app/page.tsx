@@ -44,12 +44,10 @@ export default function Home() {
     );
   }
 
-  // Si non authentifié, afficher le formulaire de connexion
   if (!isAuthenticated) {
     return <LoginAdminForm />;
   }
 
-  // Pendant la redirection
   return (
     <div className="min-h-screen flex items-center justify-center bg-base-200">
       <div className="text-center">

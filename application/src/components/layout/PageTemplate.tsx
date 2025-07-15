@@ -37,8 +37,6 @@ export default function PageTemplate({
             backLabel={backLabel}
         >
             {breadcrumbs && <Breadcrumb items={breadcrumbs} />}
-
-            {/* Section d'introduction optionnelle */}
             {intro && (
                 <div className="text-center mb-12">
                     <h2 className="text-2xl font-bold text-gray-900 mb-4">
