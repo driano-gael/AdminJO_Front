@@ -155,97 +155,88 @@ export function AuthProvider({ children }: Props) {
   }, []); 
 
 
-  const login = async (email: string, password: string) => {
-    try {
-      // Appeler le service de connexion qui gère l'API
-      await loginService({ email, password });
+    const login = async (email: string, password: string) => {
+        try {
+            await loginService({ email, password });
+            if(typeof window !== 'undefined' && window.localStorage){
+                try{
+                    localStorage.setItem('user_email', email);
+                }catch(error){
+                }
+            }
+            setUser({ email });
+            if(currentRoute){
+                setTimeout(() => {
+                  const routeToRestore = currentRoute;
+                  setCurrentRoute(null);
+                  router.push(routeToRestore);
+              }, 100);
+            }else{
+                setTimeout(() => {
+                    router.push('/dashboard');
+                }, 100);
+            }
+        }catch (error) {
+            throw error;
+        }
+    };
+
+
+    const logout = () => {
+      logoutService();
       
-      // Sauvegarder l'email dans le localStorage pour la persistance
       if (typeof window !== 'undefined' && window.localStorage) {
         try {
-          localStorage.setItem('user_email', email);
+          localStorage.removeItem('user_email');
         } catch (error) {
-          console.warn('Impossible de sauvegarder l\'email:', error);
+          console.warn('Impossible de supprimer l\'email:', error);
         }
       }
-      setUser({ email });
-      if (currentRoute) {
-        setTimeout(() => {
-          const routeToRestore = currentRoute;
-          setCurrentRoute(null);
-          if (process.env.NODE_ENV === 'development') {
-            console.log('🔄 Redirection vers la route sauvegardée:', routeToRestore);
-          }
-          router.push(routeToRestore);
-        }, 100);
-      } else {
-        setTimeout(() => {
-          router.push('/dashboard');
-        }, 100);
-      }
-    } catch (error) {
-      throw error;
-    }
-  };
-
-
-  const logout = () => {
-    logoutService();
-    
-    if (typeof window !== 'undefined' && window.localStorage) {
-      try {
-        localStorage.removeItem('user_email');
-      } catch (error) {
-        console.warn('Impossible de supprimer l\'email:', error);
-      }
-    }
-    
-    setUser(null);
-    
-    router.push('/');
-  };
-
-  const saveCurrentRoute = (route: string) => {
-    setCurrentRoute(route);
-  };
-
-
-  const getAndClearSavedRoute = () => {
-    const savedRoute = currentRoute;
-    setCurrentRoute(null);
-    return savedRoute;
-  };
-
-  // Créer l'objet de valeur du contexte
-  const value = {
-    user,
-    isAuthenticated,
-    isLoading,
-    login,
-    logout,
-    forceLogout,
-    currentRoute,
-    saveCurrentRoute,
-    getAndClearSavedRoute,
-  };
-
-  return (
-    <AuthContext.Provider value={value}>
-      {children}
       
-      <SessionExpiredModal
-        isOpen={showSessionExpiredModal}
-        onClose={() => setShowSessionExpiredModal(false)}
-        onReconnect={handleSessionExpired}
-      />
-    </AuthContext.Provider>
-  );
+      setUser(null);
+      
+      router.push('/');
+    };
+
+    const saveCurrentRoute = (route: string) => {
+      setCurrentRoute(route);
+    };
+
+
+    const getAndClearSavedRoute = () => {
+        const savedRoute = currentRoute;
+        setCurrentRoute(null);
+        return savedRoute;
+    };
+
+    const value = {
+        user,
+        isAuthenticated,
+        isLoading,
+        login,
+        logout,
+        forceLogout,
+        currentRoute,
+        saveCurrentRoute,
+        getAndClearSavedRoute,
+    };
+
+    return (
+        <AuthContext.Provider value={value}>
+            {children}
+            <SessionExpiredModal
+                isOpen={showSessionExpiredModal}
+                onClose={() => setShowSessionExpiredModal(false)}
+                onReconnect={handleSessionExpired}
+            />
+        </AuthContext.Provider>
+    );
 }
 
 export function useAuth() {
-  const context = useContext(AuthContext);
-  if (context === undefined) {
-    throw new Error('useAuth doit être utilisé dans un AuthProvider');
-  }
-  return context;
+    const context = useContext(AuthContext);
+    if (context === undefined) {
+        throw new Error('useAuth doit être utilisé dans un AuthProvider');
+    }
+    return context;
 }

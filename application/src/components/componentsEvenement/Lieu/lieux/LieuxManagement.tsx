@@ -6,10 +6,10 @@ import { useAuth } from '@/contexts/authContext';
 import { useSessionExpiry } from '@/hooks/useSessionExpiry';
 import { Lieu } from '@/types/sportEvenement/lieu';
 import Notification from '@/components/notification';
-import LieuxHeader from './lieux/LieuxHeader';
-import SearchAndFilters from './lieux/SearchAndFilters';
-import LieuxTable from './lieux/LieuxTable';
-import LieuModal from './lieux/LieuModal';
+import LieuxHeader from './LieuxHeader';
+import SearchAndFilters from './SearchAndFilters';
+import LieuxTable from './LieuxTable';
+import LieuModal from './LieuModal';
 
 interface Props {
   onBack: () => void;
