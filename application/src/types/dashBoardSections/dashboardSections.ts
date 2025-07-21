@@ -19,17 +19,10 @@ export interface DashboardSection {
 export const dashboardSections: DashboardSection[] = [
   {
     url: '/pagesEvenements',
-    title: 'Gestion Complète',
+    title: 'Gestion des évènements sportif',
     description: 'Gérer événements, lieux, disciplines et épreuves',
-    icon: '🏛️', // Correction de l'icône corrompue
+    icon: '📅',
     color: 'bg-indigo-500 hover:bg-indigo-600'
-  },
-  {
-    url: '/users',
-    title: 'Gestion des Utilisateurs',
-    description: 'Administrer les comptes utilisateurs et leurs permissions',
-    icon: '👥',
-    color: 'bg-green-500 hover:bg-green-600'
   },
   {
     url: '/offers',
@@ -39,20 +32,20 @@ export const dashboardSections: DashboardSection[] = [
     color: 'bg-purple-500 hover:bg-purple-600'
   },
   {
+    url: '/users',
+    title: 'Gestion des Utilisateurs',
+    description: 'Administrer les comptes utilisateurs et leurs permissions',
+    icon: '👥',
+    color: 'bg-green-500 hover:bg-green-600'
+  },
+  
+  {
     url: '/employees',
     title: 'Gestion des Employés',
     description: 'Gérer le personnel et les équipes d\'organisation',
     icon: '👨‍💼',
     color: 'bg-orange-500 hover:bg-orange-600'
   },
-  
-  {
-    url: '/test',
-    title: "ajout d'un test dashboard",
-    description: 'Test de section pour le dashboard',
-    icon: '👨‍💼',
-    color: 'bg-orange-500 hover:bg-orange-600'
-  }
 ];
 
 /**

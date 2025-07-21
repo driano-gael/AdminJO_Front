@@ -15,15 +15,13 @@ export default function LieuxPage() {
     return (
         <PageTemplate
             title="Gestion des évènements sportifs"
-            backUrl="/dashboard"
-            backLabel="Page principale"
             breadcrumbs={[
-                { label: 'Dashboard', href: '/dashboard' },
-                { label: 'Gestion', href: '/pagesEvenements' },
+                { label: 'Accueil', href: '/dashboard' },
+                { label: 'Tableau de gestion des évènements', href: '/pagesEvenements' },
                 { label: 'Lieux' }
             ]}
         >
-            <LieuxManagement onBack={() => router.push('/dashboard')} />
+            <LieuxManagement onBack={() => router.push('/pagesEvenements')} />
         </PageTemplate>
     );
 }

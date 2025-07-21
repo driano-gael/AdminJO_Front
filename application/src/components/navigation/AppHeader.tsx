@@ -18,7 +18,7 @@ interface AppHeaderProps {
  * @param props - Les propriétés du composant
  * @returns JSX.Element - Le header de l'application
  */
-export default function AppHeader({ title, backUrl, backLabel }: AppHeaderProps) {
+export default function AppHeader({ title, backUrl= '/dashboard', backLabel = '⬅️ Accueil' }: AppHeaderProps) {
   const { user, logout } = useAuth();
 
   return (
@@ -31,7 +31,7 @@ export default function AppHeader({ title, backUrl, backLabel }: AppHeaderProps)
                                 href={backUrl}
                                 className="text-blue-600 hover:text-blue-800 font-medium"
                             >
-                                ← {backLabel || 'Retour'}
+                                {backLabel || 'Retour'}
                             </Link>
                         </div>
                     )}

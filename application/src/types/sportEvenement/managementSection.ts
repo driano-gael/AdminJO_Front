@@ -10,14 +10,7 @@
     }
    
     export const managementSections:ManagementSection[] = [
-        {
-            id: 'evenements',
-            title: 'Gestion des Événements',
-            description: 'Créer, modifier et supprimer les événements olympiques',
-            icon: '🏃‍♂️',
-            color: 'bg-blue-600 hover:bg-blue-700',
-            href: '/pagesEvenements/evenements'
-        },
+        
         {
             id: 'lieux',
             title: 'Gestion des Lieux',
@@ -30,16 +23,24 @@
             id: 'disciplines',
             title: 'Gestion des Disciplines',
             description: 'Organiser les disciplines sportives',
-            icon: '🏆',
+            icon: '🏃‍♂️⚽🚴🥋',
             color: 'bg-purple-600 hover:bg-purple-700',
             href: '/pagesEvenements/disciplines'
         },
         {
             id: 'epreuves',
-            title: 'Gestion des Épreuves',
+            title: 'Gestion des Épreuves par discipline',
             description: 'Configurer les épreuves et compétitions',
-            icon: '🥇',
+            icon: '🥇🥈🥉',
             color: 'bg-orange-600 hover:bg-orange-700',
             href: '/pagesEvenements/epreuves'
+        },
+        {
+            id: 'evenements',
+            title: 'Gestion des Événements pour un lieu et une période',
+            description: 'Créer, modifier et supprimer les événements olympiques',
+            icon: '🏆📅',
+            color: 'bg-blue-600 hover:bg-blue-700',
+            href: '/pagesEvenements/evenements'
         }
     ];

@@ -2,6 +2,7 @@
 
 import DisciplinesManagement from '@/components/componentsEvenement/discipline/DisciplinesManagement';
 import PageTemplate from '@/components/layout/PageTemplate';
+import { useRouter } from 'next/navigation';
 
 /**
  * Page Gestion des Disciplines - Route: /management/disciplines
@@ -9,19 +10,18 @@ import PageTemplate from '@/components/layout/PageTemplate';
  * Interface dédiée à la gestion des disciplines sportives
  */
 export default function DisciplinesPage() {
+    const router = useRouter();
     return (
         <PageTemplate
-            title="🏆 Gestion des Disciplines"
-            backUrl="/pagesEvenements"
-            backLabel="Retour à la Gestion"
+            title="Gestion des évènements sportifs"
             breadcrumbs={[
-                { label: 'Dashboard', href: '/dashboard' },
-                { label: 'Gestion', href: '/management' },
+                { label: 'Accueil', href: '/dashboard' },
+                { label: 'Tableau de gestion des évènements', href: '/pagesEvenements' },
                 { label: 'Disciplines' }
             ]}
         >
             {/* Composant de gestion des disciplines */}
-            <DisciplinesManagement onBack={() => {}} />
+            <DisciplinesManagement onBack={() => router.push('/pagesEvenements')} />
         </PageTemplate>
     );
 }

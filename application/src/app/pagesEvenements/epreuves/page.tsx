@@ -1,7 +1,8 @@
 'use client';
 
-import EpreuvesManagement from '@/components/management/EpreuvesManagement';
+import EpreuvesManagement from '@/components/componentsEvenement/epreuve/EpreuvesManagement';
 import PageTemplate from '@/components/layout/PageTemplate';
+import { useRouter } from 'next/navigation';
 
 /**
  * Page Gestion des Épreuves - Route: /management/epreuves
@@ -9,19 +10,18 @@ import PageTemplate from '@/components/layout/PageTemplate';
  * Interface dédiée à la gestion des épreuves olympiques
  */
 export default function EpreuvesPage() {
+    const router = useRouter();
     return (
         <PageTemplate
-            title="🥇 Gestion des Épreuves"
-            backUrl="/pagesEvenements"
-            backLabel="Retour à la Gestion"
+            title="Gestion des évènements sportifs"
             breadcrumbs={[
-                { label: 'Dashboard', href: '/dashboard' },
-                { label: 'Gestion', href: '/management' },
+                { label: 'Accueil', href: '/dashboard' },
+                { label: 'Tableau de gestion des évènements', href: '/pagesEvenements' },
                 { label: 'Épreuves' }
             ]}
         >
             {/* Composant de gestion des épreuves */}
-            <EpreuvesManagement onBack={() => {}} />
+            <EpreuvesManagement onBack={() => router.push('/pagesEvenements')} />
         </PageTemplate>
     );
 }

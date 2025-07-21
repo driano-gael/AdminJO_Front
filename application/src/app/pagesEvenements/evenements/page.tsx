@@ -14,16 +14,14 @@ export default function EventsPage() {
 
     return (
         <PageTemplate
-            title="Gestion des Événements sportifs"
-            backUrl="/pagesEvenements"
-            backLabel="Retour à la Gestion"
+            title="Gestion des évènements sportifs"
             breadcrumbs={[
-                { label: 'Dashboard', href: '/dashboard' },
-                { label: 'Gestion', href: '/management' },
+                { label: 'Accueil', href: '/dashboard' },
+                { label: 'Tableau de gestion des évènements', href: '/pagesEvenements' },
                 { label: 'Événements' }
             ]}
         >
-            <EvenementsManagement onBack={() => router.push('/dashboard')} />
+            <EvenementsManagement onBack={() => router.push('/pagesEvenements')} />
         </PageTemplate>
     );
 }

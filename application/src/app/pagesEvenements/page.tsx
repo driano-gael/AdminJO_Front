@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import { useAuthenticatedPage } from '@/hooks/useAuthenticatedPage';
 import PageTemplate from '@/components/layout/PageTemplate';
 import { managementSections } from '@/types/sportEvenement/managementSection';
 
@@ -9,15 +8,13 @@ import { managementSections } from '@/types/sportEvenement/managementSection';
 export default function ManagementPage() {
     return (
         <PageTemplate
-            title="🔧 Gestion Administrative"
-            backUrl="/dashboard"
-            backLabel="Retour au Gestion Sportive"
+            title="Gestion des évènements sportifs"
             breadcrumbs={[
-                { label: 'Dashboard', href: '/dashboard' },
-                { label: 'Gestion' }
+                {label: 'Accueil', href: '/dashboard'},
+                {label: 'Tableau de gestion des évènements'}
             ]}
             intro={{
-                title: "Interface de Gestion des evenement sportifs",
+                title: "Tableau de gestion des evenement sportifs",
                 description: "Gérez les différents aspects des évènements sportifs des Jeux Olympiques"
             }}
         >
