@@ -45,7 +45,21 @@ export default function EvenementsManagement({ onBack }: Props) {
     updateEvent,
     deleteEvent,
     handleSearch,
-    setCreateError
+    setCreateError,
+    // Fonctions de filtrage
+    setLieuFilter,
+    setDisciplineFilter,
+    setEpreuveFilter,
+    setStatutFilter,
+    setDateDebutFilter,
+    setDateFinFilter,
+    // États de filtrage
+    filterLieu,
+    filterDiscipline,
+    filterEpreuve,
+    filterStatut,
+    filterDateDebut,
+    filterDateFin
   } = useEventsManagement();
 
   // États pour l'UI
@@ -60,6 +74,36 @@ export default function EvenementsManagement({ onBack }: Props) {
     setEditingEvent(event || null);
     setShowModal(true);
   };
+
+  // Fonctions de gestion des filtres
+  const handleLieuChange = (lieuId: number | undefined) => {
+    setLieuFilter(lieuId);
+  };
+
+  const handleDisciplineChange = (disciplineId: number | undefined) => {
+    setDisciplineFilter(disciplineId);
+  };
+
+  const handleEpreuveChange = (epreuveId: number | undefined) => {
+    setEpreuveFilter(epreuveId);
+  };
+
+  const handleStatutChange = (statut: string | undefined) => {
+    setStatutFilter(statut);
+  };
+
+  const handleDateDebutChange = (date: string | undefined) => {
+    setDateDebutFilter(date || '');
+  };
+
+  const handleDateFinChange = (date: string | undefined) => {
+    setDateFinFilter(date || '');
+  };
+
+  // Obtenir les disciplines uniques depuis les épreuves
+  const disciplines = Array.from(
+    new Map(epreuves.map(e => e.discipline).filter(Boolean).map(d => [d!.id, d!])).values()
+  ).sort((a, b) => a.nom.localeCompare(b.nom));
 
   const handleSaveEvent = async (eventData: any) => {
     try {
@@ -115,8 +159,23 @@ export default function EvenementsManagement({ onBack }: Props) {
         <SearchAndFilters 
           searchTerm={searchTerm} 
           onSearch={handleSearch}
+          events={events}
           epreuves={epreuves}
+          lieux={lieux}
+          disciplines={disciplines}
           loading={loading}
+          selectedLieu={filterLieu}
+          selectedDiscipline={filterDiscipline}
+          selectedEpreuve={filterEpreuve}
+          selectedStatut={filterStatut}
+          dateDebut={filterDateDebut}
+          dateFin={filterDateFin}
+          onLieuChange={handleLieuChange}
+          onDisciplineChange={handleDisciplineChange}
+          onEpreuveChange={handleEpreuveChange}
+          onStatutChange={handleStatutChange}
+          onDateDebutChange={handleDateDebutChange}
+          onDateFinChange={handleDateFinChange}
         />
 
         {/* Événements Table */}
