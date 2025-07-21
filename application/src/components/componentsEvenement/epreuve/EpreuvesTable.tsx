@@ -56,9 +56,6 @@ export default function EpreuvesTable({
           <thead className="bg-gray-50">
             <tr>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                ID
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Libellé de l'Épreuve
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -72,7 +69,7 @@ export default function EpreuvesTable({
           <tbody className="bg-white divide-y divide-gray-200">
             {epreuves.length === 0 ? (
               <tr>
-                <td colSpan={4} className="px-6 py-12 text-center text-gray-500">
+                <td colSpan={3} className="px-6 py-12 text-center text-gray-500">
                   {loading ? (
                     <div className="flex items-center justify-center">
                       <Spinner size="medium" />

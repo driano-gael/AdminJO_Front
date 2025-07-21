@@ -10,9 +10,6 @@ export default function EpreuvesTableRow({ epreuve, onDelete, onEdit }: Props) {
   return (
     <tr className="hover:bg-gray-50">
       <td className="px-6 py-4 whitespace-nowrap">
-        <div className="text-sm font-medium text-gray-900">#{epreuve.id}</div>
-      </td>
-      <td className="px-6 py-4 whitespace-nowrap">
         <div className="text-sm font-medium text-gray-900">{epreuve.libelle}</div>
       </td>
       <td className="px-6 py-4 whitespace-nowrap">

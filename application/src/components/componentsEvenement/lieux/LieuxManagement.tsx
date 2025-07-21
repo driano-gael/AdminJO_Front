@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import { useLieuxManagement } from '@/hooks/useLieuxManagement';
-import { useAuth } from '@/contexts/authContext';
 import { useSessionExpiry } from '@/hooks/useSessionExpiry';
 import { Lieu } from '@/types/sportEvenement/lieu';
 import Notification from '@/components/notification';
@@ -15,7 +14,6 @@ interface Props {
   onBack: () => void;
 }
 export default function LieuxManagement({ onBack }: Props) {
-      const { isAuthenticated } = useAuth();
       useSessionExpiry();
 
       const {
@@ -82,28 +80,6 @@ export default function LieuxManagement({ onBack }: Props) {
         });
       }
     };
-
-    // Si l'utilisateur n'est pas connecté, afficher un message
-    if (!isAuthenticated) {
-      return (
-        <div className="min-h-screen bg-base-200 flex items-center justify-center">
-          <div className="bg-white rounded-lg shadow-md p-6 text-center">
-            <h2 className="text-xl font-semibold text-gray-900 mb-4">
-              Accès non autorisé
-            </h2>
-            <p className="text-gray-600 mb-4">
-              Vous devez être connecté pour accéder à cette page.
-            </p>
-            <button
-              onClick={onBack}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md"
-            >
-              Retour au dashboard
-            </button>
-          </div>
-        </div>
-      );
-    }
 
     return (
       <div className="min-h-screen bg-base-200">

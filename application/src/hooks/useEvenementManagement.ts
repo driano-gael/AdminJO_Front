@@ -4,7 +4,7 @@ import { lieuApi } from '@/lib/api/services/evenementSports/lieuService';
 import { epreuveApi } from '@/lib/api/services/evenementSports/epreuveService';
 import { Lieu } from '@/types/sportEvenement/lieu';
 import { Epreuve } from '@/types/sportEvenement/epreuve';
-import { CreateEvenementRequest } from '@/lib/api/services/evenementSports/evenementService';
+import { CreateEvenementRequest, UpdateEvenementRequest } from '@/lib/api/services/evenementSports/evenementService';
 import { ExtendEvenement } from '@/types/sportEvenement/evenement';
 import { getEventStatus } from '@/utils/evenement/statutEvenement';
 
@@ -54,8 +54,9 @@ export function useEventsManagement() {
   const loadLieux = async () => {
     try {
       const apiLieux = await lieuApi.getAll();
-      setLieux(apiLieux);
-      console.log('Lieux chargés depuis l\'API:', apiLieux);
+      const sortedLieux = apiLieux.sort((a, b) => a.nom.localeCompare(b.nom));
+      setLieux(sortedLieux);
+      console.log('Lieux chargés depuis l\'API:', sortedLieux);
     } catch (err) {
       console.error('Erreur chargement lieux:', err);
     }
@@ -97,6 +98,40 @@ export function useEventsManagement() {
     } catch (err) {
       setCreateError('Erreur lors de la création de l\'événement');
       console.error('Erreur création événement:', err);
+      throw err;
+    } finally {
+      setCreateLoading(false);
+    }
+  };
+
+  /**
+   * Fonction pour mettre à jour un événement
+   */
+  const updateEvent = async (eventData: UpdateEvenementRequest) => {
+    try {
+      setCreateLoading(true);
+      setCreateError(null);
+      
+      const updatedEvent = await evenementApi.update(eventData);
+      
+      const updatedEventWithExtras: ExtendEvenement = {
+        ...updatedEvent,
+        sports: updatedEvent.description.toLowerCase().includes('athlétisme') ? 'Athlétisme' :
+               updatedEvent.description.toLowerCase().includes('natation') ? 'Natation' :
+               updatedEvent.description.toLowerCase().includes('basketball') ? 'Basketball' : 'Autre',
+        status: getEventStatus(updatedEvent.date, updatedEvent.horraire),
+        capacity: Math.floor(Math.random() * 50000) + 10000,
+        ticketsSold: Math.floor(Math.random() * 40000) + 5000
+      };
+      
+      setEvents(prev => prev.map(event => 
+        event.id === eventData.id ? updatedEventWithExtras : event
+      ));
+      console.log('Événement mis à jour avec succès:', updatedEvent);
+      return updatedEvent;
+    } catch (err) {
+      setCreateError('Erreur lors de la mise à jour de l\'événement');
+      console.error('Erreur mise à jour événement:', err);
       throw err;
     } finally {
       setCreateLoading(false);
@@ -161,6 +196,7 @@ export function useEventsManagement() {
     createError,
     loadEvents,
     createEvent,
+    updateEvent,
     deleteEvent,
     handleSearch,
     setCreateError

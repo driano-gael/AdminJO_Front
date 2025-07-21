@@ -91,7 +91,6 @@ export class LieuService {
   }
 }
 
-// Fonctions utilitaires (approche fonctionnelle alternative)
 export const lieuApi = {
   getAll: (filters?: LieuFilters) => LieuService.getAllLieux(filters),
   getById: (id: number) => LieuService.getLieuById(id),

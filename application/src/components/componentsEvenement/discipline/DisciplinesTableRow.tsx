@@ -9,9 +9,7 @@ interface Props {
 export default function DisciplinesTableRow({ discipline, onDelete, onEdit }: Props) {
   return (
     <tr className="hover:bg-gray-50">
-      <td className="px-6 py-4 whitespace-nowrap">
-        <div className="text-sm font-medium text-gray-900">#{discipline.id}</div>
-      </td>
+      
       <td className="px-6 py-4 whitespace-nowrap">
         <div className="text-sm font-medium text-gray-900">{discipline.nom}</div>
       </td>

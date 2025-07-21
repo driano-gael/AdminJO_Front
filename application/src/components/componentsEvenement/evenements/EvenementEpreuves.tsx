@@ -10,12 +10,17 @@ export default function EvenementEpreuves({ epreuves }: Props) {
         {epreuves && epreuves.length > 0 ? (
             <div className="flex flex-col space-y-1">
                 {epreuves.map((epreuve) => (
-                    <span
+                    <div
                         key={epreuve.id}
-                        className="inline-block bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs w-fit"
+                        className="inline-block bg-green-100 text-black px-2 py-1 rounded-full text-xs w-fit"
                     >
-                        {epreuve.libelle}
-                    </span>
+                        <div className="font-semibold">{epreuve.libelle}</div>
+                        {epreuve.discipline && (
+                            <div className="text-black text-xs italic">
+                                {epreuve.discipline.nom}
+                            </div>
+                        )}
+                    </div>
                 ))}
             </div>
         ) : (

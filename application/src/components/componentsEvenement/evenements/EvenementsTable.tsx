@@ -9,15 +9,19 @@ interface Props {
   loading: boolean;
   searchTerm: string;
   onDeleteEvent: (id: number) => void;
+  onEdit: (event: ExtendEvenement) => void;
   onRefresh: () => void;
+  error?: string | null;
 }
 
 export default function EvenementsTable({ 
     events, 
     loading, 
     searchTerm, 
-    onDeleteEvent, 
-    onRefresh 
+    onDeleteEvent,
+    onEdit, 
+    onRefresh,
+    error
 }: Props) {
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden">
@@ -43,6 +47,15 @@ export default function EvenementsTable({
           </div>
         </div>
       </div>
+      
+      {/* Affichage des erreurs */}
+      {error && (
+        <div className="px-6 py-4 bg-red-50 border-b border-red-200">
+          <div className="text-sm text-red-600">
+            {error}
+          </div>
+        </div>
+      )}
       
       <div className="overflow-x-auto">
         <table className="min-w-full divide-y divide-gray-200">
@@ -96,6 +109,7 @@ export default function EvenementsTable({
                   key={event.id}
                   event={event}
                   onDelete={onDeleteEvent}
+                  onEdit={onEdit}
                 />
               ))
             )}

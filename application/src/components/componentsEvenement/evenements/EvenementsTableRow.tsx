@@ -5,9 +5,10 @@ import EvenementEpreuve from './EvenementEpreuves';
 interface Props {
   event: Evenement;
   onDelete: (id: number) => void;
+  onEdit: (event: Evenement) => void;
 }
 
-export default function EvenementsTableRow({ event, onDelete }: Props) {
+export default function EvenementsTableRow({ event, onDelete, onEdit }: Props) {
   return (
     <tr className="hover:bg-gray-50">
       <td className="px-6 py-4 whitespace-nowrap">
@@ -29,7 +30,10 @@ export default function EvenementsTableRow({ event, onDelete }: Props) {
         <EventStatus date={event.date} time={event.horraire} />
       </td>
       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-        <button className="text-blue-600 hover:text-blue-900 mr-3">
+        <button 
+          onClick={() => onEdit(event)}
+          className="text-blue-600 hover:text-blue-900 mr-3"
+        >
           Modifier
         </button>
         <button 

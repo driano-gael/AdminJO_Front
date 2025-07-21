@@ -30,7 +30,16 @@ export function useEpreuvesManagement() {
       }
       
       const apiEpreuves = await epreuveApi.getAll(Object.keys(filters).length > 0 ? filters : undefined);
-      const sortedEpreuves = apiEpreuves.sort((a, b) => a.libelle.localeCompare(b.libelle));
+      // Trier d'abord par discipline, puis par libellé de l'épreuve
+      const sortedEpreuves = apiEpreuves.sort((a, b) => {
+        // Tri principal par nom de discipline
+        const disciplineComparison = a.discipline.nom.localeCompare(b.discipline.nom);
+        if (disciplineComparison !== 0) {
+          return disciplineComparison;
+        }
+        // Tri secondaire par libellé de l'épreuve
+        return a.libelle.localeCompare(b.libelle);
+      });
       setEpreuves(sortedEpreuves);
     } catch (err) {
       setError('Erreur lors du chargement des épreuves');
@@ -54,7 +63,14 @@ export function useEpreuvesManagement() {
       setCreateLoading(true);
       setCreateError(null);
       const newEpreuve = await epreuveApi.create(epreuveData);
-      setEpreuves(prev => [...prev, newEpreuve].sort((a, b) => a.libelle.localeCompare(b.libelle)));
+      // Ajouter la nouvelle épreuve et trier par discipline puis par libellé
+      setEpreuves(prev => [...prev, newEpreuve].sort((a, b) => {
+        const disciplineComparison = a.discipline.nom.localeCompare(b.discipline.nom);
+        if (disciplineComparison !== 0) {
+          return disciplineComparison;
+        }
+        return a.libelle.localeCompare(b.libelle);
+      }));
       return newEpreuve;
     } catch (err) {
       setCreateError('Erreur lors de la création de l\'épreuve');
@@ -74,9 +90,16 @@ export function useEpreuvesManagement() {
         disciplineId: epreuveData.disciplineId
       };
       const updatedEpreuve = await epreuveApi.update(updateData);
+      // Mettre à jour l'épreuve et trier par discipline puis par libellé
       setEpreuves(prev => prev.map(epreuve => 
         epreuve.id === id ? updatedEpreuve : epreuve
-      ).sort((a, b) => a.libelle.localeCompare(b.libelle)));
+      ).sort((a, b) => {
+        const disciplineComparison = a.discipline.nom.localeCompare(b.discipline.nom);
+        if (disciplineComparison !== 0) {
+          return disciplineComparison;
+        }
+        return a.libelle.localeCompare(b.libelle);
+      }));
       return updatedEpreuve;
     } catch (err) {
       setCreateError('Erreur lors de la modification de l\'épreuve');
@@ -122,7 +145,14 @@ export function useEpreuvesManagement() {
     }
     
     return matches;
-  }).sort((a, b) => a.libelle.localeCompare(b.libelle));
+  }).sort((a, b) => {
+    // Trier d'abord par discipline, puis par libellé de l'épreuve
+    const disciplineComparison = a.discipline.nom.localeCompare(b.discipline.nom);
+    if (disciplineComparison !== 0) {
+      return disciplineComparison;
+    }
+    return a.libelle.localeCompare(b.libelle);
+  });
 
   useEffect(() => {
     loadEpreuves();

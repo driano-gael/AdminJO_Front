@@ -1,33 +1,36 @@
 'use client';
 
 import { useState } from 'react';
+import { useSessionExpiry } from '@/hooks/useSessionExpiry';
+import { ExtendEvenement } from '@/types/sportEvenement/evenement';
 import Notification from '@/components/notification';
-import EventsHeader from './EvenementsHeader';
+import EvenementsHeader from './EvenementsHeader';
 import SearchAndFilters from './EvenementsSearchAndFilters';
-import EventsTable from './EvenementsTable';
-import EvenementModal from './CreateEvenementModal';
+import EvenementsTable from './EvenementsTable';
+import EvenementModal from './EvenementModal';
 import { useEventsManagement } from '../../../hooks/useEvenementManagement';
 
 /**
- * Props pour le composant EventsManagement
+ * Props pour le composant EvenementsManagement
  */
 interface Props {
-  onBack: () => void; // Fonction pour revenir au dashboard de gestion
+  onBack: () => void;
 }
 
 /**
- * Composant EventsManagement - Gestion complète des événements sportifs
+ * Composant EvenementsManagement - Gestion complète des événements sportifs
  * 
- * Fonctionnalités :
+ * Fonctionnalités similaires au LieuxManagement :
  * - Affichage de la liste des événements avec recherche
- * - Création de nouveaux événements avec formulaire
+ * - Création de nouveaux événements
+ * - Modification d'événements existants  
  * - Suppression d'événements avec confirmation
- * - Recherche côté serveur
- * - Affichage des statistiques et du statut des événements
  * - Gestion des erreurs et notifications
  * - Interface responsive avec design moderne
  */
 export default function EvenementsManagement({ onBack }: Props) {
+  useSessionExpiry();
+
   const {
     events,
     lieux,
@@ -39,31 +42,47 @@ export default function EvenementsManagement({ onBack }: Props) {
     createError,
     loadEvents,
     createEvent,
+    updateEvent,
     deleteEvent,
     handleSearch,
     setCreateError
   } = useEventsManagement();
 
   // États pour l'UI
-  const [showEvenementForm, setShowEvenementForm] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [editingEvent, setEditingEvent] = useState<ExtendEvenement | null>(null);
   const [notification, setNotification] = useState<{
     message: string;
     type: 'success' | 'error' | 'info';
   } | null>(null);
 
-  const handleCreateEvent = async (eventData: any) => {
+  const handleOpenModal = (event?: ExtendEvenement) => {
+    setEditingEvent(event || null);
+    setShowModal(true);
+  };
+
+  const handleSaveEvent = async (eventData: any) => {
     try {
-      await createEvent(eventData);
-      setShowEvenementForm(false);
-      setNotification({
-        message: "Événement créé avec succès !",
-        type: "success"
-      });
+      if (editingEvent) {
+        await updateEvent({
+          id: editingEvent.id,
+          ...eventData
+        });
+        setNotification({
+          message: 'Événement modifié avec succès !',
+          type: 'success'
+        });
+      } else {
+        await createEvent(eventData);
+        setNotification({
+          message: 'Événement créé avec succès !',
+          type: 'success'
+        });
+      }
+      setShowModal(false);
+      setEditingEvent(null);
     } catch (err) {
-      setNotification({
-        message: "Erreur lors de la création de l'évenement!",
-        type: 'error'
-      });
+      // L'erreur est déjà gérée dans le hook
     }
   };
 
@@ -82,19 +101,17 @@ export default function EvenementsManagement({ onBack }: Props) {
     }
   };
 
-  const handleCloseModal = () => {
-    setShowEvenementForm(false);
-    setCreateError(null);
-  };
-
   return (
     <div className="min-h-screen bg-base-200">
-      <EventsHeader 
+      {/* Header */}
+      <EvenementsHeader 
         onBack={onBack} 
-        onCreateEvent={() => setShowEvenementForm(true)} 
+        onCreateEvent={() => handleOpenModal()} 
       />
 
+      {/* Main Content */}
       <main className="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+        {/* Search */}
         <SearchAndFilters 
           searchTerm={searchTerm} 
           onSearch={handleSearch}
@@ -102,30 +119,33 @@ export default function EvenementsManagement({ onBack }: Props) {
           loading={loading}
         />
 
-        {error && (
-          <div className="mb-4 text-sm text-red-600 bg-red-50 p-3 rounded-md">
-            {error}
-          </div>
-        )}
-
-        <EventsTable
+        {/* Événements Table */}
+        <EvenementsTable
           events={events}
           loading={loading}
           searchTerm={searchTerm}
           onDeleteEvent={handleDeleteEvent}
           onRefresh={() => loadEvents()}
+          onEdit={(event) => handleOpenModal(event)}
+          error={error}
         />
       </main>
+      
+      {/* Modal */}
+      <EvenementModal
+        isOpen={showModal}
+        onClose={() => {
+          setShowModal(false);
+          setEditingEvent(null);
+          setCreateError(null);
+        }}
+        onSave={handleSaveEvent}
+        loading={createLoading}
+        error={createError}
+        evenement={editingEvent || undefined}
+      />
 
-      {showEvenementForm && (
-        <EvenementModal 
-          onClose={handleCloseModal}
-          onCreate={handleCreateEvent}
-          loading={createLoading}
-          error={createError}
-        />
-      )}
-
+      {/* Notification */}
       {notification && (
         <Notification
           message={notification.message}
