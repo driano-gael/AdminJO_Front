@@ -1,6 +1,6 @@
 'use client';
 
-import LieuxManagement from '@/components/componentsEvenement/Lieu/lieux/LieuxManagement';
+import LieuxManagement from '@/components/componentsEvenement/lieux/LieuxManagement';
 import PageTemplate from '@/components/layout/PageTemplate';
 import { useRouter } from 'next/navigation';
 
