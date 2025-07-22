@@ -1,8 +1,13 @@
 export function getAuthToken(): string | null {
   if (typeof window === 'undefined') return null;
-  const tokenKey = process.env.NEXT_PUBLIC_AUTH_TOKEN_KEY || 'auth_token';
-  const token = localStorage.getItem(tokenKey);
-  return token;
+  try {
+    const tokenKey = process.env.NEXT_PUBLIC_AUTH_TOKEN_KEY || 'auth_token';
+    const token = localStorage.getItem(tokenKey);
+    return token;
+  } catch (error) {
+    console.error('Error getting auth token:', error);
+    return null;
+  }
 }
 
 export function getRefreshToken(): string | null {
@@ -13,11 +18,15 @@ export function getRefreshToken(): string | null {
 
 export function setTokens(accessToken: string, refreshToken?: string): void {
   if (typeof window === 'undefined') return;
-  const tokenKey = process.env.NEXT_PUBLIC_AUTH_TOKEN_KEY || 'auth_token';
-  const refreshKey = process.env.NEXT_PUBLIC_AUTH_REFRESH_TOKEN_KEY || 'auth_refresh_token';
-  localStorage.setItem(tokenKey, accessToken);
-  if (refreshToken) {
-    localStorage.setItem(refreshKey, refreshToken);
+  try {
+    const tokenKey = process.env.NEXT_PUBLIC_AUTH_TOKEN_KEY || 'auth_token';
+    const refreshKey = process.env.NEXT_PUBLIC_AUTH_REFRESH_TOKEN_KEY || 'auth_refresh_token';
+    localStorage.setItem(tokenKey, accessToken);
+    if (refreshToken) {
+      localStorage.setItem(refreshKey, refreshToken);
+    }
+  } catch (error) {
+    console.error('Error setting tokens:', error);
   }
 }
 
