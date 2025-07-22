@@ -13,6 +13,7 @@ export interface UpdateEpreuveRequest {
   id: number;
   libelle: string;
   disciplineId: number;
+  evenementId?: number | null;
 }
 
 export interface EpreuveFilters {
@@ -65,9 +66,14 @@ export class EpreuveService {
    * Route Django: path('epreuve/create/', EpreuveCreateView.as_view(), name='epreuve-create')
    */
   static async createEpreuve(data: CreateEpreuveRequest): Promise<Epreuve> {
+    const payload = {
+      libelle: data.libelle,
+      discipline_id: data.disciplineId,
+      evenement_id: null
+    };
     return fetchApi<Epreuve>(`${this.BASE_PATH}/create/`, {
       method: 'POST',
-      body: JSON.stringify(data),
+      body: JSON.stringify(payload),
     });
   }
 
@@ -76,9 +82,14 @@ export class EpreuveService {
    * Route Django: path('epreuve/update/<int:pk>/', EpreuveUpdateView.as_view(), name='epreuve-update')
    */
   static async updateEpreuve(data: UpdateEpreuveRequest): Promise<Epreuve> {
+    const payload = {
+      libelle: data.libelle,
+      discipline_id: data.disciplineId,
+      evenement_id: data.evenementId ?? null
+    };
     return fetchApi<Epreuve>(`${this.BASE_PATH}/update/${data.id}/`, {
       method: 'PUT',
-      body: JSON.stringify(data),
+      body: JSON.stringify(payload),
     });
   }
 
