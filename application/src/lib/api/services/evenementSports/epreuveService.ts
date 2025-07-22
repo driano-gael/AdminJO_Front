@@ -1,7 +1,5 @@
 import { fetchApi } from '@/lib/api/core/fetchWrappers';
 import { Epreuve } from '@/types/sportEvenement/epreuve';
-import { Discipline } from '@/types/sportEvenement/discipline';
-import { Evenement } from '@/types/sportEvenement/evenement';
 
 // Types pour les requêtes
 export interface CreateEpreuveRequest {

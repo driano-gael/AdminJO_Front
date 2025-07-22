@@ -93,7 +93,7 @@ export default function EvenementsTable({
                   ) : searchTerm ? (
                     <div>
                       <p className="text-lg font-medium">Aucun événement trouvé</p>
-                      <p className="text-sm">Aucun événement ne correspond à votre recherche "{searchTerm}"</p>
+                      <p className="text-sm">Aucun événement ne correspond à votre recherche &ldquo;{searchTerm}&rdquo;</p>
                     </div>
                   ) : (
                     <div>

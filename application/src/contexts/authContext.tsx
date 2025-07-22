@@ -161,7 +161,7 @@ export function AuthProvider({ children }: Props) {
             if(typeof window !== 'undefined' && window.localStorage){
                 try{
                     localStorage.setItem('user_email', email);
-                }catch(error){
+                }catch{
                 }
             }
             setUser({ email });

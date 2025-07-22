@@ -21,7 +21,7 @@ export function useLieuxManagement() {
       } : undefined);
       const sortedLieux = apiLieux.sort((a, b) => a.nom.localeCompare(b.nom));
       setLieux(sortedLieux);
-    } catch (err) {
+    } catch {
       setError('Erreur lors du chargement des lieux');
     } finally {
       setLoading(false);

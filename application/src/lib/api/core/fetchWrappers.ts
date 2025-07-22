@@ -100,7 +100,7 @@ async function tryRefreshToken(): Promise<boolean> {
     }
     
     return true;
-  } catch (error) {
+  } catch {
     return false;
   }
 }

@@ -75,7 +75,7 @@ export default function LieuxTable({
                   ) : searchTerm ? (
                     <div>
                       <p className="text-lg font-medium">Aucun lieu trouvé</p>
-                      <p className="text-sm">Aucun lieu ne correspond à votre recherche "{searchTerm}"</p>
+                      <p className="text-sm">Aucun lieu ne correspond à votre recherche &ldquo;{searchTerm}&rdquo;</p>
                     </div>
                   ) : (
                     <div>

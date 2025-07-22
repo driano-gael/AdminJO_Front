@@ -20,7 +20,7 @@ export function useDisciplinesManagement() {
       } : undefined);
       const sortedDisciplines = apiDisciplines.sort((a, b) => a.nom.localeCompare(b.nom));
       setDisciplines(sortedDisciplines);
-    } catch (err) {
+    } catch {
       setError('Erreur lors du chargement des disciplines');
     } finally {
       setLoading(false);

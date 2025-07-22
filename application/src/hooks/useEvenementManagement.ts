@@ -102,7 +102,7 @@ export function useEventsManagement() {
       }));
       
       setEvents(eventsWithExtras);
-    } catch (err) {
+    } catch {
       setError('Erreur lors du chargement des événements');
     } finally {
       setLoading(false);

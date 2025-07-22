@@ -28,7 +28,7 @@ export function clearTokens(): void {
   try {
     localStorage.removeItem(tokenKey);
     localStorage.removeItem(refreshKey);
-  } catch (error) {
+  } catch {
   }
 }
 
@@ -42,7 +42,7 @@ export function isTokenValid(): boolean {
     const now = Math.floor(Date.now() / 1000);
     const isValid = payload.exp > now;
     return isValid;
-  }catch (error) {
+  }catch {
     return false;
   }
 }

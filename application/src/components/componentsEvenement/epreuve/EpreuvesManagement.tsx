@@ -4,17 +4,14 @@ import { useState } from 'react';
 import { useEpreuvesManagement } from '@/hooks/useEpreuvesManagement';
 import { useSessionExpiry } from '@/hooks/useSessionExpiry';
 import { Epreuve } from '@/types/sportEvenement/epreuve';
+import { CreateEpreuveRequest } from '@/lib/api/services/evenementSports/epreuveService';
 import Notification from '@/components/notification';
 import EpreuvesHeader from './EpreuvesHeader';
 import SearchAndFilters from './SearchAndFilters';
 import EpreuvesTable from './EpreuvesTable';
 import EpreuveModal from './EpreuveModal';
 
-interface Props {
-  // Plus de prop onBack nécessaire, gérée par BackToEventsButton
-}
-
-export default function EpreuvesManagement({}: Props) {
+export default function EpreuvesManagement() {
   useSessionExpiry();
 
   const {
@@ -55,7 +52,7 @@ export default function EpreuvesManagement({}: Props) {
     );
   };
 
-  const handleSaveEpreuve = async (epreuveData: any) => {
+  const handleSaveEpreuve = async (epreuveData: CreateEpreuveRequest) => {
     try {
       if (editingEpreuve) {
         await updateEpreuve(editingEpreuve.id, epreuveData);
@@ -73,7 +70,7 @@ export default function EpreuvesManagement({}: Props) {
       }
       setShowModal(false);
       setEditingEpreuve(null);
-    } catch (err) {
+    } catch {
       // L'erreur est déjà gérée dans le hook
     }
   };
@@ -86,7 +83,7 @@ export default function EpreuvesManagement({}: Props) {
         message: 'Épreuve supprimée avec succès !',
         type: 'success'
       });
-    } catch (err) {
+    } catch {
       setNotification({
         message: 'Erreur lors de la suppression de l\'épreuve',
         type: 'error'

@@ -75,7 +75,7 @@ export default function DisciplinesTable({
                   ) : searchTerm ? (
                     <div>
                       <p className="text-lg font-medium">Aucune discipline trouvée</p>
-                      <p className="text-sm">Aucune discipline ne correspond à votre recherche "{searchTerm}"</p>
+                      <p className="text-sm">Aucune discipline ne correspond à votre recherche &ldquo;{searchTerm}&rdquo;</p>
                     </div>
                   ) : (
                     <div>

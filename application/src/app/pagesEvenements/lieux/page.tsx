@@ -2,7 +2,6 @@
 
 import LieuxManagement from '@/components/componentsEvenement/lieux/LieuxManagement';
 import PageTemplate from '@/components/layout/PageTemplate';
-import { useRouter } from 'next/navigation';
 
 /**
  * Page Gestion des Lieux - Route: /pagesEvenements/lieux
@@ -10,7 +9,7 @@ import { useRouter } from 'next/navigation';
  * Interface dédiée à la gestion des lieux olympiques
  */
 export default function LieuxPage() {
-    const router = useRouter();
+    // const router = useRouter(); // Non utilisé pour le moment
 
     return (
         <PageTemplate

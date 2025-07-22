@@ -2,7 +2,6 @@
 
 import DisciplinesManagement from '@/components/componentsEvenement/discipline/DisciplinesManagement';
 import PageTemplate from '@/components/layout/PageTemplate';
-import { useRouter } from 'next/navigation';
 
 /**
  * Page Gestion des Disciplines - Route: /management/disciplines
@@ -10,7 +9,7 @@ import { useRouter } from 'next/navigation';
  * Interface dédiée à la gestion des disciplines sportives
  */
 export default function DisciplinesPage() {
-    const router = useRouter();
+    // const router = useRouter(); // Non utilisé pour le moment
     return (
         <PageTemplate
             title="Gestion des évènements sportifs"

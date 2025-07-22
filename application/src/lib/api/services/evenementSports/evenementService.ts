@@ -13,7 +13,6 @@
 
 import { fetchApi } from '@/lib/api/core/fetchWrappers';
 import { Evenement } from '@/types/sportEvenement/evenement';
-import { Lieu } from '@/types/sportEvenement/lieu';
 
 /**
  * Interface pour les données de création d'un événement
@@ -144,7 +143,7 @@ export class EvenementService {
    */
   static async updateEvenement(data: UpdateEvenementRequest): Promise<Evenement> {
     // Transformer les champs pour correspondre à l'API Django
-    const payload: any = {
+    const payload: Record<string, unknown> = {
       description: data.description,
       lieu_id: data.lieuId,        // lieuId → lieu_id
       date: data.date,

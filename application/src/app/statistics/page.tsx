@@ -36,7 +36,7 @@ export default function StatisticsPage() {
                 </div>
                 <div className="bg-white rounded-lg shadow-md p-6 text-center">
                     <div className="text-4xl font-bold text-orange-600 mb-2">87%</div>
-                    <div className="text-sm text-gray-600">Taux d'occupation</div>
+                    <div className="text-sm text-gray-600">Taux d&apos;occupation</div>
                 </div>
             </div>
 

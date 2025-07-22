@@ -19,7 +19,7 @@ export function useEpreuvesManagement() {
     try {
       setLoading(true);
       setError(null);
-      const filters: any = {};
+      const filters: Record<string, string | number> = {};
       
       if (searchQuery) {
         filters.libelle = searchQuery;
@@ -41,7 +41,7 @@ export function useEpreuvesManagement() {
         return a.libelle.localeCompare(b.libelle);
       });
       setEpreuves(sortedEpreuves);
-    } catch (err) {
+    } catch {
       setError('Erreur lors du chargement des épreuves');
     } finally {
       setLoading(false);

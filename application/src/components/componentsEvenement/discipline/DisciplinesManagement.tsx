@@ -4,17 +4,14 @@ import { useState } from 'react';
 import { useDisciplinesManagement } from '@/hooks/useDisciplinesManagement';
 import { useSessionExpiry } from '@/hooks/useSessionExpiry';
 import { Discipline } from '@/types/sportEvenement/discipline';
+import { CreateDisciplineRequest } from '@/lib/api/services/evenementSports/disciplineService';
 import Notification from '@/components/notification';
 import DisciplinesHeader from './DisciplinesHeader';
 import SearchAndFilters from './SearchAndFilters';
 import DisciplinesTable from './DisciplinesTable';
 import DisciplineModal from './DisciplineModal';
 
-interface Props {
-  // Plus de prop onBack nécessaire, gérée par BackToEventsButton
-}
-
-export default function DisciplinesManagement({}: Props) {
+export default function DisciplinesManagement() {
   useSessionExpiry();
 
   const {
@@ -53,7 +50,7 @@ export default function DisciplinesManagement({}: Props) {
     }
   };
 
-  const handleSaveDiscipline = async (disciplineData: any) => {
+  const handleSaveDiscipline = async (disciplineData: CreateDisciplineRequest) => {
     try {
       if (editingDiscipline) {
         await updateDiscipline(editingDiscipline.id, disciplineData);
@@ -71,7 +68,7 @@ export default function DisciplinesManagement({}: Props) {
       }
       setShowModal(false);
       setEditingDiscipline(null);
-    } catch (err) {
+    } catch {
       // L'erreur est déjà gérée dans le hook
     }
   };
@@ -84,7 +81,7 @@ export default function DisciplinesManagement({}: Props) {
         message: 'Discipline supprimée avec succès !',
         type: 'success'
       });
-    } catch (err) {
+    } catch {
       setNotification({
         message: 'Erreur lors de la suppression de la discipline',
         type: 'error'

@@ -4,16 +4,14 @@ import { useState } from 'react';
 import { useLieuxManagement } from '@/hooks/useLieuxManagement';
 import { useSessionExpiry } from '@/hooks/useSessionExpiry';
 import { Lieu } from '@/types/sportEvenement/lieu';
+import { CreateLieuRequest } from '@/lib/api/services/evenementSports/lieuService';
 import Notification from '@/components/notification';
 import LieuxHeader from './LieuxHeader';
 import SearchAndFilters from './SearchAndFilters';
 import LieuxTable from './LieuxTable';
 import LieuModal from './LieuModal';
 
-interface Props {
-  // Plus de prop onBack nécessaire, gérée par BackToEventsButton
-}
-export default function LieuxManagement({}: Props) {
+export default function LieuxManagement() {
       useSessionExpiry();
 
       const {
@@ -42,7 +40,7 @@ export default function LieuxManagement({}: Props) {
         setEditingLieu(lieu || null);
         setShowModal(true);
       };
-    const handleSaveLieu = async (lieuData: any) => {
+    const handleSaveLieu = async (lieuData: CreateLieuRequest) => {
       try {
         if (editingLieu) {
           await updateLieu(editingLieu.id, lieuData);
@@ -60,7 +58,7 @@ export default function LieuxManagement({}: Props) {
         }
         setShowModal(false);
         setEditingLieu(null);
-      } catch (err) {
+      } catch {
         // L'erreur est déjà gérée dans le hook
       }
     };
@@ -73,7 +71,7 @@ export default function LieuxManagement({}: Props) {
           message: 'Lieu supprimé avec succès !',
           type: 'success'
         });
-      } catch (err) {
+      } catch {
         setNotification({
           message: 'Erreur lors de la suppression du lieu',
           type: 'error'

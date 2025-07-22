@@ -82,7 +82,7 @@ export default function AuthGuard({ children }: AuthGuardProps) {
           if (process.env.NODE_ENV === 'development') {
             console.log('✅ AuthGuard: Token refreshé avec succès');
           }
-        } catch (error) {
+        } catch {
           // Échec du refresh, déconnexion forcée
           if (process.env.NODE_ENV === 'development') {
             console.log('❌ AuthGuard: Échec du refresh, déconnexion forcée');

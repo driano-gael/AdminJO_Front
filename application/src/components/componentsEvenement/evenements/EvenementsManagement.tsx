@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useSessionExpiry } from '@/hooks/useSessionExpiry';
 import { ExtendEvenement } from '@/types/sportEvenement/evenement';
+import { CreateEvenementRequest } from '@/lib/api/services/evenementSports/evenementService';
 import Notification from '@/components/notification';
 import EvenementsHeader from './EvenementsHeader';
 import SearchAndFilters from './EvenementsSearchAndFilters';
@@ -11,16 +12,9 @@ import EvenementModal from './EvenementModal';
 import { useEventsManagement } from '../../../hooks/useEvenementManagement';
 
 /**
- * Props pour le composant EvenementsManagement
- */
-interface Props {
-  // Plus de prop onBack nécessaire, gérée par BackToEventsButton
-}
-
-/**
  * Composant EvenementsManagement - Gestion complète des événements sportifs
  * 
- * Fonctionnalités similaires au LieuxManagement :
+ * Fonctionnalités :
  * - Affichage de la liste des événements avec recherche
  * - Création de nouveaux événements
  * - Modification d'événements existants  
@@ -28,7 +22,7 @@ interface Props {
  * - Gestion des erreurs et notifications
  * - Interface responsive avec design moderne
  */
-export default function EvenementsManagement({}: Props) {
+export default function EvenementsManagement() {
   useSessionExpiry();
 
   const {
@@ -38,14 +32,11 @@ export default function EvenementsManagement({}: Props) {
     searchTerm,
     loading,
     error,
-    createLoading,
-    createError,
-    loadEvents,
     createEvent,
     updateEvent,
     deleteEvent,
+    loadEvents,
     handleSearch,
-    setCreateError,
     // Fonctions de filtrage
     setLieuFilter,
     setDisciplineFilter,
@@ -100,12 +91,12 @@ export default function EvenementsManagement({}: Props) {
     setDateFinFilter(date || '');
   };
 
-  // Obtenir les disciplines uniques depuis les épreuves
+  // Disciplines uniques extraites des épreuves
   const disciplines = Array.from(
     new Map(epreuves.map(e => e.discipline).filter(Boolean).map(d => [d!.id, d!])).values()
   ).sort((a, b) => a.nom.localeCompare(b.nom));
 
-  const handleSaveEvent = async (eventData: any) => {
+  const handleSaveEvent = async (eventData: CreateEvenementRequest) => {
     try {
       if (editingEvent) {
         await updateEvent({
@@ -125,8 +116,11 @@ export default function EvenementsManagement({}: Props) {
       }
       setShowModal(false);
       setEditingEvent(null);
-    } catch (err) {
-      // L'erreur est déjà gérée dans le hook
+    } catch {
+      setNotification({
+        message: 'Erreur lors de la sauvegarde',
+        type: 'error'
+      });
     }
   };
 
@@ -137,15 +131,15 @@ export default function EvenementsManagement({}: Props) {
         message: 'Événement supprimé avec succès !',
         type: 'success'
       });
-    } catch (err) {
+    } catch {
       setNotification({
-        message: 'Erreur lors de la suppression de l\'événement',
+        message: 'Erreur lors de la suppression',
         type: 'error'
       });
     }
   };
 
-  // Fonction pour actualiser les données en gardant le terme de recherche actuel
+  // Fonction de rafraîchissement
   const handleRefresh = () => {
     if (searchTerm.trim()) {
       loadEvents(searchTerm);
@@ -156,22 +150,16 @@ export default function EvenementsManagement({}: Props) {
 
   return (
     <div className="min-h-screen bg-base-200">
-      {/* Header */}
-      <EvenementsHeader 
-        onCreateEvent={() => handleOpenModal()} 
-      />
-
-      {/* Main Content */}
-      <main className="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
-        {/* Search */}
-        <SearchAndFilters 
-          searchTerm={searchTerm} 
+      <div className="container mx-auto px-4 py-8">
+        <EvenementsHeader onCreateEvent={() => handleOpenModal()} />
+        
+        <SearchAndFilters
+          searchTerm={searchTerm}
           onSearch={handleSearch}
-          events={events}
-          epreuves={epreuves}
           lieux={lieux}
           disciplines={disciplines}
-          loading={loading}
+          epreuves={epreuves}
+          events={events}
           selectedLieu={filterLieu}
           selectedDiscipline={filterDiscipline}
           selectedEpreuve={filterEpreuve}
@@ -186,40 +174,38 @@ export default function EvenementsManagement({}: Props) {
           onDateFinChange={handleDateFinChange}
         />
 
-        {/* Événements Table */}
         <EvenementsTable
           events={events}
           loading={loading}
+          error={error}
           searchTerm={searchTerm}
+          onEdit={handleOpenModal}
           onDeleteEvent={handleDeleteEvent}
           onRefresh={handleRefresh}
-          onEdit={(event) => handleOpenModal(event)}
-          error={error}
         />
-      </main>
-      
-      {/* Modal */}
-      <EvenementModal
-        isOpen={showModal}
-        onClose={() => {
-          setShowModal(false);
-          setEditingEvent(null);
-          setCreateError(null);
-        }}
-        onSave={handleSaveEvent}
-        loading={createLoading}
-        error={createError}
-        evenement={editingEvent || undefined}
-      />
 
-      {/* Notification */}
-      {notification && (
-        <Notification
-          message={notification.message}
-          type={notification.type}
-          onClose={() => setNotification(null)}
-        />
-      )}
+        {showModal && (
+          <EvenementModal
+            isOpen={showModal}
+            evenement={editingEvent || undefined}
+            loading={loading}
+            error={error}
+            onSave={handleSaveEvent}
+            onClose={() => {
+              setShowModal(false);
+              setEditingEvent(null);
+            }}
+          />
+        )}
+
+        {notification && (
+          <Notification
+            message={notification.message}
+            type={notification.type}
+            onClose={() => setNotification(null)}
+          />
+        )}
+      </div>
     </div>
   );
 }

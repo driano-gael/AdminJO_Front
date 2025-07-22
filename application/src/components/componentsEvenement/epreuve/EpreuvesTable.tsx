@@ -56,7 +56,7 @@ export default function EpreuvesTable({
           <thead className="bg-gray-50">
             <tr>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Libellé de l'Épreuve
+                Libellé de l&apos;Épreuve
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Discipline
@@ -78,7 +78,7 @@ export default function EpreuvesTable({
                   ) : searchTerm ? (
                     <div>
                       <p className="text-lg font-medium">Aucune épreuve trouvée</p>
-                      <p className="text-sm">Aucune épreuve ne correspond à votre recherche "{searchTerm}"</p>
+                      <p className="text-sm">Aucune épreuve ne correspond à votre recherche &ldquo;{searchTerm}&rdquo;</p>
                     </div>
                   ) : (
                     <div>

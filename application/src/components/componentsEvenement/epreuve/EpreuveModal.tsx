@@ -73,7 +73,7 @@ export default function EpreuveModal({
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div>
                         <label className="block text-sm font-medium text-gray-700 mb-1">
-                            Libellé de l'épreuve
+                            Libellé de l&apos;épreuve
                         </label>
                         <input
                             type="text"

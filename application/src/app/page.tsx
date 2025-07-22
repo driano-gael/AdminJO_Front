@@ -38,7 +38,7 @@ export default function Home() {
       <div className="min-h-screen flex items-center justify-center bg-base-200">
         <div className="text-center">
           <div className="loading loading-spinner loading-lg text-primary"></div>
-          <p className="mt-4 text-gray-600">Vérification de l'authentification...</p>
+          <p className="mt-4 text-gray-600">Vérification de l&apos;authentification...</p>
         </div>
       </div>
     );

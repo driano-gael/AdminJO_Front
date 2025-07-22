@@ -35,7 +35,7 @@ export async function refreshToken(): Promise<AuthResponse> {
     }, false);
     setTokens(data.access, data.refresh);
     return data;
-  } catch (error) {
+  } catch {
     clearTokens();
     throw new Error("Refresh token expiré");
   }
