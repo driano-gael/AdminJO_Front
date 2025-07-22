@@ -21,7 +21,7 @@ export default function EpreuvesPage() {
             ]}
         >
             {/* Composant de gestion des épreuves */}
-            <EpreuvesManagement onBack={() => router.push('/pagesEvenements')} />
+            <EpreuvesManagement />
         </PageTemplate>
     );
 }

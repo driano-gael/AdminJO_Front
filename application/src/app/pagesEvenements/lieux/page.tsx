@@ -21,7 +21,7 @@ export default function LieuxPage() {
                 { label: 'Lieux' }
             ]}
         >
-            <LieuxManagement onBack={() => router.push('/pagesEvenements')} />
+            <LieuxManagement />
         </PageTemplate>
     );
 }

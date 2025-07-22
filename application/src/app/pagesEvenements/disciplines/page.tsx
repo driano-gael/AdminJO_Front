@@ -21,7 +21,7 @@ export default function DisciplinesPage() {
             ]}
         >
             {/* Composant de gestion des disciplines */}
-            <DisciplinesManagement onBack={() => router.push('/pagesEvenements')} />
+            <DisciplinesManagement />
         </PageTemplate>
     );
 }

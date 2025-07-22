@@ -11,10 +11,10 @@ import DisciplinesTable from './DisciplinesTable';
 import DisciplineModal from './DisciplineModal';
 
 interface Props {
-  onBack: () => void;
+  // Plus de prop onBack nécessaire, gérée par BackToEventsButton
 }
 
-export default function DisciplinesManagement({ onBack }: Props) {
+export default function DisciplinesManagement({}: Props) {
   useSessionExpiry();
 
   const {
@@ -96,7 +96,6 @@ export default function DisciplinesManagement({ onBack }: Props) {
     <div className="min-h-screen bg-base-200">
       {/* Header */}
       <DisciplinesHeader 
-        onBack={onBack}
         onCreateClick={() => handleOpenModal()}
       />
 

@@ -9,7 +9,7 @@ interface SearchAndFiltersProps {
   epreuves: Epreuve[];
   lieux: Lieu[];
   disciplines: Discipline[];
-  events: ExtendEvenement[]; // Ajout pour le filtrage en cascade
+  events: ExtendEvenement[];
   loading?: boolean;
   selectedLieu?: number;
   selectedDiscipline?: number;
@@ -75,12 +75,26 @@ export default function SearchAndFilters({
       );
     }
     
-    return Array.from(new Set(
+    const uniqueEpreuves = Array.from(new Set(
       filteredEvents
         .flatMap(event => event.epreuves)
         .filter(epreuve => !selectedDiscipline || epreuve.discipline?.id === selectedDiscipline)
         .map(e => e.id)
     )).map(id => epreuves.find(e => e.id === id)).filter(Boolean) as Epreuve[];
+
+    // Tri par discipline (ordre alphabétique) puis par épreuve (ordre alphabétique)
+    return uniqueEpreuves.sort((a, b) => {
+      const disciplineA = a.discipline?.nom || '';
+      const disciplineB = b.discipline?.nom || '';
+      
+      // D'abord par discipline
+      if (disciplineA !== disciplineB) {
+        return disciplineA.localeCompare(disciplineB);
+      }
+      
+      // Puis par libellé d'épreuve
+      return a.libelle.localeCompare(b.libelle);
+    });
   })();
 
   // 4. Obtenir les statuts disponibles selon les filtres
@@ -102,8 +116,9 @@ export default function SearchAndFilters({
     return Array.from(new Set(filteredEvents.map(event => event.status).filter(Boolean)));
   })();
 
-  // Date du jour par défaut
-  const today = new Date().toISOString().split('T')[0];
+  // Dates par défaut pour les JO de Paris 2024
+  const defaultStartDate = '2024-07-01';
+  const defaultEndDate = '2024-09-01';
 
     return (
       <div className="bg-white rounded-lg shadow-md p-6 mb-8">
@@ -125,7 +140,7 @@ export default function SearchAndFilters({
               <label className="block text-sm font-medium text-gray-700 mb-1">Date de début</label>
               <input
                 type="date"
-                value={dateDebut || today}
+                value={dateDebut || defaultStartDate}
                 onChange={(e) => onDateDebutChange(e.target.value || undefined)}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black text-sm"
               />
@@ -134,7 +149,7 @@ export default function SearchAndFilters({
               <label className="block text-sm font-medium text-gray-700 mb-1">Date de fin</label>
               <input
                 type="date"
-                value={dateFin || ''}
+                value={dateFin || defaultEndDate}
                 onChange={(e) => onDateFinChange(e.target.value || undefined)}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black text-sm"
               />
@@ -259,8 +274,8 @@ export default function SearchAndFilters({
                   onDisciplineChange(undefined);
                   onEpreuveChange(undefined);
                   onStatutChange(undefined);
-                  onDateDebutChange(today);
-                  onDateFinChange('');
+                  onDateDebutChange(defaultStartDate);
+                  onDateFinChange(defaultEndDate);
                 }}
                 className="w-full px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600 transition-colors text-sm"
               >

@@ -11,9 +11,9 @@ import LieuxTable from './LieuxTable';
 import LieuModal from './LieuModal';
 
 interface Props {
-  onBack: () => void;
+  // Plus de prop onBack nécessaire, gérée par BackToEventsButton
 }
-export default function LieuxManagement({ onBack }: Props) {
+export default function LieuxManagement({}: Props) {
       useSessionExpiry();
 
       const {
@@ -85,7 +85,6 @@ export default function LieuxManagement({ onBack }: Props) {
       <div className="min-h-screen bg-base-200">
         {/* Header */}
         <LieuxHeader 
-          onBack={onBack}
           onCreateClick={()=>handleOpenModal()}
         />
 

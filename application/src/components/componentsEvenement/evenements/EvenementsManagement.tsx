@@ -14,7 +14,7 @@ import { useEventsManagement } from '../../../hooks/useEvenementManagement';
  * Props pour le composant EvenementsManagement
  */
 interface Props {
-  onBack: () => void;
+  // Plus de prop onBack nécessaire, gérée par BackToEventsButton
 }
 
 /**
@@ -28,7 +28,7 @@ interface Props {
  * - Gestion des erreurs et notifications
  * - Interface responsive avec design moderne
  */
-export default function EvenementsManagement({ onBack }: Props) {
+export default function EvenementsManagement({}: Props) {
   useSessionExpiry();
 
   const {
@@ -145,11 +145,19 @@ export default function EvenementsManagement({ onBack }: Props) {
     }
   };
 
+  // Fonction pour actualiser les données en gardant le terme de recherche actuel
+  const handleRefresh = () => {
+    if (searchTerm.trim()) {
+      loadEvents(searchTerm);
+    } else {
+      loadEvents();
+    }
+  };
+
   return (
     <div className="min-h-screen bg-base-200">
       {/* Header */}
       <EvenementsHeader 
-        onBack={onBack} 
         onCreateEvent={() => handleOpenModal()} 
       />
 
@@ -184,7 +192,7 @@ export default function EvenementsManagement({ onBack }: Props) {
           loading={loading}
           searchTerm={searchTerm}
           onDeleteEvent={handleDeleteEvent}
-          onRefresh={() => loadEvents()}
+          onRefresh={handleRefresh}
           onEdit={(event) => handleOpenModal(event)}
           error={error}
         />

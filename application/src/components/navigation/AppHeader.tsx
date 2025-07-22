@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useAuth } from '@/contexts/authContext';
+import BackToDashboardButton from '../shared/BackToDashboardButton';
 
 /**
  * Props pour le composant AppHeader
@@ -10,6 +11,7 @@ interface AppHeaderProps {
   title: string;
   backUrl?: string;
   backLabel?: string;
+  showBackToDashboard?: boolean;
 }
 
 /**
@@ -18,21 +20,35 @@ interface AppHeaderProps {
  * @param props - Les propriétés du composant
  * @returns JSX.Element - Le header de l'application
  */
-export default function AppHeader({ title, backUrl= '/dashboard', backLabel = '⬅️ Accueil' }: AppHeaderProps) {
+export default function AppHeader({ 
+  title, 
+  backUrl = '/dashboard', 
+  backLabel = '⬅️ Accueil',
+  showBackToDashboard = true 
+}: AppHeaderProps) {
   const { user, logout } = useAuth();
+
+  // Détermine si on utilise le composant BackToDashboardButton ou un Link personnalisé
+  const shouldUseBackToDashboardButton = showBackToDashboard && (backUrl === '/dashboard' || !backUrl);
 
   return (
         <header className="bg-white shadow-md">
             <div className="">
                 <div className="flex items-center py-6 relative">
-                    {backUrl && (
+                    {showBackToDashboard && (
                         <div className="absolute left-0 pl-4">
-                            <Link 
-                                href={backUrl}
-                                className="text-blue-600 hover:text-blue-800 font-medium"
-                            >
-                                {backLabel || 'Retour'}
-                            </Link>
+                            {shouldUseBackToDashboardButton ? (
+                                <BackToDashboardButton 
+                                  text={backLabel}
+                                />
+                            ) : (
+                                <Link 
+                                    href={backUrl}
+                                    className="text-blue-600 hover:text-blue-800 font-medium"
+                                >
+                                    {backLabel || 'Retour'}
+                                </Link>
+                            )}
                         </div>
                     )}
 

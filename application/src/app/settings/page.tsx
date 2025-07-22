@@ -14,8 +14,6 @@ export default function SettingsPage() {
     return (
         <PageTemplate
             title="⚙️ Paramètres"
-            backUrl="/dashboard"
-            backLabel="Retour au Dashboard"
             breadcrumbs={[
                 { label: 'Dashboard', href: '/dashboard' },
                 { label: 'Paramètres' }

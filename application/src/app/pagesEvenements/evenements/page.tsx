@@ -21,7 +21,7 @@ export default function EventsPage() {
                 { label: 'Événements' }
             ]}
         >
-            <EvenementsManagement onBack={() => router.push('/pagesEvenements')} />
+            <EvenementsManagement />
         </PageTemplate>
     );
 }

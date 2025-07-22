@@ -23,8 +23,8 @@ export function useEventsManagement() {
   const [filterDiscipline, setFilterDiscipline] = useState<number | undefined>(undefined);
   const [filterEpreuve, setFilterEpreuve] = useState<number | undefined>(undefined);
   const [filterStatut, setFilterStatut] = useState<string | undefined>(undefined);
-  const [filterDateDebut, setFilterDateDebut] = useState<string>(new Date().toISOString().split('T')[0]);
-  const [filterDateFin, setFilterDateFin] = useState<string>('');
+  const [filterDateDebut, setFilterDateDebut] = useState<string>('2024-07-01');
+  const [filterDateFin, setFilterDateFin] = useState<string>('2024-09-01');
 
   /**
    * Fonction pour filtrer les événements selon tous les critères
@@ -220,7 +220,6 @@ export function useEventsManagement() {
    */
   const handleSearch = async (query: string) => {
     setSearchTerm(query);
-    // Note: On ne recharge plus les événements depuis l'API car le filtrage se fait côté client
   };
 
   /**
@@ -258,7 +257,7 @@ export function useEventsManagement() {
   }, []);
 
   return {
-    events: getFilteredEvents(), // Utiliser les événements filtrés
+    events: getFilteredEvents(),
     lieux,
     epreuves,
     searchTerm,

@@ -11,10 +11,10 @@ import EpreuvesTable from './EpreuvesTable';
 import EpreuveModal from './EpreuveModal';
 
 interface Props {
-  onBack: () => void;
+  // Plus de prop onBack nécessaire, gérée par BackToEventsButton
 }
 
-export default function EpreuvesManagement({ onBack }: Props) {
+export default function EpreuvesManagement({}: Props) {
   useSessionExpiry();
 
   const {
@@ -98,7 +98,6 @@ export default function EpreuvesManagement({ onBack }: Props) {
     <div className="min-h-screen bg-base-200">
       {/* Header */}
       <EpreuvesHeader 
-        onBack={onBack}
         onCreateClick={() => handleOpenModal()}
       />
 

@@ -11,8 +11,6 @@ export default function UsersPage() {
     return (
         <PageTemplate
             title="👥 Gestion des Utilisateurs"
-            backUrl="/dashboard"
-            backLabel="Retour au Dashboard"
             breadcrumbs={[
                 { label: 'Dashboard', href: '/dashboard' },
                 { label: 'Utilisateurs' }

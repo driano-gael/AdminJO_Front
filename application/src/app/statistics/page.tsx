@@ -11,8 +11,6 @@ export default function StatisticsPage() {
     return (
         <PageTemplate
             title="📊 Statistiques des JO"
-            backUrl="/dashboard"
-            backLabel="Retour au Dashboard"
             breadcrumbs={[
                 { label: 'Dashboard', href: '/dashboard' },
                 { label: 'Statistiques' }
