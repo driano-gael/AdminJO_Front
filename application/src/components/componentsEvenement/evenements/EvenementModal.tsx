@@ -82,7 +82,25 @@ useEffect(() => {
   const fetchEpreuves = async () => {
     try {
       const apiEpreuves = await epreuveApi.getAll();
-      setEpreuves(apiEpreuves);
+      
+      // Filtrer les épreuves disponibles (sans événement assigné)
+      // En mode édition, inclure aussi les épreuves de l'événement actuel
+      const epreuvesDisponibles = apiEpreuves.filter(epreuve => {
+        // Épreuve sans événement = disponible
+        if (!epreuve.evenement) {
+          return true;
+        }
+        
+        // En mode édition, inclure les épreuves de l'événement actuel
+        if (isEditing && evenement && epreuve.evenement?.id === evenement.id) {
+          return true;
+        }
+        
+        // Sinon, épreuve non disponible
+        return false;
+      });
+      
+      setEpreuves(epreuvesDisponibles);
     } catch (err) {
       console.error('Erreur chargement épreuves:', err);
     }
@@ -90,7 +108,7 @@ useEffect(() => {
 
   fetchLieux();
   fetchEpreuves();
-}, []);
+}, [isEditing, evenement]); // Dépendances ajoutées pour recharger quand le mode change
 
   // Gérer la sélection/désélection d'une épreuve
   const handleEpreuveToggle = (epreuveId: number) => {
@@ -168,7 +186,7 @@ useEffect(() => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (formData.description && formData.lieuId && formData.date && formData.horraire) {
+    if (formData.description && formData.lieuId > 0 && formData.date && formData.horraire) {
       const eventDataWithEpreuves: CreateEvenementWithEpreuvesRequest = {
         ...formData,
         epreuveIds: selectedEpreuves
@@ -183,8 +201,8 @@ useEffect(() => {
   }
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className="bg-white rounded-lg p-6 w-full max-w-md mx-4">
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-start justify-center z-50 overflow-y-auto p-4">
+      <div className="bg-white rounded-lg p-6 w-full max-w-md mx-auto my-8 max-h-[90vh] overflow-y-auto">
         <h3 className="text-lg text-black font-semibold mb-4">{title}</h3>
         
         {error && (
@@ -297,7 +315,14 @@ useEffect(() => {
                                 onChange={() => handleEpreuveToggle(epreuve.id)}
                                 className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
                               />
-                              <span className="ml-2 text-sm text-gray-700">{epreuve.libelle}</span>
+                              <span className="ml-2 text-sm text-gray-700">
+                                {epreuve.libelle}
+                                {epreuve.evenement && (
+                                  <span className="ml-2 text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full">
+                                    📅 {epreuve.evenement.description}
+                                  </span>
+                                )}
+                              </span>
                             </label>
                           ))}
                         </div>

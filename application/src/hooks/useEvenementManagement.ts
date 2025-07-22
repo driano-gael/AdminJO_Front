@@ -154,6 +154,10 @@ export function useEventsManagement() {
       };
       
       setEvents(prev => [...prev, newEventWithExtras]);
+      
+      // Recharger les épreuves pour refléter les changements
+      await loadEpreuves();
+      
       console.log('Événement créé avec succès:', newEvent);
       return newEvent;
     } catch (err) {
@@ -188,6 +192,10 @@ export function useEventsManagement() {
       setEvents(prev => prev.map(event => 
         event.id === eventData.id ? updatedEventWithExtras : event
       ));
+      
+      // Recharger les épreuves pour refléter les changements
+      await loadEpreuves();
+      
       console.log('Événement mis à jour avec succès:', updatedEvent);
       return updatedEvent;
     } catch (err) {
@@ -208,6 +216,10 @@ export function useEventsManagement() {
     try {
       await evenementApi.delete(id);
       setEvents(prev => prev.filter(event => event.id !== id));
+      
+      // Recharger les épreuves pour refléter les changements (épreuves libérées)
+      await loadEpreuves();
+      
       console.log('Événement supprimé avec succès:', id);
     } catch (err) {
       console.error('Erreur suppression événement:', err);

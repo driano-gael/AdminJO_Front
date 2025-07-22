@@ -23,6 +23,7 @@ export interface CreateEvenementRequest {
   lieuId: number; // ID du lieu où se déroule l'événement
   date: string; // Date de l'événement au format ISO (YYYY-MM-DD)
   horraire: string; // Horaire de l'événement (ex: "14:30")
+  epreuveIds?: number[] | null; // IDs des épreuves associées (optionnel, peut être null)
 }
 
 /**
@@ -34,6 +35,7 @@ export interface UpdateEvenementRequest {
   lieuId: number; // Nouveau lieu
   date: string; // Nouvelle date
   horraire: string; // Nouvel horaire
+  epreuveIds?: number[] | null; // IDs des épreuves associées (optionnel, peut être null)
 }
 
 /**
@@ -107,18 +109,27 @@ export class EvenementService {
   }
 
   /**
-   * Crée un nouveau événement
+   * Crée un nouvel événement
    * 
    * @param data - Données de l'événement à créer
-   * @returns Promise<Evenement> - L'événement créé
+   * @returns Promise<Evenement> - L'événement créé avec son ID généré
    * @throws Error - En cas d'erreur de l'API ou de réseau
    * 
    * Route Django: path('evenement/create/', EvenementCreateView.as_view(), name='evenement-create')
    */
   static async createEvenement(data: CreateEvenementRequest): Promise<Evenement> {
+    // Transformer les champs pour correspondre à l'API Django
+    const payload = {
+      description: data.description,
+      lieu_id: data.lieuId,        // lieuId → lieu_id
+      date: data.date,
+      horraire: data.horraire,
+      epreuve_ids: data.epreuveIds || []  // epreuveIds → epreuve_ids (tableau vide si null/undefined)
+    };
+    
     return fetchApi<Evenement>(`${this.BASE_PATH}/create/`, {
       method: 'POST',
-      body: JSON.stringify(data),
+      body: JSON.stringify(payload),
     });
   }
 
@@ -132,14 +143,30 @@ export class EvenementService {
    * Route Django: path('evenement/update/<int:pk>/', EvenementUpdateView.as_view(), name='evenement-update')
    */
   static async updateEvenement(data: UpdateEvenementRequest): Promise<Evenement> {
+    // Transformer les champs pour correspondre à l'API Django
+    const payload: any = {
+      description: data.description,
+      lieu_id: data.lieuId,        // lieuId → lieu_id
+      date: data.date,
+      horraire: data.horraire
+    };
+    
+    // Inclure epreuve_ids si fourni (même si c'est null ou un tableau vide)
+    if (data.epreuveIds !== undefined) {
+      payload.epreuve_ids = data.epreuveIds || [];
+    }
+    
     return fetchApi<Evenement>(`${this.BASE_PATH}/update/${data.id}/`, {
       method: 'PUT',
-      body: JSON.stringify(data),
+      body: JSON.stringify(payload),
     });
   }
 
   /**
    * Supprime un événement
+   * 
+   * Les épreuves associées sont automatiquement libérées par Django
+   * grâce à la configuration on_delete=models.SET_NULL dans le modèle Epreuve.
    * 
    * @param id - ID de l'événement à supprimer
    * @returns Promise<void> - Résultat de l'opération de suppression
