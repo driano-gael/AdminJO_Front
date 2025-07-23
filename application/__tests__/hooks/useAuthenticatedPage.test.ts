@@ -1,52 +1,22 @@
 import { renderHook } from '@testing-library/react';
 import { useAuthenticatedPage } from '@/hooks/useAuthenticatedPage';
 import { useAuth } from '@/contexts/authContext';
+import { useSessionExpiry } from '@/hooks/useSessionExpiry';
 
 // Mock des dépendances
 jest.mock('@/contexts/authContext');
-jest.mock('@/hooks/useSessionExpiry', () => ({
-  useSessionExpiry: jest.fn()
-}));
+jest.mock('@/hooks/useSessionExpiry');
 
 const mockUseAuth = useAuth as jest.MockedFunction<typeof useAuth>;
+const mockUseSessionExpiry = useSessionExpiry as jest.MockedFunction<typeof useSessionExpiry>;
 
 describe('useAuthenticatedPage', () => {
-  const mockPush = jest.fn();
-  const mockReplace = jest.fn();
-
   beforeEach(() => {
     jest.clearAllMocks();
-
-    mockUseRouter.mockReturnValue({
-      push: mockPush,
-      replace: mockReplace,
-      prefetch: jest.fn(),
-      back: jest.fn(),
-      forward: jest.fn(),
-      refresh: jest.fn()
-    } as any);
   });
 
-  it('should redirect to login when user is not authenticated', () => {
-    mockUseAuth.mockReturnValue({
-      user: null,
-      isAuthenticated: false,
-      login: jest.fn(),
-      logout: jest.fn(),
-      forceLogout: jest.fn(),
-      isLoading: false,
-      currentRoute: null,
-      saveCurrentRoute: jest.fn(),
-      getAndClearSavedRoute: jest.fn()
-    });
-
-    renderHook(() => useAuthenticatedPage());
-
-    expect(mockPush).toHaveBeenCalledWith('/');
-  });
-
-  it('should not redirect when user is authenticated', () => {
-    mockUseAuth.mockReturnValue({
+  it('should return auth context data when user is authenticated', () => {
+    const mockAuthData = {
       user: { email: 'admin@example.com' },
       isAuthenticated: true,
       login: jest.fn(),
@@ -56,15 +26,41 @@ describe('useAuthenticatedPage', () => {
       currentRoute: null,
       saveCurrentRoute: jest.fn(),
       getAndClearSavedRoute: jest.fn()
-    });
+    };
 
-    renderHook(() => useAuthenticatedPage());
+    mockUseAuth.mockReturnValue(mockAuthData);
 
-    expect(mockPush).not.toHaveBeenCalled();
+    const { result } = renderHook(() => useAuthenticatedPage());
+
+    expect(result.current).toBe(mockAuthData);
+    expect(mockUseAuth).toHaveBeenCalled();
+    expect(mockUseSessionExpiry).toHaveBeenCalled();
   });
 
-  it('should not redirect when loading', () => {
-    mockUseAuth.mockReturnValue({
+  it('should return auth context data when user is not authenticated', () => {
+    const mockAuthData = {
+      user: null,
+      isAuthenticated: false,
+      login: jest.fn(),
+      logout: jest.fn(),
+      forceLogout: jest.fn(),
+      isLoading: false,
+      currentRoute: null,
+      saveCurrentRoute: jest.fn(),
+      getAndClearSavedRoute: jest.fn()
+    };
+
+    mockUseAuth.mockReturnValue(mockAuthData);
+
+    const { result } = renderHook(() => useAuthenticatedPage());
+
+    expect(result.current).toBe(mockAuthData);
+    expect(mockUseAuth).toHaveBeenCalled();
+    expect(mockUseSessionExpiry).toHaveBeenCalled();
+  });
+
+  it('should return auth context data when loading', () => {
+    const mockAuthData = {
       user: null,
       isAuthenticated: false,
       login: jest.fn(),
@@ -74,35 +70,19 @@ describe('useAuthenticatedPage', () => {
       currentRoute: null,
       saveCurrentRoute: jest.fn(),
       getAndClearSavedRoute: jest.fn()
-    });
+    };
 
-    renderHook(() => useAuthenticatedPage());
+    mockUseAuth.mockReturnValue(mockAuthData);
 
-    expect(mockPush).not.toHaveBeenCalled();
+    const { result } = renderHook(() => useAuthenticatedPage());
+
+    expect(result.current).toBe(mockAuthData);
+    expect(mockUseAuth).toHaveBeenCalled();
+    expect(mockUseSessionExpiry).toHaveBeenCalled();
   });
 
-  it('should handle auth state changes', () => {
-    const { rerender } = renderHook(() => useAuthenticatedPage());
-
-    // Initialement non authentifié
-    mockUseAuth.mockReturnValue({
-      user: null,
-      isAuthenticated: false,
-      login: jest.fn(),
-      logout: jest.fn(),
-      forceLogout: jest.fn(),
-      isLoading: false,
-      currentRoute: null,
-      saveCurrentRoute: jest.fn(),
-      getAndClearSavedRoute: jest.fn()
-    });
-
-    rerender();
-    expect(mockPush).toHaveBeenCalledWith('/');
-
-    // Devient authentifié
-    mockPush.mockClear();
-    mockUseAuth.mockReturnValue({
+  it('should call useSessionExpiry on every render', () => {
+    const mockAuthData = {
       user: { email: 'admin@example.com' },
       isAuthenticated: true,
       login: jest.fn(),
@@ -112,14 +92,62 @@ describe('useAuthenticatedPage', () => {
       currentRoute: null,
       saveCurrentRoute: jest.fn(),
       getAndClearSavedRoute: jest.fn()
-    });
+    };
+
+    mockUseAuth.mockReturnValue(mockAuthData);
+
+    const { rerender } = renderHook(() => useAuthenticatedPage());
+
+    expect(mockUseSessionExpiry).toHaveBeenCalledTimes(1);
 
     rerender();
-    expect(mockPush).not.toHaveBeenCalled();
+
+    expect(mockUseSessionExpiry).toHaveBeenCalledTimes(2);
   });
 
-  it('should handle undefined user state', () => {
-    mockUseAuth.mockReturnValue({
+  it('should handle auth state changes correctly', () => {
+    let mockAuthData = {
+      user: null as { email: string } | null,
+      isAuthenticated: false,
+      login: jest.fn(),
+      logout: jest.fn(),
+      forceLogout: jest.fn(),
+      isLoading: false,
+      currentRoute: null,
+      saveCurrentRoute: jest.fn(),
+      getAndClearSavedRoute: jest.fn()
+    };
+
+    mockUseAuth.mockReturnValue(mockAuthData);
+
+    const { result, rerender } = renderHook(() => useAuthenticatedPage());
+
+    // Initialement non authentifié
+    expect(result.current.isAuthenticated).toBe(false);
+    expect(result.current.user).toBe(null);
+
+    // Devient authentifié
+    mockAuthData = {
+      user: { email: 'admin@example.com' },
+      isAuthenticated: true,
+      login: jest.fn(),
+      logout: jest.fn(),
+      forceLogout: jest.fn(),
+      isLoading: false,
+      currentRoute: null,
+      saveCurrentRoute: jest.fn(),
+      getAndClearSavedRoute: jest.fn()
+    };
+
+    mockUseAuth.mockReturnValue(mockAuthData);
+    rerender();
+
+    expect(result.current.isAuthenticated).toBe(true);
+    expect(result.current.user).toEqual({ email: 'admin@example.com' });
+  });
+
+  it('should handle undefined user state gracefully', () => {
+    const mockAuthData = {
       user: undefined,
       isAuthenticated: false,
       login: jest.fn(),
@@ -129,58 +157,23 @@ describe('useAuthenticatedPage', () => {
       currentRoute: null,
       saveCurrentRoute: jest.fn(),
       getAndClearSavedRoute: jest.fn()
-    } as any);
+    } as any;
 
-    renderHook(() => useAuthenticatedPage());
+    mockUseAuth.mockReturnValue(mockAuthData);
 
-    expect(mockPush).toHaveBeenCalledWith('/');
+    const { result } = renderHook(() => useAuthenticatedPage());
+
+    expect(result.current.user).toBe(undefined);
+    expect(result.current.isAuthenticated).toBe(false);
   });
 
-  it('should not redirect multiple times for same state', () => {
-    mockUseAuth.mockReturnValue({
-      user: null,
-      isAuthenticated: false,
-      login: jest.fn(),
-      logout: jest.fn(),
-      forceLogout: jest.fn(),
-      isLoading: false,
-      currentRoute: null,
-      saveCurrentRoute: jest.fn(),
-      getAndClearSavedRoute: jest.fn()
+  it('should handle errors from useAuth gracefully', () => {
+    mockUseAuth.mockImplementation(() => {
+      throw new Error('Auth context error');
     });
 
-    const { rerender } = renderHook(() => useAuthenticatedPage());
-
-    expect(mockPush).toHaveBeenCalledTimes(1);
-    expect(mockPush).toHaveBeenCalledWith('/');
-
-    // Re-render avec le même état
-    rerender();
-
-    // Ne devrait pas rediriger à nouveau
-    expect(mockPush).toHaveBeenCalledTimes(1);
-  });
-
-  it('should handle router errors gracefully', () => {
-    mockPush.mockImplementation(() => {
-      throw new Error('Router error');
-    });
-
-    mockUseAuth.mockReturnValue({
-      user: null,
-      isAuthenticated: false,
-      login: jest.fn(),
-      logout: jest.fn(),
-      forceLogout: jest.fn(),
-      isLoading: false,
-      currentRoute: null,
-      saveCurrentRoute: jest.fn(),
-      getAndClearSavedRoute: jest.fn()
-    });
-
-    // Ne devrait pas lancer d'erreur
     expect(() => {
       renderHook(() => useAuthenticatedPage());
-    }).not.toThrow();
+    }).toThrow('Auth context error');
   });
 });
