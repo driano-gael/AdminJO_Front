@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+﻿import { render, screen, fireEvent } from '@testing-library/react';
 import BackToDashboardButton from '@/components/shared/BackToDashboardButton';
 import { useRouter } from 'next/navigation';
 
@@ -57,7 +57,7 @@ describe('BackToDashboardButton', () => {
     expect(button).not.toHaveClass('text-blue-600');
   });
 
-  it('should navigate to dashboard when clicked', () => {
+  it('should navigate to dashboard quand cliquÃ©', () => {
     render(<BackToDashboardButton />);
 
     const button = screen.getByRole('button', { name: '⬅️ Accueil' });
@@ -83,7 +83,7 @@ describe('BackToDashboardButton', () => {
     expect(mockPush).toHaveBeenCalledWith('/dashboard');
   });
 
-  it('should handle multiple clicks correctly', () => {
+  it('should handle multiple clicks correctement', () => {
     render(<BackToDashboardButton />);
 
     const button = screen.getByRole('button', { name: '⬅️ Accueil' });

@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+﻿import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import EpreuvesHeader from '../../../../src/components/componentsEvenement/epreuve/EpreuvesHeader';
 
@@ -25,7 +25,7 @@ describe('EpreuvesHeader', () => {
       expect(screen.getByText('🥇 🥈 🥉 Gestion des Épreuves')).toBeInTheDocument();
     });
 
-    it('should render create button', () => {
+    it('should render bouton de crÃ©ation', () => {
       render(<EpreuvesHeader {...defaultProps} />);
       
       const createButton = screen.getByText('+ Nouvelle Épreuve');
@@ -47,7 +47,7 @@ describe('EpreuvesHeader', () => {
   });
 
   describe('User Interactions', () => {
-    it('should call onCreateClick when create button is clicked', () => {
+    it('should call onCreateClick when create bouton est cliquÃ©', () => {
       const mockOnCreateClick = jest.fn();
       render(<EpreuvesHeader onCreateClick={mockOnCreateClick} />);
       
@@ -57,7 +57,7 @@ describe('EpreuvesHeader', () => {
       expect(mockOnCreateClick).toHaveBeenCalledTimes(1);
     });
 
-    it('should handle multiple rapid clicks on create button', () => {
+    it('should handle multiple rapid clicks on bouton de crÃ©ation', () => {
       const mockOnCreateClick = jest.fn();
       render(<EpreuvesHeader onCreateClick={mockOnCreateClick} />);
       
@@ -98,7 +98,7 @@ describe('EpreuvesHeader', () => {
       expect(title).toHaveClass('text-3xl', 'font-bold', 'text-gray-900');
     });
 
-    it('should have correct create button styling', () => {
+    it('should have correct bouton de crÃ©ation styling', () => {
       render(<EpreuvesHeader {...defaultProps} />);
       
       const createButton = screen.getByText('+ Nouvelle Épreuve');
@@ -110,7 +110,7 @@ describe('EpreuvesHeader', () => {
   });
 
   describe('Accessibility', () => {
-    it('should have accessible create button', () => {
+    it('should have accessible bouton de crÃ©ation', () => {
       render(<EpreuvesHeader {...defaultProps} />);
       
       const createButton = screen.getByRole('button', { name: '+ Nouvelle Épreuve' });
@@ -153,7 +153,7 @@ describe('EpreuvesHeader', () => {
       expect(container?.children[1]).toBe(title);
     });
 
-    it('should have create button on the right', () => {
+    it('should have bouton de crÃ©ation on the right', () => {
       render(<EpreuvesHeader {...defaultProps} />);
       
       const container = screen.getByRole('banner').firstElementChild;
@@ -190,7 +190,7 @@ describe('EpreuvesHeader', () => {
       expect(title.textContent).toContain('🥉');
     });
 
-    it('should have plus icon in create button', () => {
+    it('should have plus icon in bouton de crÃ©ation', () => {
       render(<EpreuvesHeader {...defaultProps} />);
       
       const createButton = screen.getByText('+ Nouvelle Épreuve');
@@ -199,14 +199,14 @@ describe('EpreuvesHeader', () => {
   });
 
   describe('Button States', () => {
-    it('should have hover effect on create button', () => {
+    it('should have hover effect on bouton de crÃ©ation', () => {
       render(<EpreuvesHeader {...defaultProps} />);
       
       const createButton = screen.getByText('+ Nouvelle Épreuve');
       expect(createButton).toHaveClass('hover:bg-blue-700');
     });
 
-    it('should have transition effect on create button', () => {
+    it('should have transition effect on bouton de crÃ©ation', () => {
       render(<EpreuvesHeader {...defaultProps} />);
       
       const createButton = screen.getByText('+ Nouvelle Épreuve');
@@ -215,7 +215,7 @@ describe('EpreuvesHeader', () => {
   });
 
   describe('Integration', () => {
-    it('should integrate properly with BackToEventsButton component', () => {
+    it('should integrate correctement with BackToEventsButton component', () => {
       render(<EpreuvesHeader {...defaultProps} />);
       
       expect(screen.getByTestId('back-to-events')).toBeInTheDocument();

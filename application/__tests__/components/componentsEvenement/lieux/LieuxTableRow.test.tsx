@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+﻿import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import LieuxTableRow from '@/components/componentsEvenement/lieux/LieuxTableRow';
 import { Lieu } from '@/types/sportEvenement/lieu';
@@ -32,7 +32,7 @@ describe('LieuxTableRow', () => {
     jest.clearAllMocks();
   });
 
-  it('should render lieu name correctly', () => {
+  it('should render lieu name correctement', () => {
     renderWithTable(
       <table>
         <tbody>
@@ -44,7 +44,7 @@ describe('LieuxTableRow', () => {
     expect(screen.getByText('Stade de France')).toBeInTheDocument();
   });
 
-  it('should render edit button', () => {
+  it("", () => {
     renderWithTable(
       <table>
         <tbody>
@@ -58,7 +58,7 @@ describe('LieuxTableRow', () => {
     expect(editButton).toHaveClass('text-blue-600', 'hover:text-blue-900');
   });
 
-  it('should render delete button', () => {
+  it('should render bouton de suppression', () => {
     renderWithTable(<LieuxTableRow {...defaultProps} />);
     
     const deleteButton = screen.getByText('Supprimer');
@@ -66,7 +66,7 @@ describe('LieuxTableRow', () => {
     expect(deleteButton).toHaveClass('text-red-600', 'hover:text-red-900');
   });
 
-  it('should call onEdit with lieu when edit button is clicked', () => {
+  it('should call onEdit with lieu when edit bouton est cliquÃ©', () => {
     renderWithTable(<LieuxTableRow {...defaultProps} />);
     
     const editButton = screen.getByText('Modifier');
@@ -76,7 +76,7 @@ describe('LieuxTableRow', () => {
     expect(mockOnEdit).toHaveBeenCalledWith(mockLieu);
   });
 
-  it('should call onDelete with lieu id when delete button is clicked', () => {
+  it('should call onDelete with lieu id when delete bouton est cliquÃ©', () => {
     renderWithTable(<LieuxTableRow {...defaultProps} />);
     
     const deleteButton = screen.getByText('Supprimer');
@@ -139,7 +139,7 @@ describe('LieuxTableRow', () => {
     expect(screen.getByText('Centre Nautique Olympique de Paris La Défense Arena Nanterre Hauts-de-Seine')).toBeInTheDocument();
   });
 
-  it('should have correct table row structure', () => {
+  it('should have correct ligne de tableau structure', () => {
     renderWithTable(
       <table>
         <tbody>

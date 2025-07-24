@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import EvenementsManagement from '@/components/componentsEvenement/evenements/EvenementsManagement';
 import { useEventsManagement } from '@/hooks/useEvenementManagement';
@@ -166,7 +166,7 @@ describe('EvenementsManagement', () => {
     expect(screen.getByText('Event 2')).toBeInTheDocument();
   });
 
-  it('should open modal when create button is clicked', () => {
+  it('should open modal when create bouton est cliquÃ©', () => {
     render(<EvenementsManagement />);
 
     const createButton = screen.getByText('Créer Événement');
@@ -175,7 +175,7 @@ describe('EvenementsManagement', () => {
     expect(screen.getByTestId('event-modal')).toBeInTheDocument();
   });
 
-  it('should open modal when edit button is clicked', () => {
+  it('should open modal when edit bouton est cliquÃ©', () => {
     render(<EvenementsManagement />);
 
     const editButton = screen.getAllByText('Modifier')[0];

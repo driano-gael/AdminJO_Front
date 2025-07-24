@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+﻿import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import EvenementEpreuves from '../../../../src/components/componentsEvenement/evenements/EvenementEpreuves';
 import { Epreuve } from '../../../../src/types/sportEvenement/epreuve';
@@ -47,7 +47,7 @@ describe('EvenementEpreuves', () => {
   });
 
   describe('Single Epreuve', () => {
-    it('should render single epreuve correctly', () => {
+    it('should render single epreuve correctement', () => {
       const singleEpreuve = [mockEpreuves[0]];
       
       render(<EvenementEpreuves epreuves={singleEpreuve} />);
@@ -157,7 +157,7 @@ describe('EvenementEpreuves', () => {
   });
 
   describe('Content Display', () => {
-    it('should display epreuve libelles correctly', () => {
+    it('should display epreuve libelles correctement', () => {
       render(<EvenementEpreuves epreuves={mockEpreuves} />);
       
       mockEpreuves.forEach(epreuve => {
@@ -165,7 +165,7 @@ describe('EvenementEpreuves', () => {
       });
     });
 
-    it('should display discipline names correctly', () => {
+    it('should display discipline names correctement', () => {
       render(<EvenementEpreuves epreuves={mockEpreuves} />);
       
       const uniqueDisciplines = [...new Set(mockEpreuves.map(e => e.discipline?.nom))];
@@ -299,7 +299,7 @@ describe('EvenementEpreuves', () => {
       expect(screen.getByText('100m Sprint')).toBeInTheDocument();
     });
 
-    it('should handle prop changes correctly', () => {
+    it('should handle prop changes correctement', () => {
       const { rerender } = render(<EvenementEpreuves epreuves={[mockEpreuves[0]]} />);
       
       expect(screen.getByText('100m Sprint')).toBeInTheDocument();

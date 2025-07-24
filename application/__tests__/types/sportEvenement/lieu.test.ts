@@ -1,4 +1,4 @@
-import { Lieu } from '@/types/sportEvenement/lieu';
+﻿import { Lieu } from '@/types/sportEvenement/lieu';
 
 describe('Lieu interface', () => {
   it('should define the correct structure for a lieu', () => {

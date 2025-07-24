@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import LoginAdminForm from '@/components/connexion/loginAdminForm';
 import { useAuth } from '@/contexts/authContext';
@@ -46,7 +46,7 @@ describe('LoginAdminForm', () => {
     });
   });
 
-  it('should render login form correctly', () => {
+  it('should render login form correctement', () => {
     render(<LoginAdminForm />);
 
     expect(screen.getByRole('heading', { name: /ticket jo 2024 administration/i })).toBeInTheDocument();
@@ -208,7 +208,7 @@ describe('LoginAdminForm', () => {
     });
   });
 
-  it('should disable submit button during loading', async () => {
+  it('should disable bouton de soumission during loading', async () => {
     let resolveLogin: (value?: any) => void;
     const loginPromise = new Promise((resolve) => {
       resolveLogin = resolve;
@@ -250,7 +250,7 @@ describe('LoginAdminForm', () => {
     expect(toggleButton).toHaveAttribute('tabIndex', '-1');
   });
 
-  it('should render password toggle icons correctly', () => {
+  it('should render password toggle icons correctement', () => {
     render(<LoginAdminForm />);
     
     const toggleButton = screen.getByLabelText('Afficher le mot de passe');

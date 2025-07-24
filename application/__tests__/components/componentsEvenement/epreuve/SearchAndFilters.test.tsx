@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+﻿import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import SearchAndFilters from '../../../../src/components/componentsEvenement/epreuve/SearchAndFilters';
 import { Discipline } from '../../../../src/types/sportEvenement/discipline';

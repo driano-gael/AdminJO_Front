@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+﻿import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import EvenementsStatus from '../../../../src/components/componentsEvenement/evenements/EvenementsStatus';
 
@@ -46,7 +46,7 @@ describe('EvenementsStatus', () => {
   });
 
   describe('Status Variations', () => {
-    it('should render "À venir" status correctly', () => {
+    it('should render "À venir" status correctement', () => {
       mockGetEventStatus.mockReturnValue('À venir');
       mockGetStatusColor.mockReturnValue('bg-blue-100 text-blue-800');
 
@@ -57,7 +57,7 @@ describe('EvenementsStatus', () => {
       expect(statusElement).toHaveClass('bg-blue-100', 'text-blue-800');
     });
 
-    it('should render "En cours" status correctly', () => {
+    it('should render "En cours" status correctement', () => {
       mockGetEventStatus.mockReturnValue('En cours');
       mockGetStatusColor.mockReturnValue('bg-green-100 text-green-800');
 
@@ -68,7 +68,7 @@ describe('EvenementsStatus', () => {
       expect(statusElement).toHaveClass('bg-green-100', 'text-green-800');
     });
 
-    it('should render "Terminé" status correctly', () => {
+    it('should render "Terminé" status correctement', () => {
       mockGetEventStatus.mockReturnValue('Terminé');
       mockGetStatusColor.mockReturnValue('bg-gray-100 text-gray-800');
 
@@ -79,7 +79,7 @@ describe('EvenementsStatus', () => {
       expect(statusElement).toHaveClass('bg-gray-100', 'text-gray-800');
     });
 
-    it('should render "Reporté" status correctly', () => {
+    it('should render "Reporté" status correctement', () => {
       mockGetEventStatus.mockReturnValue('Reporté');
       mockGetStatusColor.mockReturnValue('bg-yellow-100 text-yellow-800');
 
@@ -90,7 +90,7 @@ describe('EvenementsStatus', () => {
       expect(statusElement).toHaveClass('bg-yellow-100', 'text-yellow-800');
     });
 
-    it('should render "Annulé" status correctly', () => {
+    it('should render "Annulé" status correctement', () => {
       mockGetEventStatus.mockReturnValue('Annulé');
       mockGetStatusColor.mockReturnValue('bg-red-100 text-red-800');
 
@@ -130,7 +130,7 @@ describe('EvenementsStatus', () => {
       expect(statusElement).toHaveClass('bg-purple-100', 'text-purple-800', 'border-purple-200');
     });
 
-    it('should combine base classes with color classes correctly', () => {
+    it('should combine base classes with color classes correctement', () => {
       mockGetEventStatus.mockReturnValue('Custom Status');
       mockGetStatusColor.mockReturnValue('bg-indigo-100 text-indigo-800');
 
@@ -274,7 +274,7 @@ describe('EvenementsStatus', () => {
       // Re-render with same props
       rerender(<EvenementsStatus date="2024-07-28" time="20:30" />);
       
-      // Should be called again since React doesn't memoize by default
+      // Should be called again since React doesn't memoize par dÃ©faut
       expect(mockGetEventStatus).toHaveBeenCalledTimes(1);
       expect(mockGetStatusColor).toHaveBeenCalledTimes(1);
     });

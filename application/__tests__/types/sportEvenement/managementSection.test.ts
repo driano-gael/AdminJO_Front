@@ -1,4 +1,4 @@
-import { ManagementSection, managementSections } from '@/types/sportEvenement/managementSection';
+﻿import { ManagementSection, managementSections } from '@/types/sportEvenement/managementSection';
 
 describe('ManagementSection interface', () => {
   it('should define the correct structure for a management section', () => {

@@ -1,4 +1,4 @@
-import { getEventStatus } from '@/utils/evenement/statutEvenement';
+﻿import { getEventStatus } from '@/utils/evenement/statutEvenement';
 
 describe('getEventStatus', () => {
   beforeEach(() => {

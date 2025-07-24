@@ -1,4 +1,4 @@
-import { Epreuve } from '@/types/sportEvenement/epreuve';
+﻿import { Epreuve } from '@/types/sportEvenement/epreuve';
 import { Discipline } from '@/types/sportEvenement/discipline';
 import { Evenement } from '@/types/sportEvenement/evenement';
 import { Lieu } from '@/types/sportEvenement/lieu';

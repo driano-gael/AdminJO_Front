@@ -1,4 +1,4 @@
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+﻿import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import LieuModal from '@/components/componentsEvenement/lieux/LieuModal';
 import { Lieu } from '@/types/sportEvenement/lieu';
@@ -26,7 +26,7 @@ describe('LieuModal', () => {
   });
 
   describe('Creation Mode', () => {
-    it('should render creation modal correctly', () => {
+    it('should render creation modal correctement', () => {
       render(<LieuModal {...defaultProps} />);
       
       expect(screen.getByText('Créer un nouveau lieu')).toBeInTheDocument();
@@ -41,7 +41,7 @@ describe('LieuModal', () => {
       expect(input).toHaveValue('');
     });
 
-    it('should call onSave with form data when submitted', async () => {
+    it('should call onSave with form data quand soumis', async () => {
       render(<LieuModal {...defaultProps} />);
       
       const input = screen.getByPlaceholderText('Ex: Stade de France');
@@ -77,7 +77,7 @@ describe('LieuModal', () => {
   });
 
   describe('Edit Mode', () => {
-    it('should render edit modal correctly', () => {
+    it('should render edit modal correctement', () => {
       render(<LieuModal {...defaultProps} lieu={mockLieu} />);
       
       expect(screen.getByText('Modifier le lieu')).toBeInTheDocument();
@@ -156,7 +156,7 @@ describe('LieuModal', () => {
   });
 
   describe('Error Handling', () => {
-    it('should display error message when error exists', () => {
+    it("", () => {
       const errorMessage = 'Le lieu existe déjà';
       render(<LieuModal {...defaultProps} error={errorMessage} />);
       
@@ -172,7 +172,7 @@ describe('LieuModal', () => {
   });
 
   describe('Form Interactions', () => {
-    it('should call onClose when cancel button is clicked', () => {
+    it('should call onClose when cancel bouton est cliquÃ©', () => {
       render(<LieuModal {...defaultProps} />);
       
       const cancelButton = screen.getByText('Annuler');
@@ -191,7 +191,7 @@ describe('LieuModal', () => {
       expect(mockOnSave).toHaveBeenCalledWith({ nom: 'Roland-Garros' });
     });
 
-    it('should update input value as user types', () => {
+    it('should update input value as utilisateur tape', () => {
       render(<LieuModal {...defaultProps} />);
       
       const input = screen.getByPlaceholderText('Ex: Stade de France');

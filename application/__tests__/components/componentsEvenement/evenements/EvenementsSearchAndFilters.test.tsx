@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+﻿import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import EvenementsSearchAndFilters from '../../../../src/components/componentsEvenement/evenements/EvenementsSearchAndFilters';
 import { Epreuve } from '../../../../src/types/sportEvenement/epreuve';
@@ -188,7 +188,7 @@ describe('EvenementsSearchAndFilters', () => {
   });
 
   describe('Reset Functionality', () => {
-    it('should call all reset functions when reset button is clicked', () => {
+    it('should call all reset functions when reset bouton est cliquÃ©', () => {
       render(<EvenementsSearchAndFilters {...defaultProps} />);
       
       const resetButton = screen.getByText('Réinitialiser');

@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+﻿import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import EpreuvesTableRow from '../../../../src/components/componentsEvenement/epreuve/EpreuvesTableRow';
 import { Epreuve } from '../../../../src/types/sportEvenement/epreuve';
@@ -21,7 +21,7 @@ describe('EpreuvesTableRow', () => {
   });
 
   describe('Basic Rendering', () => {
-    it('should render epreuve information correctly', () => {
+    it('should render epreuve information correctement', () => {
       render(
         <table>
           <tbody>
@@ -47,7 +47,7 @@ describe('EpreuvesTableRow', () => {
       expect(screen.getByText('Supprimer')).toBeInTheDocument();
     });
 
-    it('should render as table row', () => {
+    it('should render as ligne de tableau', () => {
       render(
         <table>
           <tbody>
@@ -61,7 +61,7 @@ describe('EpreuvesTableRow', () => {
   });
 
   describe('User Interactions', () => {
-    it('should call onEdit when modify button is clicked', () => {
+    it('should call onEdit when modify bouton est cliquÃ©', () => {
       const mockOnEdit = jest.fn();
       render(
         <table>
@@ -78,7 +78,7 @@ describe('EpreuvesTableRow', () => {
       expect(mockOnEdit).toHaveBeenCalledWith(mockEpreuve);
     });
 
-    it('should call onDelete when delete button is clicked', () => {
+    it('should call onDelete when delete bouton est cliquÃ©', () => {
       const mockOnDelete = jest.fn();
       render(
         <table>
@@ -95,7 +95,7 @@ describe('EpreuvesTableRow', () => {
       expect(mockOnDelete).toHaveBeenCalledWith(mockEpreuve.id);
     });
 
-    it('should handle multiple rapid clicks on edit button', () => {
+    it("", () => {
       const mockOnEdit = jest.fn();
       render(
         <table>
@@ -113,7 +113,7 @@ describe('EpreuvesTableRow', () => {
       expect(mockOnEdit).toHaveBeenCalledTimes(3);
     });
 
-    it('should handle multiple rapid clicks on delete button', () => {
+    it('should handle multiple rapid clicks on bouton de suppression', () => {
       const mockOnDelete = jest.fn();
       render(
         <table>

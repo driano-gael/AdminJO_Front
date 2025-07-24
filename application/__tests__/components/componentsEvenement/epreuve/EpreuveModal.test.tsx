@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import EpreuveModal from '@/components/componentsEvenement/epreuve/EpreuveModal';
@@ -58,7 +58,7 @@ describe('EpreuveModal', () => {
       expect(screen.getByText('Modifier')).toBeInTheDocument();
     });
 
-    it('should display error message when error is provided', () => {
+    it("", () => {
       const errorMessage = 'Une erreur est survenue';
       render(<EpreuveModal {...defaultProps} error={errorMessage} />);
       
@@ -84,7 +84,7 @@ describe('EpreuveModal', () => {
       expect(libelleInput).toHaveValue('Saut en hauteur');
     });
 
-    it('should update discipline select when changed', () => {
+    it('should update discipline select quand modifiÃ©', () => {
       render(<EpreuveModal {...defaultProps} />);
 
       const disciplineSelect = screen.getByRole('combobox');
@@ -116,7 +116,7 @@ describe('EpreuveModal', () => {
   });
 
   describe('Form Submission', () => {
-    it('should call onSave with correct data when form is submitted', () => {
+    it('should call onSave with correct data when formulaire est soumis', () => {
       render(<EpreuveModal {...defaultProps} />);
 
       const libelleInput = screen.getByPlaceholderText('Ex: 100m sprint, Saut en hauteur...');
@@ -165,7 +165,7 @@ describe('EpreuveModal', () => {
   });
 
   describe('Loading State', () => {
-    it('should show loading state on submit button when loading', () => {
+    it('should show loading state Ã  la soumission button when loading', () => {
       render(<EpreuveModal {...defaultProps} loading={true} />);
       
       expect(screen.getByText('Création...')).toBeInTheDocument();
@@ -179,7 +179,7 @@ describe('EpreuveModal', () => {
       expect(screen.queryByText('Modifier')).not.toBeInTheDocument();
     });
 
-    it('should disable cancel button when loading', () => {
+    it("", () => {
       render(<EpreuveModal {...defaultProps} loading={true} />);
       
       const cancelButton = screen.getByText('Annuler');
@@ -188,7 +188,7 @@ describe('EpreuveModal', () => {
   });
 
   describe('Button Interactions', () => {
-    it('should call onClose when cancel button is clicked', () => {
+    it('should call onClose when cancel bouton est cliquÃ©', () => {
       render(<EpreuveModal {...defaultProps} />);
 
       const cancelButton = screen.getByText('Annuler');
@@ -197,7 +197,7 @@ describe('EpreuveModal', () => {
       expect(mockOnClose).toHaveBeenCalled();
     });
 
-    it('should enable submit button when form is valid', () => {
+    it('should enable bouton de soumission when form is valid', () => {
       render(<EpreuveModal {...defaultProps} />);
 
       const libelleInput = screen.getByPlaceholderText('Ex: 100m sprint, Saut en hauteur...');
@@ -259,7 +259,7 @@ describe('EpreuveModal', () => {
   });
 
   describe('Error Handling', () => {
-    it('should display validation error with proper styling', () => {
+    it('should display erreur de validation with proper styling', () => {
       const errorMessage = 'Erreur de validation';
       render(<EpreuveModal {...defaultProps} error={errorMessage} />);
 

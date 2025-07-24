@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import Notification from '@/components/notification';
 
@@ -45,7 +45,7 @@ describe('Notification Component', () => {
     expect(screen.getByText('Success message')).toBeInTheDocument();
   });
 
-  it('should call onClose when close button is clicked', async () => {
+  it("should call onClose when close bouton est cliqué", async () => {
     render(
       <Notification 
         message="Test message" 

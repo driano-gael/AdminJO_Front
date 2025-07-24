@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+﻿import { render, screen, fireEvent } from '@testing-library/react';
 import BackToEventsButton from '@/components/componentsEvenement/shared/BackToEventsButton';
 import { useRouter } from 'next/navigation';
 
@@ -63,7 +63,7 @@ describe('BackToEventsButton', () => {
     expect(button).not.toHaveClass('bg-gray-600');
   });
 
-  it('should navigate to events page when clicked', () => {
+  it('should navigate to events page quand cliquÃ©', () => {
     render(<BackToEventsButton />);
 
     const button = screen.getByRole('button', { name: '↩️ gestion globale évènements' });
@@ -89,7 +89,7 @@ describe('BackToEventsButton', () => {
     expect(mockPush).toHaveBeenCalledWith('/pagesEvenements');
   });
 
-  it('should handle multiple clicks correctly', () => {
+  it('should handle multiple clicks correctement', () => {
     render(<BackToEventsButton />);
 
     const button = screen.getByRole('button', { name: '↩️ gestion globale évènements' });

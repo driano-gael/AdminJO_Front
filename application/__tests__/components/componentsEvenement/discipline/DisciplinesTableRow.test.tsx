@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+﻿import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import DisciplinesTableRow from '../../../../src/components/componentsEvenement/discipline/DisciplinesTableRow';
 import { Discipline } from '../../../../src/types/sportEvenement/discipline';
@@ -23,7 +23,7 @@ describe('DisciplinesTableRow', () => {
   });
 
   describe('Rendering', () => {
-    it('should render discipline name correctly', () => {
+    it('should render discipline name correctement', () => {
       render(
         <table>
           <tbody>
@@ -48,7 +48,7 @@ describe('DisciplinesTableRow', () => {
       expect(screen.getByText('Supprimer')).toBeInTheDocument();
     });
 
-    it('should have correct CSS classes for table row', () => {
+    it('should have correct CSS classes for ligne de tableau', () => {
       const { container } = render(
         <table>
           <tbody>
@@ -92,7 +92,7 @@ describe('DisciplinesTableRow', () => {
   });
 
   describe('User Interactions', () => {
-    it('should call onEdit with discipline when edit button is clicked', () => {
+    it('should call onEdit with discipline when edit bouton est cliquÃ©', () => {
       render(
         <table>
           <tbody>
@@ -108,7 +108,7 @@ describe('DisciplinesTableRow', () => {
       expect(mockOnEdit).toHaveBeenCalledWith(mockDiscipline);
     });
 
-    it('should call onDelete with discipline id when delete button is clicked', () => {
+    it('should call onDelete with discipline id when delete bouton est cliquÃ©', () => {
       render(
         <table>
           <tbody>
@@ -142,7 +142,7 @@ describe('DisciplinesTableRow', () => {
   });
 
   describe('Different Discipline Data', () => {
-    it('should render discipline with long name correctly', () => {
+    it('should render discipline with long name correctement', () => {
       const longNameDiscipline: Discipline = {
         id: 2,
         nom: 'Basketball Féminin Catégorie Junior'
@@ -288,7 +288,7 @@ describe('DisciplinesTableRow', () => {
   });
 
   describe('Edge Cases', () => {
-    it('should handle multiple rapid clicks on edit button', () => {
+    it("", () => {
       render(
         <table>
           <tbody>
@@ -308,7 +308,7 @@ describe('DisciplinesTableRow', () => {
       expect(mockOnEdit).toHaveBeenCalledWith(mockDiscipline);
     });
 
-    it('should handle multiple rapid clicks on delete button', () => {
+    it('should handle multiple rapid clicks on bouton de suppression', () => {
       render(
         <table>
           <tbody>

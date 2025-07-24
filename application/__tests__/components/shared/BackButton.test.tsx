@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+﻿import { render, screen, fireEvent } from '@testing-library/react';
 import BackButton from '@/components/shared/BackButton';
 import { useRouter } from 'next/navigation';
 
@@ -58,7 +58,7 @@ describe('BackButton', () => {
     expect(button).not.toHaveClass('text-blue-600');
   });
 
-  it('should navigate to specified URL when clicked', () => {
+  it('should navigate to specified URL quand cliquÃ©', () => {
     render(<BackButton url="/custom-page" />);
 
     const button = screen.getByRole('button', { name: '← Retour' });
@@ -100,7 +100,7 @@ describe('BackButton', () => {
     expect(mockPush).toHaveBeenCalledWith('/test');
   });
 
-  it('should handle multiple clicks correctly', () => {
+  it('should handle multiple clicks correctement', () => {
     render(<BackButton url="/test" />);
 
     const button = screen.getByRole('button', { name: '← Retour' });
@@ -184,7 +184,7 @@ describe('BackButton', () => {
   });
 
   it('should have proper component interface', () => {
-    // Test component renders correctly with required props
+    // Test component renders correctement with required props
     const { container } = render(<BackButton url="/test" />);
     expect(container.firstChild).toBeInTheDocument();
   });

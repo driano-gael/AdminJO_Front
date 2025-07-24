@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+﻿import { render, screen } from '@testing-library/react';
 import Breadcrumb from '@/components/navigation/Breadcrumb';
 
 // Mock Next.js Link component

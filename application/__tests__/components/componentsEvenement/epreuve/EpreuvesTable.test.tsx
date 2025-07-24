@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+﻿import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import EpreuvesTable from '../../../../src/components/componentsEvenement/epreuve/EpreuvesTable';
 import { Epreuve } from '../../../../src/types/sportEvenement/epreuve';
@@ -129,10 +129,10 @@ describe('EpreuvesTable', () => {
   });
 
   describe('Error State', () => {
-    it('should display error message when error exists', () => {
-      render(<EpreuvesTable {...defaultProps} error="Test error message" />);
+    it("should display message d'erreur when error exists", () => {
+      render(<EpreuvesTable {...defaultProps} error="Test message d'erreur" />);
       
-      expect(screen.getByText('Test error message')).toBeInTheDocument();
+      expect(screen.getByText("Test message d'erreur")).toBeInTheDocument();
     });
 
     it('should still show table content when error exists', () => {
@@ -150,7 +150,7 @@ describe('EpreuvesTable', () => {
   });
 
   describe('User Interactions', () => {
-    it('should call onRefresh when refresh button is clicked', () => {
+    it('should call onRefresh when refresh bouton est cliquÃ©', () => {
       const mockOnRefresh = jest.fn();
       render(<EpreuvesTable {...defaultProps} onRefresh={mockOnRefresh} />);
       
@@ -160,7 +160,7 @@ describe('EpreuvesTable', () => {
       expect(mockOnRefresh).toHaveBeenCalledTimes(1);
     });
 
-    it('should call onEdit when edit button is clicked', () => {
+    it('should call onEdit when edit bouton est cliquÃ©', () => {
       const mockOnEdit = jest.fn();
       render(<EpreuvesTable {...defaultProps} onEdit={mockOnEdit} />);
       
@@ -170,7 +170,7 @@ describe('EpreuvesTable', () => {
       expect(mockOnEdit).toHaveBeenCalledWith(mockEpreuves[0]);
     });
 
-    it('should call onDelete when delete button is clicked', () => {
+    it('should call onDelete when delete bouton est cliquÃ©', () => {
       const mockOnDelete = jest.fn();
       render(<EpreuvesTable {...defaultProps} onDelete={mockOnDelete} />);
       
@@ -248,7 +248,7 @@ describe('EpreuvesTable', () => {
       expect(refreshButton).toBeInTheDocument();
     });
 
-    it('should have proper alert role for error messages', () => {
+    it("", () => {
       render(<EpreuvesTable {...defaultProps} error="Test error" />);
       
       expect(screen.getByText('Test error')).toBeInTheDocument();

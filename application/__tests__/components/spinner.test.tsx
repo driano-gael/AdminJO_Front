@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { render, screen } from '@testing-library/react';
 import Spinner from '@/components/spinner';
 
@@ -52,7 +52,7 @@ describe('Spinner Component', () => {
     expect(spinner).toHaveAttribute('aria-label', 'Chargement en cours');
   });
 
-  it('should render with medium size by default', () => {
+  it('should render with medium size par dÃ©faut', () => {
     render(<Spinner />);
     
     const spinner = screen.getByRole('status');
@@ -60,7 +60,7 @@ describe('Spinner Component', () => {
     // La taille par défaut est medium selon l'interface
   });
 
-  it('should render with blue color by default', () => {
+  it('should render with blue color par dÃ©faut', () => {
     render(<Spinner />);
     
     const spinner = screen.getByRole('status');

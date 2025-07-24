@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+﻿import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import DisciplinesTable from '../../../../src/components/componentsEvenement/discipline/DisciplinesTable';
 import { Discipline } from '../../../../src/types/sportEvenement/discipline';
@@ -73,7 +73,7 @@ describe('DisciplinesTable', () => {
   });
 
   describe('Data Display', () => {
-    it('should render disciplines when provided', () => {
+    it('should render disciplines quand fourni', () => {
       render(<DisciplinesTable {...defaultProps} disciplines={mockDisciplines} />);
       
       expect(screen.getByTestId('discipline-row-1')).toBeInTheDocument();
@@ -150,7 +150,7 @@ describe('DisciplinesTable', () => {
   });
 
   describe('Error Handling', () => {
-    it('should display error message when error exists', () => {
+    it("", () => {
       render(<DisciplinesTable {...defaultProps} error="Erreur de chargement" />);
       
       expect(screen.getByText('Erreur de chargement')).toBeInTheDocument();
@@ -172,7 +172,7 @@ describe('DisciplinesTable', () => {
   });
 
   describe('Refresh Functionality', () => {
-    it('should call onRefresh when refresh button is clicked', () => {
+    it('should call onRefresh when refresh bouton est cliquÃ©', () => {
       render(<DisciplinesTable {...defaultProps} />);
       
       const refreshButton = screen.getByText('🔄 Actualiser');
@@ -181,7 +181,7 @@ describe('DisciplinesTable', () => {
       expect(mockOnRefresh).toHaveBeenCalledTimes(1);
     });
 
-    it('should not call onRefresh when button is disabled', () => {
+    it('should not call onRefresh when button est dÃ©sactivÃ©', () => {
       render(<DisciplinesTable {...defaultProps} loading={true} />);
       
       const refreshButton = screen.getByText('🔄 Actualiser');

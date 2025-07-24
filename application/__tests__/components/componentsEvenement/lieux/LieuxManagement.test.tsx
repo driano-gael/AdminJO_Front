@@ -1,4 +1,4 @@
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+﻿import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import LieuxManagement from '../../../../src/components/componentsEvenement/lieux/LieuxManagement';
 import { Lieu } from '../../../../src/types/sportEvenement/lieu';
@@ -130,7 +130,7 @@ describe('LieuxManagement', () => {
   });
 
   describe('Modal Management', () => {
-    it('should open modal in create mode when header create button is clicked', () => {
+    it('should open modal in create mode when header create bouton est cliquÃ©', () => {
       render(<LieuxManagement />);
       
       const createButton = screen.getByText('Create Lieu');
@@ -140,7 +140,7 @@ describe('LieuxManagement', () => {
       expect(screen.getByText('Create Mode')).toBeInTheDocument();
     });
 
-    it('should open modal in edit mode when table edit button is clicked', () => {
+    it('should open modal in edit mode when table edit bouton est cliquÃ©', () => {
       render(<LieuxManagement />);
       
       const editButton = screen.getAllByText('Edit')[0];
@@ -150,7 +150,7 @@ describe('LieuxManagement', () => {
       expect(screen.getByText('Edit Mode')).toBeInTheDocument();
     });
 
-    it('should close modal when close button is clicked', () => {
+    it('should close modal when close bouton est cliquÃ©', () => {
       render(<LieuxManagement />);
       
       // Open modal first
@@ -166,7 +166,7 @@ describe('LieuxManagement', () => {
   });
 
   describe('Lieu Operations', () => {
-    it('should handle lieu creation successfully', async () => {
+    it('should handle lieu creation avec succÃ¨s', async () => {
       mockUseLieuxManagement.createLieu.mockResolvedValueOnce({ id: 3, nom: 'Test Lieu' });
       render(<LieuxManagement />);
       
@@ -190,7 +190,7 @@ describe('LieuxManagement', () => {
       });
     });
 
-    it('should handle lieu update successfully', async () => {
+    it('should handle lieu update avec succÃ¨s', async () => {
       mockUseLieuxManagement.updateLieu.mockResolvedValueOnce({ id: 1, nom: 'Test Lieu' });
       render(<LieuxManagement />);
       
@@ -213,7 +213,7 @@ describe('LieuxManagement', () => {
       });
     });
 
-    it('should handle lieu deletion successfully', async () => {
+    it('should handle lieu deletion avec succÃ¨s', async () => {
       mockUseLieuxManagement.deleteLieu.mockResolvedValueOnce(undefined);
       render(<LieuxManagement />);
       
@@ -295,7 +295,7 @@ describe('LieuxManagement', () => {
   });
 
   describe('Notification Management', () => {
-    it('should close notification when close button is clicked', async () => {
+    it('should close notification when close bouton est cliquÃ©', async () => {
       mockUseLieuxManagement.createLieu.mockResolvedValueOnce({ id: 3, nom: 'Test Lieu' });
       render(<LieuxManagement />);
       

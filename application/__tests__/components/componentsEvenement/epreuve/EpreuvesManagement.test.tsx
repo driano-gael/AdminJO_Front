@@ -1,4 +1,4 @@
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+﻿import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import EpreuvesManagement from '../../../../src/components/componentsEvenement/epreuve/EpreuvesManagement';
 import { Epreuve } from '../../../../src/types/sportEvenement/epreuve';
@@ -162,7 +162,7 @@ describe('EpreuvesManagement', () => {
   });
 
   describe('Modal Management', () => {
-    it('should open modal in create mode when header create button is clicked', () => {
+    it('should open modal in create mode when header create bouton est cliquÃ©', () => {
       render(<EpreuvesManagement />);
       
       const createButton = screen.getByText('Create Epreuve');
@@ -172,7 +172,7 @@ describe('EpreuvesManagement', () => {
       expect(screen.getByText('Create Mode')).toBeInTheDocument();
     });
 
-    it('should open modal in edit mode when table edit button is clicked', () => {
+    it('should open modal in edit mode when table edit bouton est cliquÃ©', () => {
       render(<EpreuvesManagement />);
       
       const editButton = screen.getAllByText('Edit')[0];
@@ -182,7 +182,7 @@ describe('EpreuvesManagement', () => {
       expect(screen.getByText('Edit Mode')).toBeInTheDocument();
     });
 
-    it('should close modal when close button is clicked', () => {
+    it('should close modal when close bouton est cliquÃ©', () => {
       render(<EpreuvesManagement />);
       
       // Open modal first
@@ -207,7 +207,7 @@ describe('EpreuvesManagement', () => {
   });
 
   describe('Epreuve Operations', () => {
-    it('should handle epreuve creation successfully', async () => {
+    it('should handle epreuve creation avec succÃ¨s', async () => {
       mockUseEpreuvesManagement.createEpreuve.mockResolvedValueOnce({ 
         id: 3, 
         libelle: 'Test Epreuve', 
@@ -238,7 +238,7 @@ describe('EpreuvesManagement', () => {
       });
     });
 
-    it('should handle epreuve update successfully', async () => {
+    it('should handle epreuve update avec succÃ¨s', async () => {
       mockUseEpreuvesManagement.updateEpreuve.mockResolvedValueOnce({ 
         id: 1, 
         libelle: 'Test Epreuve', 
@@ -268,7 +268,7 @@ describe('EpreuvesManagement', () => {
       });
     });
 
-    it('should handle epreuve deletion successfully', async () => {
+    it('should handle epreuve deletion avec succÃ¨s', async () => {
       mockUseEpreuvesManagement.deleteEpreuve.mockResolvedValueOnce(undefined);
       render(<EpreuvesManagement />);
       
@@ -377,7 +377,7 @@ describe('EpreuvesManagement', () => {
   });
 
   describe('Notification Management', () => {
-    it('should close notification when close button is clicked', async () => {
+    it('should close notification when close bouton est cliquÃ©', async () => {
       mockUseEpreuvesManagement.createEpreuve.mockResolvedValueOnce({ 
         id: 3, 
         libelle: 'Test Epreuve', 

@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import AuthGuard from '@/components/connexion/authGuard';
 import { useAuth } from '@/contexts/authContext';
@@ -52,7 +52,7 @@ describe('AuthGuard', () => {
     jest.restoreAllMocks();
   });
 
-  it('should show loading spinner when auth is loading', () => {
+  it('should show indicateur de chargement when auth is loading', () => {
     mockUseAuth.mockReturnValue({
       user: null,
       isAuthenticated: false,
@@ -312,7 +312,7 @@ describe('AuthGuard', () => {
     expect(screen.queryByTestId('protected-content')).not.toBeInTheDocument();
   });
 
-  it('should handle multiple children correctly', async () => {
+  it('should handle multiple children correctement', async () => {
     mockUseAuth.mockReturnValue({
       user: { email: 'admin@test.com' },
       isAuthenticated: true,

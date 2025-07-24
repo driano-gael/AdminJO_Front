@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+﻿import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import DisciplinesHeader from '../../../../src/components/componentsEvenement/discipline/DisciplinesHeader';
 
@@ -23,7 +23,7 @@ describe('DisciplinesHeader', () => {
     expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('🏃 Gestion des Disciplines');
   });
 
-  it('should render create button with correct text', () => {
+  it('should render bouton de crÃ©ation with correct text', () => {
     render(<DisciplinesHeader onCreateClick={mockOnCreateClick} />);
     
     const createButton = screen.getByText('+ Nouvelle Discipline');
@@ -37,7 +37,7 @@ describe('DisciplinesHeader', () => {
     expect(screen.getByTestId('back-to-events')).toBeInTheDocument();
   });
 
-  it('should call onCreateClick when create button is clicked', () => {
+  it('should call onCreateClick when create bouton est cliquÃ©', () => {
     render(<DisciplinesHeader onCreateClick={mockOnCreateClick} />);
     
     const createButton = screen.getByText('+ Nouvelle Discipline');
@@ -73,7 +73,7 @@ describe('DisciplinesHeader', () => {
     );
   });
 
-  it('should handle multiple clicks correctly', () => {
+  it('should handle multiple clicks correctement', () => {
     render(<DisciplinesHeader onCreateClick={mockOnCreateClick} />);
     
     const createButton = screen.getByText('+ Nouvelle Discipline');

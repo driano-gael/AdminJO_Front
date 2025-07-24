@@ -1,4 +1,4 @@
-import { buildHeaders, makeRequest } from '@/lib/api/core/httpHelpers';
+﻿import { buildHeaders, makeRequest } from '@/lib/api/core/httpHelpers';
 import { getAuthToken } from '@/lib/api/core/tokenHelpers';
 
 // Mock dependencies

@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+﻿import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import SearchAndFilters from '../../../../src/components/componentsEvenement/discipline/SearchAndFilters';
 
@@ -70,7 +70,7 @@ describe('SearchAndFilters', () => {
   });
 
   describe('User Interactions', () => {
-    it('should call onSearch when user types', () => {
+    it('should call onSearch when utilisateur tape', () => {
       render(<SearchAndFilters {...defaultProps} />);
 
       const searchInput = screen.getByRole('textbox');

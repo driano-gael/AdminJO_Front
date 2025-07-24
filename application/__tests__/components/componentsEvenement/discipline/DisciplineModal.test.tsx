@@ -1,4 +1,4 @@
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+﻿import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import DisciplineModal from '../../../../src/components/componentsEvenement/discipline/DisciplineModal';
 import { Discipline } from '../../../../src/types/sportEvenement/discipline';
@@ -53,7 +53,7 @@ describe('DisciplineModal', () => {
       expect(input).toHaveValue('');
     });
 
-    it('should call onSave with form data when submitted', async () => {
+    it('should call onSave with form data quand soumis', async () => {
       render(<DisciplineModal {...defaultProps} />);
       
       const input = screen.getByPlaceholderText('Ex: Athlétisme, Natation, Basketball...');
@@ -83,7 +83,7 @@ describe('DisciplineModal', () => {
       expect(input).toHaveValue('Athlétisme');
     });
 
-    it('should call onSave with updated data when submitted', async () => {
+    it('should call onSave with updated data quand soumis', async () => {
       render(<DisciplineModal {...defaultProps} discipline={mockDiscipline} />);
       
       const input = screen.getByPlaceholderText('Ex: Athlétisme, Natation, Basketball...');
@@ -160,13 +160,13 @@ describe('DisciplineModal', () => {
   });
 
   describe('Error Handling', () => {
-    it('should display error message when error exists', () => {
+    it("should display message d'erreur when error exists", () => {
       render(<DisciplineModal {...defaultProps} error="Une erreur s'est produite" />);
       
       expect(screen.getByText("Une erreur s'est produite")).toBeInTheDocument();
     });
 
-    it('should not display error message when error is null', () => {
+    it("should not display message d'erreur when error is null", () => {
       render(<DisciplineModal {...defaultProps} error={null} />);
       
       const errorElement = screen.queryByText(/erreur/i);
@@ -182,7 +182,7 @@ describe('DisciplineModal', () => {
   });
 
   describe('Modal Interaction', () => {
-    it('should call onClose when cancel button is clicked', () => {
+    it('should call onClose when cancel bouton est cliquÃ©', () => {
       render(<DisciplineModal {...defaultProps} />);
       
       const cancelButton = screen.getByText('Annuler');
@@ -234,7 +234,7 @@ describe('DisciplineModal', () => {
       expect(screen.getAllByRole('button')).toHaveLength(2);
     });
 
-    it('should have required input field', () => {
+    it('should have required champ de saisie', () => {
       render(<DisciplineModal {...defaultProps} />);
       
       const input = screen.getByPlaceholderText('Ex: Athlétisme, Natation, Basketball...');

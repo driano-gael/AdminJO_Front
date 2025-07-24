@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+﻿import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import LieuxHeader from '@/components/componentsEvenement/lieux/LieuxHeader';
 
@@ -28,7 +28,7 @@ describe('LieuxHeader', () => {
     expect(screen.getByTestId('back-to-events-button')).toBeInTheDocument();
   });
 
-  it('should render the create button with correct text', () => {
+  it('should render the bouton de crÃ©ation with correct text', () => {
     render(<LieuxHeader onCreateClick={mockOnCreateClick} />);
     
     const createButton = screen.getByText('+ Nouveau Lieu');
@@ -36,7 +36,7 @@ describe('LieuxHeader', () => {
     expect(createButton).toHaveClass('bg-blue-600', 'hover:bg-blue-700', 'text-white');
   });
 
-  it('should call onCreateClick when create button is clicked', () => {
+  it('should call onCreateClick when create bouton est cliquÃ©', () => {
     render(<LieuxHeader onCreateClick={mockOnCreateClick} />);
     
     const createButton = screen.getByText('+ Nouveau Lieu');
@@ -77,7 +77,7 @@ describe('LieuxHeader', () => {
     expect(headerContent).toHaveClass('flex', 'justify-between', 'items-center');
   });
 
-  it('should handle multiple clicks correctly', () => {
+  it('should handle multiple clicks correctement', () => {
     render(<LieuxHeader onCreateClick={mockOnCreateClick} />);
     
     const createButton = screen.getByText('+ Nouveau Lieu');
@@ -89,7 +89,7 @@ describe('LieuxHeader', () => {
     expect(mockOnCreateClick).toHaveBeenCalledTimes(3);
   });
 
-  it('should render emoji in title correctly', () => {
+  it('should render emoji in title correctement', () => {
     render(<LieuxHeader onCreateClick={mockOnCreateClick} />);
     
     const title = screen.getByText('🏢 Gestion des Lieux');

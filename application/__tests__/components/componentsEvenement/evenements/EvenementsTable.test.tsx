@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import EvenementsTable from '@/components/componentsEvenement/evenements/EvenementsTable';
 import { ExtendEvenement } from '@/types/sportEvenement/evenement';
@@ -83,7 +83,7 @@ describe('EvenementsTable', () => {
     expect(screen.getByText('Actions')).toBeInTheDocument();
   });
 
-  it('should display event information correctly', () => {
+  it('should display event information correctement', () => {
     render(
       <EvenementsTable
         events={mockEvents}
@@ -100,7 +100,7 @@ describe('EvenementsTable', () => {
     expect(screen.getByText('Stade de France')).toBeInTheDocument();
   });
 
-  it('should call onEdit when edit button is clicked', () => {
+  it('should call onEdit when edit bouton est cliquÃ©', () => {
     render(
       <EvenementsTable
         events={mockEvents}
@@ -118,7 +118,7 @@ describe('EvenementsTable', () => {
     expect(mockOnEdit).toHaveBeenCalledWith(mockEvents[0]);
   });
 
-  it('should call onDeleteEvent when delete button is clicked', () => {
+  it('should call onDeleteEvent when delete bouton est cliquÃ©', () => {
     render(
       <EvenementsTable
         events={mockEvents}
@@ -136,7 +136,7 @@ describe('EvenementsTable', () => {
     expect(mockOnDeleteEvent).toHaveBeenCalledWith(1);
   });
 
-  it('should call onRefresh when refresh button is clicked', () => {
+  it('should call onRefresh when refresh bouton est cliquÃ©', () => {
     render(
       <EvenementsTable
         events={mockEvents}
@@ -217,7 +217,7 @@ describe('EvenementsTable', () => {
     expect(screen.getByText(/test search/)).toBeInTheDocument();
   });
 
-  it('should display error message', () => {
+  it("", () => {
     render(
       <EvenementsTable
         events={mockEvents}

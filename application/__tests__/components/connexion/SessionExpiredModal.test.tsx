@@ -1,4 +1,4 @@
-import { render, screen, act, waitFor, fireEvent } from '@testing-library/react';
+﻿import { render, screen, act, waitFor, fireEvent } from '@testing-library/react';
 import SessionExpiredModal from '@/components/connexion/SessionExpiredModal';
 
 // Mock timer functions
@@ -59,7 +59,7 @@ describe('SessionExpiredModal', () => {
     expect(screen.getByText(/dans 10 secondes/)).toBeInTheDocument();
   });
 
-  it('should countdown correctly over time', async () => {
+  it('should countdown correctement over time', async () => {
     render(
       <SessionExpiredModal 
         isOpen={true} 
@@ -103,7 +103,7 @@ describe('SessionExpiredModal', () => {
     expect(mockOnClose).not.toHaveBeenCalled();
   });
 
-  it('should call onClose when Fermer button is clicked', async () => {
+  it('should call onClose when Fermer bouton est cliquÃ©', async () => {
     render(
       <SessionExpiredModal 
         isOpen={true} 
@@ -119,7 +119,7 @@ describe('SessionExpiredModal', () => {
     expect(mockOnReconnect).not.toHaveBeenCalled();
   });
 
-  it('should call onReconnect when Se reconnecter maintenant button is clicked', async () => {
+  it('should call onReconnect when Se reconnecter maintenant bouton est cliquÃ©', async () => {
     render(
       <SessionExpiredModal 
         isOpen={true} 
@@ -135,7 +135,7 @@ describe('SessionExpiredModal', () => {
     expect(mockOnClose).not.toHaveBeenCalled();
   });
 
-  it('should reset countdown when modal is closed and reopened', () => {
+  it('should reset countdown when modal est fermÃ© and reopened', () => {
     const { rerender } = render(
       <SessionExpiredModal 
         isOpen={true} 
@@ -210,7 +210,7 @@ describe('SessionExpiredModal', () => {
     expect(screen.getByText('⏰')).toBeInTheDocument();
   });
 
-  it('should handle rapid state changes correctly', () => {
+  it('should handle rapid state changes correctement', () => {
     const { rerender } = render(
       <SessionExpiredModal 
         isOpen={false} 

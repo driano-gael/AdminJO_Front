@@ -1,4 +1,4 @@
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+﻿import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import DisciplinesManagement from '../../../../src/components/componentsEvenement/discipline/DisciplinesManagement';
 import { Discipline } from '../../../../src/types/sportEvenement/discipline';
@@ -130,7 +130,7 @@ describe('DisciplinesManagement', () => {
   });
 
   describe('Modal Management', () => {
-    it('should open modal in create mode when header create button is clicked', () => {
+    it('should open modal in create mode when header create bouton est cliquÃ©', () => {
       render(<DisciplinesManagement />);
       
       const createButton = screen.getByText('Create Discipline');
@@ -140,7 +140,7 @@ describe('DisciplinesManagement', () => {
       expect(screen.getByText('Create Mode')).toBeInTheDocument();
     });
 
-    it('should open modal in edit mode when table edit button is clicked', () => {
+    it('should open modal in edit mode when table edit bouton est cliquÃ©', () => {
       render(<DisciplinesManagement />);
       
       const editButton = screen.getAllByText('Edit')[0];
@@ -150,7 +150,7 @@ describe('DisciplinesManagement', () => {
       expect(screen.getByText('Edit Mode')).toBeInTheDocument();
     });
 
-    it('should close modal when close button is clicked', () => {
+    it('should close modal when close bouton est cliquÃ©', () => {
       render(<DisciplinesManagement />);
       
       // Open modal first
@@ -166,7 +166,7 @@ describe('DisciplinesManagement', () => {
   });
 
   describe('Discipline Operations', () => {
-    it('should handle discipline creation successfully', async () => {
+    it('should handle discipline creation avec succÃ¨s', async () => {
       mockUseDisciplinesManagement.createDiscipline.mockResolvedValueOnce({ id: 3, nom: 'Test Discipline' });
       render(<DisciplinesManagement />);
       
@@ -190,7 +190,7 @@ describe('DisciplinesManagement', () => {
       });
     });
 
-    it('should handle discipline update successfully', async () => {
+    it('should handle discipline update avec succÃ¨s', async () => {
       mockUseDisciplinesManagement.updateDiscipline.mockResolvedValueOnce({ id: 1, nom: 'Test Discipline' });
       render(<DisciplinesManagement />);
       
@@ -213,7 +213,7 @@ describe('DisciplinesManagement', () => {
       });
     });
 
-    it('should handle discipline deletion successfully', async () => {
+    it('should handle discipline deletion avec succÃ¨s', async () => {
       mockUseDisciplinesManagement.deleteDiscipline.mockResolvedValueOnce(undefined);
       render(<DisciplinesManagement />);
       
@@ -328,7 +328,7 @@ describe('DisciplinesManagement', () => {
   });
 
   describe('Notification Management', () => {
-    it('should close notification when close button is clicked', async () => {
+    it('should close notification when close bouton est cliquÃ©', async () => {
       mockUseDisciplinesManagement.createDiscipline.mockResolvedValueOnce({ id: 3, nom: 'Test Discipline' });
       render(<DisciplinesManagement />);
       

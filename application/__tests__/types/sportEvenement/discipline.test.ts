@@ -1,4 +1,4 @@
-import { Discipline } from '@/types/sportEvenement/discipline';
+﻿import { Discipline } from '@/types/sportEvenement/discipline';
 
 describe('Discipline interface', () => {
   it('should define the correct structure for a discipline', () => {

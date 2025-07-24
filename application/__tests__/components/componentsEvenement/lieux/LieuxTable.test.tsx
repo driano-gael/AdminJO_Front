@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+﻿import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import LieuxTable from '@/components/componentsEvenement/lieux/LieuxTable';
 import { Lieu } from '@/types/sportEvenement/lieu';
@@ -58,7 +58,7 @@ describe('LieuxTable', () => {
     expect(screen.getByTestId('lieu-row-3')).toBeInTheDocument();
   });
 
-  it('should render table headers correctly', () => {
+  it('should render table headers correctement', () => {
     render(<LieuxTable {...defaultProps} />);
     
     expect(screen.getByText('Nom du Lieu')).toBeInTheDocument();
@@ -72,7 +72,7 @@ describe('LieuxTable', () => {
     expect(refreshButton).toBeInTheDocument();
   });
 
-  it('should call onRefresh when refresh button is clicked', () => {
+  it('should call onRefresh when refresh bouton est cliquÃ©', () => {
     render(<LieuxTable {...defaultProps} />);
     
     const refreshButton = screen.getByText('🔄 Actualiser');
@@ -95,7 +95,7 @@ describe('LieuxTable', () => {
     expect(refreshButton).toBeDisabled();
   });
 
-  it('should show error message when error exists', () => {
+  it("", () => {
     const errorMessage = 'Erreur lors du chargement des lieux';
     render(<LieuxTable {...defaultProps} error={errorMessage} />);
     

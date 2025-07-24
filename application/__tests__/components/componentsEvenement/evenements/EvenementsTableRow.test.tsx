@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+﻿import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import EvenementsTableRow from '../../../../src/components/componentsEvenement/evenements/EvenementsTableRow';
 import { Evenement } from '../../../../src/types/sportEvenement/evenement';
@@ -88,7 +88,7 @@ describe('EvenementsTableRow', () => {
       expect(screen.getByText('Stade de France')).toBeInTheDocument();
     });
 
-    it('should render edit and delete buttons', () => {
+    it('should render edit and bouton de suppressions', () => {
       renderWithTable(<EvenementsTableRow {...defaultProps} />);
       
       expect(screen.getByText('Modifier')).toBeInTheDocument();
@@ -113,7 +113,7 @@ describe('EvenementsTableRow', () => {
   });
 
   describe('User Interactions', () => {
-    it('should call onEdit when edit button is clicked', () => {
+    it('should call onEdit when edit bouton est cliquÃ©', () => {
       renderWithTable(<EvenementsTableRow {...defaultProps} />);
       
       const editButton = screen.getByText('Modifier');
@@ -123,7 +123,7 @@ describe('EvenementsTableRow', () => {
       expect(mockOnEdit).toHaveBeenCalledTimes(1);
     });
 
-    it('should call onDelete when delete button is clicked', () => {
+    it('should call onDelete when delete bouton est cliquÃ©', () => {
       renderWithTable(<EvenementsTableRow {...defaultProps} />);
       
       const deleteButton = screen.getByText('Supprimer');
@@ -133,7 +133,7 @@ describe('EvenementsTableRow', () => {
       expect(mockOnDelete).toHaveBeenCalledTimes(1);
     });
 
-    it('should handle multiple button clicks correctly', () => {
+    it('should handle multiple button clicks correctement', () => {
       renderWithTable(<EvenementsTableRow {...defaultProps} />);
       
       const editButton = screen.getByText('Modifier');
@@ -149,7 +149,7 @@ describe('EvenementsTableRow', () => {
   });
 
   describe('Styling and CSS Classes', () => {
-    it('should have hover styling on table row', () => {
+    it('should have hover styling on ligne de tableau', () => {
       const { container } = renderWithTable(<EvenementsTableRow {...defaultProps} />);
       
       const tableRow = container.querySelector('tr');
@@ -180,14 +180,14 @@ describe('EvenementsTableRow', () => {
       expect(venueDiv).toHaveClass('text-sm', 'text-gray-900');
     });
 
-    it('should have correct styling for edit button', () => {
+    it("", () => {
       renderWithTable(<EvenementsTableRow {...defaultProps} />);
       
       const editButton = screen.getByText('Modifier');
       expect(editButton).toHaveClass('text-blue-600', 'hover:text-blue-900', 'mr-3');
     });
 
-    it('should have correct styling for delete button', () => {
+    it('should have correct styling for bouton de suppression', () => {
       renderWithTable(<EvenementsTableRow {...defaultProps} />);
       
       const deleteButton = screen.getByText('Supprimer');
@@ -196,7 +196,7 @@ describe('EvenementsTableRow', () => {
   });
 
   describe('Data Display', () => {
-    it('should format date correctly for different locales', () => {
+    it('should format date correctement for different locales', () => {
       const eventWithDifferentDate = {
         ...mockEvent,
         date: '2024-12-25'
@@ -336,7 +336,7 @@ describe('EvenementsTableRow', () => {
       expect(screen.getByText('Finale 100m hommes')).toBeInTheDocument();
     });
 
-    it('should handle prop changes correctly', () => {
+    it('should handle prop changes correctement', () => {
       const { rerender } = renderWithTable(<EvenementsTableRow {...defaultProps} />);
       
       const newEvent = {

@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { render, screen } from '@testing-library/react';
 import PageTemplate from '@/components/layout/PageTemplate';
 
@@ -62,7 +62,7 @@ describe('PageTemplate', () => {
     expect(screen.getByTestId('layout-back-label')).toHaveTextContent('Custom Back');
   });
 
-  it('should render breadcrumbs when provided', () => {
+  it('should render breadcrumbs quand fourni', () => {
     const breadcrumbs = [
       { label: 'Home', href: '/' },
       { label: 'Section', href: '/section' },
@@ -83,7 +83,7 @@ describe('PageTemplate', () => {
     expect(screen.queryByTestId('breadcrumb')).not.toBeInTheDocument();
   });
 
-  it('should render intro section when provided', () => {
+  it('should render intro section quand fourni', () => {
     const intro = {
       title: 'Welcome to the page',
       description: 'This is a detailed description of what this page does.'
@@ -120,7 +120,7 @@ describe('PageTemplate', () => {
     expect(introContainer).toHaveClass('text-center', 'mb-12');
   });
 
-  it('should render children content correctly', () => {
+  it('should render children content correctement', () => {
     const customChildren = (
       <div>
         <h1 data-testid="custom-heading">Custom Heading</h1>
@@ -173,7 +173,7 @@ describe('PageTemplate', () => {
     expect(screen.getByTestId('breadcrumb-item-1')).toHaveTextContent('Current Page');
   });
 
-  it('should render multiple children correctly', () => {
+  it('should render multiple children correctement', () => {
     const multipleChildren = (
       <>
         <div data-testid="child-1">First Child</div>
@@ -189,7 +189,7 @@ describe('PageTemplate', () => {
     expect(screen.getByTestId('child-3')).toBeInTheDocument();
   });
 
-  it('should pass all props correctly to AuthenticatedLayout', () => {
+  it('should pass all props correctement to AuthenticatedLayout', () => {
     render(
       <PageTemplate 
         title="Full Test"

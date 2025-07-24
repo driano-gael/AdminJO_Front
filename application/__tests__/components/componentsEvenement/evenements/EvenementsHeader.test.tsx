@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import EvenementsHeader from '@/components/componentsEvenement/evenements/EvenementsHeader';
 
@@ -34,7 +34,7 @@ describe('EvenementsHeader', () => {
     expect(createButton).toBeInTheDocument();
   });
 
-  it('should call onCreateEvent when create button is clicked', () => {
+  it('should call onCreateEvent when create bouton est cliquÃ©', () => {
     render(<EvenementsHeader onCreateEvent={mockOnCreateEvent} />);
 
     const createButton = screen.getByRole('button', { name: '+ Nouvel Événement' });

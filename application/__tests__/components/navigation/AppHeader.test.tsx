@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import AppHeader from '@/components/navigation/AppHeader';
 import { useAuth } from '@/contexts/authContext';
@@ -49,13 +49,13 @@ describe('AppHeader', () => {
     expect(screen.getByRole('button', { name: /déconnexion/i })).toBeInTheDocument();
   });
 
-  it('should render back to dashboard button by default', () => {
+  it('should render back to dashboard button par dÃ©faut', () => {
     render(<AppHeader title="Test Page" />);
 
     expect(screen.getByTestId('back-to-dashboard-button')).toBeInTheDocument();
   });
 
-  it('should render custom back button when backUrl is provided', () => {
+  it('should render custom bouton de retour when backUrl is provided', () => {
     render(
       <AppHeader 
         title="Test Page" 
@@ -103,7 +103,7 @@ describe('AppHeader', () => {
     expect(mockLogout).toHaveBeenCalledTimes(1);
   });
 
-  it('should display user email correctly', () => {
+  it('should display user email correctement', () => {
     const customUser = { email: 'custom@test.com' };
     mockUseAuth.mockReturnValue({
       user: customUser,
@@ -159,7 +159,7 @@ describe('AppHeader', () => {
     expect(header).toHaveClass('bg-white', 'shadow-md');
   });
 
-  it('should render back button with custom text', () => {
+  it('should render bouton de retour with custom text', () => {
     render(
       <AppHeader 
         title="Test Page" 
@@ -183,7 +183,7 @@ describe('AppHeader', () => {
     expect(screen.getByText('⬅️ Accueil')).toBeInTheDocument();
   });
 
-  it('should position elements correctly in header layout', () => {
+  it('should position elements correctement in header layout', () => {
     render(<AppHeader title="Test Page" />);
 
     const title = screen.getByText('Test Page');

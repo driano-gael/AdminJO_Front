@@ -1,4 +1,4 @@
-import { dashboardSections, getDashboardSectionByUrl, DashboardSection } from '@/types/dashBoardSections/dashboardSections';
+﻿import { dashboardSections, getDashboardSectionByUrl, DashboardSection } from '@/types/dashBoardSections/dashboardSections';
 
 describe('dashboardSections', () => {
   it('should contain all expected sections', () => {
