@@ -65,7 +65,6 @@ jobs:
             rm -rf app/*
             tar -xzf app.tar.gz -C app
             rm app.tar.gz
-
             cd app
             npm install --omit=dev
 
