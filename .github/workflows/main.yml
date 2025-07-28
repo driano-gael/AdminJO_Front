@@ -34,14 +34,21 @@ jobs:
           NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
         run: npm run build
 
-      - name: Create production archive
+      - name: Debug current directory
+        working-directory: ./application
         run: |
-          tar -czf app.tar.gz -C application .next public node_modules package.json next.config.js \
+          pwd
+          ls -la
+
+      - name: Create production archive
+        working-directory: ./application
+        run: |
+          tar -czf ../app.tar.gz .next public node_modules package.json next.config.ts \
             -C application .next \
             -C application public \
             -C application node_modules \
             -C application package.json \
-            -C application next.config.js
+            -C application next.config.ts
 
       - name: Check application directory contents
         run: |
