@@ -44,11 +44,6 @@ jobs:
         working-directory: ./application
         run: |
           tar -czf ../app.tar.gz .next public node_modules package.json next.config.ts \
-            -C application .next \
-            -C application public \
-            -C application node_modules \
-            -C application package.json \
-            -C application next.config.ts
 
       - name: Check application directory contents
         run: |
