@@ -75,6 +75,7 @@ jobs:
 
             sudo systemctl restart nginx
             sudo systemctl is-active nginx
+            echo "Nginx restarted successfully"
 
       - name: Notify deployment success
         run: echo "Deployment to server successful!"
