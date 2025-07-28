@@ -35,7 +35,6 @@ jobs:
         run: npm run build
 
       - name: Create production archive
-        working-directory: ./application
         run: |
           tar -czf app.tar.gz -C application .next public node_modules package.json next.config.js \
             -C application .next \
