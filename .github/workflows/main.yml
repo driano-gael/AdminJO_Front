@@ -37,12 +37,18 @@ jobs:
       - name: Create production archive
         working-directory: ./application
         run: |
-          tar -czf app.tar.gz \
+          tar -czf app.tar.gz -C application .next public node_modules package.json next.config.js \
             -C application .next \
             -C application public \
             -C application node_modules \
             -C application package.json \
             -C application next.config.js
+
+      - name: Check application directory contents
+        run: |
+          ls -l application
+          ls -l application/.next
+          ls -l application/public
 
       - name: Upload archive
         uses: appleboy/scp-action@v0.1.7
