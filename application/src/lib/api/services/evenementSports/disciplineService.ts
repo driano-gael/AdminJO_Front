@@ -16,6 +16,7 @@ import { Discipline } from '@/types/sportEvenement/discipline';
  */
 export interface CreateDisciplineRequest {
   nom: string; // Nom de la discipline (ex: "Athlétisme", "Natation")
+  icone: string; // Nom du fichier SVG de l'icône (ex: "ath.svg")
 }
 
 /**
@@ -24,6 +25,7 @@ export interface CreateDisciplineRequest {
 export interface UpdateDisciplineRequest {
   id: number; // ID de la discipline à mettre à jour
   nom: string; // Nouveau nom de la discipline
+  icone: string; // Nom du fichier SVG de l'icône (ex: "ath.svg")
 }
 
 /**

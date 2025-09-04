@@ -1,24 +1,33 @@
 ﻿import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import EvenementEpreuves from '../../../../src/components/componentsEvenement/evenements/EvenementEpreuves';
-import { Epreuve } from '../../../../src/types/sportEvenement/epreuve';
+import EvenementEpreuves from '@/components/componentsEvenement/evenements/EvenementEpreuves';
+import { Epreuve } from '@/types/sportEvenement/epreuve';
 
 describe('EvenementEpreuves', () => {
   const mockEpreuves: Epreuve[] = [
     {
       id: 1,
       libelle: '100m Sprint',
-      discipline: { id: 1, nom: 'Athlétisme' }
+      genre: 'masculin',
+      tour: 'finale',
+      discipline: { id: 1, nom: 'Athlétisme', icone: '/images/sportSVG/ath.svg' },
+      evenement: null
     },
     {
       id: 2,
       libelle: 'Papillon 200m',
-      discipline: { id: 2, nom: 'Natation' }
+      genre: 'féminin',
+      tour: 'demi-finale',
+      discipline: { id: 2, nom: 'Natation', icone: '/images/sportSVG/swm.svg' },
+      evenement: null
     },
     {
       id: 3,
       libelle: 'Marathon',
-      discipline: { id: 1, nom: 'Athlétisme' }
+      genre: 'mixte',
+      tour: 'finale',
+      discipline: { id: 1, nom: 'Athlétisme', icone: '/images/sportSVG/ath.svg' },
+      evenement: null
     }
   ];
 
@@ -26,9 +35,9 @@ describe('EvenementEpreuves', () => {
     it('should render multiple epreuves', () => {
       render(<EvenementEpreuves epreuves={mockEpreuves} />);
       
-      expect(screen.getByText('100m Sprint')).toBeInTheDocument();
-      expect(screen.getByText('Papillon 200m')).toBeInTheDocument();
-      expect(screen.getByText('Marathon')).toBeInTheDocument();
+      expect(screen.getByText(/100m Sprint/)).toBeInTheDocument();
+      expect(screen.getByText(/Papillon 200m/)).toBeInTheDocument();
+      expect(screen.getByText(/Marathon/)).toBeInTheDocument();
     });
 
     it('should render discipline names for each epreuve', () => {
@@ -52,7 +61,7 @@ describe('EvenementEpreuves', () => {
       
       render(<EvenementEpreuves epreuves={singleEpreuve} />);
       
-      expect(screen.getByText('100m Sprint')).toBeInTheDocument();
+      expect(screen.getByText(/100m Sprint/)).toBeInTheDocument();
       expect(screen.getByText('Athlétisme')).toBeInTheDocument();
     });
 
@@ -60,12 +69,15 @@ describe('EvenementEpreuves', () => {
       const epreuveWithoutDiscipline: Epreuve[] = [{
         id: 1,
         libelle: 'Test Epreuve',
-        discipline: null as any
+        genre: 'masculin',
+        tour: 'finale',
+        discipline: null as unknown as never,
+        evenement: null
       }];
       
       render(<EvenementEpreuves epreuves={epreuveWithoutDiscipline} />);
       
-      expect(screen.getByText('Test Epreuve')).toBeInTheDocument();
+      expect(screen.getByText(/Test Epreuve/)).toBeInTheDocument();
       // Should not render discipline section when discipline is null
       expect(screen.queryByText('italic')).not.toBeInTheDocument();
     });
@@ -74,12 +86,15 @@ describe('EvenementEpreuves', () => {
       const epreuveWithUndefinedDiscipline: Epreuve[] = [{
         id: 1,
         libelle: 'Test Epreuve',
-        discipline: undefined as any
+        genre: 'féminin',
+        tour: 'demi-finale',
+        discipline: undefined as unknown as never,
+        evenement: null
       }];
       
       render(<EvenementEpreuves epreuves={epreuveWithUndefinedDiscipline} />);
       
-      expect(screen.getByText('Test Epreuve')).toBeInTheDocument();
+      expect(screen.getByText(/Test Epreuve/)).toBeInTheDocument();
     });
   });
 
@@ -91,14 +106,14 @@ describe('EvenementEpreuves', () => {
     });
 
     it('should render "Aucune épreuve" when epreuves is null', () => {
-      render(<EvenementEpreuves epreuves={null as any} />);
-      
+      render(<EvenementEpreuves epreuves={null as unknown as Epreuve[]} />);
+
       expect(screen.getByText('Aucune épreuve')).toBeInTheDocument();
     });
 
     it('should render "Aucune épreuve" when epreuves is undefined', () => {
-      render(<EvenementEpreuves epreuves={undefined as any} />);
-      
+      render(<EvenementEpreuves epreuves={undefined as unknown as Epreuve[]} />);
+
       expect(screen.getByText('Aucune épreuve')).toBeInTheDocument();
     });
   });
@@ -137,7 +152,7 @@ describe('EvenementEpreuves', () => {
     it('should have correct styling for epreuve libelle', () => {
       render(<EvenementEpreuves epreuves={[mockEpreuves[0]]} />);
       
-      const libelleDiv = screen.getByText('100m Sprint');
+      const libelleDiv = screen.getByText(/100m Sprint/);
       expect(libelleDiv).toHaveClass('font-semibold');
     });
 
@@ -161,7 +176,7 @@ describe('EvenementEpreuves', () => {
       render(<EvenementEpreuves epreuves={mockEpreuves} />);
       
       mockEpreuves.forEach(epreuve => {
-        expect(screen.getByText(epreuve.libelle)).toBeInTheDocument();
+        expect(screen.getByText(new RegExp(epreuve.libelle))).toBeInTheDocument();
       });
     });
 
@@ -181,37 +196,70 @@ describe('EvenementEpreuves', () => {
       
       const epreuveItems = container.querySelectorAll('.bg-green-100');
       const epreuveTexts = Array.from(epreuveItems).map(item => 
-        item.querySelector('.font-semibold')?.textContent
+        item.querySelector('.font-semibold')?.textContent?.trim()
       );
       
-      expect(epreuveTexts).toEqual(['100m Sprint', 'Papillon 200m', 'Marathon']);
+      // Les textes maintenant incluent genre et tour
+      expect(epreuveTexts).toEqual([
+        '100m Sprint masculin finale',
+        'Papillon 200m féminin demi-finale',
+        'Marathon mixte finale'
+      ]);
     });
   });
 
   describe('Unique Key Handling', () => {
     it('should render epreuves with unique keys', () => {
       const epreuvesWithSameLabels: Epreuve[] = [
-        { id: 1, libelle: 'Same Label', discipline: { id: 1, nom: 'Discipline 1' } },
-        { id: 2, libelle: 'Same Label', discipline: { id: 2, nom: 'Discipline 2' } }
+        {
+          id: 1,
+          libelle: 'Same Label',
+          genre: 'masculin',
+          tour: 'finale',
+          discipline: { id: 1, nom: 'Discipline 1', icone: '/images/sportSVG/ath.svg' },
+          evenement: null
+        },
+        {
+          id: 2,
+          libelle: 'Same Label',
+          genre: 'féminin',
+          tour: 'demi-finale',
+          discipline: { id: 2, nom: 'Discipline 2', icone: '/images/sportSVG/swm.svg' },
+          evenement: null
+        }
       ];
       
       render(<EvenementEpreuves epreuves={epreuvesWithSameLabels} />);
       
-      expect(screen.getAllByText('Same Label')).toHaveLength(2);
+      expect(screen.getAllByText(/Same Label/)).toHaveLength(2);
       expect(screen.getByText('Discipline 1')).toBeInTheDocument();
       expect(screen.getByText('Discipline 2')).toBeInTheDocument();
     });
 
     it('should handle epreuves with duplicate IDs gracefully', () => {
       const epreuvesWithDuplicateIds: Epreuve[] = [
-        { id: 1, libelle: 'First', discipline: { id: 1, nom: 'Discipline 1' } },
-        { id: 1, libelle: 'Second', discipline: { id: 2, nom: 'Discipline 2' } }
+        {
+          id: 1,
+          libelle: 'First',
+          genre: 'masculin',
+          tour: 'finale',
+          discipline: { id: 1, nom: 'Discipline 1', icone: '/images/sportSVG/ath.svg' },
+          evenement: null
+        },
+        {
+          id: 1,
+          libelle: 'Second',
+          genre: 'féminin',
+          tour: 'demi-finale',
+          discipline: { id: 2, nom: 'Discipline 2', icone: '/images/sportSVG/swm.svg' },
+          evenement: null
+        }
       ];
       
       render(<EvenementEpreuves epreuves={epreuvesWithDuplicateIds} />);
       
-      expect(screen.getByText('First')).toBeInTheDocument();
-      expect(screen.getByText('Second')).toBeInTheDocument();
+      expect(screen.getByText(/First/)).toBeInTheDocument();
+      expect(screen.getByText(/Second/)).toBeInTheDocument();
     });
   });
 
@@ -220,14 +268,17 @@ describe('EvenementEpreuves', () => {
       const manyEpreuves: Epreuve[] = Array.from({ length: 50 }, (_, i) => ({
         id: i + 1,
         libelle: `Epreuve ${i + 1}`,
-        discipline: { id: (i % 5) + 1, nom: `Discipline ${(i % 5) + 1}` }
+        genre: 'mixte',
+        tour: 'finale',
+        discipline: { id: (i % 5) + 1, nom: `Discipline ${(i % 5) + 1}`, icone: '' },
+        evenement: null
       }));
       
       render(<EvenementEpreuves epreuves={manyEpreuves} />);
       
-      expect(screen.getByText('Epreuve 1')).toBeInTheDocument();
-      expect(screen.getByText('Epreuve 50')).toBeInTheDocument();
-      
+      expect(screen.getByText(/^Epreuve 1\s/)).toBeInTheDocument();
+      expect(screen.getByText(/^Epreuve 50\s/)).toBeInTheDocument();
+
       const { container } = render(<EvenementEpreuves epreuves={manyEpreuves} />);
       const epreuveItems = container.querySelectorAll('.bg-green-100');
       expect(epreuveItems).toHaveLength(50);
@@ -237,16 +288,37 @@ describe('EvenementEpreuves', () => {
   describe('Special Characters and Internationalization', () => {
     it('should handle special characters in epreuve names', () => {
       const epreuvesWithSpecialChars: Epreuve[] = [
-        { id: 1, libelle: 'Épreuve côté français', discipline: { id: 1, nom: 'Athlétisme' } },
-        { id: 2, libelle: '200m – Nage libre', discipline: { id: 2, nom: 'Natation' } },
-        { id: 3, libelle: 'Saut à la perche (H)', discipline: { id: 1, nom: 'Athlétisme' } }
+        {
+          id: 1,
+          libelle: 'Épreuve côté français',
+          genre: 'masculin',
+          tour: 'finale',
+          discipline: { id: 1, nom: 'Athlétisme', icone: '/images/sportSVG/ath.svg' },
+          evenement: null
+        },
+        {
+          id: 2,
+          libelle: '200m – Nage libre',
+          genre: 'féminin',
+          tour: 'demi-finale',
+          discipline: { id: 2, nom: 'Natation', icone: '/images/sportSVG/swm.svg' },
+          evenement: null
+        },
+        {
+          id: 3,
+          libelle: 'Saut à la perche (H)',
+          genre: 'masculin',
+          tour: 'finale',
+          discipline: { id: 1, nom: 'Athlétisme', icone: '/images/sportSVG/ath.svg' },
+          evenement: null
+        }
       ];
       
       render(<EvenementEpreuves epreuves={epreuvesWithSpecialChars} />);
       
-      expect(screen.getByText('Épreuve côté français')).toBeInTheDocument();
-      expect(screen.getByText('200m – Nage libre')).toBeInTheDocument();
-      expect(screen.getByText('Saut à la perche (H)')).toBeInTheDocument();
+      expect(screen.getByText(/Épreuve côté français/)).toBeInTheDocument();
+      expect(screen.getByText(/200m – Nage libre/)).toBeInTheDocument();
+      expect(screen.getByText(/Saut à la perche \(H\)/)).toBeInTheDocument();
     });
 
     it('should handle long epreuve names', () => {
@@ -254,7 +326,10 @@ describe('EvenementEpreuves', () => {
         {
           id: 1,
           libelle: 'Très longue épreuve avec un nom extrêmement détaillé qui pourrait poser des problèmes de mise en page',
-          discipline: { id: 1, nom: 'Discipline avec nom très long aussi' }
+          genre: 'mixte',
+          tour: 'finale',
+          discipline: { id: 1, nom: 'Discipline avec nom très long aussi', icone: '/images/sportSVG/ath.svg' },
+          evenement: null
         }
       ];
       
@@ -277,7 +352,7 @@ describe('EvenementEpreuves', () => {
       render(<EvenementEpreuves epreuves={[mockEpreuves[0]]} />);
       
       // Text content should be accessible
-      expect(screen.getByText('100m Sprint')).toBeInTheDocument();
+      expect(screen.getByText(/100m Sprint/)).toBeInTheDocument();
       expect(screen.getByText('Athlétisme')).toBeInTheDocument();
     });
 
@@ -296,25 +371,32 @@ describe('EvenementEpreuves', () => {
       // Re-render with same props
       rerender(<EvenementEpreuves epreuves={mockEpreuves} />);
       
-      expect(screen.getByText('100m Sprint')).toBeInTheDocument();
+      expect(screen.getByText(/100m Sprint/)).toBeInTheDocument();
     });
 
     it('should handle prop changes correctement', () => {
       const { rerender } = render(<EvenementEpreuves epreuves={[mockEpreuves[0]]} />);
       
-      expect(screen.getByText('100m Sprint')).toBeInTheDocument();
-      
+      expect(screen.getByText(/100m Sprint/)).toBeInTheDocument();
+
       rerender(<EvenementEpreuves epreuves={[mockEpreuves[1]]} />);
       
-      expect(screen.queryByText('100m Sprint')).not.toBeInTheDocument();
-      expect(screen.getByText('Papillon 200m')).toBeInTheDocument();
+      expect(screen.queryByText(/100m Sprint/)).not.toBeInTheDocument();
+      expect(screen.getByText(/Papillon 200m/)).toBeInTheDocument();
     });
   });
 
   describe('Edge Cases', () => {
     it('should handle epreuves with missing libelle', () => {
       const epreuvesWithMissingLabels: Epreuve[] = [
-        { id: 1, libelle: '', discipline: { id: 1, nom: 'Athlétisme' } }
+        {
+          id: 1,
+          libelle: '',
+          genre: 'masculin',
+          tour: 'finale',
+          discipline: { id: 1, nom: 'Athlétisme', icone: '/images/sportSVG/ath.svg' },
+          evenement: null
+        }
       ];
       
       render(<EvenementEpreuves epreuves={epreuvesWithMissingLabels} />);
@@ -325,25 +407,53 @@ describe('EvenementEpreuves', () => {
 
     it('should handle epreuves with missing discipline names', () => {
       const epreuvesWithMissingDisciplineNames: Epreuve[] = [
-        { id: 1, libelle: 'Test Epreuve', discipline: { id: 1, nom: '' } }
+        {
+          id: 1,
+          libelle: 'Test Epreuve',
+          genre: 'féminin',
+          tour: 'demi-finale',
+          discipline: { id: 1, nom: '', icone: '' },
+          evenement: null
+        }
       ];
       
       render(<EvenementEpreuves epreuves={epreuvesWithMissingDisciplineNames} />);
       
-      expect(screen.getByText('Test Epreuve')).toBeInTheDocument();
+      expect(screen.getAllByText((content, element) => {
+        return element?.textContent?.includes('Test Epreuve') || false;
+      })[0]).toBeInTheDocument();
     });
 
     it('should handle malformed epreuve objects', () => {
-      const malformedEpreuves: any[] = [
-        { id: 1, libelle: 'Valid Epreuve', discipline: { id: 1, nom: 'Valid Discipline' } },
+      // Utilisation d'un type explicite pour les objets malformés
+      interface MalformedEpreuve {
+        id?: number;
+        libelle?: string;
+        genre?: string;
+        tour?: string;
+        discipline?: { id?: number; nom?: string; icone?: string } | null;
+        evenement?: null;
+      }
+
+      const malformedEpreuves: MalformedEpreuve[] = [
+        {
+          id: 1,
+          libelle: 'Valid Epreuve',
+          genre: 'masculin',
+          tour: 'finale',
+          discipline: { id: 1, nom: 'Valid Discipline', icone: '' },
+          evenement: null
+        },
         { id: 2 }, // Missing libelle and discipline
         { libelle: 'Missing ID', discipline: { nom: 'Missing discipline ID' } }
       ];
       
       // Should not crash and render what it can
-      render(<EvenementEpreuves epreuves={malformedEpreuves} />);
-      
-      expect(screen.getByText('Valid Epreuve')).toBeInTheDocument();
+      render(<EvenementEpreuves epreuves={malformedEpreuves as Epreuve[]} />);
+
+      // Le composant affiche libelle + genre + tour dans le même élément
+      expect(screen.getByText(/Valid Epreuve/)).toBeInTheDocument();
+      expect(screen.getByText('Valid Discipline')).toBeInTheDocument();
     });
   });
 });

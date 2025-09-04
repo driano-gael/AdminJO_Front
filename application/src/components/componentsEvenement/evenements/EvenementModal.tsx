@@ -139,29 +139,6 @@ useEffect(() => {
     });
   };
 
-  // Sélectionner/désélectionner toutes les épreuves d'une discipline
-  // const handleDisciplineSelectAll = (disciplineId: number) => {
-  //   const disciplineEpreuves = epreuvesByDiscipline[disciplineId] || [];
-  //   const disciplineEpreuveIds = disciplineEpreuves.map(e => e.id);
-  //   const allSelected = disciplineEpreuveIds.every(id => selectedEpreuves.includes(id));
-  //   
-  //   if (allSelected) {
-  //     // Désélectionner toutes les épreuves de cette discipline
-  //     setSelectedEpreuves(prev => prev.filter(id => !disciplineEpreuveIds.includes(id)));
-  //   } else {
-  //     // Sélectionner toutes les épreuves de cette discipline
-  //     setSelectedEpreuves(prev => {
-  //       const newSelected = [...prev];
-  //       disciplineEpreuveIds.forEach(id => {
-  //         if (!newSelected.includes(id)) {
-  //           newSelected.push(id);
-  //         }
-  //       });
-  //       return newSelected;
-  //     });
-  //   }
-  // };
-
   // Grouper les épreuves par discipline et trier alphabétiquement
   const epreuvesByDiscipline = epreuves.reduce((acc, epreuve) => {
     const disciplineId = epreuve.discipline?.id;

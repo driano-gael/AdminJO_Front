@@ -17,7 +17,8 @@ describe('DisciplineModal', () => {
 
   const mockDiscipline: Discipline = {
     id: 1,
-    nom: 'Athlétisme'
+    nom: 'Athlétisme',
+    icone: '/images/sportSVG/ath.svg'
   };
 
   beforeEach(() => {
@@ -63,7 +64,7 @@ describe('DisciplineModal', () => {
       fireEvent.click(submitButton);
       
       await waitFor(() => {
-        expect(mockOnSave).toHaveBeenCalledWith({ nom: 'Football' });
+        expect(mockOnSave).toHaveBeenCalledWith({ nom: 'Football', icone: '' });
       });
     });
   });
@@ -93,7 +94,7 @@ describe('DisciplineModal', () => {
       fireEvent.click(submitButton);
       
       await waitFor(() => {
-        expect(mockOnSave).toHaveBeenCalledWith({ nom: 'Athlétisme modifié' });
+        expect(mockOnSave).toHaveBeenCalledWith({ nom: 'Athlétisme modifié', icone: '/images/sportSVG/ath.svg' });
       });
     });
   });
@@ -130,7 +131,7 @@ describe('DisciplineModal', () => {
       fireEvent.click(submitButton);
       
       await waitFor(() => {
-        expect(mockOnSave).toHaveBeenCalledWith({ nom: 'Tennis' });
+        expect(mockOnSave).toHaveBeenCalledWith({ nom: 'Tennis', icone: '' });
       });
     });
   });
@@ -231,7 +232,13 @@ describe('DisciplineModal', () => {
       render(<DisciplineModal {...defaultProps} />);
       
       expect(screen.getByRole('textbox')).toBeInTheDocument();
-      expect(screen.getAllByRole('button')).toHaveLength(2);
+      // Il y a maintenant de nombreux boutons pour les icônes + 2 boutons principaux (Créer/Annuler)
+      const buttons = screen.getAllByRole('button');
+      expect(buttons.length).toBeGreaterThan(2);
+
+      // Vérifier que les boutons principaux sont présents
+      expect(screen.getByText('Créer')).toBeInTheDocument();
+      expect(screen.getByText('Annuler')).toBeInTheDocument();
     });
 
     it('should have required champ de saisie', () => {
@@ -254,7 +261,7 @@ describe('DisciplineModal', () => {
       render(<DisciplineModal {...defaultProps} />);
       
       const modalContent = screen.getByText('Créer une nouvelle discipline').closest('.bg-white');
-      expect(modalContent).toHaveClass('bg-white', 'rounded-lg', 'p-6', 'w-full', 'max-w-md', 'mx-4');
+      expect(modalContent).toHaveClass('bg-white', 'rounded-lg', 'p-6', 'w-full', 'max-w-2xl', 'mx-4', 'max-h-[90vh]', 'overflow-y-auto');
     });
   });
 });

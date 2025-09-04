@@ -14,7 +14,9 @@ export default function EvenementEpreuves({ epreuves }: Props) {
                         key={epreuve.id}
                         className="inline-block bg-green-100 text-black px-2 py-1 rounded-full text-xs w-fit"
                     >
-                        <div className="font-semibold">{epreuve.libelle}</div>
+                        <div className="font-semibold">
+                          {epreuve.libelle} {epreuve.genre} {epreuve.tour}
+                        </div>
                         {epreuve.discipline && (
                             <div className="text-black text-xs italic">
                                 {epreuve.discipline.nom}

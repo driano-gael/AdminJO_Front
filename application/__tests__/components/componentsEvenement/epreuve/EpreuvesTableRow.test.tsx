@@ -7,7 +7,10 @@ describe('EpreuvesTableRow', () => {
   const mockEpreuve: Epreuve = {
     id: 1,
     libelle: '100m Sprint',
-    discipline: { id: 1, nom: 'Athlétisme' }
+    genre: 'masculin',
+    tour: 'finale',
+    discipline: { id: 1, nom: 'Athlétisme', icone: '/images/sportSVG/ath.svg' },
+    evenement: null
   };
 
   const defaultProps = {
@@ -95,7 +98,7 @@ describe('EpreuvesTableRow', () => {
       expect(mockOnDelete).toHaveBeenCalledWith(mockEpreuve.id);
     });
 
-    it("", () => {
+    it('should handle multiple rapid clicks on bouton de modification', () => {
       const mockOnEdit = jest.fn();
       render(
         <table>
@@ -137,7 +140,10 @@ describe('EpreuvesTableRow', () => {
       const natationEpreuve: Epreuve = {
         id: 2,
         libelle: 'Papillon 200m',
-        discipline: { id: 2, nom: 'Natation' }
+        genre: 'féminin',
+        tour: 'demi-finale',
+        discipline: { id: 2, nom: 'Natation', icone: '/images/sportSVG/swm.svg' },
+        evenement: null
       };
 
       render(
@@ -156,7 +162,10 @@ describe('EpreuvesTableRow', () => {
       const longLibelleEpreuve: Epreuve = {
         id: 3,
         libelle: 'Très très très long libellé d\'épreuve qui dépasse la largeur normale de la cellule',
-        discipline: { id: 1, nom: 'Athlétisme' }
+        genre: 'mixte',
+        tour: 'qualifications',
+        discipline: { id: 1, nom: 'Athlétisme', icone: '/images/sportSVG/ath.svg' },
+        evenement: null
       };
 
       render(
@@ -174,7 +183,10 @@ describe('EpreuvesTableRow', () => {
       const specialEpreuve: Epreuve = {
         id: 4,
         libelle: 'Épreuve spéciale 100m & relais 4×100m',
-        discipline: { id: 1, nom: 'Athlétisme & Course' }
+        genre: 'masculin',
+        tour: 'finale',
+        discipline: { id: 1, nom: 'Athlétisme & Course', icone: '/images/sportSVG/ath.svg' },
+        evenement: null
       };
 
       render(
@@ -193,7 +205,10 @@ describe('EpreuvesTableRow', () => {
       const highIdEpreuve: Epreuve = {
         id: 999999,
         libelle: 'Test Epreuve',
-        discipline: { id: 1, nom: 'Test Discipline' }
+        genre: 'féminin',
+        tour: 'finale',
+        discipline: { id: 1, nom: 'Test Discipline', icone: '' },
+        evenement: null
       };
 
       const mockOnDelete = jest.fn();
@@ -251,9 +266,15 @@ describe('EpreuvesTableRow', () => {
         </table>
       );
       
-      const disciplineCell = screen.getByText('Athlétisme').parentElement;
+      // La cellule <td> est le parent du parent du texte
+      const disciplineCell = screen.getByText('Athlétisme').parentElement?.parentElement;
       expect(disciplineCell).toHaveClass('px-6', 'py-4', 'whitespace-nowrap');
       
+      // Le conteneur flex direct du texte
+      const disciplineContainer = screen.getByText('Athlétisme').parentElement;
+      expect(disciplineContainer).toHaveClass('flex', 'items-center', 'gap-2');
+
+      // Le texte lui-même
       const disciplineDiv = screen.getByText('Athlétisme');
       expect(disciplineDiv).toHaveClass('text-sm', 'text-gray-500');
     });
@@ -340,7 +361,10 @@ describe('EpreuvesTableRow', () => {
       const epreuveWithNullDiscipline: Epreuve = {
         id: 1,
         libelle: 'Test Epreuve',
-        discipline: null as any
+        genre: 'masculin',
+        tour: 'finale',
+        discipline: null as any,
+        evenement: null
       };
 
       expect(() => {
@@ -358,7 +382,10 @@ describe('EpreuvesTableRow', () => {
       const epreuveWithEmptyLibelle: Epreuve = {
         id: 1,
         libelle: '',
-        discipline: { id: 1, nom: 'Athlétisme' }
+        genre: 'féminin',
+        tour: 'demi-finale',
+        discipline: { id: 1, nom: 'Athlétisme', icone: '/images/sportSVG/ath.svg' },
+        evenement: null
       };
 
       render(
@@ -376,7 +403,10 @@ describe('EpreuvesTableRow', () => {
       const epreuveWithZeroId: Epreuve = {
         id: 0,
         libelle: 'Test Epreuve',
-        discipline: { id: 1, nom: 'Athlétisme' }
+        genre: 'mixte',
+        tour: 'qualifications',
+        discipline: { id: 1, nom: 'Athlétisme', icone: '/images/sportSVG/ath.svg' },
+        evenement: null
       };
 
       const mockOnDelete = jest.fn();

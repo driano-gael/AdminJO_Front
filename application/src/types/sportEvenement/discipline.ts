@@ -12,4 +12,5 @@ export interface Discipline {
   
   /** Nom de la discipline sportive */
   nom: string;
+  icone: string | "";
 }

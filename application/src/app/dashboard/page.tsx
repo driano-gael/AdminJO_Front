@@ -11,22 +11,6 @@ import PageTemplate from '@/components/layout/PageTemplate';
  * via des liens Next.js vers les routes dédiées
  */
 export default function DashboardPage() {
-    // Fonction utilitaire pour déterminer l'URL de destination selon la section
-    // const getDestinationUrl = (sectionId: string) => {
-    //     switch (sectionId) {
-    //         case 'management/':
-    //             return '/management';
-    //         case 'statistics/':
-    //             return '/statistics';
-    //         case 'users/':
-    //             return '/users';
-    //         case 'settings/':
-    //             return '/settings';
-    //         default:
-    //             return `/dashboard/${sectionId}`;
-    //     }
-    // };
-
     return (
         <PageTemplate
             title="Administration JO 2024"

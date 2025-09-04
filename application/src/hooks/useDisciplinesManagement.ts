@@ -46,12 +46,16 @@ export function useDisciplinesManagement() {
     try {
       setCreateLoading(true);
       setCreateError(null);
+
       const updateData: UpdateDisciplineRequest = {
         id: id,
-        nom: disciplineData.nom
+        nom: disciplineData.nom,
+        icone: disciplineData.icone
       };
+
       const updatedDiscipline = await disciplineApi.update(updateData);
-      setDisciplines(prev => prev.map(discipline => 
+
+      setDisciplines(prev => prev.map(discipline =>
         discipline.id === id ? updatedDiscipline : discipline
       ).sort((a, b) => a.nom.localeCompare(b.nom)));
       return updatedDiscipline;
