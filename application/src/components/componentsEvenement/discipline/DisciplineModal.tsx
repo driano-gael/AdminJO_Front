@@ -123,7 +123,7 @@ export default function DisciplineModal({
                         <div className="border rounded-md p-3 max-h-48 overflow-y-auto">
                             <div className="grid grid-cols-8 gap-2">
                                 {SPORT_ICONS.map((icon) => {
-                                    const relativeIconPath = `images/sportSVG/${icon}`;
+                                    const relativeIconPath = `/images/sportSVG/${icon}`;
                                     return (
                                         <button
                                             key={icon}
