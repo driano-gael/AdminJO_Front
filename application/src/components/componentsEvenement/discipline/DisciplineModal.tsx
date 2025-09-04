@@ -14,7 +14,7 @@ const SPORT_ICONS = [
   'rol.svg', 'row.svg', 'ru7.svg', 'sal.svg', 'sbd.svg', 'sho.svg', 'sjp.svg', 'skb.svg',
   'skn.svg', 'smt.svg', 'squ.svg', 'srf.svg', 'ssk.svg', 'stk.svg', 'swa.svg', 'swm.svg',
   'ten.svg', 'tkw.svg', 'tri.svg', 'tte.svg', 'vbv.svg', 'vvo.svg', 'wlf.svg', 'wpo.svg',
-  'wre.svg', 'wsu.svg'
+  'wre.svg', 'wsu.svg', 'volleyball.svg'
 ];
 
 interface Props {
