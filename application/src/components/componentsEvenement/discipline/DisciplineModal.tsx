@@ -8,7 +8,7 @@ const SPORT_ICONS = [
   'alp.svg', 'arc.svg', 'ath.svg', 'bdm.svg', 'bk3.svg', 'bkb.svg', 'bkg.svg', 'bmf.svg',
   'bmx.svg', 'bob.svg', 'box.svg', 'bs5.svg', 'bsb.svg', 'bth.svg', 'ccs.svg', 'ckt.svg',
   'clb.svg', 'crd.svg', 'csl.svg', 'csp.svg', 'ctr.svg', 'cur.svg', 'div.svg', 'equ.svg',
-  'fbl.svg', 'fen.svg', 'flf.svg', 'frs.svg', 'fsk.svg', 'fut.svg', 'gac.svg', 'gar.svg',
+  'fbl.svg', 'fen.svg', 'flf.svg', 'frs.svg', 'fsk.svg', 'fut.svg', 'gac (1).svg', 'gar.svg',
   'glf.svg', 'gry.svg', 'gtr.svg', 'hbb.svg', 'hbl.svg', 'hoc.svg', 'iho.svg', 'jud.svg',
   'kte.svg', 'lax.svg', 'lug.svg', 'mpn.svg', 'mtb.svg', 'ncb.svg', 'ows.svg', 'roc.svg',
   'rol.svg', 'row.svg', 'ru7.svg', 'sal.svg', 'sbd.svg', 'sho.svg', 'sjp.svg', 'skb.svg',
@@ -111,10 +111,12 @@ export default function DisciplineModal({
                             <div className="mb-3 flex items-center space-x-2">
                                 <span className="text-sm text-gray-600">Icône sélectionnée :</span>
                                 <Image
-                                    src={`${formData.icone}`}
+                                    src={formData.icone}
                                     alt="Icône sélectionnée"
                                     width={32}
                                     height={32}
+                                    className="w-8 h-8"
+                                    unoptimized
                                 />
                                 <span className="text-sm text-gray-500">{formData.icone}</span>
                             </div>
@@ -137,11 +139,12 @@ export default function DisciplineModal({
                                             title={icon.replace('.svg', '')}
                                         >
                                             <Image
-                                                src={`${icon}`}
+                                                src={`/images/sportSVG/${icon}`}
                                                 alt={icon.replace('.svg', '')}
                                                 width={24}
                                                 height={24}
-                                                className="mx-auto"
+                                                className="w-6 h-6 mx-auto"
+                                                unoptimized
                                             />
                                         </button>
                                     );
