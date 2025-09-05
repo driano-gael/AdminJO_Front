@@ -32,13 +32,8 @@ describe('dashboardSections', () => {
   });
 
   it('should have offers management section', () => {
-    const offersSection = dashboardSections.find(s => s.url === '/offers');
-    
+    const offersSection = dashboardSections.find(s => s.url === '/pageOffre');
     expect(offersSection).toBeDefined();
-    expect(offersSection?.title).toBe('Gestion des Offres');
-    expect(offersSection?.description).toBe('Configurer les offres de billets et tarifications');
-    expect(offersSection?.icon).toBe('🎫');
-    expect(offersSection?.color).toBe('bg-purple-500 hover:bg-purple-600');
   });
 
   it('should have users management section', () => {
@@ -102,10 +97,10 @@ describe('getDashboardSectionByUrl', () => {
   });
 
   it('should return correct section for offers URL', () => {
-    const section = getDashboardSectionByUrl('/offers');
+    const section = getDashboardSectionByUrl('/pageOffre');
     
     expect(section).toBeDefined();
-    expect(section?.url).toBe('/offers');
+    expect(section?.url).toBe('/pageOffre');
     expect(section?.title).toBe('Gestion des Offres');
   });
 

@@ -1,5 +1,3 @@
-import BackToEventsButton from "@/components/componentsEvenement/shared/BackToEventsButton";
-
 interface Props {
   onCreateClick: () => void;
 }

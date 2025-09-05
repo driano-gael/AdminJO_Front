@@ -97,7 +97,7 @@ export function AuthProvider({ children }: Props) {
               } else {
                 logoutService();
               }
-            } catch (error) {
+            } catch {
               // Refresh échoué, déconnexion
               logoutService();
             }
