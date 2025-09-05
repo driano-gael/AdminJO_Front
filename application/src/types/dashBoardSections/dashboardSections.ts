@@ -25,7 +25,7 @@ export const dashboardSections: DashboardSection[] = [
     color: 'bg-indigo-500 hover:bg-indigo-600'
   },
   {
-    url: '/offers',
+    url: '/pageOffre',
     title: 'Gestion des Offres',
     description: 'Configurer les offres de billets et tarifications',
     icon: '🎫',

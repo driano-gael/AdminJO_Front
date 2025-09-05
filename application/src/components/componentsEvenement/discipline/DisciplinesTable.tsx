@@ -2,7 +2,7 @@ import { Discipline } from '@/types/sportEvenement/discipline';
 import DisciplinesTableRow from './DisciplinesTableRow';
 import Spinner from '@/components/spinner';
 
-interface DisciplinesTableProps {
+interface Props {
   disciplines: Discipline[];
   loading: boolean;
   searchTerm: string;
@@ -20,7 +20,7 @@ export default function DisciplinesTable({
   onDelete, 
   onEdit,
   error 
-}: DisciplinesTableProps) {
+}: Props) {
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden">
       <div className="px-6 py-4 border-b border-gray-200">
