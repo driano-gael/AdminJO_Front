@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Offre } from '@/types/offre/offre';
 import { OffreService } from '@/lib/api/services/offres/offreService';
-import { Notification } from "@/types/common/notification";
+import { Notification } from '@/types/common/notification';
 
 export function useOffresManagement() {
   const [offres, setOffres] = useState<Offre[]>([]);
@@ -43,7 +43,7 @@ export function useOffresManagement() {
         message: "Erreur lors de la création de l'offre",
         type: 'error'
       });
-      console.log(err)
+      throw err;
     } finally {
       setFormLoading(false);
     }
@@ -67,7 +67,7 @@ export function useOffresManagement() {
         message: "Erreur lors de la modification de l'offre",
         type: 'error'
       });
-      console.log(err)
+      throw err;
     } finally {
       setFormLoading(false);
     }

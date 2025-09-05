@@ -38,15 +38,34 @@ export default function OffresManagement() {
 
   const handleSaveOffre = async (offreData: Offre) => {
     try {
+      let successMessage = '';
+
       if (editingOffre) {
         await updateOffre(editingOffre.id, offreData);
+        successMessage = 'Offre modifiée avec succès';
       } else {
         await createOffre(offreData);
+        successMessage = 'Offre créée avec succès';
       }
+
+      // Fermer la modal
       setShowModal(false);
       setEditingOffre(null);
+
+      // Afficher directement la notification de succès
+      setNotification({
+        message: successMessage,
+        type: 'success'
+      });
     } catch (err) {
       console.error(err);
+      // En cas d'erreur, fermer la modal et afficher l'erreur
+      setShowModal(false);
+      setEditingOffre(null);
+      setNotification({
+        message: 'Erreur lors de la sauvegarde',
+        type: 'error'
+      });
     }
   };
 
@@ -104,7 +123,7 @@ export default function OffresManagement() {
           message={notification.message}
           type={notification.type}
           onClose={() => setNotification(null)}
-          duration={3000}
+          duration={1000}
         />
       )}
     </div>
