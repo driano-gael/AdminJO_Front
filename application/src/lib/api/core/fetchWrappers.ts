@@ -20,18 +20,10 @@ export async function fetchApi<T = unknown>(
     let response = await makeRequest(endpoint, options, requiresAuth);
   
     if (response.status === 401 && requiresAuth) {
-        if (process.env.NODE_ENV === 'development') {
-            console.log('🔄 Token expiré, tentative de refresh...');
-        }
-        
         // Tenter de rafraîchir le token
         const refreshed = await tryRefreshToken();
         
         if (refreshed) {
-            if (process.env.NODE_ENV === 'development') {
-                console.log('✅ Token refreshé avec succès, nouvelle tentative...');
-            }
-            
             // Émettre un événement pour informer de la réussite du refresh (optionnel)
             if (typeof window !== 'undefined') {
                 window.dispatchEvent(new CustomEvent('tokenRefreshed'));
@@ -40,10 +32,6 @@ export async function fetchApi<T = unknown>(
             // Refaire la requête avec le nouveau token
             response = await makeRequest(endpoint, options, requiresAuth);
         } else {
-            if (process.env.NODE_ENV === 'development') {
-                console.log('❌ Échec du refresh token, session expirée');
-            }
-            
             // Nettoyer les tokens invalides
             clearTokens();
             

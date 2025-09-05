@@ -70,10 +70,27 @@ export default function OffresManagement() {
   };
 
   const handleDeleteOffre = async (id: number) => {
-    try {
-      await deleteOffre(id);
-    } catch (err) {
-      console.error(err);
+    // Trouver l'offre à supprimer pour afficher son nom dans la confirmation
+    const offreToDelete = offres.find(offre => offre.id === id);
+    const offreName = offreToDelete ? offreToDelete.libelle : 'cette offre';
+
+    // Demander confirmation avant suppression
+    if (window.confirm(`Êtes-vous sûr de vouloir supprimer l'offre "${offreName}" ?`)) {
+      try {
+        await deleteOffre(id);
+        // Afficher directement la notification de succès
+        setNotification({
+          message: 'Offre supprimée avec succès',
+          type: 'success'
+        });
+      } catch (err) {
+        console.error(err);
+        // Afficher la notification d'erreur
+        setNotification({
+          message: 'Erreur lors de la suppression',
+          type: 'error'
+        });
+      }
     }
   };
 

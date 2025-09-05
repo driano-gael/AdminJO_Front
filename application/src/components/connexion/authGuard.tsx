@@ -64,30 +64,15 @@ export default function AuthGuard({ children }: AuthGuardProps) {
       if (tokenValid) {
         // Token valide, tout va bien
         setHasValidToken(true);
-        if (process.env.NODE_ENV === 'development') {
-          console.log('🔑 AuthGuard: Token valide');
-        }
       } else {
         // Token expiré, tenter un refresh
-        if (process.env.NODE_ENV === 'development') {
-          console.log('🔄 AuthGuard: Token expiré, tentative de refresh...');
-        }
-        
         setIsRefreshing(true);
         
         try {
           await refreshToken();
           setHasValidToken(true);
-          
-          if (process.env.NODE_ENV === 'development') {
-            console.log('✅ AuthGuard: Token refreshé avec succès');
-          }
         } catch {
           // Échec du refresh, déconnexion forcée
-          if (process.env.NODE_ENV === 'development') {
-            console.log('❌ AuthGuard: Échec du refresh, déconnexion forcée');
-          }
-          
           forceLogout();
         } finally {
           setIsRefreshing(false);

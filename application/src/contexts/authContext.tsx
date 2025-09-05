@@ -80,22 +80,12 @@ export function AuthProvider({ children }: Props) {
             const storedEmail = localStorage.getItem('user_email');
             if (storedEmail) {
               setUser({ email: storedEmail });
-              if (process.env.NODE_ENV === 'development') {
-                console.log('🔑 AuthContext: Token valide, utilisateur connecté:', storedEmail);
-              }
             } else {
               // Token valide mais pas d'email sauvé, déconnexion
-              if (process.env.NODE_ENV === 'development') {
-                console.log('🔑 AuthContext: Token valide mais pas d\'email sauvé');
-              }
               logoutService();
             }
           } else {
             // Token invalide ou expiré, tenter de le rafraîchir
-            if (process.env.NODE_ENV === 'development') {
-              console.log('🔑 AuthContext: Token invalide ou expiré, tentative de refresh...');
-            }
-            
             try {
               // Tenter de rafraîchir le token
               await refreshToken();
@@ -104,20 +94,11 @@ export function AuthProvider({ children }: Props) {
               const storedEmail = localStorage.getItem('user_email');
               if (storedEmail) {
                 setUser({ email: storedEmail });
-                if (process.env.NODE_ENV === 'development') {
-                  console.log('✅ AuthContext: Token refreshé avec succès, utilisateur connecté:', storedEmail);
-                }
               } else {
-                if (process.env.NODE_ENV === 'development') {
-                  console.log('🔑 AuthContext: Token refreshé mais pas d\'email sauvé');
-                }
                 logoutService();
               }
             } catch (error) {
               // Refresh échoué, déconnexion
-              if (process.env.NODE_ENV === 'development') {
-                console.log('❌ AuthContext: Échec du refresh token:', error);
-              }
               logoutService();
             }
           }
@@ -131,9 +112,6 @@ export function AuthProvider({ children }: Props) {
 
     // Écouter les événements de refresh de token pour synchroniser l'état
     const handleTokenRefreshed = () => {
-      if (process.env.NODE_ENV === 'development') {
-        console.log('🔄 AuthContext: Token refreshé par un autre composant');
-      }
       // Pas besoin de recharger l'utilisateur, juste confirmer que le token est valide
     };
     

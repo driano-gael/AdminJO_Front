@@ -14,32 +14,26 @@ export default function Notification({ message, type = 'error', onClose, duratio
   const [isExiting, setIsExiting] = useState(false);
 
   const handleClose = useCallback(() => {
-    console.log('🔔 handleClose appelé dans Notification');
-    
     // Déclencher l'animation de sortie
     setIsExiting(true);
     
     // Attendre la fin de l'animation (300ms) puis fermer réellement
     setTimeout(() => {
-      console.log('🔔 Calling onClose after exit animation');
       onClose();
     }, 300);
   }, [onClose]);
 
   useEffect(() => {
-    console.log('🔔 Setting up timer with duration:', duration);
     if (timerRef.current) {
       clearTimeout(timerRef.current);
     }
 
     timerRef.current = setTimeout(() => {
-      console.log('🔔 Timer expired, calling handleClose');
       handleClose();
     }, duration);
 
     return () => {
       if (timerRef.current) {
-        console.log('🔔 Cleaning up timer');
         clearTimeout(timerRef.current);
       }
     };
