@@ -97,15 +97,8 @@ export default function OffresManagement() {
   const handleCloseModal = () => {
     setShowModal(false);
     setEditingOffre(null);
-
-    // Afficher la notification si elle existe
-    if (formNotification) {
-      setNotification({
-        message: formNotification.message,
-        type: formNotification.type
-      });
-      setFormNotification(null);
-    }
+    // Nettoyer formNotification sans l'afficher (cas d'annulation)
+    setFormNotification(null);
   };
 
   return (

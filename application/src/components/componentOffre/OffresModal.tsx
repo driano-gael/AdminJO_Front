@@ -57,7 +57,7 @@ export default function OffreModal({
       setNbPersonneInput('1');
       setMontantInput('');
     }
-  }, [offre]);
+  }, [offre, isOpen]);
 
   // Gestion du nombre de personnes
   const handleNbPersonneChange = (value: string) => {
