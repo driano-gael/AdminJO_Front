@@ -17,7 +17,6 @@ export default function OffresManagement() {
     loading,
     error,
     formLoading,
-    formNotification,
     createOffre,
     updateOffre,
     deleteOffre,
