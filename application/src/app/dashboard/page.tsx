@@ -45,19 +45,19 @@ export default function DashboardPage() {
                 <h3 className="text-xl font-bold text-gray-900 mb-6">Statistiques rapides</h3>
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
                     <div className="text-center">
-                        <div className="text-3xl font-bold text-blue-600">42</div>
+                        <div className="text-3xl font-bold text-blue-600">_</div>
                         <div className="text-sm text-gray-600">Événements sportifs</div>
                     </div>
                     <div className="text-center">
-                        <div className="text-3xl font-bold text-green-600">1,234</div>
+                        <div className="text-3xl font-bold text-green-600">_</div>
                         <div className="text-sm text-gray-600">Utilisateurs actifs</div>
                     </div>
                     <div className="text-center">
-                        <div className="text-3xl font-bold text-purple-600">18</div>
+                        <div className="text-3xl font-bold text-purple-600">_</div>
                         <div className="text-sm text-gray-600">Offres disponibles</div>
                     </div>
                     <div className="text-center">
-                        <div className="text-3xl font-bold text-orange-600">156</div>
+                        <div className="text-3xl font-bold text-orange-600">_</div>
                         <div className="text-sm text-gray-600">Employés</div>
                     </div>
                 </div>
