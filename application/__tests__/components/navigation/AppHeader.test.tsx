@@ -24,7 +24,7 @@ const mockUseAuth = useAuth as jest.MockedFunction<typeof useAuth>;
 
 describe('AppHeader', () => {
   const mockLogout = jest.fn();
-  const defaultUser = { email: 'admin@test.com' };
+  const defaultUser = { email: 'admin@test.com', role: 'admin' };
 
   beforeEach(() => {
     jest.clearAllMocks();
@@ -104,7 +104,7 @@ describe('AppHeader', () => {
   });
 
   it('should display user email correctement', () => {
-    const customUser = { email: 'custom@test.com' };
+    const customUser = { email: 'custom@test.com', role: 'admin' };
     mockUseAuth.mockReturnValue({
       user: customUser,
       isAuthenticated: true,

@@ -13,10 +13,17 @@ global.confirm = mockConfirm;
 
 // Mock data
 const mockDisciplines = [
-  { id: 1, nom: 'Natation', description: 'Sport aquatique' },
-  { id: 2, nom: 'Athlétisme', description: 'Course et saut' },
-  { id: 3, nom: 'Basketball', description: 'Sport collectif' }
+  { id: 1, nom: 'Natation', description: 'Sport aquatique', icone: 'swimming.svg' },
+  { id: 2, nom: 'Athlétisme', description: 'Course et saut', icone: 'athletics.svg' },
+  { id: 3, nom: 'Basketball', description: 'Sport collectif', icone: 'basketball.svg' }
 ];
+
+const mockDiscipline = {
+  id: 1,
+  nom: 'Natation',
+  description: 'Sport aquatique',
+  icone: 'swimming.svg'
+};
 
 describe('useDisciplinesManagement', () => {
   beforeEach(() => {
@@ -65,8 +72,8 @@ describe('useDisciplinesManagement', () => {
   });
 
   it('should create new discipline successfully', async () => {
-    const newDiscipline = { id: 4, nom: 'Tennis', description: 'Sport de raquette' };
-    const createData = { nom: 'Tennis', description: 'Sport de raquette' };
+    const newDiscipline = { id: 4, nom: 'Tennis', description: 'Sport de raquette', icone: 'tennis.svg' };
+    const createData = { nom: 'Tennis', description: 'Sport de raquette', icone: 'tennis.svg' };
 
     mockDisciplineApi.getAll.mockResolvedValue(mockDisciplines);
     mockDisciplineApi.create.mockResolvedValue(newDiscipline);
@@ -111,8 +118,8 @@ describe('useDisciplinesManagement', () => {
   });
 
   it('should update discipline successfully', async () => {
-    const updatedDiscipline = { id: 1, nom: 'Natation Modifiée', description: 'Sport aquatique modifié' };
-    const updateData = { nom: 'Natation Modifiée', description: 'Sport aquatique modifié' };
+    const updatedDiscipline = { id: 1, nom: 'Natation Modifiée', description: 'Sport aquatique modifié', icone: 'swimming.svg' };
+    const updateData = { nom: 'Natation Modifiée', description: 'Sport aquatique modifié', icone: 'swimming.svg' };
 
     mockDisciplineApi.getAll.mockResolvedValue(mockDisciplines);
     mockDisciplineApi.update.mockResolvedValue(updatedDiscipline);

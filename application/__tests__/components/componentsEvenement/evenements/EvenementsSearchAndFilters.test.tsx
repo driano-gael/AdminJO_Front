@@ -8,9 +8,9 @@ import { ExtendEvenement } from '../../../../src/types/sportEvenement/evenement'
 
 describe('EvenementsSearchAndFilters', () => {
   const mockEpreuves: Epreuve[] = [
-    { id: 1, libelle: '100m Sprint', discipline: { id: 1, nom: 'Athlétisme' } },
-    { id: 2, libelle: 'Papillon 200m', discipline: { id: 2, nom: 'Natation' } },
-    { id: 3, libelle: 'Marathon', discipline: { id: 1, nom: 'Athlétisme' } }
+    { id: 1, libelle: '100m Sprint', discipline: { id: 1, nom: 'Athlétisme', icone: 'athletics.svg' }, genre:'mixte', tour: 'inconnu' },
+    { id: 2, libelle: 'Papillon 200m', discipline: { id: 2, nom: 'Natation', icone: 'athletics.svg' }, genre:'mixte', tour: 'inconnu' },
+    { id: 3, libelle: 'Marathon', discipline: { id: 1, nom: 'Athlétisme', icone: 'athletics.svg' }, genre:'mixte', tour: 'inconnu' }
   ];
 
   const mockLieux: Lieu[] = [
@@ -20,9 +20,9 @@ describe('EvenementsSearchAndFilters', () => {
   ];
 
   const mockDisciplines: Discipline[] = [
-    { id: 1, nom: 'Athlétisme' },
-    { id: 2, nom: 'Natation' },
-    { id: 3, nom: 'Cyclisme' }
+    { id: 1, nom: 'Athlétisme', icone: 'athletics.svg' },
+    { id: 2, nom: 'Natation', icone: 'swimming.svg' },
+    { id: 3, nom: 'Basketball', icone: 'basketball.svg' }
   ];
 
   const mockEvents: ExtendEvenement[] = [
@@ -147,7 +147,7 @@ describe('EvenementsSearchAndFilters', () => {
       expect(screen.getByText('Toutes les disciplines')).toBeInTheDocument();
       expect(screen.getByText('Athlétisme')).toBeInTheDocument();
       expect(screen.getByText('Natation')).toBeInTheDocument();
-      expect(screen.getByText('Cyclisme')).toBeInTheDocument();
+      expect(screen.getByText('Basketball')).toBeInTheDocument();
     });
 
     it('should call onDisciplineChange when discipline is selected', () => {

@@ -17,7 +17,7 @@ describe('useAuthenticatedPage', () => {
 
   it('should return auth context data when user is authenticated', () => {
     const mockAuthData = {
-      user: { email: 'admin@example.com' },
+      user: { email: 'admin@example.com', role: 'admin' },
       isAuthenticated: true,
       login: jest.fn(),
       logout: jest.fn(),
@@ -83,7 +83,7 @@ describe('useAuthenticatedPage', () => {
 
   it('should call useSessionExpiry on every render', () => {
     const mockAuthData = {
-      user: { email: 'admin@example.com' },
+      user: { email: 'admin@example.com', role: 'admin' },
       isAuthenticated: true,
       login: jest.fn(),
       logout: jest.fn(),
@@ -128,7 +128,7 @@ describe('useAuthenticatedPage', () => {
 
     // Devient authentifié
     mockAuthData = {
-      user: { email: 'admin@example.com' },
+      user: { email: 'admin@example.com', role: 'admin' },
       isAuthenticated: true,
       login: jest.fn(),
       logout: jest.fn(),
@@ -143,7 +143,7 @@ describe('useAuthenticatedPage', () => {
     rerender();
 
     expect(result.current.isAuthenticated).toBe(true);
-    expect(result.current.user).toEqual({ email: 'admin@example.com' });
+    expect(result.current.user).toEqual({ email: 'admin@example.com', role: 'admin' });
   });
 
   it('should handle undefined user state gracefully', () => {
@@ -176,4 +176,19 @@ describe('useAuthenticatedPage', () => {
       renderHook(() => useAuthenticatedPage());
     }).toThrow('Auth context error');
   });
+
+  // Mock data avec des disciplines complètes
+  const mockDiscipline: Discipline = {
+    id: 1,
+    nom: 'Athlétisme',
+    icone: 'athletics.svg'
+  };
+
+  const mockEpreuve: Epreuve = {
+    id: 1,
+    libelle: '100m sprint',
+    genre: 'hommes',
+    tour: 'finale',
+    discipline: mockDiscipline
+  };
 });

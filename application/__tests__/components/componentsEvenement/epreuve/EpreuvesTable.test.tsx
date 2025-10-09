@@ -19,6 +19,8 @@ jest.mock('../../../../src/components/componentsEvenement/epreuve/EpreuvesTableR
   };
 });
 
+
+
 // Mock du composant Spinner
 jest.mock('../../../../src/components/spinner', () => {
   return function MockSpinner() {
@@ -28,20 +30,19 @@ jest.mock('../../../../src/components/spinner', () => {
 
 describe('EpreuvesTable', () => {
   const mockEpreuves: Epreuve[] = [
-    { 
-      id: 1, 
-      libelle: '100m Sprint', 
-      discipline: { id: 1, nom: 'Athlétisme' }
+    {
+      id: 1,
+      libelle: '100m sprint',
+      genre: 'hommes',
+      tour: 'finale',
+      discipline: { id: 1, nom: 'Athlétisme', icone: 'athletics.svg' }
     },
-    { 
-      id: 2, 
-      libelle: 'Papillon 200m', 
-      discipline: { id: 2, nom: 'Natation' }
-    },
-    { 
-      id: 3, 
-      libelle: 'Saut en hauteur', 
-      discipline: { id: 1, nom: 'Athlétisme' }
+    {
+      id: 2,
+      libelle: '200m nage libre',
+      genre: 'femmes',
+      tour: 'demi-finale',
+      discipline: { id: 2, nom: 'Natation', icone: 'swimming.svg' }
     }
   ];
 

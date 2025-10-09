@@ -43,6 +43,23 @@ describe('EvenementsTableRow', () => {
     ]
   };
 
+  const mockEpreuves: Epreuve[] = [
+    {
+      id: 1,
+      libelle: '100m Sprint',
+      genre: 'hommes',
+      tour: 'finale',
+      discipline: { id: 1, nom: 'Athlétisme', icone: 'athletics.svg' }
+    },
+    {
+      id: 2,
+      libelle: 'Papillon 200m',
+      genre: 'femmes',
+      tour: 'demi-finale',
+      discipline: { id: 2, nom: 'Natation', icone: 'swimming.svg' }
+    }
+  ];
+
   const defaultProps = {
     event: mockEvent,
     onEdit: mockOnEdit,

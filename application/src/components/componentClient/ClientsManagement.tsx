@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import { useSessionExpiry } from '@/hooks/useSessionExpiry';
-import { Client } from '@/types/client/client';
 import { useClientsManagement } from '@/hooks/useClientsManagement';
 import Notification from '@/components/notification';
 import ClientsHeader from './ClientsHeader';

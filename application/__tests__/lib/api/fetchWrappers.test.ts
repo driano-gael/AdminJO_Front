@@ -79,7 +79,9 @@ describe('FetchWrappers', () => {
       // Refresh token réussit
       mockRefreshToken.mockResolvedValue({
         access: 'new_token',
-        refresh: 'new_refresh'
+        refresh: 'new_refresh',
+        role: 'admin',
+        email: 'admin@test.com'
       });
       
       // Deuxième fetch avec nouveau token réussit

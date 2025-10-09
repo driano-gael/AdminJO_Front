@@ -21,8 +21,9 @@ export function useClientsManagement() {
       setError(null);
       const data = await clientService.getClients();
       setClients(data);
-    } catch (err: any) {
-      setError(err.response?.data?.message || 'Erreur lors du chargement des clients');
+    } catch (err: Error | unknown) {
+      const errorMessage = err instanceof Error ? err.message : 'Erreur lors du chargement des clients';
+      setError(errorMessage);
       console.error('Erreur chargement clients:', err);
     } finally {
       setLoading(false);
@@ -53,10 +54,11 @@ export function useClientsManagement() {
       // Appel API
       await clientService.setUnsetClientActive(clientId);
 
-    } catch (err: any) {
+    } catch (err: Error | unknown) {
       // En cas d'erreur, on recharge la liste pour récupérer l'état correct
       await loadClients();
-      setError(err.message || 'Erreur lors de la modification du statut du client');
+      const errorMessage = err instanceof Error ? err.message : 'Erreur lors de la modification du statut du client';
+      setError(errorMessage);
       console.error('Erreur modification statut client:', err);
     }
   };

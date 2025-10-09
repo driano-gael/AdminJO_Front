@@ -14,26 +14,35 @@ jest.mock('@/lib/api/core/fetchWrappers');
 const mockFetchApi = fetchApi as jest.MockedFunction<typeof fetchApi>;
 
 // Mock data
-const mockEpreuve: Epreuve = {
+let mockDiscipline: Discipline = {
   id: 1,
-  libelle: '100m nage libre',
-  discipline: { id: 1, nom: 'Natation' },
-  evenement: null
+  nom: 'Natation',
+  icone: 'natation.svg'
 };
 
-const mockEpreuves: Epreuve[] = [
+let mockEpreuve: Epreuve = {
+  id: 1,
+  libelle: '100m nage libre hommes',
+  genre: 'hommes',
+  tour: 'finale',
+  discipline: mockDiscipline
+};
+
+let mockEpreuves: Epreuve[] = [
   mockEpreuve,
   { 
     id: 2, 
-    libelle: '100m sprint', 
-    discipline: { id: 2, nom: 'Athlétisme' },
-    evenement: null
+    libelle: '200m papillon femmes',
+    genre: 'femmes',
+    tour: 'demi-finale',
+    discipline: { id: 2, nom: 'Athlétisme', icone: 'athletisme.svg' }
   },
   { 
     id: 3, 
-    libelle: '200m nage libre', 
-    discipline: { id: 1, nom: 'Natation' },
-    evenement: null
+    libelle: 'Relais 4x100m mixte',
+    genre: 'mixte',
+    tour: 'qualifications',
+    discipline: { id: 3, nom: 'Gymnastique', icone: 'gymnastique.svg' }
   }
 ];
 

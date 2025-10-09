@@ -95,7 +95,9 @@ describe('AuthContext', () => {
   it('should handle successful login', async () => {
     mockLogin.mockResolvedValue({
       access: 'token',
-      refresh: 'refresh_token'
+      refresh: 'refresh_token',
+      role: 'admin',
+      email: 'admin@test.com'
     });
 
     await act(async () => {
@@ -145,7 +147,9 @@ describe('AuthContext', () => {
     // Simuler un utilisateur connecté
     mockLogin.mockResolvedValue({
       access: 'token',
-      refresh: 'refresh_token'
+      refresh: 'refresh_token',
+      role: 'admin',
+      email: 'admin@test.com'
     });
 
     await act(async () => {

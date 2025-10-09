@@ -10,15 +10,16 @@ describe('EpreuveModal', () => {
   const mockOnSave = jest.fn();
 
   const mockDisciplines: Discipline[] = [
-    { id: 1, nom: 'Athlétisme' },
-    { id: 2, nom: 'Natation' },
-    { id: 3, nom: 'Gymnastique' }
+    { id: 1, nom: 'Athlétisme', icone: 'athletics.svg' },
+    { id: 2, nom: 'Natation', icone: 'swimming.svg' }
   ];
 
   const mockEpreuve: Epreuve = {
     id: 1,
-    libelle: '100m Sprint',
-    discipline: { id: 1, nom: 'Athlétisme' }
+    libelle: '100m sprint',
+    genre: 'hommes',
+    tour: 'finale',
+    discipline: mockDisciplines[0]
   };
 
   const defaultProps = {
@@ -54,7 +55,7 @@ describe('EpreuveModal', () => {
       render(<EpreuveModal {...defaultProps} epreuve={mockEpreuve} />);
       
       expect(screen.getByText('Modifier l\'épreuve')).toBeInTheDocument();
-      expect(screen.getByDisplayValue('100m Sprint')).toBeInTheDocument();
+      expect(screen.getByDisplayValue('100m sprint')).toBeInTheDocument();
       expect(screen.getByText('Modifier')).toBeInTheDocument();
     });
 
@@ -70,7 +71,6 @@ describe('EpreuveModal', () => {
       
       expect(screen.getByText('Athlétisme')).toBeInTheDocument();
       expect(screen.getByText('Natation')).toBeInTheDocument();
-      expect(screen.getByText('Gymnastique')).toBeInTheDocument();
     });
   });
 
@@ -96,9 +96,9 @@ describe('EpreuveModal', () => {
     it('should populate form when editing existing epreuve', () => {
       render(<EpreuveModal {...defaultProps} epreuve={mockEpreuve} />);
 
-      const libelleInput = screen.getByDisplayValue('100m Sprint');
-      expect(libelleInput).toHaveValue('100m Sprint');
-      
+      const libelleInput = screen.getByDisplayValue('100m sprint');
+      expect(libelleInput).toHaveValue('100m sprint');
+
       const disciplineSelect = screen.getByRole('combobox');
       expect(disciplineSelect).toHaveValue('1');
     });
@@ -106,7 +106,7 @@ describe('EpreuveModal', () => {
     it('should reset form when switching modes', () => {
       const { rerender } = render(<EpreuveModal {...defaultProps} epreuve={mockEpreuve} />);
 
-      expect(screen.getByDisplayValue('100m Sprint')).toBeInTheDocument();
+      expect(screen.getByDisplayValue('100m sprint')).toBeInTheDocument();
 
       rerender(<EpreuveModal {...defaultProps} epreuve={undefined} />);
 
@@ -274,7 +274,7 @@ describe('EpreuveModal', () => {
       fireEvent.change(libelleInput, { target: { value: 'Test Input' } });
 
       rerender(<EpreuveModal {...defaultProps} epreuve={mockEpreuve} />);
-      expect(screen.getByDisplayValue('100m Sprint')).toBeInTheDocument();
+      expect(screen.getByDisplayValue('100m sprint')).toBeInTheDocument();
 
       rerender(<EpreuveModal {...defaultProps} epreuve={undefined} />);
       
