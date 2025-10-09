@@ -3,6 +3,8 @@
 interface Props {
   searchTerm: string;
   onSearchChange: (term: string) => void;
+  statusFilter: 'all' | 'active' | 'inactive';
+  onStatusFilterChange: (status: 'all' | 'active' | 'inactive') => void;
 }
 
 /**
@@ -10,7 +12,9 @@ interface Props {
  */
 export default function ClientsSearchAndFilters({
   searchTerm,
-  onSearchChange
+  onSearchChange,
+  statusFilter,
+  onStatusFilterChange
 }: Props) {
   return (
     <div className="bg-white rounded-lg shadow-md p-6">
@@ -24,10 +28,47 @@ export default function ClientsSearchAndFilters({
             <input
               type="text"
               className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-blue-500 focus:border-blue-500 text-gray-900"
-              placeholder="Rechercher par nom, prénom ou téléphone..."
+              placeholder="Rechercher par nom, prénom, téléphone ou email..."
               value={searchTerm}
               onChange={(e) => onSearchChange(e.target.value)}
             />
+          </div>
+        </div>
+
+        {/* Filtre par statut */}
+        <div className="flex items-center space-x-2">
+          <span className="text-sm font-medium text-gray-700">Statut:</span>
+          <div className="flex bg-gray-100 rounded-lg p-1">
+            <button
+              onClick={() => onStatusFilterChange('all')}
+              className={`px-3 py-1 text-sm font-medium rounded-md transition-colors ${
+                statusFilter === 'all'
+                  ? 'bg-white text-blue-600 shadow-sm'
+                  : 'text-gray-600 hover:text-gray-800'
+              }`}
+            >
+              Tous
+            </button>
+            <button
+              onClick={() => onStatusFilterChange('active')}
+              className={`px-3 py-1 text-sm font-medium rounded-md transition-colors ${
+                statusFilter === 'active'
+                  ? 'bg-white text-green-600 shadow-sm'
+                  : 'text-gray-600 hover:text-gray-800'
+              }`}
+            >
+              Actifs
+            </button>
+            <button
+              onClick={() => onStatusFilterChange('inactive')}
+              className={`px-3 py-1 text-sm font-medium rounded-md transition-colors ${
+                statusFilter === 'inactive'
+                  ? 'bg-white text-red-600 shadow-sm'
+                  : 'text-gray-600 hover:text-gray-800'
+              }`}
+            >
+              Inactifs
+            </button>
           </div>
         </div>
 

@@ -10,6 +10,7 @@ interface Props {
   searchTerm: string;
   onRefresh: () => void;
   error?: string | null;
+  handleToggleActive: (clientId: number) => Promise<void>;
 }
 
 export default function ClientsTable({
@@ -17,7 +18,8 @@ export default function ClientsTable({
     loading,
     searchTerm,
     onRefresh,
-    error
+    error,
+    handleToggleActive
 }: Props) {
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden">
@@ -70,7 +72,16 @@ export default function ClientsTable({
                 Téléphone
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                ID Utilisateur
+                email
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                statut
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                DATE CREATION
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                ACTIONS
               </th>
             </tr>
           </thead>
@@ -101,6 +112,7 @@ export default function ClientsTable({
                 <ClientsTableRow
                   key={client.id}
                   client={client}
+                  onToggleActive={handleToggleActive}
                 />
               ))
             )}

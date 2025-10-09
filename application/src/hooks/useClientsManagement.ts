@@ -10,6 +10,7 @@ export function useClientsManagement() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
+  const [statusFilter, setStatusFilter] = useState<'all' | 'active' | 'inactive'>('all');
 
   /**
    * Charge la liste des clients
@@ -27,6 +28,38 @@ export function useClientsManagement() {
       setLoading(false);
     }
   };
+    /**
+   * change l'etat actif/inactif d'un client
+   */
+  const toggleClientActive = async (clientId: number) => {
+    try {
+      setError(null);
+
+      // Mise à jour optimiste : on met à jour l'état local immédiatement
+      setClients(prevClients =>
+        prevClients.map(client =>
+          client.id === clientId
+            ? {
+                ...client,
+                user: {
+                  ...client.user,
+                  is_active: !client.user.is_active
+                }
+              }
+            : client
+        )
+      );
+
+      // Appel API
+      await clientService.setUnsetClientActive(clientId);
+
+    } catch (err: any) {
+      // En cas d'erreur, on recharge la liste pour récupérer l'état correct
+      await loadClients();
+      setError(err.message || 'Erreur lors de la modification du statut du client');
+      console.error('Erreur modification statut client:', err);
+    }
+  };
 
   /**
    * Gère la recherche de clients
@@ -36,17 +69,33 @@ export function useClientsManagement() {
   };
 
   /**
-   * Filtre les clients selon le terme de recherche
+   * Gère le filtre par statut
+   */
+  const handleStatusFilter = (status: 'all' | 'active' | 'inactive') => {
+    setStatusFilter(status);
+  };
+
+  /**
+   * Filtre les clients selon le terme de recherche et le statut
    */
   const filteredClients = clients.filter(client => {
-    if (!searchTerm) return true;
+    // Filtre par terme de recherche
+    const matchesSearch = !searchTerm || (() => {
+      const searchLower = searchTerm.toLowerCase();
+      return (
+        client.nom.toLowerCase().includes(searchLower) ||
+        client.prenom.toLowerCase().includes(searchLower) ||
+        client.telephone.includes(searchTerm) ||
+        client.user.email.toLowerCase().includes(searchLower)
+      );
+    })();
 
-    const searchLower = searchTerm.toLowerCase();
-    return (
-      client.nom.toLowerCase().includes(searchLower) ||
-      client.prenom.toLowerCase().includes(searchLower) ||
-      client.telephone.includes(searchTerm)
-    );
+    // Filtre par statut
+    const matchesStatus = statusFilter === 'all' ||
+      (statusFilter === 'active' && client.user.is_active) ||
+      (statusFilter === 'inactive' && !client.user.is_active);
+
+    return matchesSearch && matchesStatus;
   });
 
   // Chargement initial
@@ -59,7 +108,10 @@ export function useClientsManagement() {
     loading,
     error,
     searchTerm,
+    statusFilter,
     loadClients,
-    handleSearch
+    handleSearch,
+    handleStatusFilter,
+    toggleClientActive
   };
 }

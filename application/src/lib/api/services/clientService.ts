@@ -13,6 +13,18 @@ class ClientService {
   async getClients(): Promise<Client[]> {
     return await fetchApi<Client[]>(`${this.baseUrl}/client/`);
   }
+
+  /**
+   * Met a jour l'etat Actif - inactif d'un client
+   * @param clientId ID du client
+   */
+  async setUnsetClientActive(id: number){
+    return await fetchApi<Client>(`${this.baseUrl}/setInactive/${id}/`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' }
+    });
+  }
 }
 
 export const clientService = new ClientService();
+

@@ -24,8 +24,11 @@ export default function ClientsManagement() {
     loading,
     error,
     searchTerm,
+    statusFilter,
     loadClients,
-    handleSearch
+    handleSearch,
+    handleStatusFilter,
+    toggleClientActive
   } = useClientsManagement();
 
   // États pour l'UI
@@ -42,6 +45,8 @@ export default function ClientsManagement() {
         <ClientsSearchAndFilters
           searchTerm={searchTerm}
           onSearchChange={handleSearch}
+          statusFilter={statusFilter}
+          onStatusFilterChange={handleStatusFilter}
         />
 
         <ClientsTable
@@ -50,6 +55,7 @@ export default function ClientsManagement() {
           searchTerm={searchTerm}
           onRefresh={loadClients}
           error={error}
+          handleToggleActive={toggleClientActive}
         />
       </main>
 
