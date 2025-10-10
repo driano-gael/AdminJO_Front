@@ -2,6 +2,7 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import EvenementsTable from '@/components/componentsEvenement/evenements/EvenementsTable';
 import { ExtendEvenement } from '@/types/sportEvenement/evenement';
+import {Epreuve} from "@/types/sportEvenement/epreuve";
 
 describe('EvenementsTable', () => {
   const mockOnEdit = jest.fn();

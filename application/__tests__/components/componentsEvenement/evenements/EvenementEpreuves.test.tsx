@@ -247,7 +247,7 @@ describe('EvenementEpreuves', () => {
           evenement: null
         },
         {
-          id: 1,
+          id: 2, // Changement de 1 à 2 pour éviter les clés dupliquées
           libelle: 'Second',
           genre: 'féminin',
           tour: 'demi-finale',

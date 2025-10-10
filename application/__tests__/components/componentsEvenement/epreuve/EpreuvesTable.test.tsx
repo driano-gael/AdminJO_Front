@@ -1,11 +1,15 @@
 ﻿import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import EpreuvesTable from '../../../../src/components/componentsEvenement/epreuve/EpreuvesTable';
-import { Epreuve } from '../../../../src/types/sportEvenement/epreuve';
+import EpreuvesTable from '@/components/componentsEvenement/epreuve/EpreuvesTable';
+import { Epreuve } from '@/types/sportEvenement/epreuve';
 
 // Mock du composant EpreuvesTableRow
-jest.mock('../../../../src/components/componentsEvenement/epreuve/EpreuvesTableRow', () => {
-  return function MockEpreuvesTableRow({ epreuve, onDelete, onEdit }: any) {
+jest.mock('@/components/componentsEvenement/epreuve/EpreuvesTableRow', () => {
+  return function MockEpreuvesTableRow({ epreuve, onDelete, onEdit }: {
+    epreuve: Epreuve;
+    onDelete: (id: number) => void;
+    onEdit: (epreuve: Epreuve) => void;
+  }) {
     return (
       <tr data-testid={`epreuve-row-${epreuve.id}`}>
         <td>{epreuve.libelle}</td>
@@ -19,10 +23,8 @@ jest.mock('../../../../src/components/componentsEvenement/epreuve/EpreuvesTableR
   };
 });
 
-
-
 // Mock du composant Spinner
-jest.mock('../../../../src/components/spinner', () => {
+jest.mock('@/components/spinner', () => {
   return function MockSpinner() {
     return <div data-testid="spinner">Loading...</div>;
   };
@@ -32,17 +34,24 @@ describe('EpreuvesTable', () => {
   const mockEpreuves: Epreuve[] = [
     {
       id: 1,
-      libelle: '100m sprint',
+      libelle: '100m Sprint',
       genre: 'hommes',
       tour: 'finale',
       discipline: { id: 1, nom: 'Athlétisme', icone: 'athletics.svg' }
     },
     {
       id: 2,
-      libelle: '200m nage libre',
+      libelle: 'Papillon 200m',
       genre: 'femmes',
       tour: 'demi-finale',
       discipline: { id: 2, nom: 'Natation', icone: 'swimming.svg' }
+    },
+    {
+      id: 3,
+      libelle: 'Saut en hauteur',
+      genre: 'mixte',
+      tour: 'finale',
+      discipline: { id: 1, nom: 'Athlétisme', icone: 'athletics.svg' }
     }
   ];
 
@@ -281,8 +290,8 @@ describe('EpreuvesTable', () => {
     });
 
     it('should handle undefined searchTerm', () => {
-      render(<EpreuvesTable {...defaultProps} searchTerm={undefined as any} />);
-      
+      render(<EpreuvesTable {...defaultProps} searchTerm={undefined as unknown as string} />);
+
       expect(screen.getByRole('table')).toBeInTheDocument();
     });
 
@@ -290,7 +299,9 @@ describe('EpreuvesTable', () => {
       const longNameEpreuve: Epreuve = {
         id: 4,
         libelle: 'Très très très très long nom d\'épreuve qui dépasse la largeur normale',
-        discipline: { id: 1, nom: 'Athlétisme' }
+        discipline: { id: 1, nom: 'Athlétisme', icone: 'athletics.svg' },
+        genre: 'mixte',
+        tour: 'finale'
       };
       
       render(<EpreuvesTable {...defaultProps} epreuves={[longNameEpreuve]} />);

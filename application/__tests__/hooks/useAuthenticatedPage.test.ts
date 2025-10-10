@@ -107,7 +107,7 @@ describe('useAuthenticatedPage', () => {
 
   it('should handle auth state changes correctly', () => {
     let mockAuthData = {
-      user: null as { email: string } | null,
+      user: null as { email: string; role?: string } | null,
       isAuthenticated: false,
       login: jest.fn(),
       logout: jest.fn(),
@@ -176,19 +176,4 @@ describe('useAuthenticatedPage', () => {
       renderHook(() => useAuthenticatedPage());
     }).toThrow('Auth context error');
   });
-
-  // Mock data avec des disciplines complètes
-  const mockDiscipline: Discipline = {
-    id: 1,
-    nom: 'Athlétisme',
-    icone: 'athletics.svg'
-  };
-
-  const mockEpreuve: Epreuve = {
-    id: 1,
-    libelle: '100m sprint',
-    genre: 'hommes',
-    tour: 'finale',
-    discipline: mockDiscipline
-  };
 });

@@ -18,13 +18,6 @@ const mockDisciplines = [
   { id: 3, nom: 'Basketball', description: 'Sport collectif', icone: 'basketball.svg' }
 ];
 
-const mockDiscipline = {
-  id: 1,
-  nom: 'Natation',
-  description: 'Sport aquatique',
-  icone: 'swimming.svg'
-};
-
 describe('useDisciplinesManagement', () => {
   beforeEach(() => {
     jest.clearAllMocks();
@@ -95,7 +88,7 @@ describe('useDisciplinesManagement', () => {
   });
 
   it('should handle create discipline error', async () => {
-    const createData = { nom: 'Tennis', description: 'Sport de raquette' };
+    const createData = { nom: 'Tennis', description: 'Sport de raquette', icone: 'tennis.svg' };
 
     mockDisciplineApi.getAll.mockResolvedValue(mockDisciplines);
     mockDisciplineApi.create.mockRejectedValue(new Error('Create failed'));
@@ -135,15 +128,17 @@ describe('useDisciplinesManagement', () => {
       expect(updated).toEqual(updatedDiscipline);
     });
 
+    // Le hook ne passe que id, nom et icone à l'API (pas description)
     expect(mockDisciplineApi.update).toHaveBeenCalledWith({
       id: 1,
-      nom: 'Natation Modifiée'
+      nom: 'Natation Modifiée',
+      icone: 'swimming.svg'
     });
     expect(result.current.disciplines.find(d => d.id === 1)).toEqual(updatedDiscipline);
   });
 
   it('should handle update discipline error', async () => {
-    const updateData = { nom: 'Natation Modifiée', description: 'Sport aquatique modifié' };
+    const updateData = { nom: 'Natation Modifiée', description: 'Sport aquatique modifié', icone: 'swimming.svg' };
 
     mockDisciplineApi.getAll.mockResolvedValue(mockDisciplines);
     mockDisciplineApi.update.mockRejectedValue(new Error('Update failed'));
@@ -260,9 +255,9 @@ describe('useDisciplinesManagement', () => {
 
   it('should sort disciplines alphabetically', async () => {
     const unsortedDisciplines = [
-      { id: 3, nom: 'Volleyball', description: 'Sport collectif' },
-      { id: 1, nom: 'Athlétisme', description: 'Course et saut' },
-      { id: 2, nom: 'Natation', description: 'Sport aquatique' }
+      { id: 3, nom: 'Volleyball', description: 'Sport collectif', icone: 'volleyball.svg' },
+      { id: 1, nom: 'Athlétisme', description: 'Course et saut', icone: 'athletics.svg' },
+      { id: 2, nom: 'Natation', description: 'Sport aquatique', icone: 'swimming.svg' }
     ];
 
     mockDisciplineApi.getAll.mockResolvedValue(unsortedDisciplines);

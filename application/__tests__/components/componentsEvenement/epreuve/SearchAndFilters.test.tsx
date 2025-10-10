@@ -281,9 +281,9 @@ describe('SearchAndFilters', () => {
   describe('Data Handling', () => {
     it('should render disciplines with special characters', () => {
       const specialDisciplines: Discipline[] = [
-        { id: 1, nom: 'Athlétisme & Course' },
-        { id: 2, nom: 'Natation (piscine)' },
-        { id: 3, nom: 'Arts martiaux - Judo' }
+        { id: 1, nom: 'Athlétisme & Course', icone: 'athletics.svg' },
+        { id: 2, nom: 'Natation (piscine)', icone: 'swimming.svg' },
+        { id: 3, nom: 'Arts martiaux - Judo', icone: 'judo.svg' }
       ];
 
       render(<SearchAndFilters {...defaultProps} disciplines={specialDisciplines} />);
@@ -295,7 +295,7 @@ describe('SearchAndFilters', () => {
 
     it('should handle disciplines with very long names', () => {
       const longNameDisciplines: Discipline[] = [
-        { id: 1, nom: 'Discipline avec un nom extrêmement long qui dépasse la largeur normale' }
+        { id: 1, nom: 'Discipline avec un nom extrêmement long qui dépasse la largeur normale', icone: 'longname.svg' }
       ];
 
       render(<SearchAndFilters {...defaultProps} disciplines={longNameDisciplines} />);
