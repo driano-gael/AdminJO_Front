@@ -85,9 +85,10 @@ describe('useEventsManagement', () => {
     const mockEpreuves = [
       { 
         id: 1, 
-        nom: 'Épreuve 1', 
-        disciplineId: 1,
-        discipline: { id: 1, nom: 'Discipline 1' }
+        libelle: 'Épreuve 1',
+        genre: 'hommes',
+        tour: 'finale',
+        discipline: { id: 1, nom: 'Discipline 1', icone: 'discipline1.svg' }
       }
     ];
     mockEpreuveApi.getAll.mockResolvedValue(mockEpreuves);
@@ -162,8 +163,11 @@ describe('useEventsManagement', () => {
       await result.current.updateEvent(1, eventToUpdate);
     });
 
-    // Le hook appelle l'API avec les bonnes données
-    expect(mockEvenementApi.update).toHaveBeenCalledWith(1, eventToUpdate);
+    // Le hook appelle l'API avec les bonnes données combinées
+    expect(mockEvenementApi.update).toHaveBeenCalledWith({
+      id: 1,
+      ...eventToUpdate
+    });
   });
 
   it('should delete event successfully', async () => {

@@ -7,6 +7,7 @@
 } from '@/lib/api/services/evenementSports/epreuveService';
 import { fetchApi } from '@/lib/api/core/fetchWrappers';
 import { Epreuve } from '@/types/sportEvenement/epreuve';
+import { Discipline } from '@/types/sportEvenement/discipline';
 
 // Mock du module fetchWrappers
 jest.mock('@/lib/api/core/fetchWrappers');
@@ -152,7 +153,9 @@ describe('EpreuveService', () => {
       const createdEpreuve: Epreuve = { 
         id: 4, 
         libelle: '50m nage libre',
-        discipline: { id: 1, nom: 'Natation' },
+        genre: 'hommes',
+        tour: 'finale',
+        discipline: { id: 1, nom: 'Natation', icone: 'natation.svg' },
         evenement: null
       };
       
@@ -198,7 +201,9 @@ describe('EpreuveService', () => {
       const updatedEpreuve: Epreuve = { 
         id: 1, 
         libelle: '100m nage libre modifié',
-        discipline: { id: 1, nom: 'Natation' },
+        genre: 'hommes',
+        tour: 'finale',
+        discipline: { id: 1, nom: 'Natation', icone: 'natation.svg' },
         evenement: null
       };
       
@@ -227,7 +232,9 @@ describe('EpreuveService', () => {
       const updatedEpreuve: Epreuve = { 
         id: 1, 
         libelle: '100m nage libre',
-        discipline: { id: 1, nom: 'Natation' },
+        genre: 'hommes',
+        tour: 'finale',
+        discipline: { id: 1, nom: 'Natation', icone: 'natation.svg' },
         evenement: null
       };
       

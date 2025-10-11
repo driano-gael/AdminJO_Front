@@ -107,7 +107,7 @@ describe('useAuthenticatedPage', () => {
 
   it('should handle auth state changes correctly', () => {
     let mockAuthData = {
-      user: null as { email: string; role?: string } | null,
+      user: null as { email: string; role: string } | null,
       isAuthenticated: false,
       login: jest.fn(),
       logout: jest.fn(),

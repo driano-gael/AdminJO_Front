@@ -84,23 +84,31 @@ describe('Epreuve interface', () => {
       {
         id: 1,
         libelle: '100m sprint hommes',
+        genre: 'hommes',
+        tour: 'finale',
         discipline: mockDiscipline,
         evenement: mockEvenement
       },
       {
         id: 2,
         libelle: '200m sprint femmes',
+        genre: 'femmes',
+        tour: 'demi-finale',
         discipline: mockDiscipline,
         evenement: null
       },
       {
         id: 3,
         libelle: '110m haies hommes',
+        genre: 'hommes',
+        tour: 'qualifications',
         discipline: mockDiscipline
       },
       {
         id: 4,
         libelle: 'Marathon hommes',
+        genre: 'hommes',
+        tour: 'finale',
         discipline: mockDiscipline,
         evenement: mockEvenement
       }
@@ -122,17 +130,23 @@ describe('Epreuve interface', () => {
       {
         id: 10,
         libelle: '50m nage libre hommes',
+        genre: 'hommes',
+        tour: 'finale',
         discipline: natationDiscipline,
         evenement: mockEvenement
       },
       {
         id: 11,
         libelle: '100m papillon femmes',
+        genre: 'femmes',
+        tour: 'demi-finale',
         discipline: natationDiscipline
       },
       {
         id: 12,
         libelle: 'Sol individuel hommes',
+        genre: 'hommes',
+        tour: 'qualifications',
         discipline: gymnasticDiscipline,
         evenement: null
       }
@@ -147,6 +161,8 @@ describe('Epreuve interface', () => {
     const epreuve: Epreuve = {
       id: 42,
       libelle: 'Saut en longueur femmes',
+      genre: 'femmes',
+      tour: 'finale',
       discipline: mockDiscipline,
       evenement: mockEvenement
     };
@@ -164,12 +180,16 @@ describe('Epreuve interface', () => {
     const epreuve1: Epreuve = {
       id: 1,
       libelle: 'Relais 4x100m hommes',
+      genre: 'hommes',
+      tour: 'finale',
       discipline: mockDiscipline,
       evenement: mockEvenement
     };
     const epreuve2: Epreuve = {
       id: 1,
       libelle: 'Relais 4x100m hommes',
+      genre: 'hommes',
+      tour: 'finale',
       discipline: mockDiscipline,
       evenement: mockEvenement
     };
@@ -225,18 +245,24 @@ describe('Epreuve interface', () => {
       {
         id: 0,
         libelle: '',
-        discipline: { id: 0, nom: '' },
+        genre: 'hommes',
+        tour: 'finale',
+        discipline: { id: 0, nom: '', icone: 'test.svg' },
         evenement: null
       },
       {
         id: -1,
         libelle: 'Test Event',
-        discipline: { id: -1, nom: 'Test Sport' }
+        genre: 'femmes',
+        tour: 'qualifications',
+        discipline: { id: -1, nom: 'Test Sport', icone: 'test.svg' }
       },
       {
         id: Number.MAX_SAFE_INTEGER,
         libelle: 'Very long event name with many characters',
-        discipline: { id: 1, nom: 'Long discipline name' },
+        genre: 'mixte',
+        tour: 'demi-finale',
+        discipline: { id: 1, nom: 'Long discipline name', icone: 'long.svg' },
         evenement: mockEvenement
       }
     ];
@@ -273,32 +299,28 @@ describe('Epreuve interface', () => {
       }
     ];
 
-    const invalidCases = [
-      {
-        id: 4,
-        libelle: '',
-        genre: 'hommes',
-        tour: 'finale',
-        discipline: { id: 1, nom: 'Test Discipline', icone: 'test.svg' },
-      },
-      {
-        id: 5,
-        libelle: 'A'.repeat(101),
-        genre: 'femmes',
-        tour: 'demi-finale',
-        discipline: { id: 1, nom: 'Test Discipline', icone: 'test.svg' },
-      }
-    ];
+    const invalidEmpty = {
+      id: 4,
+      libelle: '',
+      genre: 'hommes',
+      tour: 'finale',
+      discipline: { id: 1, nom: 'Test Discipline', icone: 'test.svg' },
+    };
+    const invalidTooLong = {
+      id: 5,
+      libelle: 'A'.repeat(101),
+      genre: 'femmes',
+      tour: 'demi-finale',
+      discipline: { id: 1, nom: 'Test Discipline', icone: 'test.svg' },
+    };
 
     validCases.forEach(epreuve => {
       expect(epreuve.libelle.length).toBeGreaterThan(0);
       expect(epreuve.libelle.length).toBeLessThanOrEqual(100);
     });
 
-    invalidCases.forEach(epreuve => {
-      expect(epreuve.libelle.length).toBeLessThan(1);
-      expect(epreuve.libelle.length).toBeGreaterThan(100);
-    });
+    expect(invalidEmpty.libelle.length).toBeLessThan(1);
+    expect(invalidTooLong.libelle.length).toBeGreaterThan(100);
   });
 
   it('should maintain object immutability', () => {

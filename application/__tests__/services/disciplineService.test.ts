@@ -143,7 +143,7 @@ describe('DisciplineService', () => {
     });
 
     it('should handle creation error', async () => {
-      const createData: CreateDisciplineRequest = { nom: 'Test' };
+      const createData: CreateDisciplineRequest = { nom: 'Test', icone: 'test.svg' };
       const error = new Error('Validation error');
       mockFetchApi.mockRejectedValue(error);
 
@@ -157,8 +157,8 @@ describe('DisciplineService', () => {
 
   describe('updateDiscipline', () => {
     it('should update existing discipline', async () => {
-      const updateData: UpdateDisciplineRequest = { id: 1, nom: 'Natation Modifiée' };
-      const updatedDiscipline: Discipline = { 
+      const updateData: UpdateDisciplineRequest = { id: 1, nom: 'Natation Modifiée', icone: 'natation-modifiee.svg' };
+      const updatedDiscipline: Discipline = {
         id: 1, 
         nom: 'Natation Modifiée',
         icone: 'natation.svg'
@@ -176,7 +176,7 @@ describe('DisciplineService', () => {
     });
 
     it('should handle update error', async () => {
-      const updateData: UpdateDisciplineRequest = { id: 999, nom: 'Test' };
+      const updateData: UpdateDisciplineRequest = { id: 999, nom: 'Test', icone: 'test.svg' };
       const error = new Error('Discipline not found');
       mockFetchApi.mockRejectedValue(error);
 
@@ -265,7 +265,7 @@ describe('disciplineApi', () => {
   });
 
   it('should call DisciplineService.createDiscipline via create', async () => {
-    const createData: CreateDisciplineRequest = { nom: 'Test' };
+    const createData: CreateDisciplineRequest = { nom: 'Test', icone: 'test.svg' };
     const spy = jest.spyOn(DisciplineService, 'createDiscipline').mockResolvedValue(mockDiscipline);
 
     const result = await disciplineApi.create(createData);
@@ -275,7 +275,7 @@ describe('disciplineApi', () => {
   });
 
   it('should call DisciplineService.updateDiscipline via update', async () => {
-    const updateData: UpdateDisciplineRequest = { id: 1, nom: 'Test' };
+    const updateData: UpdateDisciplineRequest = { id: 1, nom: 'Test', icone: 'test.svg' };
     const spy = jest.spyOn(DisciplineService, 'updateDiscipline').mockResolvedValue(mockDiscipline);
 
     const result = await disciplineApi.update(updateData);

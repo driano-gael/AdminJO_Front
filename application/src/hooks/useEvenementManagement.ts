@@ -172,13 +172,18 @@ export function useEventsManagement() {
   /**
    * Fonction pour mettre à jour un événement
    */
-  const updateEvent = async (eventData: UpdateEvenementRequest) => {
+  const updateEvent = async (id: number, eventData: Omit<UpdateEvenementRequest, 'id'>) => {
     try {
       setCreateLoading(true);
       setCreateError(null);
       
-      const updatedEvent = await evenementApi.update(eventData);
-      
+      const fullEventData: UpdateEvenementRequest = {
+        id,
+        ...eventData
+      };
+
+      const updatedEvent = await evenementApi.update(fullEventData);
+
       const updatedEventWithExtras: ExtendEvenement = {
         ...updatedEvent,
         sports: updatedEvent.description.toLowerCase().includes('athlétisme') ? 'Athlétisme' :
@@ -190,7 +195,7 @@ export function useEventsManagement() {
       };
       
       setEvents(prev => prev.map(event => 
-        event.id === eventData.id ? updatedEventWithExtras : event
+        event.id === id ? updatedEventWithExtras : event
       ));
       
       // Recharger les épreuves pour refléter les changements
@@ -234,33 +239,6 @@ export function useEventsManagement() {
     setSearchTerm(query);
   };
 
-  /**
-   * Fonctions pour mettre à jour les filtres
-   */
-  const setLieuFilter = (lieuId: number | undefined) => {
-    setFilterLieu(lieuId);
-  };
-
-  const setDisciplineFilter = (disciplineId: number | undefined) => {
-    setFilterDiscipline(disciplineId);
-  };
-
-  const setEpreuveFilter = (epreuveId: number | undefined) => {
-    setFilterEpreuve(epreuveId);
-  };
-
-  const setStatutFilter = (statut: string | undefined) => {
-    setFilterStatut(statut);
-  };
-
-  const setDateDebutFilter = (date: string) => {
-    setFilterDateDebut(date);
-  };
-
-  const setDateFinFilter = (date: string) => {
-    setFilterDateFin(date);
-  };
-
   // Charger les données au montage
   useEffect(() => {
     loadEvents();
@@ -269,7 +247,7 @@ export function useEventsManagement() {
   }, []);
 
   return {
-    events: getFilteredEvents(),
+    events,
     lieux,
     epreuves,
     searchTerm,
@@ -277,25 +255,27 @@ export function useEventsManagement() {
     error,
     createLoading,
     createError,
-    loadEvents,
-    createEvent,
-    updateEvent,
-    deleteEvent,
-    handleSearch,
-    setCreateError,
-    // Fonctions de filtrage
-    setLieuFilter,
-    setDisciplineFilter,
-    setEpreuveFilter,
-    setStatutFilter,
-    setDateDebutFilter,
-    setDateFinFilter,
-    // États de filtrage
     filterLieu,
     filterDiscipline,
     filterEpreuve,
     filterStatut,
     filterDateDebut,
-    filterDateFin
+    filterDateFin,
+    setFilterLieu,
+    setFilterDiscipline,
+    setFilterEpreuve,
+    setFilterStatut,
+    setFilterDateDebut,
+    setFilterDateFin,
+    getFilteredEvents,
+    loadEvents,
+    loadLieux,
+    loadEpreuves,
+    createEvent,
+    updateEvent,
+    deleteEvent,
+    setSearchTerm,
+    setCreateError,
+    handleSearch
   };
 }
