@@ -5,9 +5,9 @@ import { Discipline } from '../../../../src/types/sportEvenement/discipline';
 
 describe('SearchAndFilters', () => {
   const mockDisciplines: Discipline[] = [
-    { id: 1, nom: 'Athlétisme' },
-    { id: 2, nom: 'Natation' },
-    { id: 3, nom: 'Gymnastique' }
+    { id: 1, nom: 'Athlétisme', icone: 'athletics.svg' },
+    { id: 2, nom: 'Natation', icone: 'swimming.svg' },
+    { id: 3, nom: 'Basketball', icone: 'basketball.svg' }
   ];
 
   const defaultProps = {
@@ -44,7 +44,7 @@ describe('SearchAndFilters', () => {
       expect(screen.getByText('Toutes les disciplines')).toBeInTheDocument();
       expect(screen.getByText('Athlétisme')).toBeInTheDocument();
       expect(screen.getByText('Natation')).toBeInTheDocument();
-      expect(screen.getByText('Gymnastique')).toBeInTheDocument();
+      expect(screen.getByText('Basketball')).toBeInTheDocument();
     });
 
     it('should have correct container styling', () => {
@@ -233,7 +233,7 @@ describe('SearchAndFilters', () => {
       expect(options[0]).toHaveValue(''); // "Toutes les disciplines"
       expect(options[1]).toHaveValue('1'); // "Athlétisme"
       expect(options[2]).toHaveValue('2'); // "Natation"
-      expect(options[3]).toHaveValue('3'); // "Gymnastique"
+      expect(options[3]).toHaveValue('3'); // "Basketball"
     });
   });
 
@@ -281,9 +281,9 @@ describe('SearchAndFilters', () => {
   describe('Data Handling', () => {
     it('should render disciplines with special characters', () => {
       const specialDisciplines: Discipline[] = [
-        { id: 1, nom: 'Athlétisme & Course' },
-        { id: 2, nom: 'Natation (piscine)' },
-        { id: 3, nom: 'Arts martiaux - Judo' }
+        { id: 1, nom: 'Athlétisme & Course', icone: 'athletics.svg' },
+        { id: 2, nom: 'Natation (piscine)', icone: 'swimming.svg' },
+        { id: 3, nom: 'Arts martiaux - Judo', icone: 'judo.svg' }
       ];
 
       render(<SearchAndFilters {...defaultProps} disciplines={specialDisciplines} />);
@@ -295,7 +295,7 @@ describe('SearchAndFilters', () => {
 
     it('should handle disciplines with very long names', () => {
       const longNameDisciplines: Discipline[] = [
-        { id: 1, nom: 'Discipline avec un nom extrêmement long qui dépasse la largeur normale' }
+        { id: 1, nom: 'Discipline avec un nom extrêmement long qui dépasse la largeur normale', icone: 'longname.svg' }
       ];
 
       render(<SearchAndFilters {...defaultProps} disciplines={longNameDisciplines} />);
@@ -305,8 +305,8 @@ describe('SearchAndFilters', () => {
 
     it('should handle disciplines with duplicate names', () => {
       const duplicateDisciplines: Discipline[] = [
-        { id: 1, nom: 'Athlétisme' },
-        { id: 2, nom: 'Athlétisme' }
+        { id: 1, nom: 'Athlétisme', icone: 'athletics.svg' },
+        { id: 2, nom: 'Athlétisme', icone: 'athletics.svg' },
       ];
 
       render(<SearchAndFilters {...defaultProps} disciplines={duplicateDisciplines} />);

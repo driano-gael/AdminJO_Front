@@ -14,20 +14,28 @@ jest.mock('@/lib/api/core/fetchWrappers');
 const mockFetchApi = fetchApi as jest.MockedFunction<typeof fetchApi>;
 
 // Mock data
-const mockDiscipline: Discipline = {
+let mockDiscipline: Discipline = {
   id: 1,
-  nom: 'Natation'
+  nom: 'Natation',
+  icone: 'natation.svg'
 };
 
-const mockDisciplines: Discipline[] = [
+let mockDisciplines: Discipline[] = [
   mockDiscipline,
-  { id: 2, nom: 'Athlétisme' },
-  { id: 3, nom: 'Gymnastique' }
+  { id: 2, nom: 'Athlétisme', icone: 'athletisme.svg' },
+  { id: 3, nom: 'Gymnastique', icone: 'gymnastique.svg' }
 ];
 
 describe('DisciplineService', () => {
   beforeEach(() => {
     jest.clearAllMocks();
+    // Reset mocks
+    global.fetch = jest.fn();
+    mockDisciplines = [
+      { id: 1, nom: 'Athlétisme', icone: 'athletics.svg' },
+      { id: 2, nom: 'Natation', icone: 'swimming.svg' },
+      { id: 3, nom: 'Basketball', icone: 'basketball.svg' }
+    ];
   });
 
   describe('getAllDisciplines', () => {
@@ -116,10 +124,11 @@ describe('DisciplineService', () => {
 
   describe('createDiscipline', () => {
     it('should create new discipline', async () => {
-      const createData: CreateDisciplineRequest = { nom: 'Nouvelle Discipline' };
-      const createdDiscipline: Discipline = { 
+      const createData: CreateDisciplineRequest = { nom: 'Nouvelle Discipline', icone: 'nouvelle.svg' };
+      const createdDiscipline: Discipline = {
         id: 4, 
-        nom: 'Nouvelle Discipline'
+        nom: 'Nouvelle Discipline',
+        icone: 'nouvelle.svg'
       };
       
       mockFetchApi.mockResolvedValue(createdDiscipline);
@@ -134,7 +143,7 @@ describe('DisciplineService', () => {
     });
 
     it('should handle creation error', async () => {
-      const createData: CreateDisciplineRequest = { nom: 'Test' };
+      const createData: CreateDisciplineRequest = { nom: 'Test', icone: 'test.svg' };
       const error = new Error('Validation error');
       mockFetchApi.mockRejectedValue(error);
 
@@ -148,10 +157,11 @@ describe('DisciplineService', () => {
 
   describe('updateDiscipline', () => {
     it('should update existing discipline', async () => {
-      const updateData: UpdateDisciplineRequest = { id: 1, nom: 'Natation Modifiée' };
-      const updatedDiscipline: Discipline = { 
+      const updateData: UpdateDisciplineRequest = { id: 1, nom: 'Natation Modifiée', icone: 'natation-modifiee.svg' };
+      const updatedDiscipline: Discipline = {
         id: 1, 
-        nom: 'Natation Modifiée'
+        nom: 'Natation Modifiée',
+        icone: 'natation.svg'
       };
       
       mockFetchApi.mockResolvedValue(updatedDiscipline);
@@ -166,7 +176,7 @@ describe('DisciplineService', () => {
     });
 
     it('should handle update error', async () => {
-      const updateData: UpdateDisciplineRequest = { id: 999, nom: 'Test' };
+      const updateData: UpdateDisciplineRequest = { id: 999, nom: 'Test', icone: 'test.svg' };
       const error = new Error('Discipline not found');
       mockFetchApi.mockRejectedValue(error);
 
@@ -255,7 +265,7 @@ describe('disciplineApi', () => {
   });
 
   it('should call DisciplineService.createDiscipline via create', async () => {
-    const createData: CreateDisciplineRequest = { nom: 'Test' };
+    const createData: CreateDisciplineRequest = { nom: 'Test', icone: 'test.svg' };
     const spy = jest.spyOn(DisciplineService, 'createDiscipline').mockResolvedValue(mockDiscipline);
 
     const result = await disciplineApi.create(createData);
@@ -265,7 +275,7 @@ describe('disciplineApi', () => {
   });
 
   it('should call DisciplineService.updateDiscipline via update', async () => {
-    const updateData: UpdateDisciplineRequest = { id: 1, nom: 'Test' };
+    const updateData: UpdateDisciplineRequest = { id: 1, nom: 'Test', icone: 'test.svg' };
     const spy = jest.spyOn(DisciplineService, 'updateDiscipline').mockResolvedValue(mockDiscipline);
 
     const result = await disciplineApi.update(updateData);

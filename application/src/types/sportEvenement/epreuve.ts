@@ -13,7 +13,7 @@ import { Evenement } from './evenement';
 export interface Epreuve {
   id: number;
   libelle: string;
-  genre:string | "mixte";
+  genre: string | "mixte";
   tour: string | "inconnu";
   discipline: Discipline;
   evenement?: Evenement | null;

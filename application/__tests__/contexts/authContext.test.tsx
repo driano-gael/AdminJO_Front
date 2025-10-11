@@ -95,7 +95,9 @@ describe('AuthContext', () => {
   it('should handle successful login', async () => {
     mockLogin.mockResolvedValue({
       access: 'token',
-      refresh: 'refresh_token'
+      refresh: 'refresh_token',
+      role: 'admin',
+      email: 'test@example.com'
     });
 
     await act(async () => {
@@ -145,7 +147,9 @@ describe('AuthContext', () => {
     // Simuler un utilisateur connecté
     mockLogin.mockResolvedValue({
       access: 'token',
-      refresh: 'refresh_token'
+      refresh: 'refresh_token',
+      role: 'admin',
+      email: 'test@example.com'
     });
 
     await act(async () => {
@@ -179,10 +183,8 @@ describe('AuthContext', () => {
 
   it('should show loading state during initialization', async () => {
     // Ce test vérifie que isLoading est true au début puis devient false
-    let component: any;
-    
     await act(async () => {
-      component = renderWithAuthProvider(<TestComponent />);
+      renderWithAuthProvider(<TestComponent />);
     });
 
     await waitFor(() => {
@@ -197,6 +199,7 @@ describe('AuthContext', () => {
     mockIsTokenValid.mockReturnValue(true);
     localStorageMock.getItem.mockImplementation((key) => {
       if (key === 'user_email') return 'saved@example.com';
+      if (key === 'user_role') return 'admin'; // Ajout du mock pour user_role
       return null;
     });
 

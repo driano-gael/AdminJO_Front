@@ -123,24 +123,28 @@ describe('EvenementsManagement', () => {
     error: null,
     createLoading: false,
     createError: null,
-    createEvent: jest.fn(),
-    updateEvent: jest.fn(),
-    deleteEvent: jest.fn(),
-    loadEvents: jest.fn(),
-    handleSearch: jest.fn(),
-    setCreateError: jest.fn(),
-    setLieuFilter: jest.fn(),
-    setDisciplineFilter: jest.fn(),
-    setEpreuveFilter: jest.fn(),
-    setStatutFilter: jest.fn(),
-    setDateDebutFilter: jest.fn(),
-    setDateFinFilter: jest.fn(),
     filterLieu: undefined,
     filterDiscipline: undefined,
     filterEpreuve: undefined,
     filterStatut: undefined,
     filterDateDebut: '2024-07-01',
-    filterDateFin: '2024-09-01'
+    filterDateFin: '2024-09-01',
+    setFilterLieu: jest.fn(),
+    setFilterDiscipline: jest.fn(),
+    setFilterEpreuve: jest.fn(),
+    setFilterStatut: jest.fn(),
+    setFilterDateDebut: jest.fn(),
+    setFilterDateFin: jest.fn(),
+    getFilteredEvents: jest.fn(() => mockEvents),
+    loadEvents: jest.fn(),
+    loadLieux: jest.fn(),
+    loadEpreuves: jest.fn(),
+    createEvent: jest.fn(),
+    updateEvent: jest.fn(),
+    deleteEvent: jest.fn(),
+    setSearchTerm: jest.fn(),
+    setCreateError: jest.fn(),
+    handleSearch: jest.fn()
   };
 
   beforeEach(() => {
@@ -230,8 +234,7 @@ describe('EvenementsManagement', () => {
     fireEvent.click(saveButton);
 
     await waitFor(() => {
-      expect(mockHookReturnValue.updateEvent).toHaveBeenCalledWith({
-        id: 1,
+      expect(mockHookReturnValue.updateEvent).toHaveBeenCalledWith(1, {
         description: 'Test Event'
       });
     });

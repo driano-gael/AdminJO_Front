@@ -17,7 +17,7 @@ describe('useAuthenticatedPage', () => {
 
   it('should return auth context data when user is authenticated', () => {
     const mockAuthData = {
-      user: { email: 'admin@example.com' },
+      user: { email: 'admin@example.com', role: 'admin' },
       isAuthenticated: true,
       login: jest.fn(),
       logout: jest.fn(),
@@ -83,7 +83,7 @@ describe('useAuthenticatedPage', () => {
 
   it('should call useSessionExpiry on every render', () => {
     const mockAuthData = {
-      user: { email: 'admin@example.com' },
+      user: { email: 'admin@example.com', role: 'admin' },
       isAuthenticated: true,
       login: jest.fn(),
       logout: jest.fn(),
@@ -107,7 +107,7 @@ describe('useAuthenticatedPage', () => {
 
   it('should handle auth state changes correctly', () => {
     let mockAuthData = {
-      user: null as { email: string } | null,
+      user: null as { email: string; role: string } | null,
       isAuthenticated: false,
       login: jest.fn(),
       logout: jest.fn(),
@@ -128,7 +128,7 @@ describe('useAuthenticatedPage', () => {
 
     // Devient authentifié
     mockAuthData = {
-      user: { email: 'admin@example.com' },
+      user: { email: 'admin@example.com', role: 'admin' },
       isAuthenticated: true,
       login: jest.fn(),
       logout: jest.fn(),
@@ -143,7 +143,7 @@ describe('useAuthenticatedPage', () => {
     rerender();
 
     expect(result.current.isAuthenticated).toBe(true);
-    expect(result.current.user).toEqual({ email: 'admin@example.com' });
+    expect(result.current.user).toEqual({ email: 'admin@example.com', role: 'admin' });
   });
 
   it('should handle undefined user state gracefully', () => {

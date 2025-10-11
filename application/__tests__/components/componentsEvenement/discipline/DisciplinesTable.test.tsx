@@ -40,9 +40,9 @@ describe('DisciplinesTable', () => {
   };
 
   const mockDisciplines: Discipline[] = [
-    { id: 1, nom: 'Athlétisme' },
-    { id: 2, nom: 'Natation' },
-    { id: 3, nom: 'Basketball' }
+    { id: 1, nom: 'Athlétisme', icone: 'athletics.svg' },
+    { id: 2, nom: 'Natation', icone: 'swimming.svg' },
+    { id: 3, nom: 'Basketball', icone: 'basketball.svg' }
   ];
 
   beforeEach(() => {

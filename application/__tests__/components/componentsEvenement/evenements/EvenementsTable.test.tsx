@@ -2,11 +2,29 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import EvenementsTable from '@/components/componentsEvenement/evenements/EvenementsTable';
 import { ExtendEvenement } from '@/types/sportEvenement/evenement';
+import {Epreuve} from "@/types/sportEvenement/epreuve";
 
 describe('EvenementsTable', () => {
   const mockOnEdit = jest.fn();
   const mockOnDeleteEvent = jest.fn();
   const mockOnRefresh = jest.fn();
+
+  const mockEpreuves: Epreuve[] = [
+    {
+      id: 1,
+      libelle: '100m Sprint',
+      genre: 'hommes',
+      tour: 'finale',
+      discipline: { id: 1, nom: 'Athlétisme', icone: 'athletics.svg' }
+    },
+    {
+      id: 2,
+      libelle: 'Papillon 200m',
+      genre: 'femmes',
+      tour: 'demi-finale',
+      discipline: { id: 2, nom: 'Natation', icone: 'swimming.svg' }
+    }
+  ];
 
   const mockEvents: ExtendEvenement[] = [
     {
@@ -15,11 +33,7 @@ describe('EvenementsTable', () => {
       date: '2024-07-15',
       horraire: '14:30',
       lieu: { id: 1, nom: 'Stade de France' },
-      epreuves: [{ 
-        id: 1, 
-        libelle: '100m Hommes',
-        discipline: { id: 1, nom: 'Athlétisme' }
-      }],
+      epreuves: [mockEpreuves[0]],
       sports: 'Athlétisme',
       status: 'à venir',
       capacity: 80000,
@@ -31,11 +45,7 @@ describe('EvenementsTable', () => {
       date: '2024-07-16',
       horraire: '10:00',
       lieu: { id: 2, nom: 'Centre Aquatique' },
-      epreuves: [{ 
-        id: 2, 
-        libelle: '200m Nage Libre',
-        discipline: { id: 2, nom: 'Natation' }
-      }],
+      epreuves: [mockEpreuves[1]],
       sports: 'Natation',
       status: 'en cours',
       capacity: 15000,

@@ -114,23 +114,26 @@ jest.mock('../../../../src/components/componentsEvenement/epreuve/EpreuveModal',
 });
 
 describe('EpreuvesManagement', () => {
-  const mockEpreuves: Epreuve[] = [
-    { 
-      id: 1, 
-      libelle: '100m Sprint', 
-      discipline: { id: 1, nom: 'Athlétisme' }
-    },
-    { 
-      id: 2, 
-      libelle: 'Papillon 200m', 
-      discipline: { id: 2, nom: 'Natation' }
-    }
+  const mockDisciplines: Discipline[] = [
+    { id: 1, nom: 'Athlétisme', icone: 'athletics.svg' },
+    { id: 2, nom: 'Natation', icone: 'swimming.svg' }
   ];
 
-  const mockDisciplines: Discipline[] = [
-    { id: 1, nom: 'Athlétisme' },
-    { id: 2, nom: 'Natation' },
-    { id: 3, nom: 'Gymnastique' }
+  const mockEpreuves: Epreuve[] = [
+    {
+      id: 1,
+      libelle: '100m sprint',
+      genre: 'hommes',
+      tour: 'finale',
+      discipline: mockDisciplines[0]
+    },
+    {
+      id: 2,
+      libelle: '200m nage libre',
+      genre: 'femmes',
+      tour: 'demi-finale',
+      discipline: mockDisciplines[1]
+    }
   ];
 
   beforeEach(() => {
@@ -202,7 +205,7 @@ describe('EpreuvesManagement', () => {
       const createButton = screen.getByText('Create Epreuve');
       fireEvent.click(createButton);
       
-      expect(screen.getByText('Disciplines: 3')).toBeInTheDocument();
+      expect(screen.getByText('Disciplines: 2')).toBeInTheDocument();
     });
   });
 
@@ -509,8 +512,8 @@ describe('EpreuvesManagement', () => {
       render(<EpreuvesManagement />);
       
       // Verify that table receives the epreuves
-      expect(screen.getByText('100m Sprint - Athlétisme')).toBeInTheDocument();
-      expect(screen.getByText('Papillon 200m - Natation')).toBeInTheDocument();
+      expect(screen.getByText('100m sprint - Athlétisme')).toBeInTheDocument();
+      expect(screen.getByText('200m nage libre - Natation')).toBeInTheDocument();
     });
 
     it('should pass correct props to SearchAndFilters', () => {

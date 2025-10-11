@@ -19,28 +19,31 @@ const mockConsoleError = jest.spyOn(console, 'error').mockImplementation(() => {
 
 // Mock data
 const mockDisciplines = [
-  { id: 1, nom: 'Natation', description: 'Sport aquatique' },
-  { id: 2, nom: 'Athlétisme', description: 'Course et saut' }
+  { id: 1, nom: 'Natation', description: 'Sport aquatique', icone: 'natation.svg' },
+  { id: 2, nom: 'Athlétisme', description: 'Course et saut', icone: 'athletisme.svg' }
 ];
 
 const mockEpreuves = [
   { 
     id: 1, 
-    libelle: '100m nage libre', 
-    disciplineId: 1,
-    discipline: { id: 1, nom: 'Natation', description: 'Sport aquatique' }
+    libelle: '100m nage libre',
+    genre: 'hommes',
+    tour: 'finale',
+    discipline: { id: 1, nom: 'Natation', description: 'Sport aquatique', icone: 'natation.svg' }
   },
   { 
     id: 2, 
-    libelle: '100m sprint', 
-    disciplineId: 2,
-    discipline: { id: 2, nom: 'Athlétisme', description: 'Course et saut' }
+    libelle: '100m sprint',
+    genre: 'femmes',
+    tour: 'demi-finale',
+    discipline: { id: 2, nom: 'Athlétisme', description: 'Course et saut', icone: 'athletisme.svg' }
   },
   { 
     id: 3, 
-    libelle: '200m nage libre', 
-    disciplineId: 1,
-    discipline: { id: 1, nom: 'Natation', description: 'Sport aquatique' }
+    libelle: '200m nage libre',
+    genre: 'hommes',
+    tour: 'qualifications',
+    discipline: { id: 1, nom: 'Natation', description: 'Sport aquatique', icone: 'natation.svg' }
   }
 ];
 
@@ -139,9 +142,10 @@ describe('useEpreuvesManagement', () => {
   it('should create new epreuve successfully', async () => {
     const newEpreuve = { 
       id: 4, 
-      libelle: '50m nage libre', 
-      disciplineId: 1,
-      discipline: { id: 1, nom: 'Natation', description: 'Sport aquatique' }
+      libelle: '50m nage libre',
+      genre: 'femmes',
+      tour: 'finale',
+      discipline: { id: 1, nom: 'Natation', description: 'Sport aquatique', icone: 'natation.svg' }
     };
     const createData = { libelle: '50m nage libre', disciplineId: 1 };
 
@@ -192,9 +196,10 @@ describe('useEpreuvesManagement', () => {
   it('should update epreuve successfully', async () => {
     const updatedEpreuve = { 
       id: 1, 
-      libelle: '100m nage libre modifié', 
-      disciplineId: 1,
-      discipline: { id: 1, nom: 'Natation', description: 'Sport aquatique' }
+      libelle: '100m nage libre modifié',
+      genre: 'hommes',
+      tour: 'finale',
+      discipline: { id: 1, nom: 'Natation', description: 'Sport aquatique', icone: 'natation.svg' }
     };
     const updateData = { libelle: '100m nage libre modifié', disciplineId: 1 };
 

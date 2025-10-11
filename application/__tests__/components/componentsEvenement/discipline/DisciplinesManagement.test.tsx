@@ -99,8 +99,8 @@ jest.mock('../../../../src/components/componentsEvenement/discipline/DisciplineM
 
 describe('DisciplinesManagement', () => {
   const mockDisciplines: Discipline[] = [
-    { id: 1, nom: 'Football' },
-    { id: 2, nom: 'Basketball' }
+    { id: 1, nom: 'Football', icone: 'football.svg' },
+    { id: 2, nom: 'Basketball', icone: 'basketball.svg' }
   ];
 
   beforeEach(() => {

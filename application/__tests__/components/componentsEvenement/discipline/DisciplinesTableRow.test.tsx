@@ -6,7 +6,8 @@ import { Discipline } from '../../../../src/types/sportEvenement/discipline';
 describe('DisciplinesTableRow', () => {
   const mockDiscipline: Discipline = {
     id: 1,
-    nom: 'Football'
+    nom: 'Football',
+    icone: 'football.svg'
   };
 
   const mockOnDelete = jest.fn();
@@ -145,7 +146,8 @@ describe('DisciplinesTableRow', () => {
     it('should render discipline with long name correctement', () => {
       const longNameDiscipline: Discipline = {
         id: 2,
-        nom: 'Basketball Féminin Catégorie Junior'
+        nom: 'Basketball Féminin Catégorie Junior',
+        icone: 'basketball.svg'
       };
 
       render(
@@ -162,7 +164,8 @@ describe('DisciplinesTableRow', () => {
     it('should render discipline with special characters', () => {
       const specialCharDiscipline: Discipline = {
         id: 3,
-        nom: 'Tir à l\'arc & Précision'
+        nom: 'Tir à l\'arc & Précision',
+        icone: 'tir_arc.svg'
       };
 
       render(
@@ -179,7 +182,8 @@ describe('DisciplinesTableRow', () => {
     it('should handle discipline with id 0', () => {
       const zeroIdDiscipline: Discipline = {
         id: 0,
-        nom: 'Test Discipline'
+        nom: 'Test Discipline',
+        icone: 'test.svg'
       };
 
       render(
@@ -199,7 +203,8 @@ describe('DisciplinesTableRow', () => {
     it('should handle discipline with large id', () => {
       const largeIdDiscipline: Discipline = {
         id: 999999,
-        nom: 'Test Discipline'
+        nom: 'Test Discipline',
+        icone: 'test.svg'
       };
 
       render(
@@ -331,7 +336,8 @@ describe('DisciplinesTableRow', () => {
     it('should handle empty discipline name gracefully', () => {
       const emptyNameDiscipline: Discipline = {
         id: 4,
-        nom: ''
+        nom: '',
+        icone: 'empty.svg'
       };
 
       render(

@@ -4,6 +4,8 @@ import { setTokens, clearTokens, getRefreshToken } from '../core/tokenHelpers';
 export interface AuthResponse {
   access: string;
   refresh: string;
+  role: string;
+  email: string;
 }
 
 export interface LoginCredentials {

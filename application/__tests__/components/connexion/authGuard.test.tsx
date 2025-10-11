@@ -102,7 +102,7 @@ describe('AuthGuard', () => {
 
   it('should show protected content when user is authenticated with valid token', async () => {
     mockUseAuth.mockReturnValue({
-      user: { email: 'admin@test.com' },
+      user: { email: 'admin@test.com', role: 'admin' },
       isAuthenticated: true,
       isLoading: false,
       login: jest.fn(),
@@ -131,7 +131,7 @@ describe('AuthGuard', () => {
 
   it('should attempt token refresh when user is authenticated but token is invalid', async () => {
     mockUseAuth.mockReturnValue({
-      user: { email: 'admin@test.com' },
+      user: { email: 'admin@test.com', role: 'admin' },
       isAuthenticated: true,
       isLoading: false,
       login: jest.fn(),
@@ -145,7 +145,9 @@ describe('AuthGuard', () => {
     mockIsTokenValid.mockReturnValue(false);
     mockRefreshToken.mockResolvedValue({
       access: 'new_token',
-      refresh: 'new_refresh_token'
+      refresh: 'new_refresh_token',
+      role: 'admin',
+      email: 'admin@test.com'
     });
 
     render(
@@ -168,7 +170,7 @@ describe('AuthGuard', () => {
 
   it('should force logout when token refresh fails', async () => {
     mockUseAuth.mockReturnValue({
-      user: { email: 'admin@test.com' },
+      user: { email: 'admin@test.com', role: 'admin' },
       isAuthenticated: true,
       isLoading: false,
       login: jest.fn(),
@@ -199,7 +201,7 @@ describe('AuthGuard', () => {
 
   it('should show login form when token is invalid and cannot be refreshed', async () => {
     mockUseAuth.mockReturnValue({
-      user: { email: 'admin@test.com' },
+      user: { email: 'admin@test.com', role: 'admin' },
       isAuthenticated: true,
       isLoading: false,
       login: jest.fn(),
@@ -261,7 +263,7 @@ describe('AuthGuard', () => {
 
     // User becomes authenticated
     mockUseAuth.mockReturnValue({
-      user: { email: 'admin@test.com' },
+      user: { email: 'admin@test.com', role: 'admin' },
       isAuthenticated: true,
       isLoading: false,
       login: jest.fn(),
@@ -314,7 +316,7 @@ describe('AuthGuard', () => {
 
   it('should handle multiple children correctement', async () => {
     mockUseAuth.mockReturnValue({
-      user: { email: 'admin@test.com' },
+      user: { email: 'admin@test.com', role: 'admin' },
       isAuthenticated: true,
       isLoading: false,
       login: jest.fn(),

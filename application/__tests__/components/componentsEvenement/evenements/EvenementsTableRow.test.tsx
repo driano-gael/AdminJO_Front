@@ -2,6 +2,7 @@
 import '@testing-library/jest-dom';
 import EvenementsTableRow from '../../../../src/components/componentsEvenement/evenements/EvenementsTableRow';
 import { Evenement } from '../../../../src/types/sportEvenement/evenement';
+import {Epreuve} from "@/types/sportEvenement/epreuve";
 
 // Mock des composants
 jest.mock('../../../../src/components/componentsEvenement/evenements/EvenementsStatus', () => {
@@ -38,10 +39,11 @@ describe('EvenementsTableRow', () => {
       nom: 'Stade de France'
     },
     epreuves: [
-      { id: 1, libelle: '100m Sprint', discipline: { id: 1, nom: 'Athlétisme' } },
-      { id: 2, libelle: '200m Sprint', discipline: { id: 1, nom: 'Athlétisme' } }
+      { id: 1, libelle: '100m Sprint', discipline: { id: 1, nom: 'Athlétisme', icone: 'athletics.svg'},genre: 'hommes', tour: 'finale' },
+      { id: 2, libelle: '200m Sprint', discipline: { id: 1, nom: 'Athlétisme' , icone: 'athletics.svg'},genre: 'hommes', tour: 'finale' }
     ]
   };
+
 
   const defaultProps = {
     event: mockEvent,

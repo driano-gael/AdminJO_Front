@@ -34,7 +34,7 @@ describe('useSessionExpiry', () => {
   beforeEach(() => {
     jest.clearAllMocks();
     mockUseAuth.mockReturnValue({
-      user: { email: 'test@example.com' },
+      user: { email: 'test@example.com', role: 'admin' },
       isAuthenticated: true,
       isLoading: false,
       login: jest.fn(),
@@ -135,7 +135,7 @@ describe('useSessionExpiry', () => {
 
     // Changer la fonction forceLogout
     mockUseAuth.mockReturnValue({
-      user: { email: 'test@example.com' },
+      user: { email: 'test@example.com', role: 'admin' },
       isAuthenticated: true,
       isLoading: false,
       login: jest.fn(),

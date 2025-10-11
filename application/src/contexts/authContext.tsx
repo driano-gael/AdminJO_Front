@@ -9,6 +9,7 @@ import SessionExpiredModal from '@/components/connexion/SessionExpiredModal';
 
 interface User {
   email: string;
+  role: string;
 }
 
 interface AuthContextType {
@@ -55,8 +56,9 @@ export function AuthProvider({ children }: Props) {
     if (typeof window !== 'undefined' && window.localStorage) {
       try {
         localStorage.removeItem('user_email');
+        localStorage.removeItem('user_role');
       } catch (error) {
-        console.warn('Impossible de supprimer l\'email:', error);
+        console.warn('Impossible de supprimer les données utilisateur:', error);
       }
     }
     setUser(null);
@@ -76,12 +78,19 @@ export function AuthProvider({ children }: Props) {
           const tokenValid = isTokenValid();
           
           if (tokenValid) {
-            // Le token est valide, récupérer l'email pour l'utilisateur
+            // Le token est valide, récupérer l'email et le rôle
             const storedEmail = localStorage.getItem('user_email');
-            if (storedEmail) {
-              setUser({ email: storedEmail });
+            const storedRole = localStorage.getItem('user_role');
+            if (storedEmail && storedRole) {
+              // Vérifier que l'utilisateur stocké est bien admin
+              if (storedRole === 'admin') {
+                setUser({ email: storedEmail, role: storedRole });
+              } else {
+                // Utilisateur non-admin, déconnexion
+                logoutService();
+              }
             } else {
-              // Token valide mais pas d'email sauvé, déconnexion
+              // Données manquantes, déconnexion
               logoutService();
             }
           } else {
@@ -90,10 +99,11 @@ export function AuthProvider({ children }: Props) {
               // Tenter de rafraîchir le token
               await refreshToken();
               
-              // Si le refresh réussit, récupérer l'email
+              // Si le refresh réussit, récupérer les données utilisateur
               const storedEmail = localStorage.getItem('user_email');
-              if (storedEmail) {
-                setUser({ email: storedEmail });
+              const storedRole = localStorage.getItem('user_role');
+              if (storedEmail && storedRole && storedRole === 'admin') {
+                setUser({ email: storedEmail, role: storedRole });
               } else {
                 logoutService();
               }
@@ -134,28 +144,36 @@ export function AuthProvider({ children }: Props) {
 
 
     const login = async (email: string, password: string) => {
+        setIsLoading(true);
         try {
-            await loginService({ email, password });
-            if(typeof window !== 'undefined' && window.localStorage){
-                try{
-                    localStorage.setItem('user_email', email);
-                }catch{
-                }
+          const data = await loginService({ email, password });
+
+          // L'API retourne maintenant le rôle et l'email directement
+          const { role, email: userEmail } = data;
+
+          // Vérifier que seuls les administrateurs peuvent se connecter
+          if (role !== 'admin') {
+            logoutService();
+            setUser(null);
+            throw new Error("Accès réservé aux administrateurs. Votre rôle actuel ne vous permet pas d'accéder à cette application.");
+          }
+
+          // Sauvegarder l'email pour la persistance de session
+          if (typeof window !== 'undefined' && window.localStorage) {
+            try {
+              localStorage.setItem('user_email', userEmail);
+              localStorage.setItem('user_role', role);
+            } catch (error) {
+              console.warn('Impossible de sauvegarder les données utilisateur:', error);
             }
-            setUser({ email });
-            if(currentRoute){
-                setTimeout(() => {
-                  const routeToRestore = currentRoute;
-                  setCurrentRoute(null);
-                  router.push(routeToRestore);
-              }, 100);
-            }else{
-                setTimeout(() => {
-                    router.push('/dashboard');
-                }, 100);
-            }
-        }catch (error) {
-            throw error;
+          }
+
+          setUser({ email: userEmail, role });
+        } catch (error) {
+          setUser(null);
+          throw error;
+        } finally {
+          setIsLoading(false);
         }
     };
 
@@ -166,8 +184,9 @@ export function AuthProvider({ children }: Props) {
       if (typeof window !== 'undefined' && window.localStorage) {
         try {
           localStorage.removeItem('user_email');
+          localStorage.removeItem('user_role');
         } catch (error) {
-          console.warn('Impossible de supprimer l\'email:', error);
+          console.warn('Impossible de supprimer les données utilisateur:', error);
         }
       }
       

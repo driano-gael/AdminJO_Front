@@ -37,13 +37,13 @@ export default function EvenementsManagement() {
     deleteEvent,
     loadEvents,
     handleSearch,
-    // Fonctions de filtrage
-    setLieuFilter,
-    setDisciplineFilter,
-    setEpreuveFilter,
-    setStatutFilter,
-    setDateDebutFilter,
-    setDateFinFilter,
+    // Fonctions de filtrage - utilisation des bons noms exportés par le hook
+    setFilterLieu,
+    setFilterDiscipline,
+    setFilterEpreuve,
+    setFilterStatut,
+    setFilterDateDebut,
+    setFilterDateFin,
     // États de filtrage
     filterLieu,
     filterDiscipline,
@@ -68,27 +68,27 @@ export default function EvenementsManagement() {
 
   // Fonctions de gestion des filtres
   const handleLieuChange = (lieuId: number | undefined) => {
-    setLieuFilter(lieuId);
+    setFilterLieu(lieuId);
   };
 
   const handleDisciplineChange = (disciplineId: number | undefined) => {
-    setDisciplineFilter(disciplineId);
+    setFilterDiscipline(disciplineId);
   };
 
   const handleEpreuveChange = (epreuveId: number | undefined) => {
-    setEpreuveFilter(epreuveId);
+    setFilterEpreuve(epreuveId);
   };
 
   const handleStatutChange = (statut: string | undefined) => {
-    setStatutFilter(statut);
+    setFilterStatut(statut);
   };
 
   const handleDateDebutChange = (date: string | undefined) => {
-    setDateDebutFilter(date || '');
+    setFilterDateDebut(date || '');
   };
 
   const handleDateFinChange = (date: string | undefined) => {
-    setDateFinFilter(date || '');
+    setFilterDateFin(date || '');
   };
 
   // Disciplines uniques extraites des épreuves
@@ -99,10 +99,7 @@ export default function EvenementsManagement() {
   const handleSaveEvent = async (eventData: CreateEvenementRequest) => {
     try {
       if (editingEvent) {
-        await updateEvent({
-          id: editingEvent.id,
-          ...eventData
-        });
+        await updateEvent(editingEvent.id, eventData);
         setNotification({
           message: 'Événement modifié avec succès !',
           type: 'success'

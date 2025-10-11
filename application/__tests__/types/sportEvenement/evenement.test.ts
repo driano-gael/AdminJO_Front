@@ -11,12 +11,15 @@ describe('Evenement interface', () => {
 
   const mockDiscipline: Discipline = {
     id: 1,
-    nom: 'Athlétisme'
+    nom: 'Athlétisme',
+    icone: 'athletics.svg'
   };
 
   const mockEpreuve: Epreuve = {
     id: 1,
     libelle: '100m sprint hommes',
+    genre: 'hommes',
+    tour: 'finale',
     discipline: mockDiscipline
   };
 
@@ -61,21 +64,27 @@ describe('Evenement interface', () => {
     expect(evenementWithoutEpreuves.epreuves.length).toBe(0);
   });
 
-  it('should work with multiple epreuves', () => {
+  it('should handle multiple epreuves correctly', () => {
     const multipleEpreuves: Epreuve[] = [
       {
         id: 1,
         libelle: '100m sprint hommes',
+        genre: 'hommes',
+        tour: 'finale',
         discipline: mockDiscipline
       },
       {
         id: 2,
-        libelle: '100m sprint femmes',
+        libelle: '200m sprint femmes',
+        genre: 'femmes',
+        tour: 'demi-finale',
         discipline: mockDiscipline
       },
       {
         id: 3,
-        libelle: '200m sprint hommes',
+        libelle: 'Relais 4x100m mixte',
+        genre: 'mixte',
+        tour: 'qualifications',
         discipline: mockDiscipline
       }
     ];
@@ -91,7 +100,7 @@ describe('Evenement interface', () => {
 
     expect(evenementWithMultipleEpreuves.epreuves.length).toBe(3);
     expect(evenementWithMultipleEpreuves.epreuves[0].libelle).toBe('100m sprint hommes');
-    expect(evenementWithMultipleEpreuves.epreuves[2].libelle).toBe('200m sprint hommes');
+    expect(evenementWithMultipleEpreuves.epreuves[2].libelle).toBe('Relais 4x100m mixte');
   });
 
   it('should handle different date formats', () => {

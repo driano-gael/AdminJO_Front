@@ -6,7 +6,8 @@ import { Lieu } from '@/types/sportEvenement/lieu';
 describe('Epreuve interface', () => {
   const mockDiscipline: Discipline = {
     id: 1,
-    nom: 'Athlétisme'
+    nom: 'Athlétisme',
+    icone: 'athletics.svg'
   };
 
   const mockLieu: Lieu = {
@@ -27,6 +28,8 @@ describe('Epreuve interface', () => {
     const mockEpreuve: Epreuve = {
       id: 1,
       libelle: '100m sprint hommes',
+      genre: 'hommes',
+      tour: 'finale',
       discipline: mockDiscipline,
       evenement: mockEvenement
     };
@@ -34,12 +37,16 @@ describe('Epreuve interface', () => {
     // Verify all required properties exist
     expect(mockEpreuve).toHaveProperty('id');
     expect(mockEpreuve).toHaveProperty('libelle');
+    expect(mockEpreuve).toHaveProperty('genre');
+    expect(mockEpreuve).toHaveProperty('tour');
     expect(mockEpreuve).toHaveProperty('discipline');
     expect(mockEpreuve).toHaveProperty('evenement');
 
     // Verify property types
     expect(typeof mockEpreuve.id).toBe('number');
     expect(typeof mockEpreuve.libelle).toBe('string');
+    expect(typeof mockEpreuve.genre).toBe('string');
+    expect(typeof mockEpreuve.tour).toBe('string');
     expect(typeof mockEpreuve.discipline).toBe('object');
     expect(mockEpreuve.discipline).toHaveProperty('id');
     expect(mockEpreuve.discipline).toHaveProperty('nom');
@@ -49,6 +56,8 @@ describe('Epreuve interface', () => {
     const epreuveWithoutEvent: Epreuve = {
       id: 2,
       libelle: '200m sprint femmes',
+      genre: 'femmes',
+      tour: 'demi-finale',
       discipline: mockDiscipline,
       evenement: null
     };
@@ -61,6 +70,8 @@ describe('Epreuve interface', () => {
     const epreuveWithoutEvent: Epreuve = {
       id: 3,
       libelle: '400m haies hommes',
+      genre: 'hommes',
+      tour: 'qualifications',
       discipline: mockDiscipline
     };
 
@@ -73,23 +84,31 @@ describe('Epreuve interface', () => {
       {
         id: 1,
         libelle: '100m sprint hommes',
+        genre: 'hommes',
+        tour: 'finale',
         discipline: mockDiscipline,
         evenement: mockEvenement
       },
       {
         id: 2,
         libelle: '200m sprint femmes',
+        genre: 'femmes',
+        tour: 'demi-finale',
         discipline: mockDiscipline,
         evenement: null
       },
       {
         id: 3,
         libelle: '110m haies hommes',
+        genre: 'hommes',
+        tour: 'qualifications',
         discipline: mockDiscipline
       },
       {
         id: 4,
         libelle: 'Marathon hommes',
+        genre: 'hommes',
+        tour: 'finale',
         discipline: mockDiscipline,
         evenement: mockEvenement
       }
@@ -104,24 +123,30 @@ describe('Epreuve interface', () => {
   });
 
   it('should work with different sport disciplines', () => {
-    const natationDiscipline: Discipline = { id: 2, nom: 'Natation' };
-    const gymnasticDiscipline: Discipline = { id: 3, nom: 'Gymnastique' };
+    const natationDiscipline: Discipline = { id: 2, nom: 'Natation', icone: 'natation.svg' };
+    const gymnasticDiscipline: Discipline = { id: 3, nom: 'Gymnastique', icone: 'gymnastique.svg' };
 
     const diverseEpreuves: Epreuve[] = [
       {
         id: 10,
         libelle: '50m nage libre hommes',
+        genre: 'hommes',
+        tour: 'finale',
         discipline: natationDiscipline,
         evenement: mockEvenement
       },
       {
         id: 11,
         libelle: '100m papillon femmes',
+        genre: 'femmes',
+        tour: 'demi-finale',
         discipline: natationDiscipline
       },
       {
         id: 12,
         libelle: 'Sol individuel hommes',
+        genre: 'hommes',
+        tour: 'qualifications',
         discipline: gymnasticDiscipline,
         evenement: null
       }
@@ -136,6 +161,8 @@ describe('Epreuve interface', () => {
     const epreuve: Epreuve = {
       id: 42,
       libelle: 'Saut en longueur femmes',
+      genre: 'femmes',
+      tour: 'finale',
       discipline: mockDiscipline,
       evenement: mockEvenement
     };
@@ -153,12 +180,16 @@ describe('Epreuve interface', () => {
     const epreuve1: Epreuve = {
       id: 1,
       libelle: 'Relais 4x100m hommes',
+      genre: 'hommes',
+      tour: 'finale',
       discipline: mockDiscipline,
       evenement: mockEvenement
     };
     const epreuve2: Epreuve = {
       id: 1,
       libelle: 'Relais 4x100m hommes',
+      genre: 'hommes',
+      tour: 'finale',
       discipline: mockDiscipline,
       evenement: mockEvenement
     };
@@ -171,11 +202,15 @@ describe('Epreuve interface', () => {
     const epreuve1: Epreuve = {
       id: 1,
       libelle: 'Lancer du poids hommes',
+      genre: 'hommes',
+      tour: 'finale',
       discipline: mockDiscipline
     };
     const epreuve2: Epreuve = {
       id: 2,
       libelle: 'Lancer du disque femmes',
+      genre: 'femmes',
+      tour: 'qualifications',
       discipline: mockDiscipline
     };
 
@@ -187,12 +222,15 @@ describe('Epreuve interface', () => {
   it('should handle complex discipline relationships', () => {
     const complexDiscipline: Discipline = {
       id: 99,
-      nom: 'Triathlon - Natation, Cyclisme, Course à pied'
+      nom: 'Triathlon - Natation, Cyclisme, Course à pied',
+      icone: 'triathlon.svg'
     };
 
     const triathlonEpreuve: Epreuve = {
       id: 99,
       libelle: 'Triathlon individuel hommes',
+      genre: 'hommes',
+      tour: 'finale',
       discipline: complexDiscipline,
       evenement: mockEvenement
     };
@@ -207,18 +245,24 @@ describe('Epreuve interface', () => {
       {
         id: 0,
         libelle: '',
-        discipline: { id: 0, nom: '' },
+        genre: 'hommes',
+        tour: 'finale',
+        discipline: { id: 0, nom: '', icone: 'test.svg' },
         evenement: null
       },
       {
         id: -1,
         libelle: 'Test Event',
-        discipline: { id: -1, nom: 'Test Sport' }
+        genre: 'femmes',
+        tour: 'qualifications',
+        discipline: { id: -1, nom: 'Test Sport', icone: 'test.svg' }
       },
       {
         id: Number.MAX_SAFE_INTEGER,
         libelle: 'Very long event name with many characters',
-        discipline: { id: 1, nom: 'Long discipline name' },
+        genre: 'mixte',
+        tour: 'demi-finale',
+        discipline: { id: 1, nom: 'Long discipline name', icone: 'long.svg' },
         evenement: mockEvenement
       }
     ];
@@ -230,18 +274,69 @@ describe('Epreuve interface', () => {
     });
   });
 
-  it('should handle nested object mutations correctly', () => {
+  it('should validate libelle length constraints', () => {
+    const validCases = [
+      {
+        id: 1,
+        libelle: 'Test',
+        genre: 'hommes',
+        tour: 'finale',
+        discipline: { id: 0, nom: '', icone: 'test.svg' },
+      },
+      {
+        id: 2,
+        libelle: 'A'.repeat(100),
+        genre: 'femmes',
+        tour: 'demi-finale',
+        discipline: { id: -1, nom: 'Test Sport', icone: 'sport.svg' }
+      },
+      {
+        id: 3,
+        libelle: 'Some valid epreuve name with reasonable length',
+        genre: 'mixte',
+        tour: 'qualifications',
+        discipline: { id: 1, nom: 'Long discipline name', icone: 'long.svg' },
+      }
+    ];
+
+    const invalidEmpty = {
+      id: 4,
+      libelle: '',
+      genre: 'hommes',
+      tour: 'finale',
+      discipline: { id: 1, nom: 'Test Discipline', icone: 'test.svg' },
+    };
+    const invalidTooLong = {
+      id: 5,
+      libelle: 'A'.repeat(101),
+      genre: 'femmes',
+      tour: 'demi-finale',
+      discipline: { id: 1, nom: 'Test Discipline', icone: 'test.svg' },
+    };
+
+    validCases.forEach(epreuve => {
+      expect(epreuve.libelle.length).toBeGreaterThan(0);
+      expect(epreuve.libelle.length).toBeLessThanOrEqual(100);
+    });
+
+    expect(invalidEmpty.libelle.length).toBeLessThan(1);
+    expect(invalidTooLong.libelle.length).toBeGreaterThan(100);
+  });
+
+  it('should maintain object immutability', () => {
     const originalEpreuve: Epreuve = {
-      id: 100,
-      libelle: 'Original Event',
-      discipline: { ...mockDiscipline }
+      id: 1,
+      libelle: 'Original libelle',
+      genre: 'hommes',
+      tour: 'finale',
+      discipline: { id: 1, nom: 'Test Discipline', icone: 'test.svg' },
     };
 
     const modifiedEpreuve = { ...originalEpreuve };
     modifiedEpreuve.libelle = 'Modified Event';
     modifiedEpreuve.discipline.nom = 'Modified Sport';
 
-    expect(originalEpreuve.libelle).toBe('Original Event');
+    expect(originalEpreuve.libelle).toBe('Original libelle');
     expect(originalEpreuve.discipline.nom).toBe('Modified Sport'); // Shallow copy limitation
   });
 });
