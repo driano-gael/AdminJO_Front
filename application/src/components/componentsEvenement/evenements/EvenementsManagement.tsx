@@ -3,7 +3,6 @@
 import React, {JSX, useState} from 'react';
 import { useSessionExpiry } from '@/hooks/useSessionExpiry';
 import { ExtendEvenement } from '@/types/sportEvenement/evenement';
-import { Epreuve } from '@/types/sportEvenement/epreuve';
 import { Discipline } from '@/types/sportEvenement/discipline';
 import { CreateEvenementRequest } from '@/lib/api/services/evenementSports/evenementService';
 import Notification from '@/components/notification';
@@ -201,7 +200,6 @@ export function EvenementsManagement(): JSX.Element {
   useSessionExpiry();
 
   const {
-    events,
     lieux,
     epreuves,
     searchTerm,
@@ -213,7 +211,6 @@ export function EvenementsManagement(): JSX.Element {
     updateEvent,
     deleteEvent,
     loadEvents,
-    setSearchTerm,
     handleSearch,
     // Fonctions de filtrage - utilisation des bons noms exportés par le hook
     setFilterLieu,

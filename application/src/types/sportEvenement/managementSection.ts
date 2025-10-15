@@ -1,16 +1,47 @@
+/**
+ * Types TypeScript pour les sections de gestion des événements sportifs dans l'application AdminJO
+ *
+ * Ce module définit les interfaces et constantes pour les sections de navigation
+ * du module de gestion des événements sportifs, incluant les lieux, disciplines,
+ * épreuves et événements olympiques.
+ *
+ * @module types/sportEvenement/managementSection
+ */
 
-    // Définition des sections de gestion
-   export interface ManagementSection {
-        id: string; // Identifiant unique de la section
-        title: string; // Titre de la section
-        description: string; // Description de la section
-        icon: string; // Icône associée à la section
-        color: string; // Couleur de fond de la section
-        href: string; // URL de la sections
-    }
-   
-    export const managementSections:ManagementSection[] = [
-        
+/**
+ * Interface représentant une section de gestion des événements sportifs.
+ *
+ * Une section de gestion définit une carte de navigation dans l'interface
+ * d'administration des événements sportifs. Chaque section correspond à
+ * un module fonctionnel spécifique (lieux, disciplines, épreuves, événements).
+ */
+export interface ManagementSection {
+    /** Identifiant unique de la section utilisé pour le routage et l'identification */
+    id: string;
+    /** Titre affiché sur la carte de navigation de la section */
+    title: string;
+    /** Description détaillée des fonctionnalités disponibles dans cette section */
+    description: string;
+    /** Emoji ou icône représentant visuellement la section */
+    icon: string;
+    /** Classes CSS Tailwind pour la couleur de fond et les effets de survol */
+    color: string;
+    /** URL de destination vers la page de gestion correspondante */
+    href: string;
+}
+
+/**
+ * Configuration prédéfinie des sections de gestion des événements sportifs.
+ *
+ * Cette constante définit toutes les sections disponibles dans le module
+ * de gestion des événements sportifs avec leurs propriétés visuelles
+ * et leurs routes de navigation.
+ *
+ * @readonly
+ * @type {ManagementSection[]}
+ */
+export const managementSections:ManagementSection[] = [
+
         {
             id: 'lieux',
             title: 'Gestion des Lieux',

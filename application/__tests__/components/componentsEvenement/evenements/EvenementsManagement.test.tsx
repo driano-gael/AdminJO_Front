@@ -1,7 +1,7 @@
 ﻿import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import EvenementsManagement from '@/components/componentsEvenement/evenements/EvenementsManagement';
-import { useEventsManagement } from '@/hooks/useEvenementManagement';
+import { useEvenementManagement } from '@/hooks/useEvenementManagement';
 import { useSessionExpiry } from '@/hooks/useSessionExpiry';
 
 // Mock des hooks
@@ -91,7 +91,7 @@ jest.mock('@/components/notification', () => {
   };
 });
 
-const mockUseEventsManagement = useEventsManagement as jest.MockedFunction<typeof useEventsManagement>;
+const mockUseEventsManagement = useEvenementManagement as jest.MockedFunction<typeof useEvenementManagement>;
 const mockUseSessionExpiry = useSessionExpiry as jest.MockedFunction<typeof useSessionExpiry>;
 
 describe('EvenementsManagement', () => {

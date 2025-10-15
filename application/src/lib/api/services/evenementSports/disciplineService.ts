@@ -1,52 +1,63 @@
+/**
+ * Service de gestion des disciplines sportives pour l'application AdminJO
+ *
+ * Ce service encapsule toutes les opérations CRUD pour la gestion des disciplines sportives
+ * des Jeux Olympiques. Une discipline représente une catégorie sportive comme l'athlétisme,
+ * la natation, etc., avec son icône associée.
+ *
+ * @module services/evenementSports/disciplineService
+ */
+
 import { fetchApi } from '@/lib/api/core/fetchWrappers';
 import { Discipline } from '@/types/sportEvenement/discipline';
 
 /**
- * Service API pour la gestion des disciplines sportives
- * 
- * Ce service encapsule toutes les opérations CRUD pour les disciplines
- * et fournit une interface simple pour interagir avec l'API backend Django.
- * 
- * Authentification : Toutes les opérations nécessitent une authentification
- * via le token JWT géré automatiquement par fetchApi.
- */
-
-/**
- * Interface pour les données de création d'une discipline
+ * Interface pour les données de création d'une nouvelle discipline sportive.
  */
 export interface CreateDisciplineRequest {
-  nom: string; // Nom de la discipline (ex: "Athlétisme", "Natation")
-  icone: string; // Nom du fichier SVG de l'icône (ex: "ath.svg")
+  /** Nom officiel de la discipline (ex: "Athlétisme", "Natation", "Gymnastique") */
+  nom: string;
+  /** Nom du fichier SVG de l'icône représentant la discipline (ex: "ath.svg", "nat.svg") */
+  icone: string;
 }
 
 /**
- * Interface pour les données de mise à jour d'une discipline
+ * Interface pour les données de mise à jour d'une discipline existante.
  */
 export interface UpdateDisciplineRequest {
-  id: number; // ID de la discipline à mettre à jour
-  nom: string; // Nouveau nom de la discipline
-  icone: string; // Nom du fichier SVG de l'icône (ex: "ath.svg")
+  /** ID unique de la discipline à mettre à jour */
+  id: number;
+  /** Nouveau nom de la discipline */
+  nom: string;
+  /** Nouveau nom du fichier SVG de l'icône */
+  icone: string;
 }
 
 /**
- * Interface pour les filtres de recherche des disciplines
+ * Interface pour les filtres de recherche et pagination des disciplines.
  */
 export interface DisciplineFilters {
-  nom?: string; // Filtrage par nom (recherche partielle)
-  page?: number; // Numéro de page pour la pagination
-  limit?: number; // Nombre d'éléments par page
-  sortBy?: 'nom'; // Champ de tri (actuellement seul 'nom' est supporté)
-  sortOrder?: 'asc' | 'desc'; // Ordre de tri (ascendant ou descendant)
+  /** Filtrage par nom (recherche partielle, insensible à la casse) */
+  nom?: string;
+  /** Numéro de page pour la pagination (commence à 1) */
+  page?: number;
+  /** Nombre d'éléments par page (défaut: 20) */
+  limit?: number;
+  /** Champ de tri des résultats (actuellement seul 'nom' est supporté) */
+  sortBy?: 'nom';
+  /** Ordre de tri (ascendant ou descendant) */
+  sortOrder?: 'asc' | 'desc';
 }
 
 /**
- * Service pour la gestion des disciplines sportives
- * 
- * Fournit une interface pour toutes les opérations CRUD sur les disciplines
- * avec gestion automatique de l'authentification et des erreurs.
+ * Service principal pour la gestion des disciplines sportives.
+ *
+ * Cette classe fournit une interface statique pour toutes les opérations CRUD
+ * sur les disciplines sportives. Elle gère automatiquement l'authentification,
+ * la validation des données et la gestion des erreurs HTTP.
  */
 export class DisciplineService {
-  // Chemin de base pour les endpoints des disciplines
+  /** Chemin de base pour tous les endpoints des disciplines */
   private static readonly BASE_PATH = '/discipline';
 
   /**
@@ -187,5 +198,5 @@ export const disciplineApi = {
   /**
    * Recherche des disciplines par nom
    */
-  search: (query: string) => DisciplineService.searchDisciplines(query),
+  search: (query: string) => DisciplineService.searchDisciplines(query)
 };

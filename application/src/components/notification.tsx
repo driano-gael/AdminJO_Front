@@ -27,7 +27,7 @@ interface NotificationProps {
  *
  * ## Architecture système notifications et gestion états
  *
- * ### 🔔 Types de notifications contextuelles spécialisées
+ * ### Types de notifications contextuelles spécialisées
  * - **Success** : Confirmations actions réussies, validations JO complétées
  * - **Error** : Erreurs système, échecs opérations, problèmes critiques
  * - **Warning** : Avertissements préventifs, alertes attention requise
@@ -37,134 +37,13 @@ interface NotificationProps {
  * - **Semantic meaning** : Signification claire pour screen readers
  * - **Context adaptation** : Messages adaptés contexte métier olympique
  *
- * ### ⏱️ Gestion temporelle et persistance configurable
+ * ### Gestion temporelle et persistance configurable
  * - **Auto-fermeture** : Timer configurable avec durée personnalisable
  * - **Duration flexible** : Props duration en millisecondes (défaut: 5000ms)
  * - **Persistent mode** : persistent=true désactive auto-fermeture
  * - **Manual close** : onClose callback pour fermeture programmatique
  * - **Progress indicator** : Barre progression temps restant visuelle
- * - **Hover pause** : Pause timer pendant survol utilisateur
  * - **Focus management** : Gestion focus pendant affichage notification
- * - **Cleanup automatique** : useEffect cleanup pour éviter memory leaks
- *
- * ### 📍 Positionnement dynamique et responsive
- * - **Top-right** : Position standard desktop interfaces administration
- * - **Top-left** : Alternative alignement navigation principale
- * - **Bottom-right** : Mobile-friendly position tactile optimisée
- * - **Bottom-left** : Évite conflits floating action buttons
- * - **Top-center** : Alertes critiques attention maximale
- * - **Bottom-center** : Confirmations actions principales centrées
- * - **Fixed positioning** : fixed avec z-index élevé au-dessus tout
- * - **Responsive adaptation** : Positions adaptées viewport mobile/desktop
- *
- * ## Fonctionnalités avancées et personnalisation
- *
- * ### 🎨 Design système et cohérence visuelle AdminJO
- * - **Type-specific colors** : Palette couleurs sémantique par type
- * - **Success green** : bg-green-50 border-green-200 text-green-800
- * - **Error red** : bg-red-50 border-red-200 text-red-800
- * - **Warning yellow** : bg-yellow-50 border-yellow-200 text-yellow-800
- * - **Info blue** : bg-blue-50 border-blue-200 text-blue-800
- * - **Rounded corners** : rounded-lg pour design moderne cohérent
- * - **Shadow elevation** : shadow-lg pour profondeur et hiérarchie
- * - **Border accent** : border-l-4 accent coloré identification rapide
- * - **Typography** : font-medium titles, text-sm messages lisibilité
- *
- * ### 🔘 Interactions utilisateur et contrôles
- * - **Close button** : showCloseButton pour contrôle fermeture manuelle
- * - **X icon** : svg optimisé 24x24 accessible clavier et souris
- * - **Hover effects** : hover:bg-gray-100 feedback interaction
- * - **Click handling** : onClose callback déclenché click ou programmatique
- * - **Keyboard navigation** : Enter et Space fermeture accessible
- * - **Focus visible** : focus:outline-none focus:ring-2 standards a11y
- * - **ARIA labels** : aria-label pour description complète assistants
- * - **Role semantics** : role="alert" pour annonces critiques
- *
- * ### 🎯 Contenu structuré et hiérarchie information
- * - **Title obligatoire** : Titre principal message court impactant
- * - **Message optionnel** : Détails complémentaires contexte étendu
- * - **Typography hierarchy** : font-medium title, text-sm message
- * - **Content overflow** : Gestion textes longs avec truncation élégante
- * - **Rich content** : Support HTML limité pour liens et formatting
- * - **Multiline support** : Messages multi-lignes avec line-height optimisé
- * - **Icon integration** : Icônes SVG contextuelles selon type notification
- * - **Brand consistency** : Terminologie et tons alignés AdminJO
- *
- * ## Cas d'usage AdminJO et intégrations olympiques
- *
- * ### 🏅 Contextes métier Jeux Olympiques spécialisés
- * - **Événements sauvegardés** : Success "Événement JO créé avec succès"
- * - **Erreurs validation** : Error "Discipline non conforme règlement CIO"
- * - **Quotas dépassés** : Warning "Limite participants épreuve atteinte"
- * - **Mises à jour** : Info "Nouvelles directives CIO disponibles"
- * - **Synchronisation** : Success "Données CIO synchronisées"
- * - **Permissions** : Error "Accès organisateur insuffisant"
- * - **Deadlines** : Warning "Date limite inscription J-7"
- * - **System status** : Info "Maintenance programmée 2h00"
- *
- * ### 📱 Responsive design et contextes d'usage
- * - **Mobile notifications** : Position bottom-center tactile optimisée
- * - **Tablet admin** : top-right pour interfaces gestion tablettes
- * - **Desktop workstations** : top-right position standard bureautique
- * - **Kiosque public** : top-center alertes maximisant visibilité
- * - **Multi-screen** : Notifications synchronisées écrans multiples
- * - **Print mode** : Masquage automatique mode impression
- * - **Fullscreen** : Adaptation affichage plein écran présentations
- * - **Embedded** : Integration widgets sites partenaires JO
- *
- * ## Performance et optimisations techniques
- *
- * ### ⚡ Optimisations rendering et lifecycle
- * - **Client component** : 'use client' pour interactivité browser
- * - **useEffect timer** : Gestion propre timers avec cleanup automatique
- * - **useState minimal** : State local réduit pour re-renders optimaux
- * - **Conditional rendering** : Affichage conditionnel selon props
- * - **Event listeners** : Gestion optimisée événements clavier/souris
- * - **Memory management** : Cleanup timers évite memory leaks
- * - **Bundle impact** : Code léger impact minimal taille bundle
- * - **Tree shaking** : Import sélectif hooks React utilisés
- *
- * ### 🔒 Accessibilité et standards universels
- * - **ARIA compliance** : role="alert" pour notifications critiques
- * - **Screen readers** : Annonces automatiques contenu notifications
- * - **Keyboard navigation** : Tab order et activation Enter/Space
- * - **Focus management** : Gestion focus pendant affichage/fermeture
- * - **High contrast** : Support modes contraste élevé système
- * - **Reduced motion** : Respect préférences animation utilisateur
- * - **Color independence** : Information non basée couleur uniquement
- * - **WCAG AAA** : Conformité standards accessibilité stricts
- *
- * ### 🧪 Testabilité et maintenance développeur
- * - **Props interface** : Structure claire pour tests unitaires mocks
- * - **Timer testing** : jest.useFakeTimers() pour tests temporels
- * - **Event testing** : Simulation clicks et interactions utilisateur
- * - **Accessibility testing** : Tests conformité a11y automatisés
- * - **Visual regression** : Snapshots states différents types
- * - **Integration testing** : Tests bout-en-bout workflows notifications
- * - **Performance testing** : Métriques rendering et memory usage
- * - **Cross-browser** : Validation compatibilité navigateurs moderne
- *
- * ## Extensions futures et améliorations envisageables
- *
- * ### 🚀 Évolutions fonctionnelles avancées
- * - **Notification queue** : Gestion file attente notifications multiples
- * - **Priority system** : Système priorités notifications critiques
- * - **Grouping** : Regroupement notifications similaires automatique
- * - **Undo actions** : Boutons annulation actions destructives
- * - **Rich media** : Support images et videos dans notifications
- * - **Interactive buttons** : Actions directes depuis notification
- * - **Progress notifications** : Indicateurs progression opérations longues
- * - **Contextual actions** : Boutons actions spécifiques contexte
- *
- * ### 🎨 Améliorations visuelles et UX
- * - **Smooth animations** : Entrée/sortie animations fluides CSS
- * - **Sound notifications** : Audio feedback discret selon préférences
- * - **Haptic feedback** : Vibrations mobiles pour notifications importantes
- * - **Custom themes** : Thèmes couleurs personnalisés selon branding
- * - **Dark mode** : Support automatique modes sombre/clair
- * - **Micro-interactions** : Détails animation engagement utilisateur
- * - **Swipe gestures** : Fermeture par swipe mobile intuitive
- * - **Resize adaptation** : Adaptation dynamique taille contenu
  *
  * @param {NotificationProps} props - Configuration apparence et comportement notification
  * @param {string} props.type - Type notification: success|error|warning|info
@@ -181,56 +60,8 @@ interface NotificationProps {
  *
  * @see Spinner - Composant indicateur chargement complémentaire
  *
- * @since 1.0.0
- * @version 1.0.0
- *
- * @example
- * ```tsx
- * // Notification succès basique
- * <Notification
- *   type="success"
- *   title="Événement sauvegardé"
- *   message="L'événement JO 2024 a été créé avec succès"
- * />
- * ```
- *
- * @example
- * ```tsx
- * // Notification erreur persistante avec callback
- * <Notification
- *   type="error"
- *   title="Erreur de validation"
- *   message="La discipline n'est pas conforme aux règlements CIO"
- *   persistent
- *   onClose={() => console.log('Erreur fermée')}
- * />
- * ```
- *
- * @example
- * ```tsx
- * // Notification warning positionnée centre
- * <Notification
- *   type="warning"
- *   title="Quota participants atteint"
- *   message="Limite de 500 participants pour cette épreuve"
- *   position="top-center"
- *   duration={8000}
- * />
- * ```
- *
- * @example
- * ```tsx
- * // Notification info mobile bottom-center
- * <Notification
- *   type="info"
- *   title="Nouvelles directives CIO"
- *   position="bottom-center"
- *   showCloseButton={false}
- *   className="lg:hidden"
- * />
- * ```
  */
-export default function Notification({
+export function Notification({
   type,
   title,
   message,
@@ -354,3 +185,4 @@ export default function Notification({
     </div>
   );
 }
+export default Notification;

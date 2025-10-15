@@ -7,8 +7,6 @@
  *
  * @module useAuthenticatedPage
  * @category Hooks
- * @since 1.0.0
- * @author AdminJO Team
  */
 
 import { useAuth } from '@/contexts/authContext';
@@ -69,25 +67,6 @@ import { useSessionExpiry } from '@/hooks/useSessionExpiry';
  * @see {@link useAuth} - Context d'authentification sous-jacent
  * @see {@link useSessionExpiry} - Hook de gestion d'expiration de session
  *
- * @example
- * ```tsx
- * function ProtectedPage() {
- *   // Protection automatique - doit être la première ligne
- *   const { user, isAuthenticated, logout } = useAuthenticatedPage();
- *
- *   if (!isAuthenticated) {
- *     // Le hook gère automatiquement la redirection
- *     return null;
- *   }
- *
- *   return (
- *     <div>
- *       <h1>Bienvenue, {user?.email}</h1>
- *       <button onClick={logout}>Déconnexion</button>
- *     </div>
- *   );
- * }
- * ```
  */
 export function useAuthenticatedPage() {
   // Récupération de l'état d'authentification complet

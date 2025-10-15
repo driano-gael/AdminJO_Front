@@ -1,5 +1,5 @@
 ﻿import { renderHook, act } from '@testing-library/react';
-import { useEventsManagement } from '@/hooks/useEvenementManagement';
+import { useEvenementManagement } from '@/hooks/useEvenementManagement';
 import { evenementApi } from '@/lib/api/services/evenementSports/evenementService';
 import { lieuApi } from '@/lib/api/services/evenementSports/lieuService';
 import { epreuveApi } from '@/lib/api/services/evenementSports/epreuveService';
@@ -24,7 +24,7 @@ describe('useEventsManagement', () => {
   });
 
   it('should initialize with default state', async () => {
-    const { result } = renderHook(() => useEventsManagement());
+    const { result } = renderHook(() => useEvenementManagement());
 
     expect(result.current.events).toEqual([]);
     expect(result.current.lieux).toEqual([]);
@@ -52,7 +52,7 @@ describe('useEventsManagement', () => {
     ];
     mockEvenementApi.getAll.mockResolvedValue(mockEvents);
 
-    const { result } = renderHook(() => useEventsManagement());
+    const { result } = renderHook(() => useEvenementManagement());
 
     await act(async () => {
       await new Promise(resolve => setTimeout(resolve, 0));
@@ -71,7 +71,7 @@ describe('useEventsManagement', () => {
     ];
     mockLieuApi.getAll.mockResolvedValue(mockLieux);
 
-    const { result } = renderHook(() => useEventsManagement());
+    const { result } = renderHook(() => useEvenementManagement());
 
     await act(async () => {
       await new Promise(resolve => setTimeout(resolve, 0));
@@ -93,7 +93,7 @@ describe('useEventsManagement', () => {
     ];
     mockEpreuveApi.getAll.mockResolvedValue(mockEpreuves);
 
-    const { result } = renderHook(() => useEventsManagement());
+    const { result } = renderHook(() => useEvenementManagement());
 
     await act(async () => {
       await new Promise(resolve => setTimeout(resolve, 0));
@@ -104,7 +104,7 @@ describe('useEventsManagement', () => {
   });
 
   it('should handle search term update', async () => {
-    const { result } = renderHook(() => useEventsManagement());
+    const { result } = renderHook(() => useEvenementManagement());
 
     await act(async () => {
       await result.current.handleSearch('test search'); // Utiliser handleSearch au lieu de setSearchTerm
@@ -130,7 +130,7 @@ describe('useEventsManagement', () => {
 
     mockEvenementApi.create.mockResolvedValue(createdEvent);
 
-    const { result } = renderHook(() => useEventsManagement());
+    const { result } = renderHook(() => useEvenementManagement());
 
     await act(async () => {
       await result.current.createEvent(newEventData);
@@ -157,7 +157,7 @@ describe('useEventsManagement', () => {
 
     mockEvenementApi.update.mockResolvedValue(updatedEvent);
 
-    const { result } = renderHook(() => useEventsManagement());
+    const { result } = renderHook(() => useEvenementManagement());
 
     await act(async () => {
       await result.current.updateEvent(1, eventToUpdate);
@@ -177,7 +177,7 @@ describe('useEventsManagement', () => {
 
     mockEvenementApi.delete.mockResolvedValue(undefined);
 
-    const { result } = renderHook(() => useEventsManagement());
+    const { result } = renderHook(() => useEvenementManagement());
 
     await act(async () => {
       await result.current.deleteEvent(1);
@@ -199,7 +199,7 @@ describe('useEventsManagement', () => {
 
     mockEvenementApi.create.mockRejectedValue(new Error('Create failed'));
 
-    const { result } = renderHook(() => useEventsManagement());
+    const { result } = renderHook(() => useEvenementManagement());
 
     await act(async () => {
       try {
@@ -213,7 +213,7 @@ describe('useEventsManagement', () => {
   });
 
   it('should reset create error', async () => {
-    const { result } = renderHook(() => useEventsManagement());
+    const { result } = renderHook(() => useEvenementManagement());
 
     await act(async () => {
       result.current.setCreateError('Some error');
@@ -229,7 +229,7 @@ describe('useEventsManagement', () => {
   });
 
   it('should set create error manually', async () => {
-    const { result } = renderHook(() => useEventsManagement());
+    const { result } = renderHook(() => useEvenementManagement());
 
     await act(async () => {
       result.current.setCreateError('Custom error message');

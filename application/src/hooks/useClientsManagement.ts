@@ -7,8 +7,6 @@
  *
  * @module useClientsManagement
  * @category Hooks
- * @since 1.0.0
- * @author AdminJO Team
  */
 
 import { useState, useEffect } from 'react';
@@ -73,52 +71,19 @@ import { clientService } from '@/lib/api/services/clientService';
  * - **Client type** : Interface TypeScript pour la structure des données
  *
  * @returns {Object} Interface complète de gestion des clients
- * @returns {Client[]} returns.clients - Liste des clients
+ * @returns {Client[]} returns.clients - Liste des clients filtrés
  * @returns {boolean} returns.loading - État de chargement
  * @returns {string | null} returns.error - Message d'erreur
  * @returns {string} returns.searchTerm - Terme de recherche
  * @returns {string} returns.statusFilter - Filtre de statut actuel
- * @returns {Function} returns.setSearchTerm - Modifier le terme de recherche
- * @returns {Function} returns.setStatusFilter - Modifier le filtre de statut
  * @returns {Function} returns.loadClients - Recharger les clients
+ * @returns {Function} returns.handleSearch - Modifier le terme de recherche
+ * @returns {Function} returns.handleStatusFilter - Modifier le filtre de statut
  * @returns {Function} returns.toggleClientActive - Basculer l'état d'un client
- * @returns {Function} returns.getFilteredClients - Obtenir les clients filtrés
  *
  * @see {@link clientService} - Service API des clients
  * @see {@link Client} - Interface TypeScript des données client
  *
- * @example
- * ```tsx
- * function ClientsManagementPage() {
- *   const {
- *     clients,
- *     loading,
- *     error,
- *     searchTerm,
- *     setSearchTerm,
- *     statusFilter,
- *     setStatusFilter,
- *     toggleClientActive,
- *     getFilteredClients
- *   } = useClientsManagement();
- *
- *   if (loading) return <Spinner />;
- *   if (error) return <ErrorMessage message={error} />;
- *
- *   const filteredClients = getFilteredClients();
- *
- *   return (
- *     <div>
- *       <SearchBar value={searchTerm} onChange={setSearchTerm} />
- *       <StatusFilter value={statusFilter} onChange={setStatusFilter} />
- *       <ClientsList
- *         clients={filteredClients}
- *         onToggleActive={toggleClientActive}
- *       />
- *     </div>
- *   );
- * }
- * ```
  */
 export function useClientsManagement() {
   const [clients, setClients] = useState<Client[]>([]);

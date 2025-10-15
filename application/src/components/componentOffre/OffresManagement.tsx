@@ -176,7 +176,7 @@
  * @see {@link Notification} - Composant de feedback utilisateur
  */
 import { useState } from 'react';
-import { useOffresManagement } from '@/hooks/useOffreManagement';
+import { useOffreManagement } from '@/hooks/useOffreManagement';
 import { useSessionExpiry } from '@/hooks/useSessionExpiry';
 import { Offre } from '@/types/offre/offre';
 import Notification from '@/components/notification';
@@ -196,7 +196,7 @@ export function OffresManagement() {
     updateOffre,
     deleteOffre,
     setFormNotification,
-  } = useOffresManagement();
+  } = useOffreManagement();
 
   const [showModal, setShowModal] = useState(false);
   const [editingOffre, setEditingOffre] = useState<Offre | null>(null);
@@ -245,7 +245,7 @@ export function OffresManagement() {
 
   const handleDeleteOffre = async (id: number) => {
     // Trouver l'offre à supprimer pour afficher son nom dans la confirmation
-    const offreToDelete = offres.find(offre => offre.id === id);
+    const offreToDelete = offres.find((offre: Offre) => offre.id === id);
     const offreName = offreToDelete ? offreToDelete.libelle : 'cette offre';
 
     // Demander confirmation avant suppression

@@ -7,8 +7,6 @@
  *
  * @module AuthContext
  * @category Contexts
- * @since 1.0.0
- * @author AdminJO Team
  */
 
 'use client';
@@ -296,15 +294,6 @@ export function AuthProvider({ children }: AuthProviderProps) {
    * @returns {Promise<void>} Promise résolue en cas de succès
    * @throws {Error} Erreur si les identifiants sont invalides ou rôle non-admin
    *
-   * @example
-   * ```tsx
-   * try {
-   *   await login('admin@example.com', 'password123');
-   *   // Redirection automatique vers le dashboard
-   * } catch (error) {
-   *   // Affichage de l'erreur à l'utilisateur
-   * }
-   * ```
    */
   const login = async (email: string, password: string) => {
     setIsLoading(true);
@@ -457,23 +446,6 @@ export function AuthProvider({ children }: AuthProviderProps) {
  * @returns {AuthContextType} Interface complète du contexte d'authentification
  * @throws {Error} Erreur si utilisé en dehors d'un AuthProvider
  *
- * @example
- * ```tsx
- * function MonComposant() {
- *   const { user, isAuthenticated, login, logout } = useAuth();
- *
- *   if (!isAuthenticated) {
- *     return <div>Non connecté</div>;
- *   }
- *
- *   return (
- *     <div>
- *       <p>Connecté en tant que: {user?.email}</p>
- *       <button onClick={logout}>Se déconnecter</button>
- *     </div>
- *   );
- * }
- * ```
  */
 export function useAuth() {
     const context = useContext(AuthContext);

@@ -2,6 +2,7 @@ import { Epreuve } from '@/types/sportEvenement/epreuve';
 import { Lieu } from '@/types/sportEvenement/lieu';
 import { Discipline } from '@/types/sportEvenement/discipline';
 import { ExtendEvenement } from '@/types/sportEvenement/evenement';
+import {JSX} from "react";
 
 interface SearchAndFiltersProps {
   searchTerm: string;
@@ -28,6 +29,8 @@ interface SearchAndFiltersProps {
 /**
  * Composant SearchAndFilters - Interface de recherche et filtrage avancé en cascade pour événements olympiques AdminJO
  *
+ *
+ * @name SearchAndFilters
  * Ce composant fournit une interface complète et sophistiquée de recherche et filtrage multicritères
  * pour les événements sportifs des Jeux Olympiques 2024. Il implémente un système de filtrage en cascade
  * intelligent où les options disponibles dans chaque filtre se mettent à jour dynamiquement selon les
@@ -50,7 +53,7 @@ interface SearchAndFiltersProps {
  * - **Callbacks distincts** : onDateDebutChange et onDateFinChange séparés
  * - **Valeurs par défaut** : Dates JO automatiques si aucune sélection
  *
- * ### 🏟Filtrage en cascade lieu → discipline → épreuve → statut
+ * ### Filtrage en cascade lieu → discipline → épreuve → statut
  * - **Filtre lieu (racine)** : Sélection lieu olympique (Stade de France, etc.)
  * - **Disciplines dépendantes** : Liste disciplines disponibles selon lieu sélectionné
  * - **Épreuves dépendantes** : Liste épreuves filtrées par lieu ET discipline
@@ -109,7 +112,7 @@ interface SearchAndFiltersProps {
  * @see {@link Epreuve} - Interface épreuves compétitives
  *
  */
-export default function SearchAndFilters({
+export function SearchAndFilters({
   searchTerm, 
   onSearch, 
   epreuves, 
@@ -129,7 +132,7 @@ export default function SearchAndFilters({
   onStatutChange,
   onDateDebutChange,
   onDateFinChange
-}: SearchAndFiltersProps) {
+}: SearchAndFiltersProps): JSX.Element {
   
   // Logique de filtrage en cascade
   
@@ -371,3 +374,4 @@ export default function SearchAndFilters({
       </div>
     );
 }
+export default SearchAndFilters;
