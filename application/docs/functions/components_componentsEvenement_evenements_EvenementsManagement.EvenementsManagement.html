@@ -1,0 +1,169 @@
+<!DOCTYPE html><html class="default" lang="en" data-base="../"><head><meta charset="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>EvenementsManagement | AdminJO Front - Documentation API - v0.1.0</title><meta name="description" content="Documentation for AdminJO Front - Documentation API"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="../assets/style.css"/><link rel="stylesheet" href="../assets/highlight.css"/><script defer src="../assets/main.js"></script><script async src="../assets/icons.js" id="tsd-icons-script"></script><script async src="../assets/search.js" id="tsd-search-script"></script><script async src="../assets/navigation.js" id="tsd-nav-script"></script><script async src="../assets/hierarchy.js" id="tsd-hierarchy-script"></script></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os";document.body.style.display="none";setTimeout(() => window.app?app.showPage():document.body.style.removeProperty("display"),500)</script><header class="tsd-page-toolbar"><div class="tsd-toolbar-contents container"><a href="../index.html" class="title">AdminJO Front - Documentation API - v0.1.0</a><div id="tsd-toolbar-links"></div><button id="tsd-search-trigger" class="tsd-widget" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-search"></use></svg></button><dialog id="tsd-search" aria-label="Search"><input role="combobox" id="tsd-search-input" aria-controls="tsd-search-results" aria-autocomplete="list" aria-expanded="true" autocapitalize="off" autocomplete="off" placeholder="Search the docs" maxLength="100"/><ul role="listbox" id="tsd-search-results"></ul><div id="tsd-search-status" aria-live="polite" aria-atomic="true"><div>Preparing search index...</div></div></dialog><a href="#" class="tsd-widget menu" id="tsd-toolbar-menu-trigger" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-menu"></use></svg></a></div></header><div class="container container-main"><div class="col-content"><div class="tsd-page-title"><ul class="tsd-breadcrumb" aria-label="Breadcrumb"><li><a href="../modules/components_componentsEvenement_evenements_EvenementsManagement.html">components/componentsEvenement/evenements/EvenementsManagement</a></li><li><a href="" aria-current="page">EvenementsManagement</a></li></ul><h1>Function EvenementsManagement</h1></div><section class="tsd-panel"><ul class="tsd-signatures"><li class=""><div class="tsd-signature tsd-anchor-link" id="evenementsmanagement"><span class="tsd-kind-call-signature">EvenementsManagement</span><span class="tsd-signature-symbol">()</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Element</span><a href="#evenementsmanagement" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div><div class="tsd-description"><div class="tsd-comment tsd-typography"><p>Composant EvenementsManagement - Gestionnaire principal des événements sportifs olympiques AdminJO</p>
+</div><h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Element</span></h4><p>Interface complète de gestion des événements avec CRUD, filtrage avancé cascade et notifications</p>
+<div class="tsd-comment tsd-typography"><div class="tsd-tag-name"><h4 class="tsd-anchor-link" id="name">Name<a href="#name" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p>EvenementsManagement
+Ce composant constitue le point central de gestion des événements sportifs des Jeux Olympiques 2024.
+Il orchestre l'ensemble des fonctionnalités CRUD (Create, Read, Update, Delete) avec système de filtrage
+avancé en cascade, recherche multicritères, interface utilisateur complète incluant tableau de données,
+modal de saisie avec sélection d'épreuves hiérarchique, notifications de feedback et gestion d'état
+centralisée. Il assure la coordination entre tous les sous-composants du module événements avec
+navigation contextuelle, filtrage temporel JO 2024, et fonctionnalités de filtrage relationnel sophistiqué.</p>
+<h2 id="architecture-et-responsabilités-avancées-événements-olympiques" class="tsd-anchor-link">Architecture et responsabilités avancées événements olympiques<a href="#architecture-et-responsabilités-avancées-événements-olympiques" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="composant-orchestrateur-central-avec-filtrage-multicritères-avancé" class="tsd-anchor-link">Composant orchestrateur central avec filtrage multicritères avancé<a href="#composant-orchestrateur-central-avec-filtrage-multicritères-avancé" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Coordination générale</strong> : Gère tous les sous-composants événements complexes</li>
+<li><strong>État centralisé</strong> : Point unique de vérité pour données événements + relations multiples</li>
+<li><strong>Flux d'événements</strong> : Centralise callbacks et actions utilisateur sophistiquées</li>
+<li><strong>Session management</strong> : Surveillance expiration session utilisateur</li>
+<li><strong>Layout complet</strong> : Structure complète page gestion événements</li>
+<li><strong>Filtrage cascade</strong> : Système recherche + filtres lieu → discipline → épreuve → statut</li>
+<li><strong>Relations multiples</strong> : Gestion liens événements ↔ épreuves ↔ lieux ↔ disciplines</li>
+<li><strong>Dates JO</strong> : Filtrage temporel période olympique Paris 2024</li>
+</ul>
+<h3 id="gestion-des-données-et-hooks-spécialisés-événements" class="tsd-anchor-link">Gestion des données et hooks spécialisés événements<a href="#gestion-des-données-et-hooks-spécialisés-événements" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>useEventsManagement</strong> : Hook métier pour opérations CRUD événements + filtres avancés</li>
+<li><strong>useSessionExpiry</strong> : Protection contre expiration session</li>
+<li><strong>État local UI</strong> : Gestion modal, édition, notifications</li>
+<li><strong>Synchronisation</strong> : Coordination état local/distant avec filtres multiples</li>
+<li><strong>Error handling</strong> : Gestion centralisée erreurs création/modification</li>
+<li><strong>Filter state</strong> : 6 critères filtrage (lieu, discipline, épreuve, statut, dates)</li>
+<li><strong>Données relationnelles</strong> : Événements + lieux + épreuves + disciplines chargées</li>
+</ul>
+<h2 id="fonctionnalités-crud-complètes-avec-relations-multiples" class="tsd-anchor-link">Fonctionnalités CRUD complètes avec relations multiples<a href="#fonctionnalités-crud-complètes-avec-relations-multiples" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="création-dévénements-avec-épreuves-multiples-create" class="tsd-anchor-link">Création d'événements avec épreuves multiples (Create)<a href="#création-dévénements-avec-épreuves-multiples-create" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Déclenchement</strong> : Bouton &quot;Nouvel Événement&quot; dans EvenementsHeader</li>
+<li><strong>Interface</strong> : EvenementModal en mode création (editingEvent = null)</li>
+<li><strong>Validation</strong> : Description + lieu + date + horaire + épreuves optionnelles</li>
+<li><strong>Sélection épreuves</strong> : Interface hiérarchique par discipline avec disponibilité</li>
+<li><strong>Sauvegarde</strong> : Appel createEvent() du hook avec CreateEvenementRequest étendu</li>
+<li><strong>Feedback</strong> : Notification succès &quot;Événement créé avec succès !&quot;</li>
+<li><strong>Rafraîchissement</strong> : Liste mise à jour avec filtres préservés</li>
+<li><strong>Relations</strong> : Association événement ↔ épreuves multiples via modal</li>
+</ul>
+<h3 id="lecture-et-affichage-avec-filtrage-multicritères" class="tsd-anchor-link">Lecture et affichage avec filtrage multicritères<a href="#lecture-et-affichage-avec-filtrage-multicritères" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Source données</strong> : Hook useEventsManagement fournit événements + relations</li>
+<li><strong>Affichage</strong> : EvenementsTable avec colonnes spécialisées (description, épreuves, date, lieu, statut, actions)</li>
+<li><strong>États système</strong> : Loading, error, empty gérés dans table</li>
+<li><strong>Recherche textuelle</strong> : SearchAndFilters avec terme persistant</li>
+<li><strong>Filtres cascade</strong> : Lieu → Discipline → Épreuve → Statut avec réinitialisation automatique</li>
+<li><strong>Filtres temporels</strong> : Date début/fin pour période JO 2024 (juillet-septembre)</li>
+<li><strong>Refresh intelligent</strong> : handleRefresh préserve recherche ET tous filtres</li>
+<li><strong>Sous-composants</strong> : EvenementEpreuves et EventStatus intégrés dans lignes</li>
+</ul>
+<h3 id="modification-dévénements-avec-épreuves-update" class="tsd-anchor-link">Modification d'événements avec épreuves (Update)<a href="#modification-dévénements-avec-épreuves-update" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Déclenchement</strong> : Bouton &quot;Modifier&quot; dans EvenementsTableRow</li>
+<li><strong>Interface</strong> : EvenementModal pré-remplie avec données existantes + épreuves</li>
+<li><strong>Mode édition</strong> : editingEvent contient événement ExtendEvenement complet</li>
+<li><strong>Épreuves assignées</strong> : Gestion disponibilité + épreuves déjà assignées</li>
+<li><strong>Sauvegarde</strong> : Appel updateEvent() avec ID et nouvelles données</li>
+<li><strong>Feedback</strong> : Notification succès &quot;Événement modifié avec succès !&quot;</li>
+<li><strong>Préservation</strong> : Recherche et filtres maintenus après modification</li>
+<li><strong>Relations</strong> : Modification associations événement ↔ épreuves possible</li>
+</ul>
+<h3 id="suppression-dévénements-delete" class="tsd-anchor-link">Suppression d'événements (Delete)<a href="#suppression-dévénements-delete" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Déclenchement</strong> : Bouton &quot;Supprimer&quot; dans EvenementsTableRow</li>
+<li><strong>Sécurité</strong> : Confirmation implicite (gérée par composant table)</li>
+<li><strong>Suppression</strong> : Appel deleteEvent() avec ID événement</li>
+<li><strong>Feedback</strong> : Notification succès &quot;Événement supprimé avec succès !&quot;</li>
+<li><strong>Gestion erreur</strong> : Notification erreur si échec suppression</li>
+<li><strong>État préservé</strong> : Recherche et filtres maintenus après suppression</li>
+<li><strong>Libération épreuves</strong> : Épreuves redeviennent disponibles pour autres événements</li>
+</ul>
+<h2 id="système-de-filtrage-en-cascade-sophistiqué" class="tsd-anchor-link">Système de filtrage en cascade sophistiqué<a href="#système-de-filtrage-en-cascade-sophistiqué" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="filtres-multicritères-avec-logique-cascade" class="tsd-anchor-link">Filtres multicritères avec logique cascade<a href="#filtres-multicritères-avec-logique-cascade" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Recherche textuelle</strong> : searchTerm via handleSearch()</li>
+<li><strong>Filtre lieu</strong> : filterLieu avec setFilterLieu() (racine cascade)</li>
+<li><strong>Filtre discipline</strong> : filterDiscipline dépendant lieu sélectionné</li>
+<li><strong>Filtre épreuve</strong> : filterEpreuve dépendant lieu ET discipline</li>
+<li><strong>Filtre statut</strong> : filterStatut dépendant tous filtres précédents</li>
+<li><strong>Dates JO</strong> : filterDateDebut/filterDateFin pour période olympique</li>
+<li><strong>Réinitialisation automatique</strong> : Filtres enfants reset si parent change</li>
+</ul>
+<h3 id="handlers-de-filtres-coordonnés" class="tsd-anchor-link">Handlers de filtres coordonnés<a href="#handlers-de-filtres-coordonnés" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>handleLieuChange</strong> : setFilterLieu() avec reset cascade automatique</li>
+<li><strong>handleDisciplineChange</strong> : setFilterDiscipline() avec reset épreuve/statut</li>
+<li><strong>handleEpreuveChange</strong> : setFilterEpreuve() avec reset statut</li>
+<li><strong>handleStatutChange</strong> : setFilterStatut() (feuille cascade)</li>
+<li><strong>handleDateDebutChange/Fin</strong> : Gestion période temporelle JO</li>
+<li><strong>Synchronisation</strong> : Tous handlers coordonnés avec état hook</li>
+</ul>
+<h3 id="calcul-disciplines-depuis-épreuves" class="tsd-anchor-link">Calcul disciplines depuis épreuves<a href="#calcul-disciplines-depuis-épreuves" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Extraction unique</strong> : Array.from(new Map()) pour disciplines uniques</li>
+<li><strong>Tri alphabétique</strong> : sort((a, b) =&gt; a.nom.localeCompare(b.nom))</li>
+<li><strong>Relations dynamiques</strong> : Disciplines dérivées des épreuves disponibles</li>
+<li><strong>Performance</strong> : Calcul une fois, réutilisation dans composants</li>
+<li><strong>Cohérence</strong> : Disciplines toujours synchronisées avec épreuves</li>
+</ul>
+<h2 id="gestion-avancée-des-états-dinterface" class="tsd-anchor-link">Gestion avancée des états d'interface<a href="#gestion-avancée-des-états-dinterface" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="états-modaux-avec-gestion-derreurs" class="tsd-anchor-link">États modaux avec gestion d'erreurs<a href="#états-modaux-avec-gestion-derreurs" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>showModal</strong> : Contrôle visibilité EvenementModal</li>
+<li><strong>editingEvent</strong> : Événement en cours d'édition ou null pour création</li>
+<li><strong>Ouverture</strong> : handleOpenModal() avec événement optionnel</li>
+<li><strong>Fermeture</strong> : Fermeture avec nettoyage état (setEditingEvent(null))</li>
+<li><strong>Mode dynamique</strong> : Modal s'adapte selon editingEvent</li>
+<li><strong>Données complexes</strong> : Transmission lieux, épreuves, événement complet</li>
+</ul>
+<h3 id="système-de-notifications-contextuelles-événements" class="tsd-anchor-link">Système de notifications contextuelles événements<a href="#système-de-notifications-contextuelles-événements" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>notification state</strong> : Objet {message, type} ou null</li>
+<li><strong>Types supportés</strong> : 'success', 'error', 'info'</li>
+<li><strong>Messages contextuels</strong> : Textes spécialisés par action événements</li>
+<li><strong>Auto-dismiss</strong> : Fermeture manuelle par utilisateur</li>
+<li><strong>Feedback</strong> : Confirmation visuelle de toutes les opérations CRUD</li>
+</ul>
+<h3 id="états-de-chargement-spécialisés-événements" class="tsd-anchor-link">États de chargement spécialisés événements<a href="#états-de-chargement-spécialisés-événements" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>loading</strong> : État chargement liste événements (lecture)</li>
+<li><strong>createLoading</strong> : État chargement opérations CUD via hook</li>
+<li><strong>error</strong> : Messages d'erreur de chargement données</li>
+<li><strong>Modal states</strong> : Loading et error transmis à EvenementModal</li>
+<li><strong>Granularité</strong> : États séparés pour différentes opérations</li>
+<li><strong>Feedback</strong> : Désactivation contrôles pendant opérations async</li>
+</ul>
+<h2 id="filtrage-temporel-jo-2024-spécialisé" class="tsd-anchor-link">Filtrage temporel JO 2024 spécialisé<a href="#filtrage-temporel-jo-2024-spécialisé" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="gestion-période-olympique-paris-2024" class="tsd-anchor-link">Gestion période olympique Paris 2024<a href="#gestion-période-olympique-paris-2024" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Dates par défaut</strong> : Juillet-septembre 2024 pour JO + Paralympiques</li>
+<li><strong>Filtre début</strong> : filterDateDebut avec handleDateDebutChange</li>
+<li><strong>Filtre fin</strong> : filterDateFin avec handleDateFinChange</li>
+<li><strong>Format ISO</strong> : Dates au format YYYY-MM-DD pour API</li>
+<li><strong>Validation</strong> : Cohérence dates début &lt; fin</li>
+<li><strong>Réinitialisation</strong> : Retour aux dates JO par défaut</li>
+</ul>
+<h2 id="flux-dinteractions-utilisateur-avancés-événements" class="tsd-anchor-link">Flux d'interactions utilisateur avancés événements<a href="#flux-dinteractions-utilisateur-avancés-événements" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="parcours-création-événement-avec-épreuves" class="tsd-anchor-link">Parcours création événement avec épreuves<a href="#parcours-création-événement-avec-épreuves" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ol>
+<li><strong>Clic &quot;Nouvel Événement&quot;</strong> → handleOpenModal() sans paramètre</li>
+<li><strong>Modal s'ouvre</strong> → EvenementModal mode création (editingEvent = null)</li>
+<li><strong>Saisie données</strong> → Description + lieu + date + horaire + épreuves multiples</li>
+<li><strong>Sélection épreuves</strong> → Interface hiérarchique par discipline</li>
+<li><strong>Soumission</strong> → handleSaveEvent() avec CreateEvenementRequest étendu</li>
+<li><strong>Création API</strong> → createEvent() via hook spécialisé</li>
+<li><strong>Succès</strong> → Modal ferme, notification succès, liste rafraîchie avec filtres</li>
+<li><strong>Erreur</strong> → Erreur affichée, modal reste ouverte pour correction</li>
+</ol>
+<h3 id="parcours-modification-événement" class="tsd-anchor-link">Parcours modification événement<a href="#parcours-modification-événement" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ol>
+<li><strong>Clic &quot;Modifier&quot;</strong> → handleOpenModal(event) avec objet ExtendEvenement</li>
+<li><strong>Modal s'ouvre</strong> → EvenementModal pré-remplie (editingEvent = event)</li>
+<li><strong>Modification données</strong> → Tous champs modifiables + épreuves réassignables</li>
+<li><strong>Soumission</strong> → handleSaveEvent() avec données modifiées</li>
+<li><strong>Update API</strong> → updateEvent() avec ID et nouvelles données</li>
+<li><strong>Succès</strong> → Modal ferme, notification succès, liste mise à jour</li>
+<li><strong>Erreur</strong> → Gestion via hook, feedback utilisateur approprié</li>
+</ol>
+<h3 id="parcours-suppression-événement" class="tsd-anchor-link">Parcours suppression événement<a href="#parcours-suppression-événement" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ol>
+<li><strong>Clic &quot;Supprimer&quot;</strong> → handleDeleteEvent(id) avec identifiant</li>
+<li><strong>Suppression directe</strong> → deleteEvent() via hook (confirmation dans table)</li>
+<li><strong>Succès</strong> → Notification succès, liste automatiquement mise à jour</li>
+<li><strong>Erreur</strong> → try/catch avec notification erreur générique</li>
+<li><strong>Filtres préservés</strong> : Recherche et tous filtres maintenues après suppression</li>
+<li><strong>Épreuves libérées</strong> : Épreuves assignées redeviennent disponibles</li>
+</ol>
+<h3 id="parcours-filtrage-cascade-événement" class="tsd-anchor-link">Parcours filtrage cascade événement<a href="#parcours-filtrage-cascade-événement" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ol>
+<li><strong>Sélection lieu</strong> → handleLieuChange() capture lieu olympique</li>
+<li><strong>Cascade disciplines</strong> → Disciplines disponibles recalculées selon lieu</li>
+<li><strong>Sélection discipline</strong> → handleDisciplineChange() avec reset épreuves/statut</li>
+<li><strong>Cascade épreuves</strong> → Épreuves filtrées selon lieu ET discipline</li>
+<li><strong>Sélection épreuve</strong> → handleEpreuveChange() avec reset statut</li>
+<li><strong>Filtre statut</strong> → handleStatutChange() final cascade</li>
+<li><strong>Dates période</strong> → handleDateDebutChange/Fin pour temporel JO</li>
+<li><strong>Mise à jour liste</strong> → Événements filtrés selon critères multiples coordonnés</li>
+</ol>
+</div><div class="tsd-tag-see"><h4 class="tsd-anchor-link" id="see">See<a href="#see" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><ul>
+<li><a href="components_componentsEvenement_evenements_EvenementsHeader.EventsHeader.html" class="tsd-kind-function">EvenementsHeader</a> - En-tête avec navigation et bouton création</li>
+<li><a href="components_componentsEvenement_evenements_EvenementsSearchAndFilters.SearchAndFilters.html" class="tsd-kind-function">SearchAndFilters</a> - Composant de filtrage multicritères en cascade</li>
+<li><a href="components_componentsEvenement_evenements_EvenementsTable.EvenementsTable.html" class="tsd-kind-function">EvenementsTable</a> - Tableau d'affichage et actions des événements</li>
+<li><a href="components_componentsEvenement_evenements_EvenementModal.EvenementModal.html" class="tsd-kind-function">EvenementModal</a> - Modal de création/édition des événements avec épreuves</li>
+<li>useEventsManagement - Hook métier pour opérations CRUD + filtres avancés</li>
+<li><a href="useSessionExpiry.useSessionExpiry.html" class="tsd-kind-function">useSessionExpiry</a> - Hook de surveillance de session</li>
+<li><a href="components_notification.Notification.html" class="tsd-kind-function">Notification</a> - Composant de feedback utilisateur</li>
+</ul>
+</div></div><aside class="tsd-sources"><ul><li>Defined in <a href="https://github.com/driano-gael/AdminJO_Front/blob/main/application/src/components/componentsEvenement/evenements/EvenementsManagement.tsx#L199">components/componentsEvenement/evenements/EvenementsManagement.tsx:199</a></li></ul></aside></div></li></ul></section></div><div class="col-sidebar"><div class="page-menu"><div class="tsd-navigation settings"><details class="tsd-accordion"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg><h3>Settings</h3></summary><div class="tsd-accordion-details"><div class="tsd-filter-visibility"><span class="settings-label">Member Visibility</span><ul id="tsd-filter-options"><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-protected" name="protected"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Protected</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li></ul></div><div class="tsd-theme-toggle"><label class="settings-label" for="tsd-theme">Theme</label><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div><details open class="tsd-accordion tsd-page-navigation"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg><h3>On This Page</h3></summary><div class="tsd-accordion-details"><a href="#architecture-et-responsabilités-avancées-événements-olympiques"><span>Architecture et responsabilités avancées événements olympiques</span></a><ul><li><a href="#composant-orchestrateur-central-avec-filtrage-multicritères-avancé"><span>Composant orchestrateur central avec filtrage multicritères avancé</span></a></li><li><a href="#gestion-des-données-et-hooks-spécialisés-événements"><span>Gestion des données et hooks spécialisés événements</span></a></li></ul><a href="#fonctionnalités-crud-complètes-avec-relations-multiples"><span>Fonctionnalités <wbr/>CRUD complètes avec relations multiples</span></a><ul><li><a href="#création-dévénements-avec-épreuves-multiples-create"><span>Création d&#39;événements avec épreuves multiples (<wbr/>Create)</span></a></li><li><a href="#lecture-et-affichage-avec-filtrage-multicritères"><span>Lecture et affichage avec filtrage multicritères</span></a></li><li><a href="#modification-dévénements-avec-épreuves-update"><span>Modification d&#39;événements avec épreuves (<wbr/>Update)</span></a></li><li><a href="#suppression-dévénements-delete"><span>Suppression d&#39;événements (<wbr/>Delete)</span></a></li></ul><a href="#système-de-filtrage-en-cascade-sophistiqué"><span>Système de filtrage en cascade sophistiqué</span></a><ul><li><a href="#filtres-multicritères-avec-logique-cascade"><span>Filtres multicritères avec logique cascade</span></a></li><li><a href="#handlers-de-filtres-coordonnés"><span>Handlers de filtres coordonnés</span></a></li><li><a href="#calcul-disciplines-depuis-épreuves"><span>Calcul disciplines depuis épreuves</span></a></li></ul><a href="#gestion-avancée-des-états-dinterface"><span>Gestion avancée des états d&#39;interface</span></a><ul><li><a href="#états-modaux-avec-gestion-derreurs"><span>États modaux avec gestion d&#39;erreurs</span></a></li><li><a href="#système-de-notifications-contextuelles-événements"><span>Système de notifications contextuelles événements</span></a></li><li><a href="#états-de-chargement-spécialisés-événements"><span>États de chargement spécialisés événements</span></a></li></ul><a href="#filtrage-temporel-jo-2024-spécialisé"><span>Filtrage temporel <wbr/>JO 2024 spécialisé</span></a><ul><li><a href="#gestion-période-olympique-paris-2024"><span>Gestion période olympique <wbr/>Paris 2024</span></a></li></ul><a href="#flux-dinteractions-utilisateur-avancés-événements"><span>Flux d&#39;interactions utilisateur avancés événements</span></a><ul><li><a href="#parcours-création-événement-avec-épreuves"><span>Parcours création événement avec épreuves</span></a></li><li><a href="#parcours-modification-événement"><span>Parcours modification événement</span></a></li><li><a href="#parcours-suppression-événement"><span>Parcours suppression événement</span></a></li><li><a href="#parcours-filtrage-cascade-événement"><span>Parcours filtrage cascade événement</span></a></li></ul></div></details></div><div class="site-menu"><nav class="tsd-navigation"><a href="../modules.html">AdminJO Front - Documentation API - v0.1.0</a><ul class="tsd-small-nested-navigation" id="tsd-nav-container"><li>Loading...</li></ul></nav></div></div></div><footer><p class="tsd-generator">Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></footer><div class="overlay"></div></body></html>

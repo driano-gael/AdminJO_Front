@@ -1,0 +1,149 @@
+<!DOCTYPE html><html class="default" lang="en" data-base="../"><head><meta charset="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>OffreModal | AdminJO Front - Documentation API - v0.1.0</title><meta name="description" content="Documentation for AdminJO Front - Documentation API"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="../assets/style.css"/><link rel="stylesheet" href="../assets/highlight.css"/><script defer src="../assets/main.js"></script><script async src="../assets/icons.js" id="tsd-icons-script"></script><script async src="../assets/search.js" id="tsd-search-script"></script><script async src="../assets/navigation.js" id="tsd-nav-script"></script><script async src="../assets/hierarchy.js" id="tsd-hierarchy-script"></script></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os";document.body.style.display="none";setTimeout(() => window.app?app.showPage():document.body.style.removeProperty("display"),500)</script><header class="tsd-page-toolbar"><div class="tsd-toolbar-contents container"><a href="../index.html" class="title">AdminJO Front - Documentation API - v0.1.0</a><div id="tsd-toolbar-links"></div><button id="tsd-search-trigger" class="tsd-widget" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-search"></use></svg></button><dialog id="tsd-search" aria-label="Search"><input role="combobox" id="tsd-search-input" aria-controls="tsd-search-results" aria-autocomplete="list" aria-expanded="true" autocapitalize="off" autocomplete="off" placeholder="Search the docs" maxLength="100"/><ul role="listbox" id="tsd-search-results"></ul><div id="tsd-search-status" aria-live="polite" aria-atomic="true"><div>Preparing search index...</div></div></dialog><a href="#" class="tsd-widget menu" id="tsd-toolbar-menu-trigger" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-menu"></use></svg></a></div></header><div class="container container-main"><div class="col-content"><div class="tsd-page-title"><ul class="tsd-breadcrumb" aria-label="Breadcrumb"><li><a href="../modules/components_componentOffre_OffresModal.html">components/componentOffre/OffresModal</a></li><li><a href="" aria-current="page">OffreModal</a></li></ul><h1>Function OffreModal</h1></div><section class="tsd-panel"><ul class="tsd-signatures"><li class=""><div class="tsd-signature tsd-anchor-link" id="offremodal"><span class="tsd-kind-call-signature">OffreModal</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">props</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Props</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Element</span> <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">null</span><a href="#offremodal" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div><div class="tsd-description"><div class="tsd-comment tsd-typography"><p>Composant OffresModal - Modal de création/édition des offres olympiques AdminJO</p>
+</div><div class="tsd-parameters"><h4 class="tsd-parameters-title">Parameters</h4><ul class="tsd-parameter-list"><li><span><span class="tsd-kind-parameter">props</span>: <span class="tsd-signature-type">Props</span></span><div class="tsd-comment tsd-typography"><p>Configuration de la modal des offres</p>
+</div><ul class="tsd-parameters"><li class="tsd-parameter"><h5><span>isOpen</span></h5><div class="tsd-comment tsd-typography"><p>Contrôle la visibilité de la modal</p>
+</div></li><li class="tsd-parameter"><h5><span>onClose</span></h5><div class="tsd-comment tsd-typography"><p>Callback de fermeture de la modal</p>
+</div></li><li class="tsd-parameter"><h5><span>onSave</span></h5><div class="tsd-comment tsd-typography"><p>Callback de sauvegarde avec données offre</p>
+</div></li><li class="tsd-parameter"><h5><span>loading</span></h5><div class="tsd-comment tsd-typography"><p>État de chargement pour désactiver contrôles</p>
+</div></li><li class="tsd-parameter"><h5><span>offre</span></h5><div class="tsd-comment tsd-typography"><p>Offre à éditer (undefined = mode création)</p>
+</div></li></ul></li></ul></div><h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Element</span> <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">null</span></h4><p>Modal de création/édition ou null si fermée</p>
+<div class="tsd-comment tsd-typography"><div class="tsd-tag-name"><h4 class="tsd-anchor-link" id="name">Name<a href="#name" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p>OffreModal</p>
+<p>Ce composant fournit une interface modale complète pour la création et la modification
+des offres sportives des Jeux Olympiques. Il gère deux modes distincts (création/édition)
+avec validation temps réel, contrôles numériques avancés, et UX optimisée pour la saisie
+de données complexes. Il inclut des champs spécialisés avec boutons d'ajustement et
+validation intelligente des formats.</p>
+<h2 id="fonctionnalités-principales" class="tsd-anchor-link">Fonctionnalités principales<a href="#fonctionnalités-principales" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="dual-mode-création-et-édition" class="tsd-anchor-link">Dual-mode : Création et Édition<a href="#dual-mode-création-et-édition" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Mode création</strong> : offre === undefined, formulaire vide avec valeurs par défaut</li>
+<li><strong>Mode édition</strong> : offre fournie, formulaire pré-rempli avec données existantes</li>
+<li><strong>Titre dynamique</strong> : &quot;Créer une nouvelle offre&quot; vs &quot;Modifier l'offre&quot;</li>
+<li><strong>Bouton contextuel</strong> : &quot;Créer&quot; vs &quot;Modifier&quot; selon le mode</li>
+<li><strong>États de chargement</strong> : &quot;Création...&quot; vs &quot;Modification...&quot; pendant traitement</li>
+</ul>
+<h3 id="formulaire-complet-avec-validation" class="tsd-anchor-link">Formulaire complet avec validation<a href="#formulaire-complet-avec-validation" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Libellé offre</strong> : Champ texte requis pour nom de l'offre</li>
+<li><strong>Description</strong> : Champ texte pour détails de l'offre</li>
+<li><strong>Nombre de personnes</strong> : Contrôle numérique avec boutons +/- et validation</li>
+<li><strong>Montant</strong> : Contrôle monétaire avec symbole € et format décimal</li>
+<li><strong>Validation temps réel</strong> : Contrôles immédiats lors de la saisie</li>
+</ul>
+<h3 id="contrôles-numériques-avancés" class="tsd-anchor-link">Contrôles numériques avancés<a href="#contrôles-numériques-avancés" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Boutons d'ajustement</strong> : +/- pour nombre de personnes et montant</li>
+<li><strong>Validation saisie</strong> : Regex pour formats autorisés</li>
+<li><strong>Valeurs minimales</strong> : nb_personne &gt;= 1, montant &gt;= 0</li>
+<li><strong>Formatage automatique</strong> : Montant avec 2 décimales au blur</li>
+<li><strong>États séparés</strong> : String inputs pour contrôle précis, number values pour données</li>
+</ul>
+<h2 id="architecture-des-données-et-état" class="tsd-anchor-link">Architecture des données et état<a href="#architecture-des-données-et-état" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="structure-détat-complexe" class="tsd-anchor-link">Structure d'état complexe<a href="#structure-détat-complexe" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>formData</strong> : Objet Offre principal avec données finales</li>
+<li><strong>nbPersonneInput</strong> : String pour contrôle field nombre de personnes</li>
+<li><strong>montantInput</strong> : String pour contrôle field montant avec décimales</li>
+<li><strong>Synchronisation</strong> : Inputs string ↔ formData number values</li>
+<li><strong>Séparation concerns</strong> : Affichage vs données métier</li>
+</ul>
+<h3 id="useeffect-dinitialisation" class="tsd-anchor-link">useEffect d'initialisation<a href="#useeffect-dinitialisation" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Déclencheurs</strong> : offre et isOpen changes</li>
+<li><strong>Mode édition</strong> : Pré-remplissage avec toutes propriétés offre</li>
+<li><strong>Mode création</strong> : Reset complet avec valeurs par défaut</li>
+<li><strong>Formatage</strong> : Conversion number → string pour inputs</li>
+<li><strong>Synchronisation</strong> : Cohérence entre tous les états</li>
+</ul>
+<h2 id="champs-de-formulaire-spécialisés" class="tsd-anchor-link">Champs de formulaire spécialisés<a href="#champs-de-formulaire-spécialisés" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="champ-libellé-nom-de-loffre" class="tsd-anchor-link">Champ Libellé (nom de l'offre)<a href="#champ-libellé-nom-de-loffre" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Type</strong> : Input text standard</li>
+<li><strong>Validation</strong> : Required, contrôlé par attribut HTML et submit handler</li>
+<li><strong>Placeholder</strong> : &quot;libellé de l'offre&quot; pour guidance utilisateur</li>
+<li><strong>Style</strong> : Focus ring bleu cohérent avec design system</li>
+<li><strong>Binding</strong> : Liaison bidirectionnelle avec formData.libelle</li>
+</ul>
+<h3 id="champ-description" class="tsd-anchor-link">Champ Description<a href="#champ-description" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Type</strong> : Input text étendu</li>
+<li><strong>Validation</strong> : Required pour cohérence métier</li>
+<li><strong>Placeholder</strong> : &quot;description de l'offre&quot; pour clarté</li>
+<li><strong>Usage</strong> : Détails complémentaires sur l'offre sportive</li>
+<li><strong>Binding</strong> : Liaison avec formData.description</li>
+</ul>
+<h3 id="champ-nombre-de-personnes-contrôle-avancé" class="tsd-anchor-link">Champ Nombre de personnes (contrôle avancé)<a href="#champ-nombre-de-personnes-contrôle-avancé" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Interface</strong> : Input central avec boutons -/+ de chaque côté</li>
+<li><strong>Validation saisie</strong> : Regex /^\d+$/ pour entiers positifs uniquement</li>
+<li><strong>Ajustement</strong> : Boutons -1/+1 avec minimum absolu à 1</li>
+<li><strong>Auto-correction</strong> : onBlur reset à 1 si valeur invalide ou vide</li>
+<li><strong>États</strong> : nbPersonneInput (string) ↔ formData.nb_personne (number)</li>
+</ul>
+<h3 id="champ-montant-contrôle-monétaire" class="tsd-anchor-link">Champ Montant (contrôle monétaire)<a href="#champ-montant-contrôle-monétaire" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Interface</strong> : Input avec symbole € à gauche et boutons -/+ ajustement</li>
+<li><strong>Validation saisie</strong> : Regex /^\d*.?\d{0,2}$/ pour décimales max 2</li>
+<li><strong>Ajustement</strong> : Boutons -0.50/+0.50 pour incréments monétaires</li>
+<li><strong>Formatage</strong> : onBlur conversion vers format XX.XX automatique</li>
+<li><strong>Minimum</strong> : Montant &gt;= 0, pas de valeurs négatives</li>
+<li><strong>États</strong> : montantInput (string) ↔ formData.montant (number)</li>
+<li><strong>Position € symbol</strong> : absolute left-3 pour alignement parfait</li>
+<li><strong>Placeholder</strong> : &quot;0.00&quot; pour indication format attendu</li>
+</ul>
+<h2 id="gestion-des-interactions-utilisateur" class="tsd-anchor-link">Gestion des interactions utilisateur<a href="#gestion-des-interactions-utilisateur" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="saisie-clavier-et-validation" class="tsd-anchor-link">Saisie clavier et validation<a href="#saisie-clavier-et-validation" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Temps réel</strong> : Validation onChange pour feedback immédiat</li>
+<li><strong>Formats stricts</strong> : Regex bloquent caractères non autorisés</li>
+<li><strong>onBlur corrections</strong> : Auto-formatage et corrections valeurs</li>
+<li><strong>Required fields</strong> : Libellé obligatoire pour soumission</li>
+<li><strong>Submit validation</strong> : Vérification nb_personne &gt; 0 avant envoi</li>
+</ul>
+<h3 id="contrôles-boutons-dajustement" class="tsd-anchor-link">Contrôles boutons d'ajustement<a href="#contrôles-boutons-dajustement" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Nb personnes</strong> : adjustNbPersonne(-1/+1) avec minimum 1</li>
+<li><strong>Montant</strong> : adjustMontant(-0.50/+0.50) avec minimum 0</li>
+<li><strong>Protection</strong> : Math.max() pour éviter valeurs négatives</li>
+<li><strong>Synchronisation</strong> : Mise à jour simultanée input et formData</li>
+<li><strong>États loading</strong> : Boutons disabled pendant opérations</li>
+</ul>
+<h3 id="soumission-et-validation-finale" class="tsd-anchor-link">Soumission et validation finale<a href="#soumission-et-validation-finale" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Prérequis</strong> : libelle.trim() non vide ET nb_personne &gt; 0</li>
+<li><strong>Callback</strong> : onSave(formData) avec objet Offre complet</li>
+<li><strong>Prévention</strong> : e.preventDefault() pour contrôler soumission</li>
+<li><strong>États</strong> : Bouton submit disabled si validation échoue</li>
+</ul>
+<h2 id="gestion-des-états-et-lifecycle" class="tsd-anchor-link">Gestion des états et lifecycle<a href="#gestion-des-états-et-lifecycle" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="cycle-de-vie-modal" class="tsd-anchor-link">Cycle de vie modal<a href="#cycle-de-vie-modal" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Ouverture</strong> : isOpen true → Modal s'affiche avec données</li>
+<li><strong>Initialisation</strong> : useEffect reset/populate selon mode</li>
+<li><strong>Interactions</strong> : Saisie utilisateur avec validation continue</li>
+<li><strong>Soumission</strong> : onSave callback avec données validées</li>
+<li><strong>Fermeture</strong> : isOpen false → Modal masquée, état préservé</li>
+</ul>
+<h3 id="états-de-chargement" class="tsd-anchor-link">États de chargement<a href="#états-de-chargement" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>loading prop</strong> : Contrôle états pendant opérations serveur</li>
+<li><strong>Boutons disabled</strong> : Tous contrôles désactivés si loading</li>
+<li><strong>Labels dynamiques</strong> : &quot;Création...&quot; vs &quot;Modification...&quot; pendant traitement</li>
+<li><strong>UX</strong> : Prévention double-soumission et feedback visuel</li>
+</ul>
+<h3 id="nettoyage-et-reset" class="tsd-anchor-link">Nettoyage et reset<a href="#nettoyage-et-reset" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Mode création</strong> : Reset complet formData, inputs vides/défaut</li>
+<li><strong>Mode édition</strong> : Population avec données offre existante</li>
+<li><strong>Formatage cohérent</strong> : String inputs synchronisés avec number data</li>
+<li><strong>Pas de memory leaks</strong> : useEffect cleanup automatique</li>
+</ul>
+<h2 id="validation-et-sécurité" class="tsd-anchor-link">Validation et sécurité<a href="#validation-et-sécurité" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="validation-côté-client" class="tsd-anchor-link">Validation côté client<a href="#validation-côté-client" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Champs requis</strong> : libelle et description obligatoires</li>
+<li><strong>Formats numériques</strong> : Regex strictes pour nb_personne et montant</li>
+<li><strong>Valeurs minimales</strong> : nb_personne &gt;= 1, montant &gt;= 0</li>
+<li><strong>Longueur</strong> : Pas de limite explicite mais validation serveur attendue</li>
+<li><strong>Sanitization</strong> : trim() sur libelle pour éviter espaces</li>
+</ul>
+<h3 id="sécurité-saisie" class="tsd-anchor-link">Sécurité saisie<a href="#sécurité-saisie" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Input sanitization</strong> : Regex bloquent caractères dangereux</li>
+<li><strong>Type safety</strong> : Interface Props et Offre pour typage strict</li>
+<li><strong>Validation continue</strong> : Contrôles temps réel et onBlur</li>
+<li><strong>Protection XSS</strong> : React échappe automatiquement valeurs</li>
+</ul>
+<h2 id="performance-et-optimisations" class="tsd-anchor-link">Performance et optimisations<a href="#performance-et-optimisations" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="⚡-optimisations-actuelles" class="tsd-anchor-link">⚡ Optimisations actuelles<a href="#⚡-optimisations-actuelles" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Conditional rendering</strong> : if (!isOpen) return null pour performance</li>
+<li><strong>État local</strong> : Pas de props drilling, gestion autonome</li>
+<li><strong>Regex précompilées</strong> : Patterns de validation réutilisés</li>
+<li><strong>Minimal re-renders</strong> : useState ciblés par fonctionnalité</li>
+</ul>
+<h3 id="gestion-mémoire" class="tsd-anchor-link">Gestion mémoire<a href="#gestion-mémoire" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>useEffect cleanup</strong> : Dépendances [offre, isOpen] optimisées</li>
+<li><strong>Pas de timers</strong> : Pas de setTimeout/setInterval à nettoyer</li>
+<li><strong>Event handlers</strong> : Fonctions inline stables</li>
+<li><strong>Form state</strong> : Reset propre entre ouvertures</li>
+</ul>
+</div><div class="tsd-tag-see"><h4 class="tsd-anchor-link" id="see">See<a href="#see" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><ul>
+<li>OffresManagement - Composant parent gérant cette modal</li>
+<li><a href="../interfaces/types_offre_offre.Offre.html" class="tsd-kind-interface">Offre</a> - Interface TypeScript des données d'offre</li>
+</ul>
+</div></div><aside class="tsd-sources"><ul><li>Defined in <a href="https://github.com/driano-gael/AdminJO_Front/blob/main/application/src/components/componentOffre/OffresModal.tsx#L180">components/componentOffre/OffresModal.tsx:180</a></li></ul></aside></div></li></ul></section></div><div class="col-sidebar"><div class="page-menu"><div class="tsd-navigation settings"><details class="tsd-accordion"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg><h3>Settings</h3></summary><div class="tsd-accordion-details"><div class="tsd-filter-visibility"><span class="settings-label">Member Visibility</span><ul id="tsd-filter-options"><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-protected" name="protected"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Protected</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li></ul></div><div class="tsd-theme-toggle"><label class="settings-label" for="tsd-theme">Theme</label><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div><details open class="tsd-accordion tsd-page-navigation"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg><h3>On This Page</h3></summary><div class="tsd-accordion-details"><a href="#fonctionnalités-principales"><span>Fonctionnalités principales</span></a><ul><li><a href="#dual-mode-création-et-édition"><span>Dual-<wbr/>mode : <wbr/>Création et Édition</span></a></li><li><a href="#formulaire-complet-avec-validation"><span>Formulaire complet avec validation</span></a></li><li><a href="#contrôles-numériques-avancés"><span>Contrôles numériques avancés</span></a></li></ul><a href="#architecture-des-données-et-état"><span>Architecture des données et état</span></a><ul><li><a href="#structure-détat-complexe"><span>Structure d&#39;état complexe</span></a></li><li><a href="#useeffect-dinitialisation"><span>use<wbr/>Effect d&#39;initialisation</span></a></li></ul><a href="#champs-de-formulaire-spécialisés"><span>Champs de formulaire spécialisés</span></a><ul><li><a href="#champ-libellé-nom-de-loffre"><span>Champ <wbr/>Libellé (nom de l&#39;offre)</span></a></li><li><a href="#champ-description"><span>Champ <wbr/>Description</span></a></li><li><a href="#champ-nombre-de-personnes-contrôle-avancé"><span>Champ <wbr/>Nombre de personnes (contrôle avancé)</span></a></li><li><a href="#champ-montant-contrôle-monétaire"><span>Champ <wbr/>Montant (contrôle monétaire)</span></a></li></ul><a href="#gestion-des-interactions-utilisateur"><span>Gestion des interactions utilisateur</span></a><ul><li><a href="#saisie-clavier-et-validation"><span>Saisie clavier et validation</span></a></li><li><a href="#contrôles-boutons-dajustement"><span>Contrôles boutons d&#39;ajustement</span></a></li><li><a href="#soumission-et-validation-finale"><span>Soumission et validation finale</span></a></li></ul><a href="#gestion-des-états-et-lifecycle"><span>Gestion des états et lifecycle</span></a><ul><li><a href="#cycle-de-vie-modal"><span>Cycle de vie modal</span></a></li><li><a href="#états-de-chargement"><span>États de chargement</span></a></li><li><a href="#nettoyage-et-reset"><span>Nettoyage et reset</span></a></li></ul><a href="#validation-et-sécurité"><span>Validation et sécurité</span></a><ul><li><a href="#validation-côté-client"><span>Validation côté client</span></a></li><li><a href="#sécurité-saisie"><span>Sécurité saisie</span></a></li></ul><a href="#performance-et-optimisations"><span>Performance et optimisations</span></a><ul><li><a href="#⚡-optimisations-actuelles"><span>⚡ <wbr/>Optimisations actuelles</span></a></li><li><a href="#gestion-mémoire"><span>Gestion mémoire</span></a></li></ul></div></details></div><div class="site-menu"><nav class="tsd-navigation"><a href="../modules.html">AdminJO Front - Documentation API - v0.1.0</a><ul class="tsd-small-nested-navigation" id="tsd-nav-container"><li>Loading...</li></ul></nav></div></div></div><footer><p class="tsd-generator">Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></footer><div class="overlay"></div></body></html>

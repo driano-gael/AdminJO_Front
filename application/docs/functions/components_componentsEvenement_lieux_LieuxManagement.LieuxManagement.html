@@ -1,0 +1,116 @@
+<!DOCTYPE html><html class="default" lang="en" data-base="../"><head><meta charset="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>LieuxManagement | AdminJO Front - Documentation API - v0.1.0</title><meta name="description" content="Documentation for AdminJO Front - Documentation API"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="../assets/style.css"/><link rel="stylesheet" href="../assets/highlight.css"/><script defer src="../assets/main.js"></script><script async src="../assets/icons.js" id="tsd-icons-script"></script><script async src="../assets/search.js" id="tsd-search-script"></script><script async src="../assets/navigation.js" id="tsd-nav-script"></script><script async src="../assets/hierarchy.js" id="tsd-hierarchy-script"></script></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os";document.body.style.display="none";setTimeout(() => window.app?app.showPage():document.body.style.removeProperty("display"),500)</script><header class="tsd-page-toolbar"><div class="tsd-toolbar-contents container"><a href="../index.html" class="title">AdminJO Front - Documentation API - v0.1.0</a><div id="tsd-toolbar-links"></div><button id="tsd-search-trigger" class="tsd-widget" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-search"></use></svg></button><dialog id="tsd-search" aria-label="Search"><input role="combobox" id="tsd-search-input" aria-controls="tsd-search-results" aria-autocomplete="list" aria-expanded="true" autocapitalize="off" autocomplete="off" placeholder="Search the docs" maxLength="100"/><ul role="listbox" id="tsd-search-results"></ul><div id="tsd-search-status" aria-live="polite" aria-atomic="true"><div>Preparing search index...</div></div></dialog><a href="#" class="tsd-widget menu" id="tsd-toolbar-menu-trigger" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-menu"></use></svg></a></div></header><div class="container container-main"><div class="col-content"><div class="tsd-page-title"><ul class="tsd-breadcrumb" aria-label="Breadcrumb"><li><a href="../modules/components_componentsEvenement_lieux_LieuxManagement.html">components/componentsEvenement/lieux/LieuxManagement</a></li><li><a href="" aria-current="page">LieuxManagement</a></li></ul><h1>Function LieuxManagement</h1></div><section class="tsd-panel"><ul class="tsd-signatures"><li class=""><div class="tsd-signature tsd-anchor-link" id="lieuxmanagement"><span class="tsd-kind-call-signature">LieuxManagement</span><span class="tsd-signature-symbol">()</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Element</span><a href="#lieuxmanagement" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div><div class="tsd-description"><div class="tsd-comment tsd-typography"><p>Composant LieuxManagement - Gestion complète des lieux olympiques AdminJO</p>
+</div><h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Element</span></h4><p>Interface complète de gestion des lieux olympiques</p>
+<div class="tsd-comment tsd-typography"><div class="tsd-tag-name"><h4 class="tsd-anchor-link" id="name">Name<a href="#name" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p>LieuxManagement
+Ce composant principal orchestre la gestion complète des lieux olympiques pour les
+Jeux Olympiques 2024. Il intègre toutes les fonctionnalités CRUD (création, lecture,
+mise à jour, suppression) des établissements sportifs olympiques avec une interface
+utilisateur complète incluant header, recherche/filtres, tableau des données et modal
+de saisie. Conçu pour les administrateurs des JO 2024, il permet la gestion centralisée
+de tous les lieux olympiques (Stade de France, Centre Aquatique, Arena Bercy, etc.)
+avec notifications utilisateur et gestion d'erreurs avancée.</p>
+<h2 id="architecture-et-composition-complète" class="tsd-anchor-link">Architecture et composition complète<a href="#architecture-et-composition-complète" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="structure-modulaire-organisée" class="tsd-anchor-link">Structure modulaire organisée<a href="#structure-modulaire-organisée" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>LieuxHeader</strong> : En-tête avec navigation et bouton création</li>
+<li><strong>SearchAndFilters</strong> : Barre de recherche et filtres lieux</li>
+<li><strong>LieuxTable</strong> : Tableau principal affichage/gestion lieux</li>
+<li><strong>LieuModal</strong> : Modal création/édition lieu olympique</li>
+<li><strong>Notification</strong> : Système notifications succès/erreur</li>
+</ul>
+<h3 id="hooks-spécialisés-intégrés" class="tsd-anchor-link">Hooks spécialisés intégrés<a href="#hooks-spécialisés-intégrés" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>useLieuxManagement</strong> : Logique métier complète gestion lieux</li>
+<li><strong>useSessionExpiry</strong> : Sécurité session administrateur</li>
+<li><strong>useState local</strong> : États UI modal, édition, notifications</li>
+</ul>
+<h2 id="fonctionnalités-crud-complètes-implémentées" class="tsd-anchor-link">Fonctionnalités CRUD complètes implémentées<a href="#fonctionnalités-crud-complètes-implémentées" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="création-de-nouveau-lieu-olympique" class="tsd-anchor-link">Création de nouveau lieu olympique<a href="#création-de-nouveau-lieu-olympique" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Trigger</strong> : Bouton &quot;Nouveau Lieu&quot; dans LieuxHeader</li>
+<li><strong>Modal</strong> : LieuModal en mode création (editingLieu = null)</li>
+<li><strong>Validation</strong> : Données validées avant envoi API</li>
+<li><strong>Callback</strong> : handleSaveLieu avec CreateLieuRequest</li>
+<li><strong>Notification</strong> : &quot;Lieu créé avec succès !&quot; en cas de succès</li>
+<li><strong>Gestion erreur</strong> : Affichage erreur si échec création</li>
+<li><strong>Refresh</strong> : Rechargement liste après création réussie</li>
+</ul>
+<h3 id="lecture-et-affichage-lieux" class="tsd-anchor-link">Lecture et affichage lieux<a href="#lecture-et-affichage-lieux" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Source</strong> : Hook useLieuxManagement avec état lieux[]</li>
+<li><strong>Tableau</strong> : LieuxTable pour affichage structuré</li>
+<li><strong>Recherche</strong> : Filtrage temps réel via SearchAndFilters</li>
+<li><strong>Loading</strong> : États de chargement pendant récupération</li>
+<li><strong>Pagination</strong> : Gérée dans composants enfants si nécessaire</li>
+<li><strong>Actualisation</strong> : Bouton refresh dans tableau</li>
+</ul>
+<h3 id="modification-lieu-existant" class="tsd-anchor-link">Modification lieu existant<a href="#modification-lieu-existant" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Trigger</strong> : Bouton &quot;Modifier&quot; dans LieuxTableRow</li>
+<li><strong>Pré-remplissage</strong> : Modal avec données lieu sélectionné</li>
+<li><strong>Mode édition</strong> : editingLieu contient lieu à modifier</li>
+<li><strong>Update API</strong> : updateLieu(id, data) via hook</li>
+<li><strong>Notification</strong> : &quot;Lieu modifié avec succès !&quot; si réussite</li>
+<li><strong>Persistence</strong> : Mise à jour immédiate dans liste</li>
+</ul>
+<h3 id="suppression-lieu-olympique" class="tsd-anchor-link">Suppression lieu olympique<a href="#suppression-lieu-olympique" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Trigger</strong> : Bouton &quot;Supprimer&quot; dans LieuxTableRow</li>
+<li><strong>Confirmation</strong> : Gestion dans composants enfants</li>
+<li><strong>API call</strong> : deleteLieu(id) avec gestion erreur</li>
+<li><strong>Notification</strong> : Messages succès/erreur appropriés</li>
+<li><strong>Mise à jour</strong> : Retrait immédiat de la liste</li>
+<li><strong>Sécurité</strong> : Vérification autorisations via session</li>
+</ul>
+<h2 id="gestion-détat-complexe-et-notifications" class="tsd-anchor-link">Gestion d'état complexe et notifications<a href="#gestion-détat-complexe-et-notifications" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="🎛états-modaux-et-édition" class="tsd-anchor-link">🎛États modaux et édition<a href="#🎛états-modaux-et-édition" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>showModal</strong> : boolean contrôle affichage LieuModal</li>
+<li><strong>editingLieu</strong> : Lieu | null pour mode création/édition</li>
+<li><strong>Mode création</strong> : editingLieu = null, modal vierge</li>
+<li><strong>Mode édition</strong> : editingLieu = lieu sélectionné, pré-remplissage</li>
+<li><strong>Fermeture propre</strong> : Reset états lors fermeture modal</li>
+</ul>
+<h2 id="interactions-utilisateur-et-workflows" class="tsd-anchor-link">Interactions utilisateur et workflows<a href="#interactions-utilisateur-et-workflows" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="workflow-création-lieu-complet" class="tsd-anchor-link">Workflow création lieu complet<a href="#workflow-création-lieu-complet" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ol>
+<li><strong>Clic</strong> &quot;Nouveau Lieu&quot; → handleOpenModal() sans paramètre</li>
+<li><strong>Ouverture</strong> modal vierge (editingLieu = null)</li>
+<li><strong>Saisie</strong> données lieu par utilisateur</li>
+<li><strong>Validation</strong> données côté client et serveur</li>
+<li><strong>Création</strong> API call createLieu(data)</li>
+<li><strong>Notification</strong> succès + fermeture modal</li>
+<li><strong>Refresh</strong> liste lieux mise à jour</li>
+</ol>
+<h3 id="workflow-modification-lieu-complet" class="tsd-anchor-link">Workflow modification lieu complet<a href="#workflow-modification-lieu-complet" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ol>
+<li><strong>Clic</strong> &quot;Modifier&quot; sur ligne → handleOpenModal(lieu)</li>
+<li><strong>Pré-remplissage</strong> modal avec données existantes</li>
+<li><strong>Modification</strong> données par utilisateur</li>
+<li><strong>Sauvegarde</strong> updateLieu(id, data) via handleSaveLieu</li>
+<li><strong>Notification</strong> &quot;Lieu modifié avec succès !&quot;</li>
+<li><strong>Mise à jour</strong> immédiate affichage tableau</li>
+</ol>
+<h3 id="workflow-suppression-lieu" class="tsd-anchor-link">Workflow suppression lieu<a href="#workflow-suppression-lieu" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ol>
+<li><strong>Clic</strong> &quot;Supprimer&quot; → handleDeleteLieu(id)</li>
+<li><strong>Confirmation</strong> (gérée dans composants enfants)</li>
+<li><strong>Suppression</strong> API call deleteLieu(id)</li>
+<li><strong>Notification</strong> résultat opération</li>
+<li><strong>Refresh</strong> liste sans lieu supprimé</li>
+</ol>
+<h3 id="workflow-recherche-et-filtrage" class="tsd-anchor-link">Workflow recherche et filtrage<a href="#workflow-recherche-et-filtrage" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ol>
+<li><strong>Saisie</strong> terme recherche dans SearchAndFilters</li>
+<li><strong>Transmission</strong> handleSearch(terme) vers hook</li>
+<li><strong>Filtrage</strong> côté client ou serveur</li>
+<li><strong>Mise à jour</strong> affichage LieuxTable</li>
+<li><strong>Temps réel</strong> résultats instantanés</li>
+</ol>
+<h2 id="sécurité-et-gestion-session" class="tsd-anchor-link">Sécurité et gestion session<a href="#sécurité-et-gestion-session" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="protection-session-administrateur" class="tsd-anchor-link">Protection session administrateur<a href="#protection-session-administrateur" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>useSessionExpiry</strong> : Surveillance continue session</li>
+<li><strong>Auto-logout</strong> : Redirection si session expirée</li>
+<li><strong>Renouvellement</strong> : Gestion silencieuse tokens</li>
+<li><strong>Intercepteurs</strong> : Gestion 401/403 automatique</li>
+<li><strong>Persistance</strong> : Sauvegarde état si déconnexion</li>
+</ul>
+<h3 id="validation-et-sécurisation-données" class="tsd-anchor-link">Validation et sécurisation données<a href="#validation-et-sécurisation-données" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Types TypeScript</strong> : Interfaces strictes Lieu/CreateLieuRequest</li>
+<li><strong>Validation côté client</strong> : Contrôles avant envoi</li>
+<li><strong>Sanitisation</strong> : Nettoyage données utilisateur</li>
+<li><strong>CSRF protection</strong> : Tokens anti-forgerie</li>
+<li><strong>Autorisations</strong> : Vérification droits modification</li>
+</ul>
+</div><div class="tsd-tag-see"><h4 class="tsd-anchor-link" id="see">See<a href="#see" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><ul>
+<li><a href="useLieuxManagement.useLieuxManagement.html" class="tsd-kind-function">useLieuxManagement</a> - Hook logique métier gestion lieux</li>
+<li><a href="components_componentsEvenement_lieux_LieuxHeader.LieuxHeader.html" class="tsd-kind-function">LieuxHeader</a> - Composant en-tête avec navigation</li>
+<li><a href="components_componentsEvenement_lieux_SearchAndFilters.SearchAndFilters.html" class="tsd-kind-function">SearchAndFilters</a> - Composant recherche et filtres</li>
+<li><a href="components_componentsEvenement_lieux_LieuxTable.LieuxTable.html" class="tsd-kind-function">LieuxTable</a> - Tableau principal affichage lieux</li>
+<li><a href="components_componentsEvenement_lieux_LieuModal.LieuModal.html" class="tsd-kind-function">LieuModal</a> - Modal création/édition lieu</li>
+<li><a href="components_notification.Notification.html" class="tsd-kind-function">Notification</a> - Système notifications utilisateur</li>
+</ul>
+</div></div><aside class="tsd-sources"><ul><li>Defined in <a href="https://github.com/driano-gael/AdminJO_Front/blob/main/application/src/components/componentsEvenement/lieux/LieuxManagement.tsx#L143">components/componentsEvenement/lieux/LieuxManagement.tsx:143</a></li></ul></aside></div></li></ul></section></div><div class="col-sidebar"><div class="page-menu"><div class="tsd-navigation settings"><details class="tsd-accordion"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg><h3>Settings</h3></summary><div class="tsd-accordion-details"><div class="tsd-filter-visibility"><span class="settings-label">Member Visibility</span><ul id="tsd-filter-options"><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-protected" name="protected"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Protected</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li></ul></div><div class="tsd-theme-toggle"><label class="settings-label" for="tsd-theme">Theme</label><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div><details open class="tsd-accordion tsd-page-navigation"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg><h3>On This Page</h3></summary><div class="tsd-accordion-details"><a href="#architecture-et-composition-complète"><span>Architecture et composition complète</span></a><ul><li><a href="#structure-modulaire-organisée"><span>Structure modulaire organisée</span></a></li><li><a href="#hooks-spécialisés-intégrés"><span>Hooks spécialisés intégrés</span></a></li></ul><a href="#fonctionnalités-crud-complètes-implémentées"><span>Fonctionnalités <wbr/>CRUD complètes implémentées</span></a><ul><li><a href="#création-de-nouveau-lieu-olympique"><span>Création de nouveau lieu olympique</span></a></li><li><a href="#lecture-et-affichage-lieux"><span>Lecture et affichage lieux</span></a></li><li><a href="#modification-lieu-existant"><span>Modification lieu existant</span></a></li><li><a href="#suppression-lieu-olympique"><span>Suppression lieu olympique</span></a></li></ul><a href="#gestion-détat-complexe-et-notifications"><span>Gestion d&#39;état complexe et notifications</span></a><ul><li><a href="#🎛états-modaux-et-édition"><span>🎛États modaux et édition</span></a></li></ul><a href="#interactions-utilisateur-et-workflows"><span>Interactions utilisateur et workflows</span></a><ul><li><a href="#workflow-création-lieu-complet"><span>Workflow création lieu complet</span></a></li><li><a href="#workflow-modification-lieu-complet"><span>Workflow modification lieu complet</span></a></li><li><a href="#workflow-suppression-lieu"><span>Workflow suppression lieu</span></a></li><li><a href="#workflow-recherche-et-filtrage"><span>Workflow recherche et filtrage</span></a></li></ul><a href="#sécurité-et-gestion-session"><span>Sécurité et gestion session</span></a><ul><li><a href="#protection-session-administrateur"><span>Protection session administrateur</span></a></li><li><a href="#validation-et-sécurisation-données"><span>Validation et sécurisation données</span></a></li></ul></div></details></div><div class="site-menu"><nav class="tsd-navigation"><a href="../modules.html">AdminJO Front - Documentation API - v0.1.0</a><ul class="tsd-small-nested-navigation" id="tsd-nav-container"><li>Loading...</li></ul></nav></div></div></div><footer><p class="tsd-generator">Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></footer><div class="overlay"></div></body></html>
