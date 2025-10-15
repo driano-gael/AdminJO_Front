@@ -1,0 +1,85 @@
+<!DOCTYPE html><html class="default" lang="en" data-base="../"><head><meta charset="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>EventsPage | AdminJO Front - Documentation API - v0.1.0</title><meta name="description" content="Documentation for AdminJO Front - Documentation API"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="../assets/style.css"/><link rel="stylesheet" href="../assets/highlight.css"/><script defer src="../assets/main.js"></script><script async src="../assets/icons.js" id="tsd-icons-script"></script><script async src="../assets/search.js" id="tsd-search-script"></script><script async src="../assets/navigation.js" id="tsd-nav-script"></script><script async src="../assets/hierarchy.js" id="tsd-hierarchy-script"></script></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os";document.body.style.display="none";setTimeout(() => window.app?app.showPage():document.body.style.removeProperty("display"),500)</script><header class="tsd-page-toolbar"><div class="tsd-toolbar-contents container"><a href="../index.html" class="title">AdminJO Front - Documentation API - v0.1.0</a><div id="tsd-toolbar-links"></div><button id="tsd-search-trigger" class="tsd-widget" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-search"></use></svg></button><dialog id="tsd-search" aria-label="Search"><input role="combobox" id="tsd-search-input" aria-controls="tsd-search-results" aria-autocomplete="list" aria-expanded="true" autocapitalize="off" autocomplete="off" placeholder="Search the docs" maxLength="100"/><ul role="listbox" id="tsd-search-results"></ul><div id="tsd-search-status" aria-live="polite" aria-atomic="true"><div>Preparing search index...</div></div></dialog><a href="#" class="tsd-widget menu" id="tsd-toolbar-menu-trigger" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-menu"></use></svg></a></div></header><div class="container container-main"><div class="col-content"><div class="tsd-page-title"><ul class="tsd-breadcrumb" aria-label="Breadcrumb"><li><a href="../modules/EvenementsPage.html">EvenementsPage</a></li><li><a href="" aria-current="page">EventsPage</a></li></ul><h1>Function EventsPage</h1></div><section class="tsd-panel"><ul class="tsd-signatures"><li class=""><div class="tsd-signature tsd-anchor-link" id="eventspage"><span class="tsd-kind-call-signature">EventsPage</span><span class="tsd-signature-symbol">()</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Element</span><a href="#eventspage" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div><div class="tsd-description"><div class="tsd-comment tsd-typography"><p>Composant de la page de gestion des événements sportifs</p>
+</div><h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Element</span></h4><p>Page complète de gestion des événements avec interface CRUD et filtrage</p>
+<div class="tsd-comment tsd-typography"><div class="tsd-tag-name"><h4 class="tsd-anchor-link" id="name">Name<a href="#name" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p>EventsPage</p>
+<p>Cette page offre une interface complète pour l'administration des événements sportifs
+des JO 2024. Elle permet la gestion CRUD complète avec système de filtrage avancé,
+recherche textuelle et interface modale pour la création/modification.</p>
+<h2 id="fonctionnalités-réellement-implémentées" class="tsd-anchor-link">Fonctionnalités réellement implémentées<a href="#fonctionnalités-réellement-implémentées" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="gestion-complète-des-événements-crud" class="tsd-anchor-link">Gestion complète des événements (CRUD)<a href="#gestion-complète-des-événements-crud" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Affichage de liste</strong> : Consultation des événements existants dans un tableau</li>
+<li><strong>Création d'événements</strong> : Formulaire modal pour ajouter de nouveaux événements</li>
+<li><strong>Modification d'événements</strong> : Édition des événements existants via modal</li>
+<li><strong>Suppression d'événements</strong> : Suppression avec confirmation utilisateur</li>
+</ul>
+<h3 id="système-de-filtrage-avancé" class="tsd-anchor-link">Système de filtrage avancé<a href="#système-de-filtrage-avancé" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Recherche textuelle</strong> : Recherche par description, lieu, sports</li>
+<li><strong>Filtre par lieu</strong> : Sélection d'un lieu de compétition spécifique</li>
+<li><strong>Filtre par discipline</strong> : Filtrage par discipline sportive (extraite des épreuves)</li>
+<li><strong>Filtre par épreuve</strong> : Sélection d'une épreuve spécifique</li>
+<li><strong>Filtre par statut</strong> : Filtrage par statut d'événement (à venir, en cours, terminé)</li>
+<li><strong>Filtre temporel</strong> : Sélection de plage de dates (date début - date fin)</li>
+</ul>
+<h3 id="interface-utilisateur-avancée" class="tsd-anchor-link">Interface utilisateur avancée<a href="#interface-utilisateur-avancée" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>En-tête avec bouton d'ajout</strong> : Header avec action de création d'événement</li>
+<li><strong>Barre de recherche et filtres</strong> : Outils de recherche et 6 filtres différents</li>
+<li><strong>Tableau des événements</strong> : Affichage avec colonnes d'informations et actions</li>
+<li><strong>Modal de saisie</strong> : Formulaire modal pour création et modification</li>
+<li><strong>Notifications</strong> : Messages de succès et d'erreur pour toutes les actions</li>
+</ul>
+<h2 id="structure-des-composants-intégrés" class="tsd-anchor-link">Structure des composants intégrés<a href="#structure-des-composants-intégrés" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="evenementsheader" class="tsd-anchor-link">EvenementsHeader<a href="#evenementsheader" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li>Titre de la section &quot;Gestion des événements sportifs&quot;</li>
+<li>Bouton &quot;Créer un événement&quot; qui ouvre la modal de création</li>
+</ul>
+<h3 id="evenementssearchandfilters-searchandfilters" class="tsd-anchor-link">EvenementsSearchAndFilters (SearchAndFilters)<a href="#evenementssearchandfilters-searchandfilters" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li>Champ de recherche textuelle</li>
+<li>6 filtres : lieu, discipline, épreuve, statut, date début, date fin</li>
+<li>Bouton de réinitialisation des filtres</li>
+</ul>
+<h3 id="evenementstable" class="tsd-anchor-link">EvenementsTable<a href="#evenementstable" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li>Tableau des événements avec colonnes : description, date, lieu, statut, épreuves</li>
+<li>Boutons d'action pour chaque événement (modifier/supprimer)</li>
+<li>Bouton de rafraîchissement des données</li>
+<li>Gestion des états de chargement et d'erreur</li>
+</ul>
+<h3 id="evenementmodal" class="tsd-anchor-link">EvenementModal<a href="#evenementmodal" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li>Formulaire modal pour création et modification</li>
+<li>Validation des champs requis</li>
+<li>Mode création (nouvel événement) ou édition (événement existant)</li>
+<li>Sélection de lieu et épreuve via dropdowns</li>
+</ul>
+<h2 id="workflow-utilisateur-complet" class="tsd-anchor-link">Workflow utilisateur complet<a href="#workflow-utilisateur-complet" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><ol>
+<li><strong>Consultation</strong> : Affichage automatique de la liste des événements</li>
+<li><strong>Recherche/Filtrage</strong> : Utilisation des outils de recherche et 6 filtres</li>
+<li><strong>Création</strong> : Clic sur &quot;Créer&quot; → modal vierge → saisie → sauvegarde</li>
+<li><strong>Modification</strong> : Clic sur &quot;Modifier&quot; → modal pré-remplie → édition → sauvegarde</li>
+<li><strong>Suppression</strong> : Clic sur &quot;Supprimer&quot; → confirmation → suppression définitive</li>
+<li><strong>Actualisation</strong> : Bouton refresh pour recharger les données</li>
+</ol>
+<h2 id="intégration-avec-les-données" class="tsd-anchor-link">Intégration avec les données<a href="#intégration-avec-les-données" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><ul>
+<li><strong>Hook useEventsManagement</strong> : Logique métier complète avec toutes les opérations CRUD</li>
+<li><strong>Chargement automatique</strong> : Événements, lieux et épreuves depuis l'API</li>
+<li><strong>Calcul de disciplines</strong> : Extraction automatique des disciplines uniques des épreuves</li>
+<li><strong>Filtrage côté client</strong> : Application des filtres en temps réel sur les données</li>
+</ul>
+<h2 id="gestion-des-états-avancée" class="tsd-anchor-link">Gestion des états avancée<a href="#gestion-des-états-avancée" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><ul>
+<li><strong>États de chargement</strong> : Spinners pendant les opérations API</li>
+<li><strong>Gestion d'erreurs</strong> : Affichage des erreurs réseau avec messages explicites</li>
+<li><strong>Confirmations</strong> : Dialogs de confirmation pour les suppressions</li>
+<li><strong>Notifications</strong> : Feedback pour création, modification, suppression réussies/échouées</li>
+<li><strong>États de filtrage</strong> : Persistance des filtres appliqués pendant la session</li>
+</ul>
+<h2 id="navigation-et-structure" class="tsd-anchor-link">Navigation et structure<a href="#navigation-et-structure" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><ul>
+<li><strong>Breadcrumbs</strong> : Dashboard &gt; Événements (navigation contextuelle)</li>
+<li><strong>Titre</strong> : &quot;Gestion des événements sportifs&quot;</li>
+<li><strong>Container responsive</strong> : Adaptation automatique mobile/desktop</li>
+<li><strong>Intégration PageTemplate</strong> : Structure standardisée avec intro</li>
+</ul>
+</div><div class="tsd-tag-see"><h4 class="tsd-anchor-link" id="see">See<a href="#see" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><ul>
+<li><a href="components_layout_PageTemplate.default.html" class="tsd-kind-function">PageTemplate</a> - Template de page utilisé pour la structure</li>
+<li><a href="components_componentsEvenement_evenements_EvenementsManagement.default.html" class="tsd-kind-function">EvenementsManagement</a> - Composant principal de gestion des événements</li>
+<li>EvenementsHeader - En-tête avec bouton de création</li>
+<li>EvenementsSearchAndFilters - Outils de recherche et filtrage avancés</li>
+<li>EvenementsTable - Tableau d'affichage et d'actions</li>
+<li>EvenementModal - Modal de création/modification</li>
+<li>useEventsManagement - Hook de gestion des événements</li>
+</ul>
+</div></div><aside class="tsd-sources"><ul><li>Defined in <a href="https://github.com/driano-gael/AdminJO_Front/blob/main/application/src/app/pagesEvenements/evenements/page.tsx#L115">app/pagesEvenements/evenements/page.tsx:115</a></li></ul></aside></div></li></ul></section></div><div class="col-sidebar"><div class="page-menu"><div class="tsd-navigation settings"><details class="tsd-accordion"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg><h3>Settings</h3></summary><div class="tsd-accordion-details"><div class="tsd-filter-visibility"><span class="settings-label">Member Visibility</span><ul id="tsd-filter-options"><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-protected" name="protected"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Protected</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li></ul></div><div class="tsd-theme-toggle"><label class="settings-label" for="tsd-theme">Theme</label><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div><details open class="tsd-accordion tsd-page-navigation"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg><h3>On This Page</h3></summary><div class="tsd-accordion-details"><a href="#fonctionnalités-réellement-implémentées"><span>Fonctionnalités réellement implémentées</span></a><ul><li><a href="#gestion-complète-des-événements-crud"><span>Gestion complète des événements (<wbr/>CRUD)</span></a></li><li><a href="#système-de-filtrage-avancé"><span>Système de filtrage avancé</span></a></li><li><a href="#interface-utilisateur-avancée"><span>Interface utilisateur avancée</span></a></li></ul><a href="#structure-des-composants-intégrés"><span>Structure des composants intégrés</span></a><ul><li><a href="#evenementsheader"><span>Evenements<wbr/>Header</span></a></li><li><a href="#evenementssearchandfilters-searchandfilters"><span>Evenements<wbr/>Search<wbr/>And<wbr/>Filters (<wbr/>Search<wbr/>And<wbr/>Filters)</span></a></li><li><a href="#evenementstable"><span>Evenements<wbr/>Table</span></a></li><li><a href="#evenementmodal"><span>Evenement<wbr/>Modal</span></a></li></ul><a href="#workflow-utilisateur-complet"><span>Workflow utilisateur complet</span></a><a href="#intégration-avec-les-données"><span>Intégration avec les données</span></a><a href="#gestion-des-états-avancée"><span>Gestion des états avancée</span></a><a href="#navigation-et-structure"><span>Navigation et structure</span></a></div></details></div><div class="site-menu"><nav class="tsd-navigation"><a href="../modules.html">AdminJO Front - Documentation API - v0.1.0</a><ul class="tsd-small-nested-navigation" id="tsd-nav-container"><li>Loading...</li></ul></nav></div></div></div><footer><p class="tsd-generator">Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></footer><div class="overlay"></div></body></html>

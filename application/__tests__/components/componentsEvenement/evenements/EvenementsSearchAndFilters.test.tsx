@@ -1,10 +1,10 @@
 ﻿import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import EvenementsSearchAndFilters from '../../../../src/components/componentsEvenement/evenements/EvenementsSearchAndFilters';
-import { Epreuve } from '../../../../src/types/sportEvenement/epreuve';
-import { Lieu } from '../../../../src/types/sportEvenement/lieu';
-import { Discipline } from '../../../../src/types/sportEvenement/discipline';
-import { ExtendEvenement } from '../../../../src/types/sportEvenement/evenement';
+import EvenementsSearchAndFilters from '@/components/componentsEvenement/evenements/EvenementsSearchAndFilters';
+import { Epreuve } from '@/types/sportEvenement/epreuve';
+import { Lieu } from '@/types/sportEvenement/lieu';
+import { Discipline } from '@/types/sportEvenement/discipline';
+import { ExtendEvenement, StatutEvenement } from '@/types/sportEvenement/evenement';
 
 describe('EvenementsSearchAndFilters', () => {
   const mockEpreuves: Epreuve[] = [
@@ -33,7 +33,7 @@ describe('EvenementsSearchAndFilters', () => {
       horraire: '20:30',
       lieu: mockLieux[0],
       epreuves: [mockEpreuves[0]],
-      status: 'à venir'
+      status: StatutEvenement.A_VENIR
     },
     {
       id: 2,
@@ -42,7 +42,7 @@ describe('EvenementsSearchAndFilters', () => {
       horraire: '19:00',
       lieu: mockLieux[1],
       epreuves: [mockEpreuves[1]],
-      status: 'en cours'
+      status: StatutEvenement.EN_COURS
     }
   ];
 

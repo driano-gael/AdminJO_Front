@@ -1,0 +1,187 @@
+<!DOCTYPE html><html class="default" lang="en" data-base="../"><head><meta charset="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>default | AdminJO Front - Documentation API - v0.1.0</title><meta name="description" content="Documentation for AdminJO Front - Documentation API"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="../assets/style.css"/><link rel="stylesheet" href="../assets/highlight.css"/><script defer src="../assets/main.js"></script><script async src="../assets/icons.js" id="tsd-icons-script"></script><script async src="../assets/search.js" id="tsd-search-script"></script><script async src="../assets/navigation.js" id="tsd-nav-script"></script><script async src="../assets/hierarchy.js" id="tsd-hierarchy-script"></script></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os";document.body.style.display="none";setTimeout(() => window.app?app.showPage():document.body.style.removeProperty("display"),500)</script><header class="tsd-page-toolbar"><div class="tsd-toolbar-contents container"><a href="../index.html" class="title">AdminJO Front - Documentation API - v0.1.0</a><div id="tsd-toolbar-links"></div><button id="tsd-search-trigger" class="tsd-widget" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-search"></use></svg></button><dialog id="tsd-search" aria-label="Search"><input role="combobox" id="tsd-search-input" aria-controls="tsd-search-results" aria-autocomplete="list" aria-expanded="true" autocapitalize="off" autocomplete="off" placeholder="Search the docs" maxLength="100"/><ul role="listbox" id="tsd-search-results"></ul><div id="tsd-search-status" aria-live="polite" aria-atomic="true"><div>Preparing search index...</div></div></dialog><a href="#" class="tsd-widget menu" id="tsd-toolbar-menu-trigger" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-menu"></use></svg></a></div></header><div class="container container-main"><div class="col-content"><div class="tsd-page-title"><ul class="tsd-breadcrumb" aria-label="Breadcrumb"><li><a href="../modules/components_shared_BackToDashboardButton.html">components/shared/BackToDashboardButton</a></li><li><a href="" aria-current="page">default</a></li></ul><h1>Function default</h1></div><section class="tsd-panel"><ul class="tsd-signatures"><li class=""><div class="tsd-signature tsd-anchor-link" id="default"><span class="tsd-kind-call-signature">default</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">props</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">BackToDashboardButtonProps</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Element</span><a href="#default" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div><div class="tsd-description"><div class="tsd-comment tsd-typography"><p>Composant BackToDashboardButton - Bouton retour dashboard spécialisé AdminJO</p>
+<p>Ce composant bouton de navigation spécialisé fournit un accès direct et optimisé
+vers le tableau de bord principal de l'application AdminJO des Jeux Olympiques 2024.
+Contrairement au BackButton générique, il est pré-configuré pour la destination
+dashboard avec des optimisations spécifiques et une iconographie dédiée. Il centralise
+la logique de retour au hub principal d'administration olympique, offre une
+customisation du texte et du style, et assure une expérience utilisateur cohérente
+pour l'accès rapide au centre de contrôle AdminJO depuis n'importe quelle section
+de l'écosystème d'administration des Jeux Olympiques.</p>
+<h2 id="architecture-navigation-dashboard-et-optimisations-spécialisées" class="tsd-anchor-link">Architecture navigation dashboard et optimisations spécialisées<a href="#architecture-navigation-dashboard-et-optimisations-spécialisées" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="🎯-navigation-dashboard-pré-configurée-optimisée" class="tsd-anchor-link">🎯 Navigation dashboard pré-configurée optimisée<a href="#🎯-navigation-dashboard-pré-configurée-optimisée" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>URL fixe dashboard</strong> : Route '/dashboard' intégrée et optimisée</li>
+<li><strong>Router integration</strong> : useRouter() hook pour navigation client-side</li>
+<li><strong>Dashboard-specific</strong> : Logique spécialisée centre administratif JO</li>
+<li><strong>Push navigation</strong> : router.push('/dashboard') ajout historique</li>
+<li><strong>Client-side routing</strong> : Navigation sans rechargement page dashboard</li>
+<li><strong>Performance optimisée</strong> : Préchargement dashboard Next.js automatique</li>
+<li><strong>SEO friendly</strong> : URL dashboard propre maintenue navigation</li>
+<li><strong>History management</strong> : Gestion pile navigation dashboard native</li>
+<li><strong>Hub centralization</strong> : Point d'accès centralisé toutes fonctions AdminJO</li>
+</ul>
+<h3 id="🎨-customisation-apparence-avec-cohérence-dashboard" class="tsd-anchor-link">🎨 Customisation apparence avec cohérence dashboard<a href="#🎨-customisation-apparence-avec-cohérence-dashboard" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Destination fixe</strong> : Pas de props url, toujours vers dashboard</li>
+<li><strong>Texte personnalisable</strong> : Props text avec défaut &quot;← Tableau de bord&quot;</li>
+<li><strong>Style configurable</strong> : Props className pour override styling complet</li>
+<li><strong>Valeurs dashboard</strong> : text et className avec fallbacks dashboard</li>
+<li><strong>Override total</strong> : className remplace styles défaut dashboard</li>
+<li><strong>Flexibilité contrôlée</strong> : Adaptable contextes avec destination fixe</li>
+<li><strong>Cohérence dashboard</strong> : Valeurs défaut alignées hub administratif</li>
+<li><strong>Responsive dashboard</strong> : Adaptable mobile, tablette, desktop hub</li>
+<li><strong>Dashboard branding</strong> : Esthétique spécialisée centre contrôle JO</li>
+</ul>
+<h3 id="🔧-interface-props-spécialisée-dashboard" class="tsd-anchor-link">🔧 Interface props spécialisée dashboard<a href="#🔧-interface-props-spécialisée-dashboard" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>text</strong> : string optionnel - Texte affiché (défaut: &quot;← Tableau de bord&quot;)</li>
+<li><strong>className</strong> : string optionnel - Classes CSS Tailwind custom</li>
+<li><strong>Type safety</strong> : Interface BackToDashboardButtonProps stricte</li>
+<li><strong>Simplified API</strong> : Pas de props url pour simplification usage</li>
+<li><strong>Optional flexibility</strong> : Seuls text et className personnalisables</li>
+<li><strong>Dashboard defaults</strong> : Fallbacks optimisés expérience dashboard</li>
+<li><strong>IntelliSense</strong> : Autocomplétion spécialisée dashboard dans IDE</li>
+<li><strong>Consistency forced</strong> : URL dashboard non configurable pour cohérence</li>
+</ul>
+<h2 id="expérience-utilisateur-dashboard-et-design-patterns" class="tsd-anchor-link">Expérience utilisateur dashboard et design patterns<a href="#expérience-utilisateur-dashboard-et-design-patterns" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="🏢-ux-retour-hub-administratif-optimisée" class="tsd-anchor-link">🏢 UX retour hub administratif optimisée<a href="#🏢-ux-retour-hub-administratif-optimisée" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Dashboard indication</strong> : Flèche ← vers &quot;Tableau de bord&quot; explicite</li>
+<li><strong>Hub accessibility</strong> : Texte descriptif centre administratif JO</li>
+<li><strong>Action dashboard</strong> : Comportement retour hub prévisible standard</li>
+<li><strong>Feedback dashboard</strong> : Hover effects confirmation interaction hub</li>
+<li><strong>Placement universel</strong> : Utilisable toutes sections AdminJO</li>
+<li><strong>Context dashboard</strong> : Texte personnalisable selon section origine</li>
+<li><strong>Hub guidance</strong> : Navigation intuitive vers centre contrôle</li>
+<li><strong>Dashboard priority</strong> : Accès prioritaire hub depuis partout</li>
+<li><strong>Administrative flow</strong> : Workflow retour optimisé gestionnaires JO</li>
+</ul>
+<h3 id="🎨-design-système-dashboard-et-cohérence-hub" class="tsd-anchor-link">🎨 Design système dashboard et cohérence hub<a href="#🎨-design-système-dashboard-et-cohérence-hub" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Style dashboard</strong> : Classes Tailwind optimisées hub AdminJO</li>
+<li><strong>Couleurs hub</strong> : Palette spécialisée dashboard olympique 2024</li>
+<li><strong>Typography dashboard</strong> : Police et tailles hub administratif</li>
+<li><strong>Spacing hub</strong> : Marges et paddings selon grille dashboard</li>
+<li><strong>Hover dashboard</strong> : Transitions fluides feedback hub visuel</li>
+<li><strong>Focus dashboard</strong> : Contours clavier navigation hub accessible</li>
+<li><strong>Mobile dashboard</strong> : Design responsive priorité tactile hub</li>
+<li><strong>Brand dashboard</strong> : Esthétique cohérente marque hub olympique</li>
+<li><strong>Administrative look</strong> : Apparence professionnelle centre contrôle</li>
+</ul>
+<h2 id="implémentation-technique-dashboard-et-performance" class="tsd-anchor-link">Implémentation technique dashboard et performance<a href="#implémentation-technique-dashboard-et-performance" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="⚡-optimisations-performance-dashboard-spécialisées" class="tsd-anchor-link">⚡ Optimisations performance dashboard spécialisées<a href="#⚡-optimisations-performance-dashboard-spécialisées" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Client component</strong> : 'use client' pour interactivité browser hub</li>
+<li><strong>Hook useRouter</strong> : Navigation optimisée App Router dashboard</li>
+<li><strong>Dashboard cache</strong> : Props stables évitent re-renders hub inutiles</li>
+<li><strong>Bundle dashboard</strong> : Code minimal performance hub optimale</li>
+<li><strong>Tree shaking</strong> : Import sélectif useRouter dashboard seulement</li>
+<li><strong>Dashboard prefetch</strong> : Next.js précharge hub automatiquement</li>
+<li><strong>Memory dashboard</strong> : Pas de state local économie mémoire hub</li>
+<li><strong>Fast dashboard</strong> : Transitions instantanées client-side hub</li>
+<li><strong>Hub priority</strong> : Priorisation chargement dashboard AdminJO</li>
+</ul>
+<h3 id="🔒-sécurité-dashboard-et-validation-hub" class="tsd-anchor-link">🔒 Sécurité dashboard et validation hub<a href="#🔒-sécurité-dashboard-et-validation-hub" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Dashboard route</strong> : URL '/dashboard' hardcodée sécurisée</li>
+<li><strong>XSS prevention</strong> : React escape automatique contenu text hub</li>
+<li><strong>Hub security</strong> : Validation côté Next.js route dashboard</li>
+<li><strong>TypeScript dashboard</strong> : Interface stricte évite erreurs hub</li>
+<li><strong>Input sanitization</strong> : Props text sécurisées React hub</li>
+<li><strong>Dashboard controls</strong> : Seule route hub valide accessible</li>
+<li><strong>Error boundaries</strong> : Gestion erreurs navigation hub gracieuse</li>
+<li><strong>CSRF dashboard</strong> : Navigation client-side hub sécurisée</li>
+<li><strong>Administrative security</strong> : Contrôles accès centre administratif</li>
+</ul>
+<h3 id="🧪-testabilité-dashboard-et-maintenance-hub" class="tsd-anchor-link">🧪 Testabilité dashboard et maintenance hub<a href="#🧪-testabilité-dashboard-et-maintenance-hub" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Dashboard interface</strong> : Structure claire tests unitaires hub</li>
+<li><strong>Mocking dashboard</strong> : useRouter mockable tests Jest hub</li>
+<li><strong>Behavior dashboard</strong> : Actions utilisateur hub testables</li>
+<li><strong>Snapshot dashboard</strong> : Rendu hub stable tests régression</li>
+<li><strong>Integration dashboard</strong> : Navigation hub testable bout-en-bout</li>
+<li><strong>Debug dashboard</strong> : Props explicites debugging hub</li>
+<li><strong>Coverage dashboard</strong> : Logique hub simple 100% testable</li>
+<li><strong>Maintenance hub</strong> : Code minimal documentation hub complète</li>
+</ul>
+<h2 id="cas-dusage-dashboard-et-intégrations-adminjo" class="tsd-anchor-link">Cas d'usage dashboard et intégrations AdminJO<a href="#cas-dusage-dashboard-et-intégrations-adminjo" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="🏅-contextes-métier-dashboard-jeux-olympiques" class="tsd-anchor-link">🏅 Contextes métier dashboard Jeux Olympiques<a href="#🏅-contextes-métier-dashboard-jeux-olympiques" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Retour hub principal</strong> : Navigation depuis gestion événements</li>
+<li><strong>Centre administratif</strong> : Accès hub depuis toutes sections JO</li>
+<li><strong>Dashboard olympique</strong> : Hub central organisateurs 2024</li>
+<li><strong>Workflow hub</strong> : Retours contextuels vers centre contrôle</li>
+<li><strong>Navigation centralisée</strong> : Point focal toutes administrations</li>
+<li><strong>Hub organisationnel</strong> : Centre névralgique gestion olympique</li>
+<li><strong>Administrative return</strong> : Retour systématique hub après actions</li>
+<li><strong>Control center</strong> : Accès rapide tableau bord depuis partout</li>
+<li><strong>Olympic management</strong> : Hub spécialisé administration JO 2024</li>
+</ul>
+<h3 id="📱-responsive-dashboard-et-accessibilité-hub" class="tsd-anchor-link">📱 Responsive dashboard et accessibilité hub<a href="#📱-responsive-dashboard-et-accessibilité-hub" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Mobile dashboard</strong> : Hub tactile optimisé smartphones</li>
+<li><strong>Tablet hub</strong> : Centre contrôle approprié navigation tablettes</li>
+<li><strong>Desktop dashboard</strong> : Hub précis hover states souris desktop</li>
+<li><strong>Keyboard hub</strong> : Tab order et Enter activation dashboard</li>
+<li><strong>Screen readers</strong> : ARIA labels sémantique HTML hub</li>
+<li><strong>High contrast</strong> : Support modes contraste élevé dashboard</li>
+<li><strong>Touch dashboard</strong> : Taille minimum 44px hub recommandations</li>
+<li><strong>Voice dashboard</strong> : Compatible assistants vocaux hub</li>
+<li><strong>Administrative access</strong> : Accessibilité centre administratif</li>
+</ul>
+<h2 id="variations-dashboard-et-personnalisations-hub" class="tsd-anchor-link">Variations dashboard et personnalisations hub<a href="#variations-dashboard-et-personnalisations-hub" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="🎨-styles-dashboard-prédéfinis-et-customisation-hub" class="tsd-anchor-link">🎨 Styles dashboard prédéfinis et customisation hub<a href="#🎨-styles-dashboard-prédéfinis-et-customisation-hub" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Style hub défaut</strong> : Design AdminJO dashboard standard</li>
+<li><strong>Dashboard variants</strong> : Primary, secondary hub variations</li>
+<li><strong>Hub size variations</strong> : Small, medium, large dashboard contextes</li>
+<li><strong>Icon dashboard</strong> : Support icônes SVG hub personnalisées</li>
+<li><strong>Loading dashboard</strong> : Indicateurs chargement navigation hub</li>
+<li><strong>Disabled dashboard</strong> : États désactivés feedback hub visuel</li>
+<li><strong>Active dashboard</strong> : Indication hub actuel si applicable</li>
+<li><strong>Custom dashboard</strong> : Transitions personnalisables CSS hub</li>
+<li><strong>Administrative theme</strong> : Thématique spécialisée centre contrôle</li>
+</ul>
+<h3 id="🔧-extensions-fonctionnelles-dashboard-possibles" class="tsd-anchor-link">🔧 Extensions fonctionnelles dashboard possibles<a href="#🔧-extensions-fonctionnelles-dashboard-possibles" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Dashboard analytics</strong> : Tracking navigation hub métriques</li>
+<li><strong>Hub notifications</strong> : Alertes dashboard lors retour hub</li>
+<li><strong>Dashboard state</strong> : Sauvegarde état avant retour hub</li>
+<li><strong>Hub shortcuts</strong> : Raccourcis clavier dashboard rapide</li>
+<li><strong>Dashboard gestures</strong> : Navigation tactile swipe hub mobile</li>
+<li><strong>Hub personalization</strong> : Adaptation préférences dashboard</li>
+<li><strong>Dashboard breadcrumb</strong> : Fil Ariane intégré hub</li>
+<li><strong>Hub context</strong> : Mémorisation contexte avant dashboard</li>
+<li><strong>Administrative workflow</strong> : Intégration workflows centre contrôle</li>
+</ul>
+<h2 id="performance-dashboard-et-monitoring-hub" class="tsd-anchor-link">Performance dashboard et monitoring hub<a href="#performance-dashboard-et-monitoring-hub" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="📊-métriques-dashboard-et-optimisations-hub" class="tsd-anchor-link">📊 Métriques dashboard et optimisations hub<a href="#📊-métriques-dashboard-et-optimisations-hub" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Dashboard tracking</strong> : Métriques utilisation retours hub</li>
+<li><strong>Hub timing</strong> : Mesure performance transitions dashboard</li>
+<li><strong>Error dashboard</strong> : Tracking erreurs navigation hub Sentry</li>
+<li><strong>User dashboard</strong> : Analyse parcours utilisateur hub AdminJO</li>
+<li><strong>Hub conversion</strong> : Impact retours dashboard workflows</li>
+<li><strong>Performance hub</strong> : Bundle size dashboard contrôlé strict</li>
+<li><strong>Dashboard vitals</strong> : Optimisation métriques Google hub</li>
+<li><strong>Hub accessibility</strong> : Conformité WCAG AAA dashboard mesurée</li>
+<li><strong>Administrative metrics</strong> : Métriques spécialisées centre contrôle</li>
+</ul>
+<h3 id="🚀-améliorations-dashboard-futures-envisageables" class="tsd-anchor-link">🚀 Améliorations dashboard futures envisageables<a href="#🚀-améliorations-dashboard-futures-envisageables" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Smart dashboard</strong> : Hub intelligent contextuel adaptatif</li>
+<li><strong>Dashboard gestures</strong> : Navigation gesture hub mobile avancée</li>
+<li><strong>Voice dashboard</strong> : Commandes vocales &quot;tableau bord&quot; intégrées</li>
+<li><strong>AI dashboard</strong> : Suggestions navigation IA hub contextuelle</li>
+<li><strong>Dashboard personalization</strong> : Hub adapté préférences utilisateur</li>
+<li><strong>Multi-language</strong> : Internationalization dashboard dynamique</li>
+<li><strong>Dashboard themes</strong> : Support thèmes sombre/clair hub AdminJO</li>
+<li><strong>Hub micro-interactions</strong> : Animations subtiles engagement dashboard</li>
+<li><strong>Administrative AI</strong> : IA assistante centre contrôle intégrée</li>
+</ul>
+</div><div class="tsd-parameters"><h4 class="tsd-parameters-title">Parameters</h4><ul class="tsd-parameter-list"><li><span><span class="tsd-kind-parameter">props</span>: <span class="tsd-signature-type">BackToDashboardButtonProps</span></span><div class="tsd-comment tsd-typography"><p>Propriétés configuration bouton dashboard</p>
+</div><ul class="tsd-parameters"><li class="tsd-parameter"><h5><span>text</span></h5><div class="tsd-comment tsd-typography"><p>Texte affiché bouton hub (optionnel)</p>
+</div></li><li class="tsd-parameter"><h5><span>className</span></h5><div class="tsd-comment tsd-typography"><p>Classes CSS Tailwind dashboard custom (optionnel)</p>
+</div></li></ul></li></ul></div><h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Element</span></h4><p>Bouton navigation dashboard interactif optimisé hub AdminJO</p>
+<div class="tsd-comment tsd-typography"><div class="tsd-tag-see"><h4 class="tsd-anchor-link" id="see">See<a href="#see" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><ul>
+<li>Next.js useRouter - Hook Next.js navigation App Router dashboard</li>
+<li>BackButton - Composant générique navigation flexible</li>
+</ul>
+</div><div class="tsd-tag-since"><h4 class="tsd-anchor-link" id="since">Since<a href="#since" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p>1.0.0</p>
+</div><div class="tsd-tag-version"><h4 class="tsd-anchor-link" id="version">Version<a href="#version" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p>1.0.0</p>
+</div><div class="tsd-tag-example"><h4 class="tsd-anchor-link" id="example">Example<a href="#example" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><pre><code class="tsx"><span class="hl-0">// Utilisation basique retour dashboard standard</span><br/><span class="hl-6">&lt;</span><span class="hl-7">BackToDashboardButton</span><span class="hl-2"> </span><span class="hl-6">/&gt;</span>
+</code><button type="button">Copy</button></pre>
+
+</div><div class="tsd-tag-example"><h4 class="tsd-anchor-link" id="example-1">Example<a href="#example-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><pre><code class="tsx"><span class="hl-0">// Dashboard avec texte personnalisé contexte</span><br/><span class="hl-6">&lt;</span><span class="hl-7">BackToDashboardButton</span><span class="hl-2"> </span><span class="hl-8">text</span><span class="hl-2">=</span><span class="hl-3">&quot;← Retour au hub principal&quot;</span><span class="hl-2"> </span><span class="hl-6">/&gt;</span>
+</code><button type="button">Copy</button></pre>
+
+</div><div class="tsd-tag-example"><h4 class="tsd-anchor-link" id="example-2">Example<a href="#example-2" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><pre><code class="tsx"><span class="hl-0">// Style dashboard complètement personnalisé</span><br/><span class="hl-6">&lt;</span><span class="hl-7">BackToDashboardButton</span><br/><span class="hl-2">  </span><span class="hl-8">text</span><span class="hl-2">=</span><span class="hl-3">&quot;← Centre de contrôle&quot;</span><br/><span class="hl-2">  </span><span class="hl-8">className</span><span class="hl-2">=</span><span class="hl-3">&quot;bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 font-bold&quot;</span><br/><span class="hl-6">/&gt;</span>
+</code><button type="button">Copy</button></pre>
+
+</div><div class="tsd-tag-example"><h4 class="tsd-anchor-link" id="example-3">Example<a href="#example-3" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><pre><code class="tsx"><span class="hl-0">// Dans section gestion événements olympiques</span><br/><span class="hl-9">function</span><span class="hl-2"> </span><span class="hl-1">EventManagement</span><span class="hl-2">() {</span><br/><span class="hl-2">  </span><span class="hl-13">return</span><span class="hl-2"> (</span><br/><span class="hl-2">    </span><span class="hl-6">&lt;</span><span class="hl-10">div</span><span class="hl-6">&gt;</span><br/><span class="hl-2">      </span><span class="hl-6">&lt;</span><span class="hl-7">BackToDashboardButton</span><span class="hl-2"> </span><span class="hl-8">text</span><span class="hl-2">=</span><span class="hl-3">&quot;← Hub AdminJO&quot;</span><span class="hl-2"> </span><span class="hl-6">/&gt;</span><br/><span class="hl-2">      </span><span class="hl-6">&lt;</span><span class="hl-10">h1</span><span class="hl-6">&gt;</span><span class="hl-2">Gestion Événements JO 2024</span><span class="hl-6">&lt;/</span><span class="hl-10">h1</span><span class="hl-6">&gt;</span><br/><span class="hl-2">      // ...contenu section</span><br/><span class="hl-2">    </span><span class="hl-6">&lt;/</span><span class="hl-10">div</span><span class="hl-6">&gt;</span><br/><span class="hl-2">  );</span><br/><span class="hl-2">}</span>
+</code><button type="button">Copy</button></pre>
+
+</div><div class="tsd-tag-example"><h4 class="tsd-anchor-link" id="example-4">Example<a href="#example-4" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><pre><code class="tsx"><span class="hl-0">// Dashboard mobile avec style adaptatif</span><br/><span class="hl-6">&lt;</span><span class="hl-7">BackToDashboardButton</span><br/><span class="hl-2">  </span><span class="hl-8">className</span><span class="hl-2">=</span><span class="hl-3">&quot;lg:px-6 lg:py-3 px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-md text-sm lg:text-base&quot;</span><br/><span class="hl-6">/&gt;</span>
+</code><button type="button">Copy</button></pre>
+
+</div></div><aside class="tsd-sources"><ul><li>Defined in <a href="https://github.com/driano-gael/AdminJO_Front/blob/main/application/src/components/shared/BackToDashboardButton.tsx#L241">components/shared/BackToDashboardButton.tsx:241</a></li></ul></aside></div></li></ul></section></div><div class="col-sidebar"><div class="page-menu"><div class="tsd-navigation settings"><details class="tsd-accordion"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg><h3>Settings</h3></summary><div class="tsd-accordion-details"><div class="tsd-filter-visibility"><span class="settings-label">Member Visibility</span><ul id="tsd-filter-options"><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-protected" name="protected"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Protected</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li></ul></div><div class="tsd-theme-toggle"><label class="settings-label" for="tsd-theme">Theme</label><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div><details open class="tsd-accordion tsd-page-navigation"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg><h3>On This Page</h3></summary><div class="tsd-accordion-details"><a href="#architecture-navigation-dashboard-et-optimisations-spécialisées"><span>Architecture navigation dashboard et optimisations spécialisées</span></a><ul><li><a href="#🎯-navigation-dashboard-pré-configurée-optimisée"><span>🎯 <wbr/>Navigation dashboard pré-<wbr/>configurée optimisée</span></a></li><li><a href="#🎨-customisation-apparence-avec-cohérence-dashboard"><span>🎨 <wbr/>Customisation apparence avec cohérence dashboard</span></a></li><li><a href="#🔧-interface-props-spécialisée-dashboard"><span>🔧 <wbr/>Interface props spécialisée dashboard</span></a></li></ul><a href="#expérience-utilisateur-dashboard-et-design-patterns"><span>Expérience utilisateur dashboard et design patterns</span></a><ul><li><a href="#🏢-ux-retour-hub-administratif-optimisée"><span>🏢 <wbr/>UX retour hub administratif optimisée</span></a></li><li><a href="#🎨-design-système-dashboard-et-cohérence-hub"><span>🎨 <wbr/>Design système dashboard et cohérence hub</span></a></li></ul><a href="#implémentation-technique-dashboard-et-performance"><span>Implémentation technique dashboard et performance</span></a><ul><li><a href="#⚡-optimisations-performance-dashboard-spécialisées"><span>⚡ <wbr/>Optimisations performance dashboard spécialisées</span></a></li><li><a href="#🔒-sécurité-dashboard-et-validation-hub"><span>🔒 <wbr/>Sécurité dashboard et validation hub</span></a></li><li><a href="#🧪-testabilité-dashboard-et-maintenance-hub"><span>🧪 <wbr/>Testabilité dashboard et maintenance hub</span></a></li></ul><a href="#cas-dusage-dashboard-et-intégrations-adminjo"><span>Cas d&#39;usage dashboard et intégrations <wbr/>Admin<wbr/>JO</span></a><ul><li><a href="#🏅-contextes-métier-dashboard-jeux-olympiques"><span>🏅 <wbr/>Contextes métier dashboard <wbr/>Jeux <wbr/>Olympiques</span></a></li><li><a href="#📱-responsive-dashboard-et-accessibilité-hub"><span>📱 <wbr/>Responsive dashboard et accessibilité hub</span></a></li></ul><a href="#variations-dashboard-et-personnalisations-hub"><span>Variations dashboard et personnalisations hub</span></a><ul><li><a href="#🎨-styles-dashboard-prédéfinis-et-customisation-hub"><span>🎨 <wbr/>Styles dashboard prédéfinis et customisation hub</span></a></li><li><a href="#🔧-extensions-fonctionnelles-dashboard-possibles"><span>🔧 <wbr/>Extensions fonctionnelles dashboard possibles</span></a></li></ul><a href="#performance-dashboard-et-monitoring-hub"><span>Performance dashboard et monitoring hub</span></a><ul><li><a href="#📊-métriques-dashboard-et-optimisations-hub"><span>📊 <wbr/>Métriques dashboard et optimisations hub</span></a></li><li><a href="#🚀-améliorations-dashboard-futures-envisageables"><span>🚀 <wbr/>Améliorations dashboard futures envisageables</span></a></li></ul></div></details></div><div class="site-menu"><nav class="tsd-navigation"><a href="../modules.html">AdminJO Front - Documentation API - v0.1.0</a><ul class="tsd-small-nested-navigation" id="tsd-nav-container"><li>Loading...</li></ul></nav></div></div></div><footer><p class="tsd-generator">Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></footer><div class="overlay"></div></body></html>

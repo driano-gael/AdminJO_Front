@@ -1,65 +1,72 @@
 ﻿import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import '@testing-library/jest-dom';
 import Notification from '@/components/notification';
 
-describe('Notification Component', () => {
+describe('Notification', () => {
   const mockOnClose = jest.fn();
 
   beforeEach(() => {
-    jest.clearAllMocks();
+    mockOnClose.mockClear();
   });
 
-  it('should render notification with message', () => {
+  it('renders notification with message', () => {
     render(
-      <Notification 
-        message="Test message" 
-        type="success" 
+      <Notification
+        title="Test Title"
+        message="Test message"
+        type="success"
         onClose={mockOnClose}
       />
     );
 
+    expect(screen.getByText('Test Title')).toBeInTheDocument();
     expect(screen.getByText('Test message')).toBeInTheDocument();
   });
 
-  it('should render error notification with red background', () => {
+  it('calls onClose when close button is clicked', () => {
     render(
-      <Notification 
-        message="Error message" 
-        type="error" 
+      <Notification
+        title="Test Title"
+        message="Test message"
+        type="error"
         onClose={mockOnClose}
       />
     );
 
-    expect(screen.getByText('Error message')).toBeInTheDocument();
+    fireEvent.click(screen.getByLabelText('Fermer la notification'));
+    expect(mockOnClose).toHaveBeenCalledTimes(1);
   });
 
-  it('should render success notification with green background', () => {
+  it('auto-closes after duration', async () => {
     render(
-      <Notification 
-        message="Success message" 
-        type="success" 
+      <Notification
+        title="Test Title"
+        message="Test message"
+        type="success"
         onClose={mockOnClose}
+        duration={100}
       />
     );
 
-    expect(screen.getByText('Success message')).toBeInTheDocument();
-  });
-
-  it("should call onClose when close bouton est cliqué", async () => {
-    render(
-      <Notification 
-        message="Test message" 
-        type="info" 
-        onClose={mockOnClose}
-      />
-    );
-
-    const closeButton = screen.getByRole('button');
-    fireEvent.click(closeButton);
-
-    // Attendre que le timeout de l'animation se termine (300ms)
     await waitFor(() => {
       expect(mockOnClose).toHaveBeenCalledTimes(1);
-    }, { timeout: 500 });
+    }, { timeout: 200 });
+  });
+
+  it('does not auto-close when persistent', async () => {
+    render(
+      <Notification
+        title="Test Title"
+        message="Test message"
+        type="info"
+        onClose={mockOnClose}
+        persistent
+        duration={100}
+      />
+    );
+
+    await new Promise(resolve => setTimeout(resolve, 150));
+    expect(mockOnClose).not.toHaveBeenCalled();
   });
 });

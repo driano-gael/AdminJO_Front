@@ -1,4 +1,4 @@
-﻿import { Evenement, ExtendEvenement } from '@/types/sportEvenement/evenement';
+﻿import { Evenement, ExtendEvenement, StatutEvenement } from '@/types/sportEvenement/evenement';
 import { Epreuve } from '@/types/sportEvenement/epreuve';
 import { Lieu } from '@/types/sportEvenement/lieu';
 import { Discipline } from '@/types/sportEvenement/discipline';
@@ -228,7 +228,7 @@ describe('ExtendEvenement interface', () => {
       horraire: '20:00',
       epreuves: [],
       sports: 'Athlétisme',
-      status: 'à venir',
+      status: StatutEvenement.A_VENIR,
       capacity: 80000,
       ticketsSold: 75000
     };
@@ -249,13 +249,13 @@ describe('ExtendEvenement interface', () => {
 
     // Verify extended property types
     expect(typeof extendedEvenement.sports).toBe('string');
-    expect(['à venir', 'en cours', 'terminé']).toContain(extendedEvenement.status);
+    expect([StatutEvenement.A_VENIR, StatutEvenement.EN_COURS, StatutEvenement.TERMINE]).toContain(extendedEvenement.status);
     expect(typeof extendedEvenement.capacity).toBe('number');
     expect(typeof extendedEvenement.ticketsSold).toBe('number');
   });
 
   it('should work with all status values', () => {
-    const statuses: Array<'à venir' | 'en cours' | 'terminé'> = ['à venir', 'en cours', 'terminé'];
+    const statuses: StatutEvenement[] = [StatutEvenement.A_VENIR, StatutEvenement.EN_COURS, StatutEvenement.TERMINE];
 
     statuses.forEach(status => {
       const evenement: ExtendEvenement = {
@@ -269,7 +269,7 @@ describe('ExtendEvenement interface', () => {
       };
 
       expect(evenement.status).toBe(status);
-      expect(['à venir', 'en cours', 'terminé']).toContain(evenement.status!);
+      expect([StatutEvenement.A_VENIR, StatutEvenement.EN_COURS, StatutEvenement.TERMINE]).toContain(evenement.status!);
     });
   });
 
@@ -298,11 +298,11 @@ describe('ExtendEvenement interface', () => {
       horraire: '10:00',
       epreuves: [],
       sports: 'Natation',
-      status: 'en cours'
+      status: StatutEvenement.EN_COURS
     };
 
     expect(partialExtendedEvenement.sports).toBe('Natation');
-    expect(partialExtendedEvenement.status).toBe('en cours');
+    expect(partialExtendedEvenement.status).toBe(StatutEvenement.EN_COURS);
     expect(partialExtendedEvenement.capacity).toBeUndefined();
     expect(partialExtendedEvenement.ticketsSold).toBeUndefined();
   });
@@ -317,7 +317,7 @@ describe('ExtendEvenement interface', () => {
       epreuves: [],
       capacity: 50000,
       ticketsSold: 50000,
-      status: 'à venir'
+      status: StatutEvenement.A_VENIR
     };
 
     const partiallyFilledEvent: ExtendEvenement = {
@@ -329,7 +329,7 @@ describe('ExtendEvenement interface', () => {
       epreuves: [],
       capacity: 80000,
       ticketsSold: 45000,
-      status: 'à venir'
+      status: StatutEvenement.A_VENIR
     };
 
     expect(soldOutEvent.ticketsSold).toBe(soldOutEvent.capacity);
@@ -345,7 +345,7 @@ describe('ExtendEvenement interface', () => {
       horraire: '18:00',
       epreuves: [],
       sports: 'Basketball',
-      status: 'terminé',
+      status: StatutEvenement.TERMINE,
       capacity: 20000,
       ticketsSold: 19500
     };

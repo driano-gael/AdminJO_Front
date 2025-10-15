@@ -1,0 +1,213 @@
+<!DOCTYPE html><html class="default" lang="en" data-base="../"><head><meta charset="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>default | AdminJO Front - Documentation API - v0.1.0</title><meta name="description" content="Documentation for AdminJO Front - Documentation API"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="../assets/style.css"/><link rel="stylesheet" href="../assets/highlight.css"/><script defer src="../assets/main.js"></script><script async src="../assets/icons.js" id="tsd-icons-script"></script><script async src="../assets/search.js" id="tsd-search-script"></script><script async src="../assets/navigation.js" id="tsd-nav-script"></script><script async src="../assets/hierarchy.js" id="tsd-hierarchy-script"></script></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os";document.body.style.display="none";setTimeout(() => window.app?app.showPage():document.body.style.removeProperty("display"),500)</script><header class="tsd-page-toolbar"><div class="tsd-toolbar-contents container"><a href="../index.html" class="title">AdminJO Front - Documentation API - v0.1.0</a><div id="tsd-toolbar-links"></div><button id="tsd-search-trigger" class="tsd-widget" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-search"></use></svg></button><dialog id="tsd-search" aria-label="Search"><input role="combobox" id="tsd-search-input" aria-controls="tsd-search-results" aria-autocomplete="list" aria-expanded="true" autocapitalize="off" autocomplete="off" placeholder="Search the docs" maxLength="100"/><ul role="listbox" id="tsd-search-results"></ul><div id="tsd-search-status" aria-live="polite" aria-atomic="true"><div>Preparing search index...</div></div></dialog><a href="#" class="tsd-widget menu" id="tsd-toolbar-menu-trigger" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-menu"></use></svg></a></div></header><div class="container container-main"><div class="col-content"><div class="tsd-page-title"><ul class="tsd-breadcrumb" aria-label="Breadcrumb"><li><a href="../modules/components_componentsEvenement_lieux_LieuxTable.html">components/componentsEvenement/lieux/LieuxTable</a></li><li><a href="" aria-current="page">default</a></li></ul><h1>Function default</h1></div><section class="tsd-panel"><ul class="tsd-signatures"><li class=""><div class="tsd-signature tsd-anchor-link" id="default"><span class="tsd-kind-call-signature">default</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">props</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">LieuxTableProps</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Element</span><a href="#default" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div><div class="tsd-description"><div class="tsd-comment tsd-typography"><p>Composant LieuxTable - Tableau principal d'affichage des lieux olympiques AdminJO</p>
+<p>Ce composant constitue l'interface centrale de visualisation des lieux olympiques
+des Jeux Olympiques 2024. Il orchestre l'affichage sous forme de tableau structuré
+avec colonnes spécialisées (nom lieu, actions), gestion complète des états
+(chargement, erreurs, vide), système de rafraîchissement intelligent, et intégration
+des actions CRUD via lignes interactives. Conçu pour l'administration JO, il suit
+les standards AdminJO avec responsive design, feedback utilisateur riche, et gestion
+optimisée des établissements sportifs olympiques.</p>
+<h2 id="structure-et-affichage-tableau-spécialisé-lieux-olympiques" class="tsd-anchor-link">Structure et affichage tableau spécialisé lieux olympiques<a href="#structure-et-affichage-tableau-spécialisé-lieux-olympiques" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="📊-architecture-tableau-simplifiée-lieux" class="tsd-anchor-link">📊 Architecture tableau simplifiée lieux<a href="#📊-architecture-tableau-simplifiée-lieux" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Container principal</strong> : Card avec bg-white rounded-lg shadow-md</li>
+<li><strong>Header tableau</strong> : Section avec titre + compteur + actions refresh</li>
+<li><strong>Corps tableau</strong> : Structure HTML sémantique avec thead/tbody</li>
+<li><strong>Colonnes spécialisées</strong> : Nom du Lieu, Actions (structure épurée)</li>
+<li><strong>Overflow management</strong> : overflow-x-auto pour débordement horizontal</li>
+<li><strong>Responsive design</strong> : min-w-full avec adaptation automatique</li>
+<li><strong>Elevation</strong> : Ombre portée pour détachement visuel du fond</li>
+</ul>
+<h3 id="🏷️-en-tête-tableau-avec-métadonnées-dynamiques-lieux" class="tsd-anchor-link">🏷️ En-tête tableau avec métadonnées dynamiques lieux<a href="#🏷️-en-tête-tableau-avec-métadonnées-dynamiques-lieux" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Titre contextuel</strong> : &quot;Lieux&quot; avec compteur dynamique <code>(${lieux.length})</code></li>
+<li><strong>Indicateur de chargement</strong> : Spinner + &quot;Chargement...&quot; pendant loading</li>
+<li><strong>Bouton actualisation</strong> : &quot;🔄 Actualiser&quot; avec callback onRefresh</li>
+<li><strong>État bouton</strong> : Désactivation automatique pendant chargement</li>
+<li><strong>Layout horizontal</strong> : justify-between pour répartition équilibrée</li>
+<li><strong>Feedback visuel</strong> : Spinner small size pour indication non-intrusive</li>
+<li><strong>Séparateur</strong> : border-b border-gray-200 pour délimitation claire</li>
+</ul>
+<h3 id="📋-colonnes-tableau-optimisées-métier-lieux-olympiques" class="tsd-anchor-link">📋 Colonnes tableau optimisées métier lieux olympiques<a href="#📋-colonnes-tableau-optimisées-métier-lieux-olympiques" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Colonne 1 - Nom lieu</strong> : &quot;Nom du Lieu&quot; avec établissements olympiques</li>
+<li><strong>Colonne 2 - Actions</strong> : &quot;Actions&quot; avec boutons Modifier/Supprimer</li>
+<li><strong>Structure épurée</strong> : Seulement 2 colonnes pour simplicité gestion</li>
+<li><strong>Headers style</strong> : bg-gray-50 avec typographie uppercase tracking-wider</li>
+<li><strong>Alignement</strong> : text-left pour lisibilité optimale données</li>
+<li><strong>Espacement</strong> : px-6 py-3 pour respiration headers cohérente</li>
+<li><strong>Sémantique</strong> : thead/th structure correcte pour accessibilité</li>
+</ul>
+<h2 id="gestion-des-états-dinterface-avancée-lieux" class="tsd-anchor-link">Gestion des états d'interface avancée lieux<a href="#gestion-des-états-dinterface-avancée-lieux" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="⏳-états-de-chargement-multicouches-lieux" class="tsd-anchor-link">⏳ États de chargement multicouches lieux<a href="#⏳-états-de-chargement-multicouches-lieux" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Loading global</strong> : Spinner dans header + désactivation refresh</li>
+<li><strong>Loading initial</strong> : Message &quot;Chargement des lieux...&quot; avec spinner medium</li>
+<li><strong>État vide + loading</strong> : Centrage avec flex items-center justify-center</li>
+<li><strong>Feedback temps réel</strong> : Indication &quot;Chargement...&quot; textuelle explicite</li>
+<li><strong>Désactivation actions</strong> : disabled={loading} sur bouton refresh</li>
+<li><strong>Cohérence visuelle</strong> : Spinners small/medium selon contexte</li>
+<li><strong>Non-intrusion</strong> : Loading header n'affecte pas structure tableau</li>
+</ul>
+<h3 id="🚨-gestion-derreurs-contextuelles-lieux" class="tsd-anchor-link">🚨 Gestion d'erreurs contextuelles lieux<a href="#🚨-gestion-derreurs-contextuelles-lieux" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Affichage erreur</strong> : Bandeau rouge en haut tableau si error présent</li>
+<li><strong>Style erreur</strong> : text-sm text-red-600 bg-red-50 p-2 rounded</li>
+<li><strong>Position</strong> : Sous header, au-dessus tableau pour visibilité</li>
+<li><strong>Conditional rendering</strong> : <code>{error &amp;&amp; ...}</code> pour affichage conditionnel</li>
+<li><strong>Message brut</strong> : Affichage direct contenu error string</li>
+<li><strong>Accessibilité</strong> : Couleurs contrastées pour lisibilité erreurs</li>
+<li><strong>Persistance</strong> : Erreur reste affichée jusqu'à nouvel appel API</li>
+</ul>
+<h3 id="🗂️-états-vide-avec-messages-contextuels-intelligents-lieux" class="tsd-anchor-link">🗂️ États vide avec messages contextuels intelligents lieux<a href="#🗂️-états-vide-avec-messages-contextuels-intelligents-lieux" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Vide + recherche</strong> : &quot;Aucun lieu trouvé&quot; + terme recherche affiché</li>
+<li><strong>Vide initial</strong> : &quot;Aucun lieu&quot; + &quot;Commencez par créer votre premier lieu&quot;</li>
+<li><strong>Vide + loading</strong> : &quot;Chargement des lieux...&quot; avec spinner medium</li>
+<li><strong>Colspan adapté</strong> : colSpan={2} pour occuper toutes colonnes tableau</li>
+<li><strong>Centrage vertical</strong> : py-12 pour espacement généreux état vide</li>
+<li><strong>Hiérarchie messages</strong> : text-lg font-medium + text-sm pour détails</li>
+<li><strong>Guillemets recherche</strong> : “{searchTerm}” pour mise en évidence</li>
+</ul>
+<h2 id="intégration-lignes-et-actions-crud-lieux" class="tsd-anchor-link">Intégration lignes et actions CRUD lieux<a href="#intégration-lignes-et-actions-crud-lieux" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="🔄-rendu-dynamique-des-lignes-lieux" class="tsd-anchor-link">🔄 Rendu dynamique des lignes lieux<a href="#🔄-rendu-dynamique-des-lignes-lieux" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Mapping optimisé</strong> : <code>lieux.map((lieu) =&gt; ...)</code> avec key stable</li>
+<li><strong>Composant ligne</strong> : LieuxTableRow pour chaque lieu</li>
+<li><strong>Props transmission</strong> : lieu, onDelete, onEdit vers lignes</li>
+<li><strong>Key unique</strong> : <a href="http://lieu.id">lieu.id</a> pour optimisation React reconciliation</li>
+<li><strong>Callbacks bubbling</strong> : Remontée actions ligne vers composant parent</li>
+<li><strong>Données complètes</strong> : Objet lieu transmis intégralement</li>
+<li><strong>Performance</strong> : Re-render optimisé avec keys stables</li>
+</ul>
+<h3 id="🔧-actions-tableau-et-callbacks-lieux" class="tsd-anchor-link">🔧 Actions tableau et callbacks lieux<a href="#🔧-actions-tableau-et-callbacks-lieux" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Refresh intelligent</strong> : onRefresh() préserve contexte recherche</li>
+<li><strong>Suppression lieu</strong> : onDelete(id) avec ID numérique pour sécurité</li>
+<li><strong>Édition lieu</strong> : onEdit(lieu) avec objet Lieu complet</li>
+<li><strong>Délégation logique</strong> : Actions gérées par composants parents</li>
+<li><strong>État préservé</strong> : Callbacks n'affectent pas état local tableau</li>
+<li><strong>Feedback externe</strong> : Notifications gérées par LieuxManagement</li>
+<li><strong>Synchronisation</strong> : Mise à jour automatique via props lieux</li>
+</ul>
+<h2 id="responsive-design-et-accessibilité-lieux" class="tsd-anchor-link">Responsive design et accessibilité lieux<a href="#responsive-design-et-accessibilité-lieux" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="📱-adaptation-multi-supports-lieux" class="tsd-anchor-link">📱 Adaptation multi-supports lieux<a href="#📱-adaptation-multi-supports-lieux" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Scroll horizontal</strong> : overflow-x-auto pour débordement mobile</li>
+<li><strong>Largeur minimale</strong> : min-w-full pour cohérence desktop</li>
+<li><strong>Container fluide</strong> : Adaptation automatique largeur parent</li>
+<li><strong>Touch-friendly</strong> : Zones d'action dimensionnées tactile</li>
+<li><strong>Breakpoints</strong> : Gestion responsive via classes Tailwind</li>
+<li><strong>Dense mobile</strong> : Maintien lisibilité sur petits écrans</li>
+<li><strong>Navigation tactile</strong> : Scroll horizontal fluide mobiles/tablettes</li>
+</ul>
+<h3 id="♿-standards-accessibilité-tableau-lieux" class="tsd-anchor-link">♿ Standards accessibilité tableau lieux<a href="#♿-standards-accessibilité-tableau-lieux" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Sémantique HTML</strong> : Structure table/thead/tbody/th/td correcte</li>
+<li><strong>Headers explicites</strong> : Colonnes titrées pour lecteurs écran</li>
+<li><strong>Contraste couleurs</strong> : Respect ratios WCAG AA sur tous éléments</li>
+<li><strong>Focus management</strong> : Navigation clavier cohérente dans tableau</li>
+<li><strong>Screen readers</strong> : Structure logique pour synthèse vocale</li>
+<li><strong>ARIA implicit</strong> : Sémantique table native suffisante</li>
+<li><strong>Alt text</strong> : Messages d'état lisibles par assistive technologies</li>
+</ul>
+<h2 id="intégrations-et-dépendances-lieux" class="tsd-anchor-link">Intégrations et dépendances lieux<a href="#intégrations-et-dépendances-lieux" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="🔌-composants-intégrés-spécialisés-lieux" class="tsd-anchor-link">🔌 Composants intégrés spécialisés lieux<a href="#🔌-composants-intégrés-spécialisés-lieux" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>LieuxTableRow</strong> : Composant ligne individuelle avec actions</li>
+<li><strong>Spinner</strong> : Composant loading réutilisable avec tailles (small/medium)</li>
+<li><strong>Lieu type</strong> : Interface TypeScript pour validation données</li>
+<li><strong>Props interface</strong> : Contrat strict avec composant parent</li>
+<li><strong>Callbacks externes</strong> : Fonctions handler fournies par parents</li>
+<li><strong>État externe</strong> : Pas d'état local, données via props uniquement</li>
+</ul>
+<h3 id="📡-communication-parent-enfant-optimisée-lieux" class="tsd-anchor-link">📡 Communication parent-enfant optimisée lieux<a href="#📡-communication-parent-enfant-optimisée-lieux" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Props descendantes</strong> : lieux, loading, error, searchTerm depuis parent</li>
+<li><strong>Callbacks ascendantes</strong> : onRefresh, onDelete, onEdit vers parent</li>
+<li><strong>Transmission ciblée</strong> : Props spécifiques transmises aux lignes</li>
+<li><strong>État centralisé</strong> : Gestion state dans LieuxManagement parent</li>
+<li><strong>Réactivité</strong> : Re-render automatique sur changement props</li>
+<li><strong>Performance</strong> : Minimal props drilling avec callbacks stables</li>
+</ul>
+<h2 id="performance-et-optimisations-lieux" class="tsd-anchor-link">Performance et optimisations lieux<a href="#performance-et-optimisations-lieux" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="⚡-optimisations-de-rendu-actuelles" class="tsd-anchor-link">⚡ Optimisations de rendu actuelles<a href="#⚡-optimisations-de-rendu-actuelles" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Composant pur</strong> : Pas d'état local pour performance maximale</li>
+<li><strong>Keys optimisées</strong> : <a href="http://lieu.id">lieu.id</a> pour reconciliation React efficace</li>
+<li><strong>Conditional rendering</strong> : Affichage conditionnel erreurs/loading/vide</li>
+<li><strong>CSS statique</strong> : Classes Tailwind pré-compilées</li>
+<li><strong>Callbacks stables</strong> : Props functions stables entre re-renders</li>
+<li><strong>Minimal re-renders</strong> : Dépendances props strictement nécessaires</li>
+</ul>
+<h3 id="🎯-candidats-optimisation-avancée-lieux" class="tsd-anchor-link">🎯 Candidats optimisation avancée lieux<a href="#🎯-candidats-optimisation-avancée-lieux" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>React.memo</strong> : Mémorisation composant si re-renders fréquents</li>
+<li><strong>Virtualisation</strong> : Rendu virtuel pour grandes listes lieux</li>
+<li><strong>Pagination</strong> : Découpage données si volume important</li>
+<li><strong>Lazy loading</strong> : Chargement progressif lieux visibles</li>
+<li><strong>Debouncing</strong> : Optimisation refresh si appels fréquents</li>
+<li><strong>Memoized callbacks</strong> : useMemo/useCallback dans parents</li>
+</ul>
+<h2 id="spécificités-métier-lieux-olympiques" class="tsd-anchor-link">Spécificités métier lieux olympiques<a href="#spécificités-métier-lieux-olympiques" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="🏅-contexte-olympic-games-administration-lieux" class="tsd-anchor-link">🏅 Contexte Olympic Games administration lieux<a href="#🏅-contexte-olympic-games-administration-lieux" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Terminologie</strong> : &quot;Lieux&quot; pour établissements sportifs olympiques</li>
+<li><strong>Exemples concrets</strong> : Stade de France, Centre Aquatique, Arena Bercy</li>
+<li><strong>Hiérarchie</strong> : Lieux niveau infrastructure pour événements/épreuves</li>
+<li><strong>Gestion</strong> : Interface organisateurs JO pour infrastructure</li>
+<li><strong>Standards</strong> : Respect nomenclature officielle établissements CIO</li>
+<li><strong>Importance</strong> : Base infrastructure physique compétitions olympiques</li>
+</ul>
+<h3 id="📊-types-de-données-lieux-gérées" class="tsd-anchor-link">📊 Types de données lieux gérées<a href="#📊-types-de-données-lieux-gérées" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Structure Lieu</strong> : id, nom (structure simplifiée)</li>
+<li><strong>Nom établissement</strong> : string pour désignation officielle</li>
+<li><strong>ID unique</strong> : number pour identification système</li>
+<li><strong>Validation TypeScript</strong> : Interfaces strictes pour sécurité</li>
+<li><strong>API synchronisée</strong> : Structure données alignée backend/frontend</li>
+<li><strong>Extensibilité</strong> : Support ajout propriétés futures (capacité, adresse)</li>
+</ul>
+<h2 id="gestion-derreurs-et-edge-cases-lieux" class="tsd-anchor-link">Gestion d'erreurs et edge cases lieux<a href="#gestion-derreurs-et-edge-cases-lieux" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="🛡️-robustesse-et-cas-limites" class="tsd-anchor-link">🛡️ Robustesse et cas limites<a href="#🛡️-robustesse-et-cas-limites" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Props null/undefined</strong> : Gestion defensive avec valeurs défaut</li>
+<li><strong>Array vide</strong> : État vide avec message approprié</li>
+<li><strong>Error null</strong> : Pas d'affichage bandeau si absence erreur</li>
+<li><strong>SearchTerm vide</strong> : Message état vide adapté selon contexte</li>
+<li><strong>Loading concurrent</strong> : Gestion cohérente états multiples</li>
+<li><strong>Network failures</strong> : Affichage erreurs réseau dans bandeau</li>
+</ul>
+<h3 id="🔄-recovery-et-états-de-récupération" class="tsd-anchor-link">🔄 Recovery et états de récupération<a href="#🔄-recovery-et-états-de-récupération" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Retry mechanism</strong> : Bouton refresh pour nouvelle tentative</li>
+<li><strong>Error clearing</strong> : Effacement erreur sur nouveau chargement</li>
+<li><strong>State consistency</strong> : Cohérence état loading/error/data</li>
+<li><strong>Graceful degradation</strong> : Fonctionnement partiel si erreurs</li>
+<li><strong>User feedback</strong> : Messages clairs pour guider utilisateur</li>
+<li><strong>Fallback content</strong> : Contenu alternatif si échec chargement</li>
+</ul>
+<h2 id="améliorations-et-extensions-futures" class="tsd-anchor-link">Améliorations et extensions futures<a href="#améliorations-et-extensions-futures" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="🚀-fonctionnalités-avancées-possibles" class="tsd-anchor-link">🚀 Fonctionnalités avancées possibles<a href="#🚀-fonctionnalités-avancées-possibles" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Tri colonnes</strong> : Ordonnancement par nom lieu alphabétique</li>
+<li><strong>Pagination intégrée</strong> : Découpage grandes listes dans tableau</li>
+<li><strong>Filtres avancés</strong> : Critères multiples dans headers colonnes</li>
+<li><strong>Sélection multiple</strong> : Checkboxes pour actions groupées</li>
+<li><strong>Export données</strong> : CSV/PDF depuis tableau avec sélection</li>
+<li><strong>Colonnes configurables</strong> : Masquage/affichage colonnes dynamique</li>
+<li><strong>Densité affichage</strong> : Mode compact/standard configurable</li>
+</ul>
+<h3 id="📊-enrichissements-données-lieux" class="tsd-anchor-link">📊 Enrichissements données lieux<a href="#📊-enrichissements-données-lieux" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Colonnes supplémentaires</strong> : Capacité, adresse, statut lieu</li>
+<li><strong>Indicateurs visuels</strong> : Icônes statut/type établissement</li>
+<li><strong>Badges métadonnées</strong> : Statut disponibilité/maintenance</li>
+<li><strong>Liens navigation</strong> : Accès détail lieu depuis tableau</li>
+<li><strong>Miniatures</strong> : Photos établissements dans lignes</li>
+<li><strong>Géolocalisation</strong> : Coordonnées GPS et liens cartes</li>
+<li><strong>Informations temps réel</strong> : Occupation/événements en cours</li>
+</ul>
+<h3 id="🔧-optimisations-techniques-avancées" class="tsd-anchor-link">🔧 Optimisations techniques avancées<a href="#🔧-optimisations-techniques-avancées" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Virtual scrolling</strong> : Rendu virtuel très grandes listes</li>
+<li><strong>Intersection observer</strong> : Chargement lazy images/données</li>
+<li><strong>Web Workers</strong> : Traitement tri/filtre en arrière-plan</li>
+<li><strong>IndexedDB cache</strong> : Cache local persistant lieux fréquents</li>
+<li><strong>Service Worker</strong> : Synchronisation hors-ligne modifications</li>
+<li><strong>Real-time updates</strong> : WebSocket pour mises à jour temps réel</li>
+<li><strong>Progressive loading</strong> : Chargement progressif métadonnées</li>
+</ul>
+</div><div class="tsd-parameters"><h4 class="tsd-parameters-title">Parameters</h4><ul class="tsd-parameter-list"><li><span><span class="tsd-kind-parameter">props</span>: <span class="tsd-signature-type">LieuxTableProps</span></span><div class="tsd-comment tsd-typography"><p>Propriétés du composant tableau lieux</p>
+</div><ul class="tsd-parameters"><li class="tsd-parameter"><h5><span>lieux</span></h5><div class="tsd-comment tsd-typography"><p>Array des lieux olympiques à afficher</p>
+</div></li><li class="tsd-parameter"><h5><span>loading</span></h5><div class="tsd-comment tsd-typography"><p>État de chargement pour feedback UI</p>
+</div></li><li class="tsd-parameter"><h5><span>searchTerm</span></h5><div class="tsd-comment tsd-typography"><p>Terme de recherche pour messages contextuels</p>
+</div></li><li class="tsd-parameter"><h5><span>onRefresh</span></h5><div class="tsd-comment tsd-typography"><p>Callback actualisation données</p>
+</div></li><li class="tsd-parameter"><h5><span>onDelete</span></h5><div class="tsd-comment tsd-typography"><p>Callback suppression lieu par ID</p>
+</div></li><li class="tsd-parameter"><h5><span>onEdit</span></h5><div class="tsd-comment tsd-typography"><p>Callback édition lieu avec objet complet</p>
+</div></li><li class="tsd-parameter"><h5><span>error</span></h5><div class="tsd-comment tsd-typography"><p>Message d'erreur à afficher si présent</p>
+</div></li></ul></li></ul></div><h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Element</span></h4><p>Tableau complet gestion lieux olympiques avec états</p>
+<div class="tsd-comment tsd-typography"><div class="tsd-tag-see"><h4 class="tsd-anchor-link" id="see">See<a href="#see" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><ul>
+<li><a href="components_componentsEvenement_lieux_LieuxTableRow.default.html" class="tsd-kind-function">LieuxTableRow</a> - Composant ligne individuelle tableau</li>
+<li><a href="components_spinner.default.html" class="tsd-kind-function">Spinner</a> - Composant loading states réutilisable</li>
+<li><a href="../interfaces/types_sportEvenement_lieu.Lieu.html" class="tsd-kind-interface">Lieu</a> - Interface TypeScript définition lieu</li>
+<li>LieuxManagement - Composant parent orchestrateur</li>
+</ul>
+</div><div class="tsd-tag-since"><h4 class="tsd-anchor-link" id="since">Since<a href="#since" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p>1.0.0</p>
+</div><div class="tsd-tag-version"><h4 class="tsd-anchor-link" id="version">Version<a href="#version" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p>1.0.0</p>
+</div><div class="tsd-tag-example"><h4 class="tsd-anchor-link" id="example">Example<a href="#example" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><pre><code class="tsx"><span class="hl-6">&lt;</span><span class="hl-7">LieuxTable</span><br/><span class="hl-2">  </span><span class="hl-8">lieux</span><span class="hl-2">=</span><span class="hl-9">{</span><span class="hl-4">lieuxList</span><span class="hl-9">}</span><br/><span class="hl-2">  </span><span class="hl-8">loading</span><span class="hl-2">=</span><span class="hl-9">{</span><span class="hl-4">isLoading</span><span class="hl-9">}</span><br/><span class="hl-2">  </span><span class="hl-8">searchTerm</span><span class="hl-2">=</span><span class="hl-9">{</span><span class="hl-4">currentSearch</span><span class="hl-9">}</span><br/><span class="hl-2">  </span><span class="hl-8">onRefresh</span><span class="hl-2">=</span><span class="hl-9">{</span><span class="hl-11">() </span><span class="hl-9">=&gt;</span><span class="hl-11"> </span><span class="hl-1">loadData</span><span class="hl-11">()</span><span class="hl-9">}</span><br/><span class="hl-2">  </span><span class="hl-8">onDelete</span><span class="hl-2">=</span><span class="hl-9">{</span><span class="hl-11">(</span><span class="hl-4">id</span><span class="hl-11">) </span><span class="hl-9">=&gt;</span><span class="hl-11"> </span><span class="hl-1">handleDelete</span><span class="hl-11">(</span><span class="hl-4">id</span><span class="hl-11">)</span><span class="hl-9">}</span><br/><span class="hl-2">  </span><span class="hl-8">onEdit</span><span class="hl-2">=</span><span class="hl-9">{</span><span class="hl-11">(</span><span class="hl-4">lieu</span><span class="hl-11">) </span><span class="hl-9">=&gt;</span><span class="hl-11"> </span><span class="hl-1">handleEdit</span><span class="hl-11">(</span><span class="hl-4">lieu</span><span class="hl-11">)</span><span class="hl-9">}</span><br/><span class="hl-2">  </span><span class="hl-8">error</span><span class="hl-2">=</span><span class="hl-9">{</span><span class="hl-4">apiError</span><span class="hl-9">}</span><br/><span class="hl-6">/&gt;</span>
+</code><button type="button">Copy</button></pre>
+
+</div><div class="tsd-tag-example"><h4 class="tsd-anchor-link" id="example-1">Example<a href="#example-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><pre><code class="tsx"><span class="hl-0">// Avec gestion états vides</span><br/><span class="hl-6">&lt;</span><span class="hl-7">LieuxTable</span><br/><span class="hl-2">  </span><span class="hl-8">lieux</span><span class="hl-2">=</span><span class="hl-9">{</span><span class="hl-11">[]</span><span class="hl-9">}</span><br/><span class="hl-2">  </span><span class="hl-8">loading</span><span class="hl-2">=</span><span class="hl-9">{false}</span><br/><span class="hl-2">  </span><span class="hl-8">searchTerm</span><span class="hl-2">=</span><span class="hl-3">&quot;&quot;</span><br/><span class="hl-2">  </span><span class="hl-8">onRefresh</span><span class="hl-2">=</span><span class="hl-9">{</span><span class="hl-4">refreshData</span><span class="hl-9">}</span><br/><span class="hl-2">  </span><span class="hl-8">onDelete</span><span class="hl-2">=</span><span class="hl-9">{</span><span class="hl-4">deleteLieu</span><span class="hl-9">}</span><br/><span class="hl-2">  </span><span class="hl-8">onEdit</span><span class="hl-2">=</span><span class="hl-9">{</span><span class="hl-4">editLieu</span><span class="hl-9">}</span><br/><span class="hl-2">  </span><span class="hl-8">error</span><span class="hl-2">=</span><span class="hl-9">{null}</span><br/><span class="hl-6">/&gt;</span>
+</code><button type="button">Copy</button></pre>
+
+</div></div><aside class="tsd-sources"><ul><li>Defined in <a href="https://github.com/driano-gael/AdminJO_Front/blob/main/application/src/components/componentsEvenement/lieux/LieuxTable.tsx#L271">components/componentsEvenement/lieux/LieuxTable.tsx:271</a></li></ul></aside></div></li></ul></section></div><div class="col-sidebar"><div class="page-menu"><div class="tsd-navigation settings"><details class="tsd-accordion"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg><h3>Settings</h3></summary><div class="tsd-accordion-details"><div class="tsd-filter-visibility"><span class="settings-label">Member Visibility</span><ul id="tsd-filter-options"><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-protected" name="protected"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Protected</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li></ul></div><div class="tsd-theme-toggle"><label class="settings-label" for="tsd-theme">Theme</label><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div><details open class="tsd-accordion tsd-page-navigation"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg><h3>On This Page</h3></summary><div class="tsd-accordion-details"><a href="#structure-et-affichage-tableau-spécialisé-lieux-olympiques"><span>Structure et affichage tableau spécialisé lieux olympiques</span></a><ul><li><a href="#📊-architecture-tableau-simplifiée-lieux"><span>📊 <wbr/>Architecture tableau simplifiée lieux</span></a></li><li><a href="#🏷️-en-tête-tableau-avec-métadonnées-dynamiques-lieux"><span>🏷️ <wbr/>En-<wbr/>tête tableau avec métadonnées dynamiques lieux</span></a></li><li><a href="#📋-colonnes-tableau-optimisées-métier-lieux-olympiques"><span>📋 <wbr/>Colonnes tableau optimisées métier lieux olympiques</span></a></li></ul><a href="#gestion-des-états-dinterface-avancée-lieux"><span>Gestion des états d&#39;interface avancée lieux</span></a><ul><li><a href="#⏳-états-de-chargement-multicouches-lieux"><span>⏳ États de chargement multicouches lieux</span></a></li><li><a href="#🚨-gestion-derreurs-contextuelles-lieux"><span>🚨 <wbr/>Gestion d&#39;erreurs contextuelles lieux</span></a></li><li><a href="#🗂️-états-vide-avec-messages-contextuels-intelligents-lieux"><span>🗂️ États vide avec messages contextuels intelligents lieux</span></a></li></ul><a href="#intégration-lignes-et-actions-crud-lieux"><span>Intégration lignes et actions <wbr/>CRUD lieux</span></a><ul><li><a href="#🔄-rendu-dynamique-des-lignes-lieux"><span>🔄 <wbr/>Rendu dynamique des lignes lieux</span></a></li><li><a href="#🔧-actions-tableau-et-callbacks-lieux"><span>🔧 <wbr/>Actions tableau et callbacks lieux</span></a></li></ul><a href="#responsive-design-et-accessibilité-lieux"><span>Responsive design et accessibilité lieux</span></a><ul><li><a href="#📱-adaptation-multi-supports-lieux"><span>📱 <wbr/>Adaptation multi-<wbr/>supports lieux</span></a></li><li><a href="#♿-standards-accessibilité-tableau-lieux"><span>♿ <wbr/>Standards accessibilité tableau lieux</span></a></li></ul><a href="#intégrations-et-dépendances-lieux"><span>Intégrations et dépendances lieux</span></a><ul><li><a href="#🔌-composants-intégrés-spécialisés-lieux"><span>🔌 <wbr/>Composants intégrés spécialisés lieux</span></a></li><li><a href="#📡-communication-parent-enfant-optimisée-lieux"><span>📡 <wbr/>Communication parent-<wbr/>enfant optimisée lieux</span></a></li></ul><a href="#performance-et-optimisations-lieux"><span>Performance et optimisations lieux</span></a><ul><li><a href="#⚡-optimisations-de-rendu-actuelles"><span>⚡ <wbr/>Optimisations de rendu actuelles</span></a></li><li><a href="#🎯-candidats-optimisation-avancée-lieux"><span>🎯 <wbr/>Candidats optimisation avancée lieux</span></a></li></ul><a href="#spécificités-métier-lieux-olympiques"><span>Spécificités métier lieux olympiques</span></a><ul><li><a href="#🏅-contexte-olympic-games-administration-lieux"><span>🏅 <wbr/>Contexte <wbr/>Olympic <wbr/>Games administration lieux</span></a></li><li><a href="#📊-types-de-données-lieux-gérées"><span>📊 <wbr/>Types de données lieux gérées</span></a></li></ul><a href="#gestion-derreurs-et-edge-cases-lieux"><span>Gestion d&#39;erreurs et edge cases lieux</span></a><ul><li><a href="#🛡️-robustesse-et-cas-limites"><span>🛡️ <wbr/>Robustesse et cas limites</span></a></li><li><a href="#🔄-recovery-et-états-de-récupération"><span>🔄 <wbr/>Recovery et états de récupération</span></a></li></ul><a href="#améliorations-et-extensions-futures"><span>Améliorations et extensions futures</span></a><ul><li><a href="#🚀-fonctionnalités-avancées-possibles"><span>🚀 <wbr/>Fonctionnalités avancées possibles</span></a></li><li><a href="#📊-enrichissements-données-lieux"><span>📊 <wbr/>Enrichissements données lieux</span></a></li><li><a href="#🔧-optimisations-techniques-avancées"><span>🔧 <wbr/>Optimisations techniques avancées</span></a></li></ul></div></details></div><div class="site-menu"><nav class="tsd-navigation"><a href="../modules.html">AdminJO Front - Documentation API - v0.1.0</a><ul class="tsd-small-nested-navigation" id="tsd-nav-container"><li>Loading...</li></ul></nav></div></div></div><footer><p class="tsd-generator">Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></footer><div class="overlay"></div></body></html>

@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import {JSX, useEffect, useState} from 'react';
 import {Offre} from "@/types/offre/offre";
 
 interface Props {
@@ -9,13 +9,181 @@ interface Props {
   offre?: Offre;
 }
 
-export default function OffreModal({
+/**
+ * Composant OffresModal - Modal de création/édition des offres olympiques AdminJO
+ *
+ * @name OffreModal
+ *
+ * Ce composant fournit une interface modale complète pour la création et la modification
+ * des offres sportives des Jeux Olympiques. Il gère deux modes distincts (création/édition)
+ * avec validation temps réel, contrôles numériques avancés, et UX optimisée pour la saisie
+ * de données complexes. Il inclut des champs spécialisés avec boutons d'ajustement et
+ * validation intelligente des formats.
+ *
+ * ## Fonctionnalités principales
+ *
+ * ### Dual-mode : Création et Édition
+ * - **Mode création** : offre === undefined, formulaire vide avec valeurs par défaut
+ * - **Mode édition** : offre fournie, formulaire pré-rempli avec données existantes
+ * - **Titre dynamique** : "Créer une nouvelle offre" vs "Modifier l'offre"
+ * - **Bouton contextuel** : "Créer" vs "Modifier" selon le mode
+ * - **États de chargement** : "Création..." vs "Modification..." pendant traitement
+ *
+ * ### Formulaire complet avec validation
+ * - **Libellé offre** : Champ texte requis pour nom de l'offre
+ * - **Description** : Champ texte pour détails de l'offre
+ * - **Nombre de personnes** : Contrôle numérique avec boutons +/- et validation
+ * - **Montant** : Contrôle monétaire avec symbole € et format décimal
+ * - **Validation temps réel** : Contrôles immédiats lors de la saisie
+ *
+ * ### Contrôles numériques avancés
+ * - **Boutons d'ajustement** : +/- pour nombre de personnes et montant
+ * - **Validation saisie** : Regex pour formats autorisés
+ * - **Valeurs minimales** : nb_personne >= 1, montant >= 0
+ * - **Formatage automatique** : Montant avec 2 décimales au blur
+ * - **États séparés** : String inputs pour contrôle précis, number values pour données
+ *
+ * ## Architecture des données et état
+ *
+ * ### Structure d'état complexe
+ * - **formData** : Objet Offre principal avec données finales
+ * - **nbPersonneInput** : String pour contrôle field nombre de personnes
+ * - **montantInput** : String pour contrôle field montant avec décimales
+ * - **Synchronisation** : Inputs string ↔ formData number values
+ * - **Séparation concerns** : Affichage vs données métier
+ *
+ * ### useEffect d'initialisation
+ * - **Déclencheurs** : offre et isOpen changes
+ * - **Mode édition** : Pré-remplissage avec toutes propriétés offre
+ * - **Mode création** : Reset complet avec valeurs par défaut
+ * - **Formatage** : Conversion number → string pour inputs
+ * - **Synchronisation** : Cohérence entre tous les états
+ *
+ * ## Champs de formulaire spécialisés
+ *
+ * ### Champ Libellé (nom de l'offre)
+ * - **Type** : Input text standard
+ * - **Validation** : Required, contrôlé par attribut HTML et submit handler
+ * - **Placeholder** : "libellé de l'offre" pour guidance utilisateur
+ * - **Style** : Focus ring bleu cohérent avec design system
+ * - **Binding** : Liaison bidirectionnelle avec formData.libelle
+ *
+ * ### Champ Description
+ * - **Type** : Input text étendu
+ * - **Validation** : Required pour cohérence métier
+ * - **Placeholder** : "description de l'offre" pour clarté
+ * - **Usage** : Détails complémentaires sur l'offre sportive
+ * - **Binding** : Liaison avec formData.description
+ *
+ * ### Champ Nombre de personnes (contrôle avancé)
+ * - **Interface** : Input central avec boutons -/+ de chaque côté
+ * - **Validation saisie** : Regex /^\d+$/ pour entiers positifs uniquement
+ * - **Ajustement** : Boutons -1/+1 avec minimum absolu à 1
+ * - **Auto-correction** : onBlur reset à 1 si valeur invalide ou vide
+ * - **États** : nbPersonneInput (string) ↔ formData.nb_personne (number)
+ *
+ * ### Champ Montant (contrôle monétaire)
+ * - **Interface** : Input avec symbole € à gauche et boutons -/+ ajustement
+ * - **Validation saisie** : Regex /^\d*\.?\d{0,2}$/ pour décimales max 2
+ * - **Ajustement** : Boutons -0.50/+0.50 pour incréments monétaires
+ * - **Formatage** : onBlur conversion vers format XX.XX automatique
+ * - **Minimum** : Montant >= 0, pas de valeurs négatives
+ * - **États** : montantInput (string) ↔ formData.montant (number)
+ * - **Position € symbol** : absolute left-3 pour alignement parfait
+ * - **Placeholder** : "0.00" pour indication format attendu
+ *
+ * ## Gestion des interactions utilisateur
+ *
+ * ### Saisie clavier et validation
+ * - **Temps réel** : Validation onChange pour feedback immédiat
+ * - **Formats stricts** : Regex bloquent caractères non autorisés
+ * - **onBlur corrections** : Auto-formatage et corrections valeurs
+ * - **Required fields** : Libellé obligatoire pour soumission
+ * - **Submit validation** : Vérification nb_personne > 0 avant envoi
+ *
+ * ### Contrôles boutons d'ajustement
+ * - **Nb personnes** : adjustNbPersonne(-1/+1) avec minimum 1
+ * - **Montant** : adjustMontant(-0.50/+0.50) avec minimum 0
+ * - **Protection** : Math.max() pour éviter valeurs négatives
+ * - **Synchronisation** : Mise à jour simultanée input et formData
+ * - **États loading** : Boutons disabled pendant opérations
+ *
+ * ### Soumission et validation finale
+ * - **Prérequis** : libelle.trim() non vide ET nb_personne > 0
+ * - **Callback** : onSave(formData) avec objet Offre complet
+ * - **Prévention** : e.preventDefault() pour contrôler soumission
+ * - **États** : Bouton submit disabled si validation échoue
+ *
+ * ## Gestion des états et lifecycle
+ *
+ * ### Cycle de vie modal
+ * - **Ouverture** : isOpen true → Modal s'affiche avec données
+ * - **Initialisation** : useEffect reset/populate selon mode
+ * - **Interactions** : Saisie utilisateur avec validation continue
+ * - **Soumission** : onSave callback avec données validées
+ * - **Fermeture** : isOpen false → Modal masquée, état préservé
+ *
+ * ### États de chargement
+ * - **loading prop** : Contrôle états pendant opérations serveur
+ * - **Boutons disabled** : Tous contrôles désactivés si loading
+ * - **Labels dynamiques** : "Création..." vs "Modification..." pendant traitement
+ * - **UX** : Prévention double-soumission et feedback visuel
+ *
+ * ### Nettoyage et reset
+ * - **Mode création** : Reset complet formData, inputs vides/défaut
+ * - **Mode édition** : Population avec données offre existante
+ * - **Formatage cohérent** : String inputs synchronisés avec number data
+ * - **Pas de memory leaks** : useEffect cleanup automatique
+ *
+ * ## Validation et sécurité
+ *
+ * ### Validation côté client
+ * - **Champs requis** : libelle et description obligatoires
+ * - **Formats numériques** : Regex strictes pour nb_personne et montant
+ * - **Valeurs minimales** : nb_personne >= 1, montant >= 0
+ * - **Longueur** : Pas de limite explicite mais validation serveur attendue
+ * - **Sanitization** : trim() sur libelle pour éviter espaces
+ *
+ * ### Sécurité saisie
+ * - **Input sanitization** : Regex bloquent caractères dangereux
+ * - **Type safety** : Interface Props et Offre pour typage strict
+ * - **Validation continue** : Contrôles temps réel et onBlur
+ * - **Protection XSS** : React échappe automatiquement valeurs
+ *
+ * ## Performance et optimisations
+ *
+ * ### ⚡ Optimisations actuelles
+ * - **Conditional rendering** : if (!isOpen) return null pour performance
+ * - **État local** : Pas de props drilling, gestion autonome
+ * - **Regex précompilées** : Patterns de validation réutilisés
+ * - **Minimal re-renders** : useState ciblés par fonctionnalité
+ *
+ * ### Gestion mémoire
+ * - **useEffect cleanup** : Dépendances [offre, isOpen] optimisées
+ * - **Pas de timers** : Pas de setTimeout/setInterval à nettoyer
+ * - **Event handlers** : Fonctions inline stables
+ * - **Form state** : Reset propre entre ouvertures
+ *
+ * @param {Props} props - Configuration de la modal des offres
+ * @param {boolean} props.isOpen - Contrôle la visibilité de la modal
+ * @param {Function} props.onClose - Callback de fermeture de la modal
+ * @param {Function} props.onSave - Callback de sauvegarde avec données offre
+ * @param {boolean} props.loading - État de chargement pour désactiver contrôles
+ * @param {Offre} [props.offre] - Offre à éditer (undefined = mode création)
+ *
+ * @returns {JSX.Element | null} Modal de création/édition ou null si fermée
+ *
+ * @see {@link OffresManagement} - Composant parent gérant cette modal
+ * @see {@link Offre} - Interface TypeScript des données d'offre
+ *
+ */
+export function OffreModal({
                                      isOpen,
                                      onClose,
                                      onSave,
                                      loading,
                                      offre
-                                   }: Props) {
+                                   }: Props): JSX.Element | null {
   const [formData, setFormData] = useState<Offre>({
     id: 0,
     libelle: '',
@@ -242,3 +410,4 @@ export default function OffreModal({
     </div>
   );
 }
+export default OffreModal;

@@ -1,13 +1,43 @@
 'use client';
 
+import {JSX} from "react";
+
 interface EmployesHeaderProps {
   onAddEmploye?: () => void;
 }
 
 /**
- * En-tête de la page de gestion des employés
+ * Composant EmployesHeader - En-tête de gestion des employés AdminJO
+ *
+ * @name EmployesHeader
+ *
+ * Ce composant fournit l'interface d'en-tête pour la section de gestion des employés.
+ * Il affiche le titre de la page, une description et le bouton d'ajout d'un nouvel employé.
+ * Il suit les standards de design du système AdminJO avec une mise en page responsive.
+ *
+ * ## Fonctionnalités réellement implémentées
+ *
+ * ### Titre et identification de page
+ * - **Titre principal** : "Gestion des Employés" avec typographie hiérarchisée
+ * - **Icône contextuelle** : Emoji homme d'affaires (👨‍💼) pour identification visuelle
+ * - **Description** : Sous-titre explicatif du contenu de la page
+ *
+ * ### Action d'ajout d'employé
+ * - **Bouton principal** : Action d'ajout avec style primaire bleu
+ * - **Callback optionnel** : onAddEmploye peut être undefined
+ *
+ *
+ * @param {EmployesHeaderProps} props - Configuration de l'en-tête des employés
+ * @param {Function} [props.onAddEmploye] - Callback optionnel pour l'ajout d'employé
+ *
+ * @returns {JSX.Element} En-tête responsive avec titre, description et action d'ajout
+ *
+ * @see {@link EmployesManagement} - Composant parent gérant la liste complète
+ * @see {@link CreateEmployeForm} - Formulaire déclenché par le bouton d'ajout
+ * @see {@link Employe} - Type des données employé gérées
+ *
  */
-export default function EmployesHeader({ onAddEmploye }: EmployesHeaderProps) {
+export function EmployesHeader({ onAddEmploye }: EmployesHeaderProps): JSX.Element {
   return (
     <div className="bg-white shadow-sm border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -45,3 +75,4 @@ export default function EmployesHeader({ onAddEmploye }: EmployesHeaderProps) {
     </div>
   );
 }
+export default EmployesHeader;

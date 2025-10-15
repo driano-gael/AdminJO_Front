@@ -1,0 +1,136 @@
+<!DOCTYPE html><html class="default" lang="en" data-base="../"><head><meta charset="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>default | AdminJO Front - Documentation API - v0.1.0</title><meta name="description" content="Documentation for AdminJO Front - Documentation API"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="../assets/style.css"/><link rel="stylesheet" href="../assets/highlight.css"/><script defer src="../assets/main.js"></script><script async src="../assets/icons.js" id="tsd-icons-script"></script><script async src="../assets/search.js" id="tsd-search-script"></script><script async src="../assets/navigation.js" id="tsd-nav-script"></script><script async src="../assets/hierarchy.js" id="tsd-hierarchy-script"></script></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os";document.body.style.display="none";setTimeout(() => window.app?app.showPage():document.body.style.removeProperty("display"),500)</script><header class="tsd-page-toolbar"><div class="tsd-toolbar-contents container"><a href="../index.html" class="title">AdminJO Front - Documentation API - v0.1.0</a><div id="tsd-toolbar-links"></div><button id="tsd-search-trigger" class="tsd-widget" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-search"></use></svg></button><dialog id="tsd-search" aria-label="Search"><input role="combobox" id="tsd-search-input" aria-controls="tsd-search-results" aria-autocomplete="list" aria-expanded="true" autocapitalize="off" autocomplete="off" placeholder="Search the docs" maxLength="100"/><ul role="listbox" id="tsd-search-results"></ul><div id="tsd-search-status" aria-live="polite" aria-atomic="true"><div>Preparing search index...</div></div></dialog><a href="#" class="tsd-widget menu" id="tsd-toolbar-menu-trigger" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-menu"></use></svg></a></div></header><div class="container container-main"><div class="col-content"><div class="tsd-page-title"><ul class="tsd-breadcrumb" aria-label="Breadcrumb"><li><a href="../modules/components_componentEmploye_EmployesManagement.html">components/componentEmploye/EmployesManagement</a></li><li><a href="" aria-current="page">default</a></li></ul><h1>Function default</h1></div><section class="tsd-panel"><ul class="tsd-signatures"><li class=""><div class="tsd-signature tsd-anchor-link" id="default"><span class="tsd-kind-call-signature">default</span><span class="tsd-signature-symbol">()</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Element</span><a href="#default" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div><div class="tsd-description"><div class="tsd-comment tsd-typography"><p>Composant EmployesManagement - Orchestrateur de gestion des employés AdminJO</p>
+<p>Ce composant principal coordonne l'ensemble de l'interface de gestion des employés,
+intégrant la recherche, l'affichage tabulaire, la création et les actions d'activation.
+Il gère l'état global de la section employés et orchestre les interactions entre
+les sous-composants spécialisés pour fournir une expérience utilisateur cohérente.</p>
+<h2 id="fonctionnalités-réellement-implémentées" class="tsd-anchor-link">Fonctionnalités réellement implémentées<a href="#fonctionnalités-réellement-implémentées" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="🎛️-orchestration-des-composants-enfants" class="tsd-anchor-link">🎛️ Orchestration des composants enfants<a href="#🎛️-orchestration-des-composants-enfants" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Header</strong> : EmployesHeader avec bouton d'ajout</li>
+<li><strong>Recherche</strong> : EmployesSearchAndFilters avec état partagé</li>
+<li><strong>Table</strong> : EmployesTable avec données filtrées et actions</li>
+<li><strong>Formulaire</strong> : CreateEmployeForm en modal conditionnelle</li>
+<li><strong>Notifications</strong> : Système de feedback utilisateur</li>
+</ul>
+<h3 id="🔄-gestion-détat-centralisée" class="tsd-anchor-link">🔄 Gestion d'état centralisée<a href="#🔄-gestion-détat-centralisée" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Hook principal</strong> : useEmployesManagement pour logique métier</li>
+<li><strong>État UI local</strong> : notification et showCreateForm</li>
+<li><strong>Synchronisation</strong> : États partagés entre composants enfants</li>
+<li><strong>Session</strong> : useSessionExpiry pour sécurité automatique</li>
+<li><strong>Réactivité</strong> : Mise à jour automatique des vues</li>
+</ul>
+<h3 id="📊-flux-de-données-employés" class="tsd-anchor-link">📊 Flux de données employés<a href="#📊-flux-de-données-employés" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Chargement</strong> : loadEmployes() au montage et refresh</li>
+<li><strong>Recherche</strong> : handleSearch avec état searchTerm partagé</li>
+<li><strong>Filtrage</strong> : handleStatusFilter avec statusFilter</li>
+<li><strong>Actions</strong> : toggleEmployeActive avec refresh automatique</li>
+<li><strong>Création</strong> : createEmploye avec gestion success/error</li>
+</ul>
+<h3 id="💬-système-de-notifications-intégré" class="tsd-anchor-link">💬 Système de notifications intégré<a href="#💬-système-de-notifications-intégré" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Success</strong> : &quot;Employé créé avec succès !&quot; en vert</li>
+<li><strong>Error</strong> : &quot;Erreur lors de la création de l'employé&quot; en rouge</li>
+<li><strong>Auto-dismiss</strong> : Fermeture manuelle via onClose</li>
+<li><strong>Positionnement</strong> : Notification flottante non-bloquante</li>
+</ul>
+<h2 id="architecture-et-composition" class="tsd-anchor-link">Architecture et composition<a href="#architecture-et-composition" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="🏗️-structure-de-layout" class="tsd-anchor-link">🏗️ Structure de layout<a href="#🏗️-structure-de-layout" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Container principal</strong> : min-h-screen bg-base-200 full viewport</li>
+<li><strong>Header fixe</strong> : EmployesHeader en dehors du main</li>
+<li><strong>Content area</strong> : max-w-7xl mx-auto avec padding responsive</li>
+<li><strong>Espacement</strong> : space-y-6 entre sections principales</li>
+<li><strong>Responsive</strong> : px-4 sm:px-6 lg:px-8 selon breakpoints</li>
+</ul>
+<h3 id="🔗-intégration-des-hooks" class="tsd-anchor-link">🔗 Intégration des hooks<a href="#🔗-intégration-des-hooks" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>useEmployesManagement</strong> : Hook principal avec toute la logique</li>
+<li><strong>useSessionExpiry</strong> : Sécurité session en arrière-plan</li>
+<li><strong>useState local</strong> : Seulement pour UI (notification, modal)</li>
+<li><strong>Pas de useEffect</strong> : Logique déléguée aux hooks spécialisés</li>
+</ul>
+<h3 id="📱-gestion-responsive" class="tsd-anchor-link">📱 Gestion responsive<a href="#📱-gestion-responsive" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Mobile</strong> : Layout vertical avec padding réduit</li>
+<li><strong>Tablet</strong> : Padding intermédiaire (sm:px-6)</li>
+<li><strong>Desktop</strong> : Padding maximal (lg:px-8) et largeur max-w-7xl</li>
+<li><strong>Breakpoints</strong> : Utilisation des breakpoints Tailwind standards</li>
+</ul>
+<h2 id="flux-dinteraction-utilisateur" class="tsd-anchor-link">Flux d'interaction utilisateur<a href="#flux-dinteraction-utilisateur" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="➕-création-demployé" class="tsd-anchor-link">➕ Création d'employé<a href="#➕-création-demployé" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ol>
+<li><strong>Clic</strong> &quot;Ajouter un employé&quot; → setShowCreateForm(true)</li>
+<li><strong>Affichage</strong> CreateEmployeForm en modal overlay</li>
+<li><strong>Soumission</strong> handleCreateEmploye avec validation</li>
+<li><strong>Success</strong> → notification + fermeture modal + refresh liste</li>
+<li><strong>Error</strong> → notification d'erreur + modal reste ouverte</li>
+</ol>
+<h3 id="🔍-recherche-et-filtrage" class="tsd-anchor-link">🔍 Recherche et filtrage<a href="#🔍-recherche-et-filtrage" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ol>
+<li><strong>Saisie</strong> dans EmployesSearchAndFilters</li>
+<li><strong>Callback</strong> handleSearch/handleStatusFilter</li>
+<li><strong>État partagé</strong> searchTerm/statusFilter mis à jour</li>
+<li><strong>Propagation</strong> vers EmployesTable pour re-filtrage</li>
+<li><strong>Affichage</strong> résultats filtrés en temps réel</li>
+</ol>
+<h3 id="⚡-actions-sur-employés" class="tsd-anchor-link">⚡ Actions sur employés<a href="#⚡-actions-sur-employés" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ol>
+<li><strong>Clic</strong> bouton toggle dans EmployesTable</li>
+<li><strong>Callback</strong> toggleEmployeActive(employeId)</li>
+<li><strong>API call</strong> gérée par useEmployesManagement</li>
+<li><strong>Refresh</strong> automatique de la liste</li>
+<li><strong>Feedback</strong> visuel immédiat dans le tableau</li>
+</ol>
+<h2 id="états-et-conditions-daffichage" class="tsd-anchor-link">États et conditions d'affichage<a href="#états-et-conditions-daffichage" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="🎨-rendu-conditionnel" class="tsd-anchor-link">🎨 Rendu conditionnel<a href="#🎨-rendu-conditionnel" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>CreateForm</strong> : {showCreateForm &amp;&amp; <CreateEmployeForm />}</li>
+<li><strong>Notification</strong> : {notification &amp;&amp; <Notification />}</li>
+<li><strong>Loading/Error</strong> : Gérés dans EmployesTable</li>
+<li><strong>Empty state</strong> : Géré dans EmployesTable</li>
+</ul>
+<h3 id="🔄-cycle-de-vie-des-états" class="tsd-anchor-link">🔄 Cycle de vie des états<a href="#🔄-cycle-de-vie-des-états" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Initial</strong> : showCreateForm=false, notification=null</li>
+<li><strong>Création</strong> : showCreateForm=true → isLoading → success/error → reset</li>
+<li><strong>Notification</strong> : message → auto-remain → manual dismiss</li>
+<li><strong>Refresh</strong> : loading=true → data → loading=false</li>
+</ul>
+<h2 id="performance-et-optimisation" class="tsd-anchor-link">Performance et optimisation<a href="#performance-et-optimisation" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="⚡-optimisations-implémentées" class="tsd-anchor-link">⚡ Optimisations implémentées<a href="#⚡-optimisations-implémentées" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Hook centralisé</strong> : Logique métier dans useEmployesManagement</li>
+<li><strong>État minimal</strong> : Seulement UI state en local</li>
+<li><strong>Composants purs</strong> : Enfants sans état pour performance</li>
+<li><strong>Conditional rendering</strong> : Pas de composants cachés inutiles</li>
+</ul>
+<h3 id="🎯-points-doptimisation-possibles" class="tsd-anchor-link">🎯 Points d'optimisation possibles<a href="#🎯-points-doptimisation-possibles" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>React.memo</strong> : Mémoisation des composants enfants stables</li>
+<li><strong>useCallback</strong> : Stabilité des callbacks si re-renders fréquents</li>
+<li><strong>Lazy loading</strong> : Import dynamique du CreateEmployeForm</li>
+<li><strong>Virtualization</strong> : Si liste employés très longue</li>
+</ul>
+<h2 id="gestion-des-erreurs" class="tsd-anchor-link">Gestion des erreurs<a href="#gestion-des-erreurs" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="🛡️-stratégies-derreur" class="tsd-anchor-link">🛡️ Stratégies d'erreur<a href="#🛡️-stratégies-derreur" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>API errors</strong> : Gérées dans useEmployesManagement</li>
+<li><strong>UI errors</strong> : Try/catch dans handleCreateEmploye</li>
+<li><strong>Network errors</strong> : Retry via refresh button</li>
+<li><strong>Validation errors</strong> : Gérées dans CreateEmployeForm</li>
+</ul>
+<h3 id="📢-communication-derreur" class="tsd-anchor-link">📢 Communication d'erreur<a href="#📢-communication-derreur" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Notifications</strong> : Messages d'erreur via système notification</li>
+<li><strong>Table errors</strong> : Affichage dédié dans EmployesTable</li>
+<li><strong>Form errors</strong> : Gestion locale dans CreateEmployeForm</li>
+<li><strong>No silent fails</strong> : Toute erreur communiquée à l'utilisateur</li>
+</ul>
+<h2 id="limitations-actuelles" class="tsd-anchor-link">Limitations actuelles<a href="#limitations-actuelles" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="❌-fonctionnalités-non-implémentées" class="tsd-anchor-link">❌ Fonctionnalités non implémentées<a href="#❌-fonctionnalités-non-implémentées" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Pagination</strong> : Pas de gestion de grandes listes</li>
+<li><strong>Actions groupées</strong> : Pas de sélection multiple</li>
+<li><strong>Import/Export</strong> : Pas de fonctions d'import CSV/Excel</li>
+<li><strong>Historique</strong> : Pas de log des actions sur employés</li>
+<li><strong>Permissions</strong> : Pas de contrôle d'accès granulaire</li>
+<li><strong>Offline</strong> : Pas de gestion mode hors-ligne</li>
+</ul>
+<h3 id="🔧-améliorations-possibles" class="tsd-anchor-link">🔧 Améliorations possibles<a href="#🔧-améliorations-possibles" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Pagination avancée</strong> : Pagination côté serveur pour performance</li>
+<li><strong>Actions bulk</strong> : Sélection multiple avec actions groupées</li>
+<li><strong>Export filtré</strong> : Export CSV des résultats de recherche</li>
+<li><strong>Audit trail</strong> : Historique des modifications d'employés</li>
+<li><strong>Permissions UI</strong> : Interface selon rôle utilisateur</li>
+<li><strong>Auto-save</strong> : Sauvegarde automatique des brouillons</li>
+<li><strong>Drag &amp; drop</strong> : Upload de photos ou fichiers</li>
+</ul>
+</div><h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Element</span></h4><p>Interface complète de gestion des employés avec tous les sous-composants</p>
+<div class="tsd-comment tsd-typography"><div class="tsd-tag-see"><h4 class="tsd-anchor-link" id="see">See<a href="#see" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><ul>
+<li><a href="hooks_useEmployesManagement.useEmployesManagement.html" class="tsd-kind-function">useEmployesManagement</a> - Hook principal contenant la logique métier</li>
+<li><a href="components_componentEmploye_EmployesHeader.default.html" class="tsd-kind-function">EmployesHeader</a> - En-tête avec titre et bouton d'ajout</li>
+<li><a href="components_componentEmploye_EmployesSearchAndFilters.default.html" class="tsd-kind-function">EmployesSearchAndFilters</a> - Interface de recherche et filtrage</li>
+<li><a href="components_componentEmploye_EmployesTable.default.html" class="tsd-kind-function">EmployesTable</a> - Table d'affichage avec actions</li>
+<li><a href="components_componentEmploye_CreateEmployeForm.default.html" class="tsd-kind-function">CreateEmployeForm</a> - Formulaire de création en modal</li>
+<li><a href="hooks_useSessionExpiry.useSessionExpiry.html" class="tsd-kind-function">useSessionExpiry</a> - Gestion automatique de l'expiration session</li>
+</ul>
+</div><div class="tsd-tag-since"><h4 class="tsd-anchor-link" id="since">Since<a href="#since" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p>1.0.0</p>
+</div></div><aside class="tsd-sources"><ul><li>Defined in <a href="https://github.com/driano-gael/AdminJO_Front/blob/main/application/src/components/componentEmploye/EmployesManagement.tsx#L166">components/componentEmploye/EmployesManagement.tsx:166</a></li></ul></aside></div></li></ul></section></div><div class="col-sidebar"><div class="page-menu"><div class="tsd-navigation settings"><details class="tsd-accordion"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg><h3>Settings</h3></summary><div class="tsd-accordion-details"><div class="tsd-filter-visibility"><span class="settings-label">Member Visibility</span><ul id="tsd-filter-options"><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-protected" name="protected"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Protected</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li></ul></div><div class="tsd-theme-toggle"><label class="settings-label" for="tsd-theme">Theme</label><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div><details open class="tsd-accordion tsd-page-navigation"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg><h3>On This Page</h3></summary><div class="tsd-accordion-details"><a href="#fonctionnalités-réellement-implémentées"><span>Fonctionnalités réellement implémentées</span></a><ul><li><a href="#🎛️-orchestration-des-composants-enfants"><span>🎛️ <wbr/>Orchestration des composants enfants</span></a></li><li><a href="#🔄-gestion-détat-centralisée"><span>🔄 <wbr/>Gestion d&#39;état centralisée</span></a></li><li><a href="#📊-flux-de-données-employés"><span>📊 <wbr/>Flux de données employés</span></a></li><li><a href="#💬-système-de-notifications-intégré"><span>💬 <wbr/>Système de notifications intégré</span></a></li></ul><a href="#architecture-et-composition"><span>Architecture et composition</span></a><ul><li><a href="#🏗️-structure-de-layout"><span>🏗️ <wbr/>Structure de layout</span></a></li><li><a href="#🔗-intégration-des-hooks"><span>🔗 <wbr/>Intégration des hooks</span></a></li><li><a href="#📱-gestion-responsive"><span>📱 <wbr/>Gestion responsive</span></a></li></ul><a href="#flux-dinteraction-utilisateur"><span>Flux d&#39;interaction utilisateur</span></a><ul><li><a href="#➕-création-demployé"><span>➕ <wbr/>Création d&#39;employé</span></a></li><li><a href="#🔍-recherche-et-filtrage"><span>🔍 <wbr/>Recherche et filtrage</span></a></li><li><a href="#⚡-actions-sur-employés"><span>⚡ <wbr/>Actions sur employés</span></a></li></ul><a href="#états-et-conditions-daffichage"><span>États et conditions d&#39;affichage</span></a><ul><li><a href="#🎨-rendu-conditionnel"><span>🎨 <wbr/>Rendu conditionnel</span></a></li><li><a href="#🔄-cycle-de-vie-des-états"><span>🔄 <wbr/>Cycle de vie des états</span></a></li></ul><a href="#performance-et-optimisation"><span>Performance et optimisation</span></a><ul><li><a href="#⚡-optimisations-implémentées"><span>⚡ <wbr/>Optimisations implémentées</span></a></li><li><a href="#🎯-points-doptimisation-possibles"><span>🎯 <wbr/>Points d&#39;optimisation possibles</span></a></li></ul><a href="#gestion-des-erreurs"><span>Gestion des erreurs</span></a><ul><li><a href="#🛡️-stratégies-derreur"><span>🛡️ <wbr/>Stratégies d&#39;erreur</span></a></li><li><a href="#📢-communication-derreur"><span>📢 <wbr/>Communication d&#39;erreur</span></a></li></ul><a href="#limitations-actuelles"><span>Limitations actuelles</span></a><ul><li><a href="#❌-fonctionnalités-non-implémentées"><span>❌ <wbr/>Fonctionnalités non implémentées</span></a></li><li><a href="#🔧-améliorations-possibles"><span>🔧 <wbr/>Améliorations possibles</span></a></li></ul></div></details></div><div class="site-menu"><nav class="tsd-navigation"><a href="../modules.html">AdminJO Front - Documentation API - v0.1.0</a><ul class="tsd-small-nested-navigation" id="tsd-nav-container"><li>Loading...</li></ul></nav></div></div></div><footer><p class="tsd-generator">Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></footer><div class="overlay"></div></body></html>

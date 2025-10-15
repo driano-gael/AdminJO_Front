@@ -1,0 +1,78 @@
+<!DOCTYPE html><html class="default" lang="en" data-base="../"><head><meta charset="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>EpreuvesPage | AdminJO Front - Documentation API - v0.1.0</title><meta name="description" content="Documentation for AdminJO Front - Documentation API"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="../assets/style.css"/><link rel="stylesheet" href="../assets/highlight.css"/><script defer src="../assets/main.js"></script><script async src="../assets/icons.js" id="tsd-icons-script"></script><script async src="../assets/search.js" id="tsd-search-script"></script><script async src="../assets/navigation.js" id="tsd-nav-script"></script><script async src="../assets/hierarchy.js" id="tsd-hierarchy-script"></script></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os";document.body.style.display="none";setTimeout(() => window.app?app.showPage():document.body.style.removeProperty("display"),500)</script><header class="tsd-page-toolbar"><div class="tsd-toolbar-contents container"><a href="../index.html" class="title">AdminJO Front - Documentation API - v0.1.0</a><div id="tsd-toolbar-links"></div><button id="tsd-search-trigger" class="tsd-widget" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-search"></use></svg></button><dialog id="tsd-search" aria-label="Search"><input role="combobox" id="tsd-search-input" aria-controls="tsd-search-results" aria-autocomplete="list" aria-expanded="true" autocapitalize="off" autocomplete="off" placeholder="Search the docs" maxLength="100"/><ul role="listbox" id="tsd-search-results"></ul><div id="tsd-search-status" aria-live="polite" aria-atomic="true"><div>Preparing search index...</div></div></dialog><a href="#" class="tsd-widget menu" id="tsd-toolbar-menu-trigger" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-menu"></use></svg></a></div></header><div class="container container-main"><div class="col-content"><div class="tsd-page-title"><ul class="tsd-breadcrumb" aria-label="Breadcrumb"><li><a href="../modules/EpreuvesPage.html">EpreuvesPage</a></li><li><a href="" aria-current="page">EpreuvesPage</a></li></ul><h1>Function EpreuvesPage</h1></div><section class="tsd-panel"><ul class="tsd-signatures"><li class=""><div class="tsd-signature tsd-anchor-link" id="epreuvespage"><span class="tsd-kind-call-signature">EpreuvesPage</span><span class="tsd-signature-symbol">()</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Element</span><a href="#epreuvespage" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div><div class="tsd-description"><div class="tsd-comment tsd-typography"><p>Composant de la page de gestion des épreuves</p>
+</div><h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Element</span></h4><p>Page complète de gestion des épreuves avec interface CRUD et filtrage</p>
+<div class="tsd-comment tsd-typography"><div class="tsd-tag-name"><h4 class="tsd-anchor-link" id="name">Name<a href="#name" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p>EpreuvesPage</p>
+<p>Cette page offre une interface complète pour l'administration des épreuves sportives
+des JO 2024. Elle permet la gestion CRUD complète avec recherche textuelle,
+filtrage par discipline et interface modale pour la création/modification.</p>
+<h2 id="fonctionnalités-réellement-implémentées" class="tsd-anchor-link">Fonctionnalités réellement implémentées<a href="#fonctionnalités-réellement-implémentées" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="gestion-complète-des-épreuves-crud" class="tsd-anchor-link">Gestion complète des épreuves (CRUD)<a href="#gestion-complète-des-épreuves-crud" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Affichage de liste</strong> : Consultation des épreuves existantes dans un tableau</li>
+<li><strong>Création d'épreuves</strong> : Formulaire modal pour ajouter de nouvelles épreuves</li>
+<li><strong>Modification d'épreuves</strong> : Édition des épreuves existantes via modal</li>
+<li><strong>Suppression d'épreuves</strong> : Suppression avec confirmation utilisateur</li>
+</ul>
+<h3 id="recherche-et-filtrage" class="tsd-anchor-link">Recherche et filtrage<a href="#recherche-et-filtrage" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Recherche textuelle</strong> : Recherche par libellé d'épreuve ou autres critères</li>
+<li><strong>Filtre par discipline</strong> : Sélection d'une discipline sportive spécifique</li>
+<li><strong>Actualisation</strong> : Bouton refresh pour recharger les données avec filtres conservés</li>
+</ul>
+<h3 id="interface-utilisateur" class="tsd-anchor-link">Interface utilisateur<a href="#interface-utilisateur" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>En-tête avec bouton d'ajout</strong> : Header avec action de création d'épreuve</li>
+<li><strong>Barre de recherche et filtres</strong> : Outils de recherche et filtrage par discipline</li>
+<li><strong>Tableau des épreuves</strong> : Affichage avec colonnes d'informations et actions</li>
+<li><strong>Modal de saisie</strong> : Formulaire modal pour création et modification</li>
+<li><strong>Notifications</strong> : Messages de succès et d'erreur pour toutes les actions</li>
+</ul>
+<h2 id="structure-des-composants-intégrés" class="tsd-anchor-link">Structure des composants intégrés<a href="#structure-des-composants-intégrés" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="epreuvesheader" class="tsd-anchor-link">EpreuvesHeader<a href="#epreuvesheader" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li>Titre de la section &quot;Gestion des épreuves&quot;</li>
+<li>Bouton &quot;Créer une épreuve&quot; qui ouvre la modal de création</li>
+</ul>
+<h3 id="searchandfilters" class="tsd-anchor-link">SearchAndFilters<a href="#searchandfilters" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li>Champ de recherche textuelle pour filtrer les épreuves</li>
+<li>Sélecteur de filtre par discipline (dropdown avec toutes les disciplines)</li>
+<li>Interface épurée avec réinitialisation possible</li>
+</ul>
+<h3 id="epreuvestable" class="tsd-anchor-link">EpreuvesTable<a href="#epreuvestable" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li>Tableau des épreuves avec colonnes : libellé, discipline, genre, tour</li>
+<li>Boutons d'action pour chaque épreuve (modifier/supprimer)</li>
+<li>Bouton de rafraîchissement des données</li>
+<li>Gestion des états de chargement et d'erreur</li>
+</ul>
+<h3 id="epreuvemodal" class="tsd-anchor-link">EpreuveModal<a href="#epreuvemodal" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li>Formulaire modal pour création et modification</li>
+<li>Validation des champs requis (libellé, discipline, genre, tour)</li>
+<li>Mode création (nouvelle épreuve) ou édition (épreuve existante)</li>
+<li>Sélection de discipline via dropdown</li>
+</ul>
+<h2 id="workflow-utilisateur" class="tsd-anchor-link">Workflow utilisateur<a href="#workflow-utilisateur" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><ol>
+<li><strong>Consultation</strong> : Affichage automatique de la liste des épreuves existantes</li>
+<li><strong>Recherche</strong> : Utilisation de la barre de recherche pour filtrer par libellé</li>
+<li><strong>Filtrage</strong> : Sélection d'une discipline pour afficher ses épreuves uniquement</li>
+<li><strong>Création</strong> : Clic sur &quot;Créer&quot; → modal vierge → saisie → sauvegarde</li>
+<li><strong>Modification</strong> : Clic sur &quot;Modifier&quot; → modal pré-remplie → édition → sauvegarde</li>
+<li><strong>Suppression</strong> : Clic sur &quot;Supprimer&quot; → confirmation → suppression définitive</li>
+<li><strong>Actualisation</strong> : Bouton refresh conservant les filtres actifs</li>
+</ol>
+<h2 id="intégration-technique" class="tsd-anchor-link">Intégration technique<a href="#intégration-technique" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><ul>
+<li><strong>Hook useEpreuvesManagement</strong> : Logique métier et appels API pour toutes les opérations CRUD</li>
+<li><strong>Hook useSessionExpiry</strong> : Gestion automatique de l'expiration de session</li>
+<li><strong>Composant Notification</strong> : Système unifié de notifications utilisateur</li>
+<li><strong>PageTemplate</strong> : Structure de page avec titre, breadcrumbs et intro</li>
+</ul>
+<h2 id="gestion-des-états" class="tsd-anchor-link">Gestion des états<a href="#gestion-des-états" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><ul>
+<li><strong>Loading</strong> : Spinner pendant le chargement des données</li>
+<li><strong>Error</strong> : Affichage des messages d'erreur réseau</li>
+<li><strong>Success</strong> : Notifications de réussite des opérations</li>
+<li><strong>CreateLoading</strong> : États de chargement spécifiques pour la création</li>
+<li><strong>CreateError</strong> : Gestion d'erreurs spécifiques pour la création</li>
+<li><strong>Filtrage</strong> : Persistance des filtres (recherche + discipline) lors du refresh</li>
+</ul>
+</div><div class="tsd-tag-see"><h4 class="tsd-anchor-link" id="see">See<a href="#see" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><ul>
+<li><a href="components_layout_PageTemplate.default.html" class="tsd-kind-function">PageTemplate</a> - Template de page utilisé pour la structure</li>
+<li><a href="components_componentsEvenement_epreuve_EpreuvesManagement.default.html" class="tsd-kind-function">EpreuvesManagement</a> - Composant principal de gestion des épreuves</li>
+<li>EpreuvesHeader - En-tête avec bouton de création</li>
+<li>SearchAndFilters - Outils de recherche et filtrage par discipline</li>
+<li>EpreuvesTable - Tableau d'affichage et d'actions</li>
+<li>EpreuveModal - Modal de création/modification</li>
+<li>useEpreuvesManagement - Hook de gestion des épreuves</li>
+</ul>
+</div></div><aside class="tsd-sources"><ul><li>Defined in <a href="https://github.com/driano-gael/AdminJO_Front/blob/main/application/src/app/pagesEvenements/epreuves/page.tsx#L106">app/pagesEvenements/epreuves/page.tsx:106</a></li></ul></aside></div></li></ul></section></div><div class="col-sidebar"><div class="page-menu"><div class="tsd-navigation settings"><details class="tsd-accordion"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg><h3>Settings</h3></summary><div class="tsd-accordion-details"><div class="tsd-filter-visibility"><span class="settings-label">Member Visibility</span><ul id="tsd-filter-options"><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-protected" name="protected"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Protected</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li></ul></div><div class="tsd-theme-toggle"><label class="settings-label" for="tsd-theme">Theme</label><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div><details open class="tsd-accordion tsd-page-navigation"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg><h3>On This Page</h3></summary><div class="tsd-accordion-details"><a href="#fonctionnalités-réellement-implémentées"><span>Fonctionnalités réellement implémentées</span></a><ul><li><a href="#gestion-complète-des-épreuves-crud"><span>Gestion complète des épreuves (<wbr/>CRUD)</span></a></li><li><a href="#recherche-et-filtrage"><span>Recherche et filtrage</span></a></li><li><a href="#interface-utilisateur"><span>Interface utilisateur</span></a></li></ul><a href="#structure-des-composants-intégrés"><span>Structure des composants intégrés</span></a><ul><li><a href="#epreuvesheader"><span>Epreuves<wbr/>Header</span></a></li><li><a href="#searchandfilters"><span>Search<wbr/>And<wbr/>Filters</span></a></li><li><a href="#epreuvestable"><span>Epreuves<wbr/>Table</span></a></li><li><a href="#epreuvemodal"><span>Epreuve<wbr/>Modal</span></a></li></ul><a href="#workflow-utilisateur"><span>Workflow utilisateur</span></a><a href="#intégration-technique"><span>Intégration technique</span></a><a href="#gestion-des-états"><span>Gestion des états</span></a></div></details></div><div class="site-menu"><nav class="tsd-navigation"><a href="../modules.html">AdminJO Front - Documentation API - v0.1.0</a><ul class="tsd-small-nested-navigation" id="tsd-nav-container"><li>Loading...</li></ul></nav></div></div></div><footer><p class="tsd-generator">Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></footer><div class="overlay"></div></body></html>

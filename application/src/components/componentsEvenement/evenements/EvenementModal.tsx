@@ -20,7 +20,134 @@ interface Props {
   evenement?: Evenement;
 }
 
-export default function EvenementModal({ 
+/**
+ * Composant EvenementModal - Modal avancé de création/édition d'événements sportifs olympiques AdminJO
+ *
+ * @name EvenementModal
+ *
+ * Ce composant fournit une interface modale sophistiquée pour la création et modification d'événements
+ * sportifs olympiques avec sélection d'épreuves hiérarchique par discipline. Il gère deux modes distincts
+ * (création/édition), validation multicritères, chargement dynamique des données relationnelles (lieux,
+ * épreuves), interface de sélection d'épreuves avec arborescence expandable par discipline, et gestion
+ * d'états complexes. Conçu pour l'administration JO 2024 avec UX optimisée pour relations multiples.
+ *
+ * ## Fonctionnalités principales spécialisées événements olympiques
+ *
+ * ### Dual-mode : Création et Édition événements complexes
+ * - **Mode création** : evenement === undefined, formulaire vide avec listes vides
+ * - **Mode édition** : evenement fourni, formulaire pré-rempli + épreuves associées
+ * - **Titre dynamique** : "Créer un nouvel événement" vs "Modifier l'événement"
+ * - **Bouton contextuel** : "Créer" vs "Modifier" selon le mode
+ * - **États de chargement** : "Création..." vs "Modification..." pendant traitement
+ * - **Initialisation différentielle** : Reset vs population selon mode
+ *
+ * ### Formulaire événement complet avec relations
+ * - **Description événement** : Champ texte requis pour nom événement sportif
+ * - **Lieu olympique** : Dropdown obligatoire avec lieux chargés dynamiquement
+ * - **Date événement** : Input date HTML5 pour planning JO 2024
+ * - **Horaire précis** : Input time pour timing exact compétitions
+ * - **Épreuves multiples** : Sélecteur hiérarchique sophistiqué par discipline
+ * - **Validation temps réel** : Contrôles immédiats lors de la saisie
+ *
+ * ### Sélecteur d'épreuves hiérarchique avancé (fonctionnalité unique)
+ * - **Organisation par discipline** : Épreuves groupées et triées alphabétiquement
+ * - **Compteurs intelligents** : "(X/Y)" épreuves sélectionnées par discipline
+ * - **Tags épreuves** : Badges cliquables avec suppression individuelle
+ * - **Disponibilité** : Filtrage épreuves libres vs déjà assignées
+ * - **État événement** : Indicateurs visuels si épreuve déjà assignée
+ *
+ * ## Architecture de données et état complexe
+ *
+ * ### 🏗Structure d'état événement étendue
+ * - **formData** : CreateEvenementRequest avec description, lieuId, date, horraire
+ * - **selectedEpreuves** : Array number[] des IDs épreuves sélectionnées
+ * - **lieux** : Array Lieu[] chargé dynamiquement via API
+ * - **epreuves** : Array Epreuve[] filtrées selon disponibilité
+ * - **expandedDisciplines** : Set<number> pour état expansion disciplines
+ * - **Interface étendue** : CreateEvenementWithEpreuvesRequest avec epreuveIds
+ *
+ * ### useEffect de chargement données multiples
+ * - **Déclencheur initialisation** : evenement, isEditing pour mode édition/création
+ * - **Chargement lieux** : lieuApi.getAll() avec tri alphabétique
+ * - **Chargement épreuves** : epreuveApi.getAll() avec filtrage disponibilité
+ * - **Mode édition** : Pré-remplissage form + épreuves associées
+ * - **Mode création** : Reset form + sélection épreuves vide
+ * - **Gestion erreurs** : Console.error pour échecs API
+ *
+ * ### Filtrage épreuves selon disponibilité et mode
+ * - **Épreuves libres** : !epreuve.evenement pour disponibilité
+ * - **Mode édition exception** : Inclusion épreuves événement actuel
+ * - **Logique conditionnelle** : epreuve.evenement?.id === evenement.id
+ *
+ * ### Organisation hiérarchique par discipline
+ * - **Groupement** : epreuvesByDiscipline via reduce() par discipline.id
+ * - **Tri disciplines** : Alphabétique via localeCompare() français
+ * - **Discipline headers** : Expandable avec compteurs et chevrons
+ *
+ * ### Checkboxes épreuves avec états visuels
+ * - **Checkboxes natives** : type="checkbox" pour accessibilité
+ * - **État contrôlé** : checked={selectedEpreuves.includes(epreuve.id)}
+ * - **Toggle handler** : handleEpreuveToggle pour ajout/suppression
+ * - **Indicateurs assignation** : Badge jaune si épreuve déjà assignée
+ * - **Hover effects** : hover:bg-gray-50 pour feedback
+ *
+ * ## Gestion d'interactions utilisateur complexes
+ *
+ * ### Sélection/désélection épreuves
+ * - **Toggle logic** : includes() pour vérification + filter/spread
+ * - **Performance optimisée** : prev callback pour éviter recalculs
+ * - **État immutable** : Nouvelle array à chaque changement
+ * - **Synchronisation** : Tags et checkboxes synchronisés
+ * - **Feedback immédiat** : Mise à jour visuelle instantanée
+ *
+ * ### Expansion/contraction disciplines
+ * - **Set management** : expandedDisciplines avec add/delete
+ * - **Toggle efficient** : new Set(prev) pour immutabilité
+ * - **État persistant** : Expansion maintenue pendant session
+ *
+ * ### Soumission et validation événement complet
+ * - **Validation multicritères** : description + lieuId > 0 + date + horraire
+ * - **Extension interface** : epreuveIds ajouté à CreateEvenementRequest
+ * - **Spread operator** : {...formData, epreuveIds: selectedEpreuves}
+ * - **Prévention default** : e.preventDefault() pour contrôle soumission
+ * - **Loading state** : Boutons disabled pendant traitement serveur
+ *
+ * ## Chargement dynamique données relationnelles
+ *
+ * ### Gestion lieux olympiques API
+ * - **Chargement async** : lieuApi.getAll() dans useEffect
+ * - **Tri alphabétique** : sort((a, b) => a.nom.localeCompare(b.nom))
+ * - **Gestion erreurs** : try/catch avec console.error
+ * - **Select population** : map() pour options dynamiques
+ * - **Placeholder** : "Sélectionnez un lieu" pour guidance
+ * - **Validation** : lieuId > 0 requis pour soumission
+ *
+ * ### Gestion épreuves disponibles API
+ * - **Chargement conditionnel** : Selon mode édition/création
+ * - **Filtrage disponibilité** : Épreuves sans événement + exceptions mode édition
+ * - **Logique complexe** : Multi-conditions pour inclusion/exclusion
+ * - **Performance** : Filtrage côté client après chargement unique
+ * - **État synchronisé** : selectedEpreuves mis à jour selon mode
+ *
+ * @param {Props} props - Configuration de la modal événements
+ * @param {boolean} props.isOpen - Contrôle la visibilité de la modal
+ * @param {Function} props.onClose - Callback de fermeture de la modal
+ * @param {Function} props.onSave - Callback de sauvegarde avec données événement étendues
+ * @param {boolean} props.loading - État de chargement pour désactiver contrôles
+ * @param {string | null} props.error - Message d'erreur serveur à afficher
+ * @param {Evenement} [props.evenement] - Événement à éditer (undefined = mode création)
+ *
+ * @returns {JSX.Element | null} Modal de création/édition événement ou null si fermée
+ *
+ * @see {@link EvenementsManagement} - Composant parent gérant cette modal
+ * @see {@link Evenement} - Interface TypeScript des données d'événement
+ * @see {@link CreateEvenementRequest} - Interface création événement de base
+ * @see {@link CreateEvenementWithEpreuvesRequest} - Interface étendue avec épreuves
+ * @see {@link Lieu} - Interface lieux olympiques
+ * @see {@link Epreuve} - Interface épreuves avec disponibilité
+ *
+ */
+export function EvenementModal({
   isOpen,
   onClose, 
   onSave, 
@@ -359,3 +486,4 @@ useEffect(() => {
     </div>
   );
 }
+export default EvenementModal;

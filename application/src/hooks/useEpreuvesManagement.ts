@@ -1,3 +1,16 @@
+/**
+ * Hook de gestion des épreuves sportives pour l'application AdminJO
+ *
+ * Ce hook centralise toute la logique de gestion des épreuves sportives des JO 2024.
+ * Il fournit les opérations CRUD complètes, le filtrage par discipline, la recherche
+ * textuelle et la synchronisation avec les référentiels de disciplines.
+ *
+ * @module useEpreuvesManagement
+ * @category Hooks
+ * @since 1.0.0
+ * @author AdminJO Team
+ */
+
 import { useState, useEffect } from 'react';
 import { epreuveApi } from '@/lib/api/services/evenementSports/epreuveService';
 import { disciplineApi } from '@/lib/api/services/evenementSports/disciplineService';
@@ -5,6 +18,139 @@ import { Epreuve } from '@/types/sportEvenement/epreuve';
 import { Discipline } from '@/types/sportEvenement/discipline';
 import { CreateEpreuveRequest, UpdateEpreuveRequest } from '@/lib/api/services/evenementSports/epreuveService';
 
+/**
+ * Hook useEpreuvesManagement - Gestion complète des épreuves sportives
+ *
+ * Ce hook fournit une interface unifiée pour la gestion des épreuves sportives
+ * des JO 2024. Il combine les opérations CRUD, le filtrage par discipline,
+ * la recherche textuelle et le tri hiérarchique pour une administration
+ * efficace des épreuves olympiques.
+ *
+ * @name useEpreuvesManagement
+ *
+ * ## Fonctionnalités principales
+ *
+ * ### Gestion des données épreuves
+ * - **Chargement automatique** : Récupération de toutes les épreuves et disciplines au montage
+ * - **Tri hiérarchique** : Classement par discipline puis par nom d'épreuve
+ * - **Gestion d'état** : États de chargement et d'erreur pour chaque opération
+ * - **Synchronisation** : Mise à jour temps réel avec les données backend
+ *
+ * ### Système de filtrage avancé
+ * - **Recherche textuelle** : Filtrage par libellé d'épreuve
+ * - **Filtrage par discipline** : Restriction aux épreuves d'une discipline spécifique
+ * - **Filtres combinés** : Application simultanée de recherche et filtrage disciplinaire
+ * - **Recherche API** : Délégation optimisée au backend pour performance
+ *
+ * ### Opérations CRUD complètes
+ * - **Création** : Ajout de nouvelles épreuves avec association discipline
+ * - **Lecture** : Récupération et affichage des épreuves avec données discipline
+ * - **Mise à jour** : Modification des épreuves existantes
+ * - **Suppression** : Suppression sécurisée des épreuves
+ * - **Tri automatique** : Maintien de l'ordre hiérarchique après chaque opération
+ *
+ * ## États gérés
+ *
+ * ### Données principales
+ * - **epreuves** : Liste des épreuves triées par discipline et nom
+ * - **disciplines** : Référentiel complet des disciplines pour association
+ * - **searchTerm** : Terme de recherche textuelle actuel
+ * - **selectedDisciplineId** : ID de la discipline sélectionnée pour filtrage
+ *
+ * ### États des opérations
+ * - **loading** : Indicateur de chargement pour les opérations de lecture
+ * - **error** : Messages d'erreur pour les opérations principales
+ * - **createLoading** : État de chargement spécifique aux opérations CRUD
+ * - **createError** : Messages d'erreur spécifiques aux opérations CRUD
+ *
+ * ## Flux de fonctionnement
+ *
+ * 1. **Initialisation** : Chargement des épreuves et disciplines avec tri hiérarchique
+ * 2. **Filtrage** : Application des filtres de recherche et discipline côté serveur
+ * 3. **CRUD** : Opérations avec mise à jour immédiate et recharge des disciplines
+ * 4. **Tri** : Maintien automatique de l'ordre discipline > épreuve
+ * 5. **Gestion d'erreurs** : Capture et affichage des erreurs pour chaque opération
+ *
+ * ## Intégrations API
+ *
+ * - **epreuveApi** : Service API principal pour les épreuves
+ * - **disciplineApi** : Service API pour le référentiel des disciplines
+ * - **Filtrage optimisé** : Délégation au backend avec paramètres combinés
+ * - **Synchronisation** : Rechargement des disciplines après modifications d'épreuves
+ *
+ * @returns {Object} Interface complète de gestion des épreuves
+ * @returns {Epreuve[]} returns.epreuves - Liste des épreuves triées hiérarchiquement
+ * @returns {Discipline[]} returns.disciplines - Référentiel des disciplines
+ * @returns {string} returns.searchTerm - Terme de recherche actuel
+ * @returns {number | null} returns.selectedDisciplineId - ID discipline sélectionnée pour filtre
+ * @returns {boolean} returns.loading - État de chargement principal
+ * @returns {string | null} returns.error - Message d'erreur principal
+ * @returns {boolean} returns.createLoading - État de chargement des opérations CRUD
+ * @returns {string | null} returns.createError - Message d'erreur des opérations CRUD
+ * @returns {Function} returns.setSearchTerm - Modifier le terme de recherche
+ * @returns {Function} returns.setSelectedDisciplineId - Modifier le filtre discipline
+ * @returns {Function} returns.setCreateError - Réinitialiser les erreurs de création
+ * @returns {Function} returns.loadEpreuves - Recharger les épreuves avec filtres
+ * @returns {Function} returns.loadDisciplines - Recharger le référentiel disciplines
+ * @returns {Function} returns.createEpreuve - Créer une nouvelle épreuve
+ * @returns {Function} returns.updateEpreuve - Modifier une épreuve
+ * @returns {Function} returns.deleteEpreuve - Supprimer une épreuve
+ * @returns {Function} returns.handleSearch - Effectuer une recherche
+ * @returns {Function} returns.handleDisciplineFilter - Appliquer filtre discipline
+ *
+ * @see {@link epreuveApi} - Service API des épreuves
+ * @see {@link disciplineApi} - Service API des disciplines
+ * @see {@link Epreuve} - Interface TypeScript des données épreuve
+ * @see {@link Discipline} - Interface TypeScript des données discipline
+ * @see {@link CreateEpreuveRequest} - Interface de création d'épreuve
+ * @see {@link UpdateEpreuveRequest} - Interface de mise à jour d'épreuve
+ *
+ * @example
+ * ```tsx
+ * function EpreuvesManagementPage() {
+ *   const {
+ *     epreuves,
+ *     disciplines,
+ *     loading,
+ *     error,
+ *     searchTerm,
+ *     setSearchTerm,
+ *     selectedDisciplineId,
+ *     setSelectedDisciplineId,
+ *     createEpreuve,
+ *     updateEpreuve,
+ *     deleteEpreuve,
+ *     createLoading,
+ *     createError
+ *   } = useEpreuvesManagement();
+ *
+ *   if (loading) return <Spinner />;
+ *   if (error) return <ErrorMessage message={error} />;
+ *
+ *   return (
+ *     <div>
+ *       <SearchBar value={searchTerm} onChange={setSearchTerm} />
+ *       <DisciplineFilter
+ *         value={selectedDisciplineId}
+ *         options={disciplines}
+ *         onChange={setSelectedDisciplineId}
+ *       />
+ *       <CreateEpreuveForm
+ *         disciplines={disciplines}
+ *         onSubmit={createEpreuve}
+ *         loading={createLoading}
+ *         error={createError}
+ *       />
+ *       <EpreuvesList
+ *         epreuves={epreuves}
+ *         onUpdate={updateEpreuve}
+ *         onDelete={deleteEpreuve}
+ *       />
+ *     </div>
+ *   );
+ * }
+ * ```
+ */
 export function useEpreuvesManagement() {
   const [epreuves, setEpreuves] = useState<Epreuve[]>([]);
   const [disciplines, setDisciplines] = useState<Discipline[]>([]);
@@ -177,3 +323,5 @@ export function useEpreuvesManagement() {
     setCreateError
   };
 }
+
+export default useEpreuvesManagement;

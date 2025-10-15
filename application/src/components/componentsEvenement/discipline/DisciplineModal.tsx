@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import {useState, useEffect, JSX} from 'react';
 import { CreateDisciplineRequest } from '@/lib/api/services/evenementSports/disciplineService';
 import { Discipline } from '@/types/sportEvenement/discipline';
 import Image from 'next/image';
@@ -26,14 +26,161 @@ interface Props {
     discipline?: Discipline;
 }
 
-export default function DisciplineModal({ 
+/**
+ * Composant DisciplineModal - Modal de création/édition des disciplines sportives olympiques AdminJO
+ *
+ * @name DisciplineModal
+ *
+ * Ce composant fournit une interface modale spécialisée pour la création et la modification
+ * des disciplines sportives des Jeux Olympiques. Il gère deux modes distincts (création/édition)
+ * avec validation temps réel, sélecteur d'icônes sportives avancé, gestion d'erreurs intégrée,
+ * et UX optimisée pour la saisie de données métier spécifiques. Il inclut un catalogue complet
+ * d'icônes SVG olympiques avec prévisualisation et sélection interactive.
+ *
+ * ## Fonctionnalités principales spécialisées
+ *
+ * ### Dual-mode : Création et Édition disciplines
+ * - **Mode création** : discipline === undefined, formulaire vide avec valeurs par défaut
+ * - **Mode édition** : discipline fournie, formulaire pré-rempli avec données existantes
+ * - **Titre dynamique** : "Créer une nouvelle discipline" vs "Modifier la discipline"
+ * - **Bouton contextuel** : "Créer" vs "Modifier" selon le mode
+ * - **États de chargement** : "Création..." vs "Modification..." pendant traitement
+ *
+ * ### Formulaire spécialisé disciplines olympiques
+ * - **Nom discipline** : Champ texte requis pour nom officiel discipline
+ * - **Sélecteur icône** : Interface avancée sélection icône sportive SVG
+ * - **Validation temps réel** : Contrôles immédiats lors de la saisie
+ * - **Gestion erreurs** : Affichage erreurs serveur intégré dans modal
+ * - **Prévisualisation** : Aperçu icône sélectionnée en temps réel
+ *
+ * ### Sélecteur d'icônes sportives avancé (fonctionnalité unique)
+ * - **Catalogue complet** : 71+ icônes SVG sports olympiques disponibles
+ * - **Grid responsive** : Grille 8 colonnes avec scroll si dépassement
+ * - **Preview temps réel** : Affichage icône sélectionnée avec chemin
+ * - **Path management** : Gestion chemins relatifs depuis dossier public
+ *
+ * ## Architecture des données et état spécialisée
+ *
+ * ### Structure d'état discipline
+ * - **formData** : Objet CreateDisciplineRequest avec nom et icône
+ * - **Nom requis** : String pour nom officiel discipline olympique
+ * - **Icône optionnelle** : String chemin relatif vers fichier SVG
+ * - **Validation intégrée** : Contrôles côté client avec feedback serveur
+ *
+ * ### useEffect d'initialisation discipline
+ * - **Déclencheurs** : discipline change pour mode édition/création
+ * - **Mode édition** : Pré-remplissage nom et icône existante
+ * - **Mode création** : Reset complet avec valeurs par défaut vides
+ * - **Path conversion** : Gestion chemins icônes relatifs/absolus
+ * - **Synchronisation** : Cohérence entre état formulaire et props
+ *
+ * ## Gestion des interactions utilisateur
+ *
+ * ### Saisie et validation nom discipline
+ * - **Input contrôlé** : value={formData.nom} avec onChange handler
+ * - **Validation required** : Attribut required pour validation HTML5
+ * - **Placeholder contextuel** : "Ex: Athlétisme, Natation, Basketball..."
+ *
+ * ### Sélection et gestion icônes
+ * - **handleIconSelect** : Fonction construction chemin relatif automatique
+ * - **Path conversion** : `/images/sportSVG/${iconName}` pour standardisation
+ * - **State update** : setFormData avec nouveau chemin icône
+ * - **Visual feedback** : Mise à jour immédiate prévisualisation
+ * - **Désélection possible** : Click sur icône sélectionnée pour retirer
+ *
+ * ### Soumission et validation finale
+ * - **Prérequis validation** : formData.nom.trim() non vide obligatoire
+ * - **Icône optionnelle** : Pas de validation icône (peut être vide)
+ * - **Callback onSave** : onSave(formData) avec CreateDisciplineRequest
+ * - **Prévention default** : e.preventDefault() pour contrôler soumission
+ * - **Loading state** : Bouton disabled pendant traitement serveur
+ *
+ * ## Gestion d'erreurs et feedback avancée
+ *
+ * ### Affichage erreurs serveur intégré
+ * - **Error prop** : string | null pour messages erreur serveur
+ * - **Conditional display** : {error && (...)} pour affichage conditionnel
+ * - **Position** : Avant formulaire pour attention immédiate
+ *
+ * ### Feedback utilisateur contextuel
+ * - **Instructions claires** : "Cliquez sur une icône pour la sélectionner"
+ * - **Loading feedback** : États boutons et labels dynamiques
+ *
+ * ## Gestion des états et lifecycle
+ *
+ * ### Cycle de vie modal discipline
+ * - **Ouverture** : isOpen true → Modal s'affiche avec données discipline
+ * - **Initialisation** : useEffect reset/populate selon mode avec icônes
+ * - **Interactions** : Saisie nom + sélection icône avec feedback visuel
+ * - **Soumission** : onSave callback avec CreateDisciplineRequest validé
+ * - **Fermeture** : isOpen false → Modal masquée, état préservé
+ *
+ * ### États de chargement et erreurs
+ * - **loading prop** : Contrôle états pendant opérations serveur
+ * - **error prop** : Affichage messages erreur serveur dans modal
+ * - **Boutons disabled** : Tous contrôles désactivés si loading
+ * - **Labels dynamiques** : "Création..." vs "Modification..." pendant traitement
+ * - **UX cohérente** : Prévention double-soumission et feedback visuel
+ *
+ * ### Nettoyage et reset spécialisé
+ * - **Mode création** : Reset complet nom vide, icône vide
+ * - **Mode édition** : Population avec nom et icône discipline existante
+ * - **Path consistency** : Chemins icônes cohérents entre modes
+ * - **Error cleanup** : Gestion via props parent (onClose avec setCreateError)
+ *
+ * ## Validation et sécurité spécialisée
+ *
+ * ### Validation côté client disciplines
+ * - **Nom requis** : formData.nom.trim() obligatoire et non vide
+ * - **Icône optionnelle** : Sélection icône non obligatoire
+ * - **Format nom** : Pas de contrainte format spécifique côté client
+ * - **Path validation** : Chemins icônes construits de manière sécurisée
+ * - **Sanitization** : trim() sur nom pour éviter espaces parasites
+ *
+ * ### Sécurité saisie et fichiers
+ * - **Input sanitization** : Validation nom discipline côté client
+ * - **Path construction** : Chemins icônes construits de manière sécurisée
+ * - **Type safety** : Interfaces Props et CreateDisciplineRequest strictes
+ * - **File validation** : Liste SPORT_ICONS contrôlée pour sécurité
+ * - **No upload** : Pas d'upload fichiers, sélection depuis catalogue
+ *
+ * ## Performance et optimisations avancées
+ *
+ * ### Optimisations actuelles
+ * - **Conditional rendering** : if (!isOpen) return null pour performance
+ * - **Image Next.js** : Optimisation automatique chargement icônes
+ * - **Lazy loading** : Icônes chargées selon visibilité
+ * - **Array constant** : SPORT_ICONS pré-définie pour éviter recalculs
+ * - **Minimal re-renders** : useState ciblés par fonctionnalité
+ *
+ * ### Gestion mémoire spécialisée
+ * - **useEffect cleanup** : Dépendance [discipline] optimisée
+ * - **Constant array** : SPORT_ICONS en dehors composant pour stabilité
+ * - **Path caching** : Chemins construits une fois par sélection
+ *
+ * @param {Props} props - Configuration de la modal des disciplines
+ * @param {boolean} props.isOpen - Contrôle la visibilité de la modal
+ * @param {Function} props.onClose - Callback de fermeture de la modal
+ * @param {Function} props.onSave - Callback de sauvegarde avec données discipline
+ * @param {boolean} props.loading - État de chargement pour désactiver contrôles
+ * @param {string | null} props.error - Message d'erreur serveur à afficher
+ * @param {Discipline} [props.discipline] - Discipline à éditer (undefined = mode création)
+ *
+ * @returns {JSX.Element | null} Modal de création/édition discipline ou null si fermée
+ *
+ * @see {@link DisciplinesManagement} - Composant parent gérant cette modal
+ * @see {@link Discipline} - Interface TypeScript des données de discipline
+ * @see {@link CreateDisciplineRequest} - Interface TypeScript pour création discipline
+ *
+ */
+export function DisciplineModal({
     isOpen, 
     onClose, 
     onSave, 
     loading, 
     error, 
     discipline
-}: Props) {
+}: Props): JSX.Element | null {
     const [formData, setFormData] = useState<CreateDisciplineRequest>({
       nom: '',
       icone: ''
@@ -178,3 +325,4 @@ export default function DisciplineModal({
         </div>
     );
 }
+export default DisciplineModal;

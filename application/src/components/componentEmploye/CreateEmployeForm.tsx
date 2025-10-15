@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import {JSX, useState} from 'react';
 import { CreateEmployeRequest } from '@/types/employe/employe';
 
 interface CreateEmployeFormProps {
@@ -10,9 +10,70 @@ interface CreateEmployeFormProps {
 }
 
 /**
- * Formulaire de création d'un employé
+ * Composant CreateEmployeForm - Formulaire de création d'employé AdminJO
+ *
+ * @name CreateEmployeForm
+ *
+ * Ce composant fournit une interface modale complète pour la création de nouveaux employés
+ * avec validation en temps réel, gestion des erreurs et feedback utilisateur. Il gère
+ * tous les champs requis pour créer un compte employé avec ses informations personnelles
+ * et professionnelles, incluant la génération sécurisée du mot de passe.
+ *
+ * ## Fonctionnalités réellement implémentées
+ *
+ * ### Formulaire complet d'employé
+ * - **Champs personnels** : Prénom, Nom (obligatoires)
+ * - **Champs compte** : Email, Mot de passe (obligatoires)
+ * - **Champs professionnels** : Matricule, Identifiant téléphone (obligatoires)
+ * - **Placeholders informatifs** : Guidance utilisateur sur chaque champ
+ *
+ * ### Gestion sécurisée du mot de passe
+ * - **Toggle visibilité** : Bouton œil pour afficher/masquer mot de passe
+ * - **Validation robuste** : Minimum 8 caractères obligatoires
+ * - **Icônes SVG** : Œil ouvert/fermé selon état showPassword
+ * - **Input type dynamique** : password/text selon showPassword
+ *
+ * ### Validation en temps réel
+ * - **Validation côté client** : Contrôles immédiats avant soumission
+ * - **Effacement erreurs** : Nettoyage automatique lors modification
+ * - **Regex email** : Validation format email standard
+ * - **Champs requis** : Vérification présence et trim() des espaces
+ *
+ * ## Validation et gestion d'erreur
+ *
+ * ### Règles de validation
+ * - **Email** : Présence + format regex `/^[^\s@]+@[^\s@]+\.[^\s@]+$/`
+ * - **Mot de passe** : Présence + minimum 8 caractères
+ * - **Nom/Prénom** : Présence après trim()
+ * - **Matricule** : Présence après trim()
+ * - **Téléphone** : Présence après trim()
+ *
+ * ## Interactions et soumission
+ *
+ * ### Callbacks externes
+ * - **onSubmit** : Promise<boolean> pour async avec retour success
+ * - **onCancel** : void pour fermeture modal
+ * - **isLoading** : boolean externe pour état loading
+ *
+ * ### ⌨Interactions utilisateur
+ * - **handleChange** : Input onChange avec effacement erreur
+ * - **Toggle password** : Click pour showPassword
+ * - **Submit** : Enter ou click bouton
+ * - **Cancel** : Click X ou bouton Annuler
+ *
+ * @param {CreateEmployeFormProps} props - Configuration du formulaire de création
+ * @param {Function} props.onSubmit - Callback async pour soumission, retourne Promise<boolean>
+ * @param {Function} props.onCancel - Callback pour annulation/fermeture modal
+ * @param {boolean} props.isLoading - État de chargement pour désactivation interface
+ *
+ * @returns {JSX.Element} Modal avec formulaire complet de création d'employé
+ *
+ * @see {@link EmployesManagement} - Composant parent gérant l'affichage modal
+ * @see {@link CreateEmployeRequest} - Interface TypeScript des données formulaire
+ * @see {@link useEmployesManagement} - Hook contenant logique de création
+ *
  */
-export default function CreateEmployeForm({ onSubmit, onCancel, isLoading }: CreateEmployeFormProps) {
+export function CreateEmployeForm({ onSubmit, onCancel, isLoading }: CreateEmployeFormProps): JSX.Element {
   const [formData, setFormData] = useState<CreateEmployeRequest>({
     email: '',
     password: '',
@@ -276,3 +337,4 @@ export default function CreateEmployeForm({ onSubmit, onCancel, isLoading }: Cre
     </div>
   );
 }
+export default CreateEmployeForm;

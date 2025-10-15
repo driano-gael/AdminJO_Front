@@ -1,9 +1,124 @@
+/**
+ * Hook de gestion des clients pour l'application AdminJO
+ *
+ * Ce hook centralise toute la logique de gestion des clients dans l'application
+ * d'administration des JO 2024. Il fournit les opérations CRUD, le filtrage,
+ * la recherche et la gestion des états d'activation des comptes clients.
+ *
+ * @module useClientsManagement
+ * @category Hooks
+ * @since 1.0.0
+ * @author AdminJO Team
+ */
+
 import { useState, useEffect } from 'react';
 import { Client } from '@/types/client/client';
 import { clientService } from '@/lib/api/services/clientService';
 
 /**
- * Hook personnalisé pour la gestion des clients
+ * Hook useClientsManagement - Gestion complète des clients
+ *
+ * Ce hook fournit une interface unifiée pour la gestion des clients de l'application
+ * AdminJO. Il combine les opérations de lecture, filtrage, recherche et modification
+ * des états d'activation des comptes utilisateurs clients.
+ *
+ * @name useClientsManagement
+ *
+ * ## Fonctionnalités principales
+ *
+ * ### Gestion des données clients
+ * - **Chargement automatique** : Récupération de tous les clients au montage
+ * - **Gestion d'état** : États de chargement et d'erreur pour les opérations
+ * - **Mise à jour optimiste** : Modification immédiate de l'UI avant confirmation serveur
+ * - **Synchronisation** : Maintien de la cohérence avec les données backend
+ *
+ * ### Système de filtrage et recherche
+ * - **Recherche textuelle** : Filtrage par nom, email ou autres champs
+ * - **Filtrage par statut** : Clients actifs, inactifs ou tous
+ * - **Filtres combinés** : Application simultanée de plusieurs critères
+ * - **Mise à jour temps réel** : Filtrage immédiat lors des changements
+ *
+ * ### Gestion des statuts d'activation
+ * - **Toggle activation** : Activation/désactivation des comptes clients
+ * - **Mise à jour optimiste** : Changement immédiat d'état dans l'UI
+ * - **Gestion d'erreurs** : Rollback en cas d'échec de l'opération
+ * - **Feedback visuel** : Indicateurs de statut en temps réel
+ *
+ * ## États gérés
+ *
+ * ### Données principales
+ * - **clients** : Liste complète des clients avec informations utilisateur
+ * - **loading** : État de chargement pour les opérations principales
+ * - **error** : Messages d'erreur pour les opérations échouées
+ *
+ * ### Filtres et recherche
+ * - **searchTerm** : Terme de recherche textuelle actuel
+ * - **statusFilter** : Filtre par statut ('all', 'active', 'inactive')
+ *
+ * ## Opérations disponibles
+ *
+ * ### Chargement des données
+ * - **loadClients()** : Récupération de tous les clients depuis l'API
+ * - **Gestion d'erreurs** : Capture et affichage des erreurs de chargement
+ * - **États de chargement** : Indicateurs visuels pendant les opérations
+ *
+ * ### Modification des statuts
+ * - **toggleClientActive()** : Basculer l'état actif/inactif d'un client
+ * - **Mise à jour optimiste** : Changement immédiat avant confirmation serveur
+ * - **Gestion cohérence** : Maintien de la synchronisation des données
+ *
+ * ## Intégrations
+ *
+ * - **clientService** : Service API pour les opérations sur les clients
+ * - **Client type** : Interface TypeScript pour la structure des données
+ *
+ * @returns {Object} Interface complète de gestion des clients
+ * @returns {Client[]} returns.clients - Liste des clients
+ * @returns {boolean} returns.loading - État de chargement
+ * @returns {string | null} returns.error - Message d'erreur
+ * @returns {string} returns.searchTerm - Terme de recherche
+ * @returns {string} returns.statusFilter - Filtre de statut actuel
+ * @returns {Function} returns.setSearchTerm - Modifier le terme de recherche
+ * @returns {Function} returns.setStatusFilter - Modifier le filtre de statut
+ * @returns {Function} returns.loadClients - Recharger les clients
+ * @returns {Function} returns.toggleClientActive - Basculer l'état d'un client
+ * @returns {Function} returns.getFilteredClients - Obtenir les clients filtrés
+ *
+ * @see {@link clientService} - Service API des clients
+ * @see {@link Client} - Interface TypeScript des données client
+ *
+ * @example
+ * ```tsx
+ * function ClientsManagementPage() {
+ *   const {
+ *     clients,
+ *     loading,
+ *     error,
+ *     searchTerm,
+ *     setSearchTerm,
+ *     statusFilter,
+ *     setStatusFilter,
+ *     toggleClientActive,
+ *     getFilteredClients
+ *   } = useClientsManagement();
+ *
+ *   if (loading) return <Spinner />;
+ *   if (error) return <ErrorMessage message={error} />;
+ *
+ *   const filteredClients = getFilteredClients();
+ *
+ *   return (
+ *     <div>
+ *       <SearchBar value={searchTerm} onChange={setSearchTerm} />
+ *       <StatusFilter value={statusFilter} onChange={setStatusFilter} />
+ *       <ClientsList
+ *         clients={filteredClients}
+ *         onToggleActive={toggleClientActive}
+ *       />
+ *     </div>
+ *   );
+ * }
+ * ```
  */
 export function useClientsManagement() {
   const [clients, setClients] = useState<Client[]>([]);

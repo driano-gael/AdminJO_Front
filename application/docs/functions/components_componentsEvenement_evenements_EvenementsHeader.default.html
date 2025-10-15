@@ -1,0 +1,153 @@
+<!DOCTYPE html><html class="default" lang="en" data-base="../"><head><meta charset="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>default | AdminJO Front - Documentation API - v0.1.0</title><meta name="description" content="Documentation for AdminJO Front - Documentation API"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="../assets/style.css"/><link rel="stylesheet" href="../assets/highlight.css"/><script defer src="../assets/main.js"></script><script async src="../assets/icons.js" id="tsd-icons-script"></script><script async src="../assets/search.js" id="tsd-search-script"></script><script async src="../assets/navigation.js" id="tsd-nav-script"></script><script async src="../assets/hierarchy.js" id="tsd-hierarchy-script"></script></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os";document.body.style.display="none";setTimeout(() => window.app?app.showPage():document.body.style.removeProperty("display"),500)</script><header class="tsd-page-toolbar"><div class="tsd-toolbar-contents container"><a href="../index.html" class="title">AdminJO Front - Documentation API - v0.1.0</a><div id="tsd-toolbar-links"></div><button id="tsd-search-trigger" class="tsd-widget" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-search"></use></svg></button><dialog id="tsd-search" aria-label="Search"><input role="combobox" id="tsd-search-input" aria-controls="tsd-search-results" aria-autocomplete="list" aria-expanded="true" autocapitalize="off" autocomplete="off" placeholder="Search the docs" maxLength="100"/><ul role="listbox" id="tsd-search-results"></ul><div id="tsd-search-status" aria-live="polite" aria-atomic="true"><div>Preparing search index...</div></div></dialog><a href="#" class="tsd-widget menu" id="tsd-toolbar-menu-trigger" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-menu"></use></svg></a></div></header><div class="container container-main"><div class="col-content"><div class="tsd-page-title"><ul class="tsd-breadcrumb" aria-label="Breadcrumb"><li><a href="../modules/components_componentsEvenement_evenements_EvenementsHeader.html">components/componentsEvenement/evenements/EvenementsHeader</a></li><li><a href="" aria-current="page">default</a></li></ul><h1>Function default</h1></div><section class="tsd-panel"><ul class="tsd-signatures"><li class=""><div class="tsd-signature tsd-anchor-link" id="default"><span class="tsd-kind-call-signature">default</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">props</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Props</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Element</span><a href="#default" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div><div class="tsd-description"><div class="tsd-comment tsd-typography"><p>Composant EventsHeader - En-tête de gestion des événements sportifs olympiques AdminJO</p>
+<p>Ce composant fournit l'interface d'en-tête pour la section de gestion des événements sportifs
+des Jeux Olympiques 2024. Il affiche le titre de la page avec iconographie olympique spécialisée
+(calendrier et trophée), le bouton de navigation retour vers les événements parent, et le bouton
+d'ajout d'un nouvel événement. Il suit les standards de design du système AdminJO avec une mise
+en page horizontale équilibrée, responsive design complet, et navigation contextuelle adaptée
+à la hiérarchie complexe des événements sportifs olympiques.</p>
+<h2 id="fonctionnalités-réellement-implémentées-événements" class="tsd-anchor-link">Fonctionnalités réellement implémentées événements<a href="#fonctionnalités-réellement-implémentées-événements" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="📅-titre-et-identification-thématique-événements-olympiques" class="tsd-anchor-link">📅 Titre et identification thématique événements olympiques<a href="#📅-titre-et-identification-thématique-événements-olympiques" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Titre principal</strong> : &quot;Gestion des Événements Sportifs&quot; avec typographie imposante</li>
+<li><strong>Iconographie olympique</strong> : Emojis 📅 🏆 pour contexte événementiel et compétitif</li>
+<li><strong>Hiérarchie</strong> : h1 avec text-3xl font-bold pour importance maximale</li>
+<li><strong>Couleur</strong> : text-gray-900 pour contraste optimal et lisibilité</li>
+<li><strong>Cohérence</strong> : Style aligné avec autres modules AdminJO (disciplines, épreuves)</li>
+<li><strong>Symbolisme</strong> : Calendrier (planning) + Trophée (compétition) évoquent gestion événements</li>
+</ul>
+<h3 id="🔙-navigation-contextuelle-retour-événements-parent" class="tsd-anchor-link">🔙 Navigation contextuelle - Retour événements parent<a href="#🔙-navigation-contextuelle-retour-événements-parent" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Composant</strong> : BackToEventsButton importé depuis shared/BackToEventsButton</li>
+<li><strong>Position</strong> : Côté gauche du header pour navigation logique ascendante</li>
+<li><strong>Contexte hiérarchique</strong> : Événements parent → Événements sportifs (sous-module)</li>
+<li><strong>UX</strong> : Permet retour rapide vers liste événements parent sans perdre contexte</li>
+<li><strong>Hiérarchie</strong> : Navigation parent-enfant claire dans arborescence JO</li>
+<li><strong>Réutilisabilité</strong> : Composant partagé avec autres sous-modules événements</li>
+</ul>
+<h3 id="➕-action-de-création-événement-sportif" class="tsd-anchor-link">➕ Action de création événement sportif<a href="#➕-action-de-création-événement-sportif" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Bouton primaire</strong> : &quot;+ Nouvel Événement&quot; avec style bleu AdminJO</li>
+<li><strong>États interactifs</strong> : hover:bg-blue-700 pour feedback utilisateur</li>
+<li><strong>Transition</strong> : transition-colors pour animation fluide</li>
+<li><strong>Callback</strong> : onCreateEvent pour déclenchement modal/formulaire</li>
+<li><strong>Taille optimisée</strong> : px-4 py-2 pour zone de clic adéquate</li>
+<li><strong>Style cohérent</strong> : bg-blue-600 aligné sur design system global</li>
+</ul>
+<h3 id="🎨-layout-horizontal-équilibré-trois-zones-responsive" class="tsd-anchor-link">🎨 Layout horizontal équilibré trois zones responsive<a href="#🎨-layout-horizontal-équilibré-trois-zones-responsive" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Container responsive</strong> : max-w-7xl mx-auto pour centrage et limitation largeur</li>
+<li><strong>Padding adaptatif</strong> : px-4 sm:px-6 lg:px-8 pour marges responsives</li>
+<li><strong>Flexbox</strong> : justify-between items-center pour répartition parfaite</li>
+<li><strong>Container</strong> : bg-white shadow-md pour élévation visuelle</li>
+<li><strong>Padding vertical</strong> : py-6 pour respiration généreuse et symétrique</li>
+<li><strong>Équilibre</strong> : Navigation (gauche) + Titre (centre) + Action (droite)</li>
+</ul>
+<h2 id="structure-et-design-avancé-événements-sportifs" class="tsd-anchor-link">Structure et design avancé événements sportifs<a href="#structure-et-design-avancé-événements-sportifs" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="🏗️-architecture-du-header-trois-zones-spécialisée-événements" class="tsd-anchor-link">🏗️ Architecture du header trois zones spécialisée événements<a href="#🏗️-architecture-du-header-trois-zones-spécialisée-événements" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Zone gauche</strong> : BackToEventsButton pour navigation retour contexte</li>
+<li><strong>Zone centre</strong> : Titre principal avec iconographie événements olympiques</li>
+<li><strong>Zone droite</strong> : Bouton d'action principal pour création événement</li>
+<li><strong>Semantic HTML</strong> : Utilisation de <header> pour sémantique correcte</li>
+<li><strong>Ombre portée</strong> : shadow-md pour détachement visuel du contenu</li>
+<li><strong>Responsive container</strong> : max-w-7xl pour limitation largeur grands écrans</li>
+</ul>
+<h3 id="🎯-éléments-dinterface-spécialisés-événements" class="tsd-anchor-link">🎯 Éléments d'interface spécialisés événements<a href="#🎯-éléments-dinterface-spécialisés-événements" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Navigation contextuelle</strong> : Retour vers section parent (événements racine)</li>
+<li><strong>Titre descriptif</strong> : Identification claire sous-section événements sportifs</li>
+<li><strong>Iconographie événementielle</strong> : Calendrier + Trophée pour thème événements</li>
+<li><strong>Bouton d'action</strong> : CTA principal pour création nouvel événement</li>
+<li><strong>Hiérarchie claire</strong> : Navigation breadcrumb visuelle implicite</li>
+<li><strong>Contexte métier</strong> : Terminologie &quot;Événements Sportifs&quot; spécifique JO</li>
+</ul>
+<h2 id="responsive-design-et-accessibilité-événements" class="tsd-anchor-link">Responsive design et accessibilité événements<a href="#responsive-design-et-accessibilité-événements" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="📱-adaptation-multi-supports-responsive-complète" class="tsd-anchor-link">📱 Adaptation multi-supports responsive complète<a href="#📱-adaptation-multi-supports-responsive-complète" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Container fluide</strong> : max-w-7xl mx-auto pour centrage responsive</li>
+<li><strong>Padding adaptatif</strong> : px-4 sm:px-6 lg:px-8 selon breakpoints</li>
+<li><strong>Mobile-first</strong> : Design optimisé pour tous supports</li>
+<li><strong>Navigation mobile</strong> : BackToEventsButton adapté interfaces tactiles</li>
+<li><strong>Bouton mobile</strong> : Taille et espacement optimisés tactile</li>
+<li><strong>Titre responsive</strong> : text-3xl s'adapte automatiquement écrans</li>
+</ul>
+<h3 id="♿-standards-daccessibilité-événements" class="tsd-anchor-link">♿ Standards d'accessibilité événements<a href="#♿-standards-daccessibilité-événements" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Semantic header</strong> : <header> pour lecteurs d'écran</li>
+<li><strong>Heading hierarchy</strong> : h1 pour titre principal section</li>
+<li><strong>Contraste couleurs</strong> : Couleurs respectant ratios WCAG AA</li>
+<li><strong>Zone de clic</strong> : Boutons avec taille adéquate interaction</li>
+<li><strong>Navigation logique</strong> : Ordre de tabulation cohérent gauche-droite</li>
+<li><strong>Text alternatives</strong> : Emojis événements avec contexte textuel</li>
+</ul>
+<h2 id="interactions-et-comportements-événements" class="tsd-anchor-link">Interactions et comportements événements<a href="#interactions-et-comportements-événements" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="🖱️-interaction-principale-création-événement" class="tsd-anchor-link">🖱️ Interaction principale création événement<a href="#🖱️-interaction-principale-création-événement" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Click bouton</strong> : Déclenche onCreateEvent() callback vers parent</li>
+<li><strong>Hover effect</strong> : Assombrissement bg-blue-700 sur bouton</li>
+<li><strong>Transition</strong> : Animation fluide des changements couleur</li>
+<li><strong>Feedback</strong> : Changement visuel immédiat sur interaction</li>
+<li><strong>Accessibilité</strong> : Zone de clic suffisante pour tous usages</li>
+<li><strong>Cohérence</strong> : Comportement aligné autres boutons système</li>
+</ul>
+<h3 id="🔙-interaction-navigation-retour-événements" class="tsd-anchor-link">🔙 Interaction navigation retour événements<a href="#🔙-interaction-navigation-retour-événements" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Composant délégué</strong> : BackToEventsButton gère sa propre logique</li>
+<li><strong>Navigation contextuelle</strong> : Retour vers gestion événements parent</li>
+<li><strong>Préservation état</strong> : Navigation sans perte de données locales</li>
+<li><strong>UX cohérente</strong> : Pattern de navigation standard AdminJO</li>
+<li><strong>Hiérarchie</strong> : Remontée logique dans arborescence fonctionnelle</li>
+</ul>
+<h3 id="🎨-états-visuels-et-feedback" class="tsd-anchor-link">🎨 États visuels et feedback<a href="#🎨-états-visuels-et-feedback" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Normal bouton</strong> : bg-blue-600 avec text-white par défaut</li>
+<li><strong>Hover bouton</strong> : bg-blue-700 avec transition smooth</li>
+<li><strong>Focus</strong> : Pas de focus ring spécifique défini actuellement</li>
+<li><strong>Active</strong> : Utilise couleur hover pendant clic utilisateur</li>
+<li><strong>Disabled</strong> : Pas d'état disabled implémenté (amélioration possible)</li>
+</ul>
+<h2 id="spécificités-des-événements-olympiques" class="tsd-anchor-link">Spécificités des événements olympiques<a href="#spécificités-des-événements-olympiques" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="🏅-contexte-olympique-spécialisé-événements-sportifs" class="tsd-anchor-link">🏅 Contexte olympique spécialisé événements sportifs<a href="#🏅-contexte-olympique-spécialisé-événements-sportifs" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Thématique</strong> : Emojis calendrier 📅 + trophée 🏆 pour ambiance événementielle</li>
+<li><strong>Terminologie</strong> : &quot;Événements Sportifs&quot; pour sessions compétitives JO</li>
+<li><strong>Action</strong> : &quot;Nouvel Événement&quot; pour création session compétitive</li>
+<li><strong>Navigation</strong> : Lien avec événements parent (hiérarchie logique)</li>
+<li><strong>Métier</strong> : Gestion planning événements par organisateurs olympiques</li>
+<li><strong>Hiérarchie</strong> : Niveau intermédiaire (Événements parent &gt; Événements sportifs &gt; Épreuves)</li>
+</ul>
+<h3 id="📦-différences-avec-autres-modules-headers" class="tsd-anchor-link">📦 Différences avec autres modules headers<a href="#📦-différences-avec-autres-modules-headers" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Navigation contexte</strong> : Bouton retour spécifique sous-modules événements</li>
+<li><strong>Hiérarchie triple</strong> : Plus complexe que modules autonomes (clients, offres)</li>
+<li><strong>Layout responsive</strong> : Container max-w-7xl pour grands écrans</li>
+<li><strong>Thème événementiel</strong> : Iconographie calendrier/trophée vs emojis génériques</li>
+<li><strong>Breadcrumb visuel</strong> : Navigation parent-enfant-petit-enfant</li>
+<li><strong>Terminologie</strong> : &quot;Événements Sportifs&quot; spécifique vs &quot;Gestion&quot; générique</li>
+</ul>
+<h2 id="navigation-et-architecture-événements" class="tsd-anchor-link">Navigation et architecture événements<a href="#navigation-et-architecture-événements" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="🗺️-position-dans-larchitecture-événementielle" class="tsd-anchor-link">🗺️ Position dans l'architecture événementielle<a href="#🗺️-position-dans-larchitecture-événementielle" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Module parent</strong> : Événements racine (niveau supérieur)</li>
+<li><strong>Sous-module</strong> : Événements sportifs (sessions compétitives)</li>
+<li><strong>Enfants</strong> : Épreuves individuelles par événement</li>
+<li><strong>Relations</strong> : Événements parent → Événements sportifs → Épreuves</li>
+<li><strong>Navigation</strong> : BackToEventsButton pour remontée hiérarchique</li>
+<li><strong>Contexte</strong> : Partie intégrante gestion événementielle complète</li>
+</ul>
+<h3 id="🔗-intégration-avec-backtoeventsbutton" class="tsd-anchor-link">🔗 Intégration avec BackToEventsButton<a href="#🔗-intégration-avec-backtoeventsbutton" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Composant partagé</strong> : Utilisé dans plusieurs sous-modules événements</li>
+<li><strong>Logique déléguée</strong> : Navigation gérée par composant shared réutilisable</li>
+<li><strong>Style cohérent</strong> : Design aligné avec boutons système</li>
+<li><strong>Réutilisabilité</strong> : Pattern commun pour sous-modules (disciplines, épreuves)</li>
+<li><strong>Maintenance</strong> : Centralisation logique navigation dans shared/</li>
+</ul>
+<h2 id="performance-et-optimisations" class="tsd-anchor-link">Performance et optimisations<a href="#performance-et-optimisations" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="⚡-optimisations-actuelles" class="tsd-anchor-link">⚡ Optimisations actuelles<a href="#⚡-optimisations-actuelles" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Composant simple</strong> : Minimal JavaScript pour performance optimale</li>
+<li><strong>CSS statique</strong> : Classes Tailwind pré-compilées</li>
+<li><strong>Pas de state</strong> : Composant fonctionnel sans état interne</li>
+<li><strong>Props simples</strong> : Callback unique sans complexité</li>
+<li><strong>Composant délégué</strong> : BackToEventsButton gère sa logique</li>
+<li><strong>Import optimisé</strong> : Import spécifique shared/BackToEventsButton</li>
+</ul>
+<h3 id="🔄-re-renders-minimaux" class="tsd-anchor-link">🔄 Re-renders minimaux<a href="#🔄-re-renders-minimaux" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Props stables</strong> : onCreateEvent stable entre renders parent</li>
+<li><strong>Callback externe</strong> : Gestion par composant parent</li>
+<li><strong>Style statique</strong> : Pas de calculs CSS dynamiques</li>
+<li><strong>Memoization</strong> : Pourrait bénéficier React.memo si parent instable</li>
+<li><strong>Composant léger</strong> : Rendu rapide sans complexité algorithmique</li>
+</ul>
+</div><div class="tsd-parameters"><h4 class="tsd-parameters-title">Parameters</h4><ul class="tsd-parameter-list"><li><span><span class="tsd-kind-parameter">props</span>: <span class="tsd-signature-type">Props</span></span><div class="tsd-comment tsd-typography"><p>Configuration du header des événements sportifs</p>
+</div><ul class="tsd-parameters"><li class="tsd-parameter"><h5><span>onCreateEvent</span></h5><div class="tsd-comment tsd-typography"><p>Callback déclenché lors du clic sur &quot;Nouvel Événement&quot;</p>
+</div></li></ul></li></ul></div><h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Element</span></h4><p>Header avec navigation, titre événements et bouton de création</p>
+<div class="tsd-comment tsd-typography"><div class="tsd-tag-see"><h4 class="tsd-anchor-link" id="see">See<a href="#see" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><ul>
+<li>EvenementsManagement - Composant parent utilisant ce header</li>
+<li>EvenementModal - Modal ouverte par le bouton de création</li>
+<li><a href="components_componentsEvenement_shared_BackToEventsButton.default.html" class="tsd-kind-function">BackToEventsButton</a> - Composant de navigation vers événements parent</li>
+</ul>
+</div><div class="tsd-tag-since"><h4 class="tsd-anchor-link" id="since">Since<a href="#since" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p>1.0.0</p>
+</div><div class="tsd-tag-version"><h4 class="tsd-anchor-link" id="version">Version<a href="#version" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p>1.0.0</p>
+</div><div class="tsd-tag-example"><h4 class="tsd-anchor-link" id="example">Example<a href="#example" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><pre><code class="tsx"><span class="hl-6">&lt;</span><span class="hl-7">EventsHeader</span><br/><span class="hl-2">  </span><span class="hl-8">onCreateEvent</span><span class="hl-2">=</span><span class="hl-9">{</span><span class="hl-11">() </span><span class="hl-9">=&gt;</span><span class="hl-11"> </span><span class="hl-1">setShowModal</span><span class="hl-11">(</span><span class="hl-9">true</span><span class="hl-11">)</span><span class="hl-9">}</span><br/><span class="hl-6">/&gt;</span>
+</code><button type="button">Copy</button></pre>
+
+</div></div><aside class="tsd-sources"><ul><li>Defined in <a href="https://github.com/driano-gael/AdminJO_Front/blob/main/application/src/components/componentsEvenement/evenements/EvenementsHeader.tsx#L182">components/componentsEvenement/evenements/EvenementsHeader.tsx:182</a></li></ul></aside></div></li></ul></section></div><div class="col-sidebar"><div class="page-menu"><div class="tsd-navigation settings"><details class="tsd-accordion"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg><h3>Settings</h3></summary><div class="tsd-accordion-details"><div class="tsd-filter-visibility"><span class="settings-label">Member Visibility</span><ul id="tsd-filter-options"><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-protected" name="protected"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Protected</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li></ul></div><div class="tsd-theme-toggle"><label class="settings-label" for="tsd-theme">Theme</label><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div><details open class="tsd-accordion tsd-page-navigation"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg><h3>On This Page</h3></summary><div class="tsd-accordion-details"><a href="#fonctionnalités-réellement-implémentées-événements"><span>Fonctionnalités réellement implémentées événements</span></a><ul><li><a href="#📅-titre-et-identification-thématique-événements-olympiques"><span>📅 <wbr/>Titre et identification thématique événements olympiques</span></a></li><li><a href="#🔙-navigation-contextuelle-retour-événements-parent"><span>🔙 <wbr/>Navigation contextuelle -<wbr/> <wbr/>Retour événements parent</span></a></li><li><a href="#➕-action-de-création-événement-sportif"><span>➕ <wbr/>Action de création événement sportif</span></a></li><li><a href="#🎨-layout-horizontal-équilibré-trois-zones-responsive"><span>🎨 <wbr/>Layout horizontal équilibré trois zones responsive</span></a></li></ul><a href="#structure-et-design-avancé-événements-sportifs"><span>Structure et design avancé événements sportifs</span></a><ul><li><a href="#🏗️-architecture-du-header-trois-zones-spécialisée-événements"><span>🏗️ <wbr/>Architecture du header trois zones spécialisée événements</span></a></li><li><a href="#🎯-éléments-dinterface-spécialisés-événements"><span>🎯 Éléments d&#39;interface spécialisés événements</span></a></li></ul><a href="#responsive-design-et-accessibilité-événements"><span>Responsive design et accessibilité événements</span></a><ul><li><a href="#📱-adaptation-multi-supports-responsive-complète"><span>📱 <wbr/>Adaptation multi-<wbr/>supports responsive complète</span></a></li><li><a href="#♿-standards-daccessibilité-événements"><span>♿ <wbr/>Standards d&#39;accessibilité événements</span></a></li></ul><a href="#interactions-et-comportements-événements"><span>Interactions et comportements événements</span></a><ul><li><a href="#🖱️-interaction-principale-création-événement"><span>🖱️ <wbr/>Interaction principale création événement</span></a></li><li><a href="#🔙-interaction-navigation-retour-événements"><span>🔙 <wbr/>Interaction navigation retour événements</span></a></li><li><a href="#🎨-états-visuels-et-feedback"><span>🎨 États visuels et feedback</span></a></li></ul><a href="#spécificités-des-événements-olympiques"><span>Spécificités des événements olympiques</span></a><ul><li><a href="#🏅-contexte-olympique-spécialisé-événements-sportifs"><span>🏅 <wbr/>Contexte olympique spécialisé événements sportifs</span></a></li><li><a href="#📦-différences-avec-autres-modules-headers"><span>📦 <wbr/>Différences avec autres modules headers</span></a></li></ul><a href="#navigation-et-architecture-événements"><span>Navigation et architecture événements</span></a><ul><li><a href="#🗺️-position-dans-larchitecture-événementielle"><span>🗺️ <wbr/>Position dans l&#39;architecture événementielle</span></a></li><li><a href="#🔗-intégration-avec-backtoeventsbutton"><span>🔗 <wbr/>Intégration avec <wbr/>Back<wbr/>To<wbr/>Events<wbr/>Button</span></a></li></ul><a href="#performance-et-optimisations"><span>Performance et optimisations</span></a><ul><li><a href="#⚡-optimisations-actuelles"><span>⚡ <wbr/>Optimisations actuelles</span></a></li><li><a href="#🔄-re-renders-minimaux"><span>🔄 <wbr/>Re-<wbr/>renders minimaux</span></a></li></ul></div></details></div><div class="site-menu"><nav class="tsd-navigation"><a href="../modules.html">AdminJO Front - Documentation API - v0.1.0</a><ul class="tsd-small-nested-navigation" id="tsd-nav-container"><li>Loading...</li></ul></nav></div></div></div><footer><p class="tsd-generator">Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></footer><div class="overlay"></div></body></html>

@@ -1,9 +1,33 @@
 'use client';
 
+import {JSX} from "react";
+
 /**
- * En-tête de la page de gestion des clients
+ * Composant ClientsHeader - En-tête de la page de gestion des clients AdminJO
+ *
+ * Ce composant affiche l'en-tête de la section de gestion des clients avec titre,
+ * icône et description. Il s'agit d'un composant d'affichage pur sans interactions,
+ * contrairement aux autres headers qui incluent des boutons d'action.
+ *
+ * ## Fonctionnalités réellement implémentées
+ *
+ * ### Affichage d'en-tête simple
+ * - **Titre principal** : "Gestion des Clients" avec icône 👥
+ * - **Description** : "Liste des clients enregistrés dans le système"
+ *
+ * ## Structure du composant
+ *
+ * - **Container principal**
+ * - **Section titre**
+ *
+ * @returns {JSX.Element} En-tête de la section clients avec titre et description
+ *
+ * @see {@link ClientsManagement} - Composant parent utilisant ce header
+ * @see {@link ClientsSearchAndFilters} - Composant de recherche suivant
+ * @see {@link ClientsTable} - Tableau des clients
+ *
  */
-export default function ClientsHeader() {
+export function ClientsHeader(): JSX.Element {
   return (
     <div className="bg-white shadow-sm border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -30,3 +54,4 @@ export default function ClientsHeader() {
     </div>
   );
 }
+export default ClientsHeader;

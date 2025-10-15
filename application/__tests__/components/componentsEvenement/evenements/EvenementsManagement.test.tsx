@@ -144,7 +144,8 @@ describe('EvenementsManagement', () => {
     deleteEvent: jest.fn(),
     setSearchTerm: jest.fn(),
     setCreateError: jest.fn(),
-    handleSearch: jest.fn()
+    handleSearch: jest.fn(),
+    refreshEvents: jest.fn()
   };
 
   beforeEach(() => {

@@ -1,0 +1,108 @@
+<!DOCTYPE html><html class="default" lang="en" data-base="../"><head><meta charset="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>default | AdminJO Front - Documentation API - v0.1.0</title><meta name="description" content="Documentation for AdminJO Front - Documentation API"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="../assets/style.css"/><link rel="stylesheet" href="../assets/highlight.css"/><script defer src="../assets/main.js"></script><script async src="../assets/icons.js" id="tsd-icons-script"></script><script async src="../assets/search.js" id="tsd-search-script"></script><script async src="../assets/navigation.js" id="tsd-nav-script"></script><script async src="../assets/hierarchy.js" id="tsd-hierarchy-script"></script></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os";document.body.style.display="none";setTimeout(() => window.app?app.showPage():document.body.style.removeProperty("display"),500)</script><header class="tsd-page-toolbar"><div class="tsd-toolbar-contents container"><a href="../index.html" class="title">AdminJO Front - Documentation API - v0.1.0</a><div id="tsd-toolbar-links"></div><button id="tsd-search-trigger" class="tsd-widget" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-search"></use></svg></button><dialog id="tsd-search" aria-label="Search"><input role="combobox" id="tsd-search-input" aria-controls="tsd-search-results" aria-autocomplete="list" aria-expanded="true" autocapitalize="off" autocomplete="off" placeholder="Search the docs" maxLength="100"/><ul role="listbox" id="tsd-search-results"></ul><div id="tsd-search-status" aria-live="polite" aria-atomic="true"><div>Preparing search index...</div></div></dialog><a href="#" class="tsd-widget menu" id="tsd-toolbar-menu-trigger" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-menu"></use></svg></a></div></header><div class="container container-main"><div class="col-content"><div class="tsd-page-title"><ul class="tsd-breadcrumb" aria-label="Breadcrumb"><li><a href="../modules/components_componentOffre_OffresTable.html">components/componentOffre/OffresTable</a></li><li><a href="" aria-current="page">default</a></li></ul><h1>Function default</h1></div><section class="tsd-panel"><ul class="tsd-signatures"><li class=""><div class="tsd-signature tsd-anchor-link" id="default"><span class="tsd-kind-call-signature">default</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">props</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Props</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Element</span><a href="#default" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div><div class="tsd-description"><div class="tsd-comment tsd-typography"><p>Composant OffresTable - Table de gestion des offres olympiques AdminJO</p>
+<p>Ce composant affiche la liste complète des offres sous forme de tableau responsive
+avec gestion des états de chargement/erreur, et actions d'édition/suppression.
+Il gère l'affichage optimisé des données d'offres olympiques avec colonnes
+spécialisées pour nom, capacité, prix et actions administratives.</p>
+<h2 id="fonctionnalités-réellement-implémentées" class="tsd-anchor-link">Fonctionnalités réellement implémentées<a href="#fonctionnalités-réellement-implémentées" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="affichage-tabulaire-des-offres" class="tsd-anchor-link">Affichage tabulaire des offres<a href="#affichage-tabulaire-des-offres" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Colonnes spécialisées</strong> : Nom, Nombre de personnes, Prix, Actions</li>
+<li><strong>Compteur dynamique</strong> : &quot;Disciplines (X)&quot; avec nombre d'offres</li>
+</ul>
+<h3 id="gestion-des-états-système" class="tsd-anchor-link">Gestion des états système<a href="#gestion-des-états-système" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>État loading</strong> : Spinner intégré avec message &quot;Chargement des offres...&quot;</li>
+<li><strong>État error</strong> : Bandeau rouge</li>
+<li><strong>État vide</strong> : Message encourageant &quot;Commencez par créer votre première offre&quot;</li>
+<li><strong>Conditional rendering</strong> : Logique claire entre états loading/empty/data</li>
+<li><strong>Feedback utilisateur</strong> : Messages explicites pour chaque situation</li>
+</ul>
+<h3 id="actions-offres-intégrées" class="tsd-anchor-link">Actions offres intégrées<a href="#actions-offres-intégrées" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Édition</strong> : Callback onEdit(offre) avec objet complet</li>
+<li><strong>Suppression</strong> : Callback onDelete(id) avec identifiant</li>
+<li><strong>Délégation</strong> : Actions gérées via OffresTableRow</li>
+<li><strong>Props drilling</strong> : Transmission callbacks vers composants enfants</li>
+<li><strong>Gestion async</strong> : Callbacks compatibles opérations asynchrones</li>
+</ul>
+<h2 id="colonnes-spécialisées-offres" class="tsd-anchor-link">Colonnes spécialisées offres<a href="#colonnes-spécialisées-offres" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="colonne-nom-de-loffre" class="tsd-anchor-link">Colonne &quot;Nom de l'offre&quot;<a href="#colonne-nom-de-loffre" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Contenu</strong> : Nom descriptif de l'offre olympique</li>
+<li><strong>Importance</strong> : Colonne principale d'identification</li>
+</ul>
+<h3 id="colonne-nombre-de-personnes" class="tsd-anchor-link">Colonne &quot;nombre de personnes&quot;<a href="#colonne-nombre-de-personnes" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Contenu</strong> : Capacité/limite participants de l'offre</li>
+<li><strong>Contexte</strong> : Information critique pour gestion olympique</li>
+<li><strong>Type</strong> : Probablement numérique (nombre entier)</li>
+<li><strong>Usage</strong> : Planification capacité événements</li>
+</ul>
+<h3 id="colonne-prix" class="tsd-anchor-link">Colonne &quot;Prix&quot;<a href="#colonne-prix" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Contenu</strong> : Tarification de l'offre</li>
+<li><strong>Format</strong> : Probablement devise (€, $)</li>
+<li><strong>Importance</strong> : Données commerciales essentielles</li>
+<li><strong>Gestion</strong> : Information pour administration billets</li>
+</ul>
+<h3 id="colonne-actions" class="tsd-anchor-link">Colonne &quot;Actions&quot;<a href="#colonne-actions" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Contenu</strong> : Boutons d'édition et suppression</li>
+<li><strong>Implémentation</strong> : Gérée par OffresTableRow</li>
+<li><strong>Callbacks</strong> : onEdit et onDelete transmis</li>
+<li><strong>Interface</strong> : Probablement icônes ou boutons</li>
+</ul>
+<h2 id="états-dinterface" class="tsd-anchor-link">États d'interface<a href="#états-dinterface" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="état-de-chargement" class="tsd-anchor-link">État de chargement<a href="#état-de-chargement" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Condition</strong> : loading &amp;&amp; offres.length === 0</li>
+<li><strong>Spinner</strong> : Composant Spinner avec size=&quot;medium&quot;</li>
+<li><strong>Message</strong> : &quot;Chargement des offres...&quot; pour clarté</li>
+</ul>
+<h3 id="état-vide" class="tsd-anchor-link">État vide<a href="#état-vide" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Condition</strong> : !loading &amp;&amp; offres.length === 0</li>
+<li><strong>Message principal</strong> : &quot;Aucune offre&quot;</li>
+<li><strong>Message secondaire</strong> : &quot;Commencez par créer votre première offre&quot;</li>
+<li><strong>Encouragement</strong> : Guidage utilisateur vers action création</li>
+</ul>
+<h3 id="état-avec-données" class="tsd-anchor-link">État avec données<a href="#état-avec-données" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Condition</strong> : offres.length &gt; 0</li>
+<li><strong>Rendu</strong> : Map sur offres avec OffresTableRow</li>
+<li><strong>Key</strong> : <a href="http://offre.id">offre.id</a> pour performance React</li>
+<li><strong>Props</strong> : offre, onDelete, onEdit transmises</li>
+<li><strong>Délégation</strong> : Logique d'affichage dans composant enfant</li>
+</ul>
+<h2 id="gestion-derreur" class="tsd-anchor-link">Gestion d'erreur<a href="#gestion-derreur" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="affichage-derreur" class="tsd-anchor-link">Affichage d'erreur<a href="#affichage-derreur" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Position</strong> : Entre titre et tableau</li>
+<li><strong>Style</strong> : Bandeau rouge</li>
+<li><strong>Contenu</strong> : Message d'erreur exact du parent</li>
+<li><strong>Persistance</strong> : Reste affiché jusqu'à résolution</li>
+<li><strong>Non-bloquant</strong> : N'empêche pas interaction avec données</li>
+</ul>
+<h2 id="problèmes-identifiés" class="tsd-anchor-link">Problèmes identifiés<a href="#problèmes-identifiés" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="erreur-terminologique-critique" class="tsd-anchor-link">Erreur terminologique critique<a href="#erreur-terminologique-critique" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Problème</strong> : Titre &quot;Disciplines&quot; au lieu d'&quot;Offres&quot;</li>
+<li><strong>Impact</strong> : Confusion utilisateur majeure</li>
+<li><strong>Localisation</strong> : Ligne titre h2</li>
+<li><strong>Solution</strong> : Changer &quot;Disciplines&quot; → &quot;Offres&quot;</li>
+<li><strong>Cohérence</strong> : Alignement avec nom du composant</li>
+</ul>
+<h2 id="intégration-composants" class="tsd-anchor-link">Intégration composants<a href="#intégration-composants" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="dépendances-externes" class="tsd-anchor-link">Dépendances externes<a href="#dépendances-externes" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Spinner</strong> : Composant réutilisable pour loading</li>
+<li><strong>OffresTableRow</strong> : Composant ligne spécialisé</li>
+<li><strong>Offre type</strong> : Interface TypeScript des données</li>
+</ul>
+<h3 id="interface-parent" class="tsd-anchor-link">Interface parent<a href="#interface-parent" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>offres</strong> : Array des données à afficher</li>
+<li><strong>loading</strong> : Boolean état chargement</li>
+<li><strong>error</strong> : String message d'erreur ou null</li>
+<li><strong>onDelete/onEdit</strong> : Callbacks pour actions utilisateur</li>
+</ul>
+<h2 id="performance" class="tsd-anchor-link">Performance<a href="#performance" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="⚡-optimisations-actuelles" class="tsd-anchor-link">⚡ Optimisations actuelles<a href="#⚡-optimisations-actuelles" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Conditional rendering</strong> : Évite rendu inutile selon états</li>
+<li><strong>Key prop</strong> : <a href="http://offre.id">offre.id</a> pour reconciliation React optimale</li>
+<li><strong>Composant délégué</strong> : OffresTableRow pour réutilisabilité</li>
+<li><strong>Props minimales</strong> : Transmission ciblée des données nécessaires</li>
+</ul>
+</div><div class="tsd-parameters"><h4 class="tsd-parameters-title">Parameters</h4><ul class="tsd-parameter-list"><li><span><span class="tsd-kind-parameter">props</span>: <span class="tsd-signature-type">Props</span></span><div class="tsd-comment tsd-typography"><p>Configuration de la table des offres</p>
+</div><ul class="tsd-parameters"><li class="tsd-parameter"><h5><span>offres</span></h5><div class="tsd-comment tsd-typography"><p>Liste des offres à afficher dans le tableau</p>
+</div></li><li class="tsd-parameter"><h5><span>loading</span></h5><div class="tsd-comment tsd-typography"><p>État de chargement pour affichage spinner</p>
+</div></li><li class="tsd-parameter"><h5><span>onDelete</span></h5><div class="tsd-comment tsd-typography"><p>Callback pour supprimer une offre par ID</p>
+</div></li><li class="tsd-parameter"><h5><span>onEdit</span></h5><div class="tsd-comment tsd-typography"><p>Callback pour éditer une offre (objet complet)</p>
+</div></li><li class="tsd-parameter"><h5><span>error</span></h5><div class="tsd-comment tsd-typography"><p>Message d'erreur à afficher si présent</p>
+</div></li></ul></li></ul></div><h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Element</span></h4><p>Table responsive avec liste des offres et gestion d'états</p>
+<div class="tsd-comment tsd-typography"><div class="tsd-tag-see"><h4 class="tsd-anchor-link" id="see">See<a href="#see" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><ul>
+<li>OffresManagement - Composant parent fournissant données et callbacks</li>
+<li><a href="components_componentOffre_OffresTableRaw.default.html" class="tsd-kind-function">OffresTableRow</a> - Composant ligne gérant affichage et actions individuelles</li>
+<li><a href="../interfaces/types_offre_offre.Offre.html" class="tsd-kind-interface">Offre</a> - Interface TypeScript des données d'offre olympique</li>
+<li><a href="components_spinner.default.html" class="tsd-kind-function">Spinner</a> - Composant loading réutilisable</li>
+</ul>
+</div></div><aside class="tsd-sources"><ul><li>Defined in <a href="https://github.com/driano-gael/AdminJO_Front/blob/main/application/src/components/componentOffre/OffresTable.tsx#L138">components/componentOffre/OffresTable.tsx:138</a></li></ul></aside></div></li></ul></section></div><div class="col-sidebar"><div class="page-menu"><div class="tsd-navigation settings"><details class="tsd-accordion"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg><h3>Settings</h3></summary><div class="tsd-accordion-details"><div class="tsd-filter-visibility"><span class="settings-label">Member Visibility</span><ul id="tsd-filter-options"><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-protected" name="protected"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Protected</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li></ul></div><div class="tsd-theme-toggle"><label class="settings-label" for="tsd-theme">Theme</label><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div><details open class="tsd-accordion tsd-page-navigation"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg><h3>On This Page</h3></summary><div class="tsd-accordion-details"><a href="#fonctionnalités-réellement-implémentées"><span>Fonctionnalités réellement implémentées</span></a><ul><li><a href="#affichage-tabulaire-des-offres"><span>Affichage tabulaire des offres</span></a></li><li><a href="#gestion-des-états-système"><span>Gestion des états système</span></a></li><li><a href="#actions-offres-intégrées"><span>Actions offres intégrées</span></a></li></ul><a href="#colonnes-spécialisées-offres"><span>Colonnes spécialisées offres</span></a><ul><li><a href="#colonne-nom-de-loffre"><span>Colonne &quot;<wbr/>Nom de l&#39;offre&quot;</span></a></li><li><a href="#colonne-nombre-de-personnes"><span>Colonne &quot;nombre de personnes&quot;</span></a></li><li><a href="#colonne-prix"><span>Colonne &quot;<wbr/>Prix&quot;</span></a></li><li><a href="#colonne-actions"><span>Colonne &quot;<wbr/>Actions&quot;</span></a></li></ul><a href="#états-dinterface"><span>États d&#39;interface</span></a><ul><li><a href="#état-de-chargement"><span>État de chargement</span></a></li><li><a href="#état-vide"><span>État vide</span></a></li><li><a href="#état-avec-données"><span>État avec données</span></a></li></ul><a href="#gestion-derreur"><span>Gestion d&#39;erreur</span></a><ul><li><a href="#affichage-derreur"><span>Affichage d&#39;erreur</span></a></li></ul><a href="#problèmes-identifiés"><span>Problèmes identifiés</span></a><ul><li><a href="#erreur-terminologique-critique"><span>Erreur terminologique critique</span></a></li></ul><a href="#intégration-composants"><span>Intégration composants</span></a><ul><li><a href="#dépendances-externes"><span>Dépendances externes</span></a></li><li><a href="#interface-parent"><span>Interface parent</span></a></li></ul><a href="#performance"><span>Performance</span></a><ul><li><a href="#⚡-optimisations-actuelles"><span>⚡ <wbr/>Optimisations actuelles</span></a></li></ul></div></details></div><div class="site-menu"><nav class="tsd-navigation"><a href="../modules.html">AdminJO Front - Documentation API - v0.1.0</a><ul class="tsd-small-nested-navigation" id="tsd-nav-container"><li>Loading...</li></ul></nav></div></div></div><footer><p class="tsd-generator">Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></footer><div class="overlay"></div></body></html>

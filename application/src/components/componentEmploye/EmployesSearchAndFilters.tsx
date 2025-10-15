@@ -1,5 +1,67 @@
 'use client';
 
+/**
+ * Composant EmployesSearchAndFilters - Interface de recherche et filtrage des employés AdminJO
+ *
+ * @name EmployesSearchAndFilters
+ *
+ * Ce composant fournit une interface complète de recherche textuelle et de filtrage par statut
+ * pour la gestion des employés. Il s'agit d'un composant contrôlé qui gère la saisie utilisateur
+ * et les sélections de filtre via des callbacks vers le composant parent. Version spécialisée
+ * pour les employés avec critères de recherche étendus incluant le matricule.
+ *
+ * ## Fonctionnalités réellement implémentées
+ *
+ * ### Recherche textuelle multifonctions
+ * - **Champ de recherche** : Input avec placeholder explicite et icône de loupe
+ * - **Recherche étendue** : Nom, prénom, matricule, téléphone ou email
+ * - **Temps réel** : Mise à jour instantanée lors de la saisie
+ *
+ * ## Gestion des états
+ *
+ * ### Composant contrôlé
+ * - **Search term** : Valeur contrôlée par le parent
+ * - **Status filter** : Sélection gérée par le parent
+ * - **Callbacks** : Remontée des changements via props
+ * - **Réactivité** : Mise à jour immédiate sur interaction
+ *
+ * ### Types de filtres employé
+ * - **'all'** : Affiche tous les employés sans distinction
+ * - **'active'** : Filtre sur employe.user.is_active = true
+ * - **'inactive'** : Filtre sur employe.user.is_active = false
+ * - **Union type** : Typage strict pour éviter les erreurs
+ * - **Cohérence** : Même logique que les autres entités
+ *
+ * ## Interactions utilisateur
+ *
+ * ### Saisie de recherche employé
+ * - **Event handling** : onChange avec e.target.value
+ * - **Callback immédiat** : onSearchChange appelé à chaque keystroke
+ * - **Critères étendus** : Recherche dans nom, prénom, matricule, téléphone, email
+ * - **Debouncing** : Non implémenté (géré par le parent si nécessaire)
+ * - **Vide autorisé** : Possibilité de vider la recherche
+ *
+ * ### Sélection de filtre statut
+ * - **Click handlers** : onClick sur chaque bouton de statut
+ * - **État exclusif** : Un seul filtre actif à la fois
+ * - **Feedback visuel** : Changement immédiat d'apparence
+ * - **Hover effects** : Amélioration de l'UX sur survol
+ * - **Logique métier** : Adaptation aux spécificités employé
+ *
+ * @param {Props} props - Configuration du composant de recherche et filtre employés
+ * @param {string} props.searchTerm - Terme de recherche actuel (contrôlé)
+ * @param {Function} props.onSearchChange - Callback appelé lors du changement de recherche
+ * @param {'all' | 'active' | 'inactive'} props.statusFilter - Filtre de statut actuel
+ * @param {Function} props.onStatusFilterChange - Callback pour changement de filtre statut
+ *
+ * @returns {JSX.Element} Interface de recherche et filtrage avec layout responsive pour employés
+ *
+ * @see {@link EmployesManagement} - Composant parent gérant l'état et la logique
+ * @see {@link EmployesTable} - Composant affichant les résultats filtrés
+ * @see {@link Employe} - Type des données employé recherchées et filtrées
+ *
+ */
+
 interface Props {
   searchTerm: string;
   onSearchChange: (term: string) => void;
@@ -7,10 +69,7 @@ interface Props {
   onStatusFilterChange: (status: 'all' | 'active' | 'inactive') => void;
 }
 
-/**
- * Composant de recherche et filtres pour les employés
- */
-export default function EmployesSearchAndFilters({
+export function EmployesSearchAndFilters({
   searchTerm,
   onSearchChange,
   statusFilter,
@@ -80,3 +139,4 @@ export default function EmployesSearchAndFilters({
     </div>
   );
 }
+export default EmployesSearchAndFilters;

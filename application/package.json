@@ -9,7 +9,9 @@
     "lint": "next lint",
     "test": "jest --watchAll=false",
     "test:watch": "jest --watch",
-    "check": "next lint && tsc --noEmit && npm run test"
+    "check": "next lint && tsc --noEmit && npm run test",
+    "docs": "typedoc",
+    "docs:serve": "npm run docs && npx http-server docs -p 8080 -o"
   },
   "dependencies": {
     "critters": "^0.0.24",
@@ -35,6 +37,7 @@
     "tailwindcss": "^4",
     "ts-jest": "^29.3.3",
     "ts-node": "^10.9.2",
+    "typedoc": "^0.28.14",
     "typescript": "^5"
   }
 }

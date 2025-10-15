@@ -1,6 +1,7 @@
 'use client';
 
 import { Client } from '@/types/client/client';
+import {JSX} from "react";
 
 interface Props {
   client: Client;
@@ -8,9 +9,56 @@ interface Props {
 }
 
 /**
- * Composant pour afficher une ligne de client dans la table
+ * Composant ClientsTableRow - Ligne de tableau pour un client AdminJO
+ *
+ * Ce composant affiche une ligne individuelle dans le tableau des clients avec
+ * toutes les informations client et un bouton d'action pour activer/désactiver
+ * le compte. Il s'agit d'un composant réutilisable utilisé par ClientsTable.
+ *
+ * ## Fonctionnalités réellement implémentées
+ *
+ * ### Affichage des données client
+ * - **ID client** : Numéro formaté avec préfixe # (ex: #123)
+ * - **Nom et prénom** : Informations personnelles du client
+ * - **Téléphone** : Numéro de contact
+ * - **Email** : Récupéré depuis client.user.email
+ * - **Date de création** : Formatée en français depuis client.user.date_joined
+ *
+ * ### 🏷Indicateur de statut
+ * - **Badge coloré** : Affichage visuel du statut actif/inactif
+ *
+ * ### ⚡ Action disponible
+ * - **Bouton toggle** : Permet d'activer/désactiver le compte client
+ * - **Couleur contextuelle** : Rouge pour désactiver, vert pour activer
+ * - **Callback** : Appel de onToggleActive avec l'ID du client
+ *
+ * ## Structure des données
+ *
+ * ### Props reçues
+ * - `client` : Objet Client complet avec propriétés imbriquées
+ * - `onToggleActive` : Callback pour l'action d'activation/désactivation
+ *
+ * ### Structure Client utilisée
+ * - `client.id` : Identifiant unique
+ * - `client.nom` : Nom de famille
+ * - `client.prenom` : Prénom
+ * - `client.telephone` : Numéro de téléphone
+ * - `client.user.email` : Email du compte utilisateur associé
+ * - `client.user.is_active` : Statut d'activation du compte
+ * - `client.user.date_joined` : Date de création du compte
+ *
+ * @param {Props} props - Configuration de la ligne client
+ * @param {Client} props.client - Données complètes du client à afficher
+ * @param {Function} props.onToggleActive - Callback pour activer/désactiver le client
+ *
+ * @returns {JSX.Element} Ligne de tableau avec données client et action toggle
+ *
+ * @see {@link ClientsTable} - Composant parent utilisant cette ligne
+ * @see {@link Client} - Type des données client affichées
+ * @see {@link ClientsManagement} - Composant racine gérant les actions
+ *
  */
-export default function ClientsTableRow({ client, onToggleActive }: Props) {
+export function ClientsTableRow({ client, onToggleActive }: Props): JSX.Element {
   return (
     <tr className="hover:bg-gray-50">
       <td className="px-6 py-4 whitespace-nowrap">
@@ -59,3 +107,4 @@ export default function ClientsTableRow({ client, onToggleActive }: Props) {
     </tr>
   );
 }
+export default ClientsTableRow;

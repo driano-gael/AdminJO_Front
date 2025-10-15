@@ -1,0 +1,77 @@
+{
+  "entryPoints": ["./src/**/*.{ts,tsx}"],
+  "entryPointStrategy": "expand",
+  "out": "./docs",
+  "theme": "default",
+  "includeVersion": true,
+  "excludePrivate": true,
+  "excludeProtected": false,
+  "excludeExternals": true,
+  "readme": "./README.md",
+  "name": "AdminJO Front - Documentation API",
+  "tsconfig": "./tsconfig.json",
+  "gitRevision": "main",
+  "sort": ["source-order"],
+  "validation": {
+    "notExported": false,
+    "invalidLink": false,
+    "notDocumented": false
+  },
+  "categorizeByGroup": true,
+  "defaultCategory": "Autres",
+  "categoryOrder": [
+    "Composants",
+    "Services",
+    "Hooks",
+    "Types",
+    "Utils",
+    "Pages",
+    "Autres"
+  ],
+  "blockTags": [
+    "@param",
+    "@returns",
+    "@throws",
+    "@example",
+    "@see",
+    "@since",
+    "@version",
+    "@deprecated",
+    "@internal",
+    "@override",
+    "@virtual",
+    "@readonly",
+    "@eventProperty",
+    "@defaultValue",
+    "@typeParam",
+    "@template",
+    "@module",
+    "@category",
+    "@author",
+    "@extends",
+    "@type",
+    "@name"
+  ],
+  "inlineTags": [
+    "@link",
+    "@linkcode",
+    "@linkplain",
+    "@inheritDoc"
+  ],
+  "externalSymbolLinkMappings": {
+    "react": {
+      "Component": "https://reactjs.org/docs/react-component.html",
+      "useState": "https://reactjs.org/docs/hooks-state.html",
+      "useEffect": "https://reactjs.org/docs/hooks-effect.html",
+      "useCallback": "https://reactjs.org/docs/hooks-reference.html#usecallback",
+      "useMemo": "https://reactjs.org/docs/hooks-reference.html#usememo"
+    },
+    "next": {
+      "useRouter": "https://nextjs.org/docs/api-reference/next/router#userouter",
+      "Image": "https://nextjs.org/docs/api-reference/next/image",
+      "Link": "https://nextjs.org/docs/api-reference/next/link"
+    }
+  },
+  "searchInComments": true,
+  "searchInDocuments": true
+}

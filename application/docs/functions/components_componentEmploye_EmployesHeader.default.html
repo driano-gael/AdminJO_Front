@@ -1,0 +1,99 @@
+<!DOCTYPE html><html class="default" lang="en" data-base="../"><head><meta charset="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>default | AdminJO Front - Documentation API - v0.1.0</title><meta name="description" content="Documentation for AdminJO Front - Documentation API"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="../assets/style.css"/><link rel="stylesheet" href="../assets/highlight.css"/><script defer src="../assets/main.js"></script><script async src="../assets/icons.js" id="tsd-icons-script"></script><script async src="../assets/search.js" id="tsd-search-script"></script><script async src="../assets/navigation.js" id="tsd-nav-script"></script><script async src="../assets/hierarchy.js" id="tsd-hierarchy-script"></script></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os";document.body.style.display="none";setTimeout(() => window.app?app.showPage():document.body.style.removeProperty("display"),500)</script><header class="tsd-page-toolbar"><div class="tsd-toolbar-contents container"><a href="../index.html" class="title">AdminJO Front - Documentation API - v0.1.0</a><div id="tsd-toolbar-links"></div><button id="tsd-search-trigger" class="tsd-widget" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-search"></use></svg></button><dialog id="tsd-search" aria-label="Search"><input role="combobox" id="tsd-search-input" aria-controls="tsd-search-results" aria-autocomplete="list" aria-expanded="true" autocapitalize="off" autocomplete="off" placeholder="Search the docs" maxLength="100"/><ul role="listbox" id="tsd-search-results"></ul><div id="tsd-search-status" aria-live="polite" aria-atomic="true"><div>Preparing search index...</div></div></dialog><a href="#" class="tsd-widget menu" id="tsd-toolbar-menu-trigger" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-menu"></use></svg></a></div></header><div class="container container-main"><div class="col-content"><div class="tsd-page-title"><ul class="tsd-breadcrumb" aria-label="Breadcrumb"><li><a href="../modules/components_componentEmploye_EmployesHeader.html">components/componentEmploye/EmployesHeader</a></li><li><a href="" aria-current="page">default</a></li></ul><h1>Function default</h1></div><section class="tsd-panel"><ul class="tsd-signatures"><li class=""><div class="tsd-signature tsd-anchor-link" id="default"><span class="tsd-kind-call-signature">default</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">props</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">EmployesHeaderProps</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Element</span><a href="#default" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div><div class="tsd-description"><div class="tsd-comment tsd-typography"><p>Composant EmployesHeader - En-tête de gestion des employés AdminJO</p>
+<p>Ce composant fournit l'interface d'en-tête pour la section de gestion des employés.
+Il affiche le titre de la page, une description et le bouton d'ajout d'un nouvel employé.
+Il suit les standards de design du système AdminJO avec une mise en page responsive.</p>
+<h2 id="fonctionnalités-réellement-implémentées" class="tsd-anchor-link">Fonctionnalités réellement implémentées<a href="#fonctionnalités-réellement-implémentées" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="📋-titre-et-identification-de-page" class="tsd-anchor-link">📋 Titre et identification de page<a href="#📋-titre-et-identification-de-page" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Titre principal</strong> : &quot;Gestion des Employés&quot; avec typographie hiérarchisée</li>
+<li><strong>Icône contextuelle</strong> : Emoji homme d'affaires (👨‍💼) pour identification visuelle</li>
+<li><strong>Description</strong> : Sous-titre explicatif du contenu de la page</li>
+<li><strong>Taille adaptive</strong> : text-2xl mobile → sm:text-3xl desktop</li>
+<li><strong>Hiérarchie visuelle</strong> : h1 avec font-bold et leading-7</li>
+</ul>
+<h3 id="➕-action-dajout-demployé" class="tsd-anchor-link">➕ Action d'ajout d'employé<a href="#➕-action-dajout-demployé" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Bouton principal</strong> : Action d'ajout avec style primaire bleu</li>
+<li><strong>Icône SVG</strong> : Plus (+) intégrée avec stroke currentColor</li>
+<li><strong>États interactifs</strong> : Hover (bg-blue-700) et focus (ring-blue-500)</li>
+<li><strong>Callback optionnel</strong> : onAddEmploye peut être undefined</li>
+<li><strong>Accessibilité</strong> : Focus ring avec offset pour visibilité</li>
+</ul>
+<h3 id="📱-design-responsive-et-layout" class="tsd-anchor-link">📱 Design responsive et layout<a href="#📱-design-responsive-et-layout" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Container fluide</strong> : max-w-7xl avec padding adaptatif</li>
+<li><strong>Breakpoints</strong> : sm:px-6 (576px+) et lg:px-8 (1024px+)</li>
+<li><strong>Flexbox adaptatif</strong> : md:flex pour alignement horizontal sur desktop</li>
+<li><strong>Espacement mobile</strong> : mt-4 sur mobile, md:mt-0 md:ml-4 sur desktop</li>
+<li><strong>Justification</strong> : md:justify-between pour séparation titre/bouton</li>
+</ul>
+<h2 id="structure-et-layout-détaillé" class="tsd-anchor-link">Structure et layout détaillé<a href="#structure-et-layout-détaillé" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="🎨-container-principal" class="tsd-anchor-link">🎨 Container principal<a href="#🎨-container-principal" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Fond</strong> : Blanc (bg-white) avec ombre subtile (shadow-sm)</li>
+<li><strong>Bordure</strong> : Bordure inférieure gris-200 pour séparation</li>
+<li><strong>Conteneur</strong> : max-w-7xl centré avec mx-auto</li>
+<li><strong>Padding</strong> : Système de padding responsive (px-4/sm:px-6/lg:px-8)</li>
+<li><strong>Espacement vertical</strong> : py-6 pour respiration verticale</li>
+</ul>
+<h3 id="👤-section-titre-et-icône" class="tsd-anchor-link">👤 Section titre et icône<a href="#👤-section-titre-et-icône" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Flexbox</strong> : flex items-center pour alignement vertical</li>
+<li><strong>Icône fixe</strong> : flex-shrink-0 pour éviter la compression</li>
+<li><strong>Espacement</strong> : ml-4 entre icône et texte</li>
+<li><strong>Contrainte largeur</strong> : flex-1 min-w-0 pour gestion débordement</li>
+<li><strong>Taille emoji</strong> : text-3xl pour visibility optimale</li>
+</ul>
+<h3 id="🎯-zone-daction-bouton" class="tsd-anchor-link">🎯 Zone d'action (bouton)<a href="#🎯-zone-daction-bouton" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Alignement</strong> : Centré verticalement avec items-center</li>
+<li><strong>Icône intégrée</strong> : SVG -ml-1 mr-2 h-4 w-4 pour équilibrage</li>
+<li><strong>Style bouton</strong> : px-4 py-2 avec border-transparent</li>
+<li><strong>Ombre</strong> : shadow-sm pour élévation subtile</li>
+<li><strong>Coins</strong> : rounded-md pour cohérence design</li>
+</ul>
+<h2 id="états-et-interactions" class="tsd-anchor-link">États et interactions<a href="#états-et-interactions" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="🖱️-interactions-bouton" class="tsd-anchor-link">🖱️ Interactions bouton<a href="#🖱️-interactions-bouton" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Hover</strong> : Transition de bg-blue-600 vers bg-blue-700</li>
+<li><strong>Focus</strong> : Ring bleu avec offset-2 pour accessibilité</li>
+<li><strong>Active</strong> : Maintien de la couleur hover</li>
+<li><strong>Disabled</strong> : Pas de gestion disabled (callback optionnel)</li>
+<li><strong>Click handler</strong> : onClick appelé si onAddEmploye fourni</li>
+</ul>
+<h3 id="📐-responsive-behavior" class="tsd-anchor-link">📐 Responsive behavior<a href="#📐-responsive-behavior" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Mobile</strong> : Layout vertical avec espacement mt-4</li>
+<li><strong>Tablet</strong> : md: breakpoint active flex horizontal</li>
+<li><strong>Desktop</strong> : Espacement ml-4 et justify-between</li>
+<li><strong>Texte</strong> : Taille adaptative sm:text-3xl</li>
+<li><strong>Padding</strong> : Progression 4 → 6 → 8 selon taille écran</li>
+</ul>
+<h2 id="accessibilité-implémentée" class="tsd-anchor-link">Accessibilité implémentée<a href="#accessibilité-implémentée" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="♿-standards-wcag" class="tsd-anchor-link">♿ Standards WCAG<a href="#♿-standards-wcag" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Focus visible</strong> : Ring avec couleur contrastée</li>
+<li><strong>Hiérarchie</strong> : h1 sémantique pour lecteurs d'écran</li>
+<li><strong>Contraste</strong> : Couleurs respectant ratios WCAG AA</li>
+<li><strong>Zone de clic</strong> : Bouton avec taille minimale 44px</li>
+<li><strong>Icône décorative</strong> : SVG avec aria-hidden implicite</li>
+</ul>
+<h3 id="⌨️-navigation-clavier" class="tsd-anchor-link">⌨️ Navigation clavier<a href="#⌨️-navigation-clavier" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Tabulation</strong> : Bouton accessible via tab</li>
+<li><strong>Enter/Space</strong> : Activation du bouton possible</li>
+<li><strong>Focus ring</strong> : Contour visible pour orientation</li>
+<li><strong>Outline</strong> : focus:outline-none avec ring alternatif</li>
+</ul>
+<h2 id="limitations-actuelles" class="tsd-anchor-link">Limitations actuelles<a href="#limitations-actuelles" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="❌-fonctionnalités-non-implémentées" class="tsd-anchor-link">❌ Fonctionnalités non implémentées<a href="#❌-fonctionnalités-non-implémentées" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Statistiques</strong> : Pas de compteur d'employés total</li>
+<li><strong>Filtres rapides</strong> : Pas de boutons de filtre dans l'en-tête</li>
+<li><strong>Actions multiples</strong> : Pas de menu dropdown d'actions</li>
+<li><strong>Notifications</strong> : Pas d'indicateurs de nouveaux employés</li>
+<li><strong>Recherche rapide</strong> : Pas de barre de recherche intégrée</li>
+<li><strong>Breadcrumb</strong> : Pas de fil d'Ariane</li>
+</ul>
+<h3 id="🔧-améliorations-possibles" class="tsd-anchor-link">🔧 Améliorations possibles<a href="#🔧-améliorations-possibles" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Counter badge</strong> : Affichage &quot;(X employés)&quot; dynamique</li>
+<li><strong>Actions groupées</strong> : Dropdown avec &quot;Exporter&quot;, &quot;Importer&quot;</li>
+<li><strong>Statut système</strong> : Indicateur de synchronisation</li>
+<li><strong>Raccourcis</strong> : Support des raccourcis clavier (Ctrl+N)</li>
+<li><strong>Tooltips</strong> : Aide contextuelle sur le bouton</li>
+<li><strong>Animation</strong> : Micro-animations pour feedback utilisateur</li>
+</ul>
+</div><div class="tsd-parameters"><h4 class="tsd-parameters-title">Parameters</h4><ul class="tsd-parameter-list"><li><span><span class="tsd-kind-parameter">props</span>: <span class="tsd-signature-type">EmployesHeaderProps</span></span><div class="tsd-comment tsd-typography"><p>Configuration de l'en-tête des employés</p>
+</div><ul class="tsd-parameters"><li class="tsd-parameter"><h5><span>onAddEmploye</span></h5><div class="tsd-comment tsd-typography"><p>Callback optionnel pour l'ajout d'employé</p>
+</div></li></ul></li></ul></div><h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Element</span></h4><p>En-tête responsive avec titre, description et action d'ajout</p>
+<div class="tsd-comment tsd-typography"><div class="tsd-tag-see"><h4 class="tsd-anchor-link" id="see">See<a href="#see" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><ul>
+<li>EmployesManagement - Composant parent gérant la liste complète</li>
+<li>CreateEmployeForm - Formulaire déclenché par le bouton d'ajout</li>
+<li>Employe - Type des données employé gérées</li>
+</ul>
+</div><div class="tsd-tag-since"><h4 class="tsd-anchor-link" id="since">Since<a href="#since" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p>1.0.0</p>
+</div></div><aside class="tsd-sources"><ul><li>Defined in <a href="https://github.com/driano-gael/AdminJO_Front/blob/main/application/src/components/componentEmploye/EmployesHeader.tsx#L120">components/componentEmploye/EmployesHeader.tsx:120</a></li></ul></aside></div></li></ul></section></div><div class="col-sidebar"><div class="page-menu"><div class="tsd-navigation settings"><details class="tsd-accordion"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg><h3>Settings</h3></summary><div class="tsd-accordion-details"><div class="tsd-filter-visibility"><span class="settings-label">Member Visibility</span><ul id="tsd-filter-options"><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-protected" name="protected"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Protected</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li></ul></div><div class="tsd-theme-toggle"><label class="settings-label" for="tsd-theme">Theme</label><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div><details open class="tsd-accordion tsd-page-navigation"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg><h3>On This Page</h3></summary><div class="tsd-accordion-details"><a href="#fonctionnalités-réellement-implémentées"><span>Fonctionnalités réellement implémentées</span></a><ul><li><a href="#📋-titre-et-identification-de-page"><span>📋 <wbr/>Titre et identification de page</span></a></li><li><a href="#➕-action-dajout-demployé"><span>➕ <wbr/>Action d&#39;ajout d&#39;employé</span></a></li><li><a href="#📱-design-responsive-et-layout"><span>📱 <wbr/>Design responsive et layout</span></a></li></ul><a href="#structure-et-layout-détaillé"><span>Structure et layout détaillé</span></a><ul><li><a href="#🎨-container-principal"><span>🎨 <wbr/>Container principal</span></a></li><li><a href="#👤-section-titre-et-icône"><span>👤 <wbr/>Section titre et icône</span></a></li><li><a href="#🎯-zone-daction-bouton"><span>🎯 <wbr/>Zone d&#39;action (bouton)</span></a></li></ul><a href="#états-et-interactions"><span>États et interactions</span></a><ul><li><a href="#🖱️-interactions-bouton"><span>🖱️ <wbr/>Interactions bouton</span></a></li><li><a href="#📐-responsive-behavior"><span>📐 <wbr/>Responsive behavior</span></a></li></ul><a href="#accessibilité-implémentée"><span>Accessibilité implémentée</span></a><ul><li><a href="#♿-standards-wcag"><span>♿ <wbr/>Standards <wbr/>WCAG</span></a></li><li><a href="#⌨️-navigation-clavier"><span>⌨️ <wbr/>Navigation clavier</span></a></li></ul><a href="#limitations-actuelles"><span>Limitations actuelles</span></a><ul><li><a href="#❌-fonctionnalités-non-implémentées"><span>❌ <wbr/>Fonctionnalités non implémentées</span></a></li><li><a href="#🔧-améliorations-possibles"><span>🔧 <wbr/>Améliorations possibles</span></a></li></ul></div></details></div><div class="site-menu"><nav class="tsd-navigation"><a href="../modules.html">AdminJO Front - Documentation API - v0.1.0</a><ul class="tsd-small-nested-navigation" id="tsd-nav-container"><li>Loading...</li></ul></nav></div></div></div><footer><p class="tsd-generator">Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></footer><div class="overlay"></div></body></html>

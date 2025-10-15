@@ -1,6 +1,66 @@
 'use client';
 
-import { Employe } from '@/types/employe/employe';
+import {Employe} from "@/types/employe/employe";
+
+/**
+ * Composant EmployesTable - Table de gestion des employés AdminJO
+ *
+ * @name EmployesTable
+ *
+ * Ce composant affiche la liste complète des employés sous forme de tableau responsive
+ * avec fonctionnalités de filtrage, gestion des états de chargement/erreur, et actions
+ * d'activation/désactivation. Il intègre la logique de recherche côté client et
+ * fournit une interface optimisée pour la gestion RH des employés.
+ *
+ * ## Fonctionnalités réellement implémentées
+ *
+ * ### Affichage tabulaire des employés
+ * - **Colonnes structurées** : Employé, Matricule, Email, Téléphone, Statut, Actions
+ * - **Informations hiérarchisées** : Nom/prénom principal, ID secondaire
+ * - **Compteur dynamique** : Affichage du nombre d'employés filtrés
+ *
+ * ### Filtrage côté client intégré
+ * - **Recherche multi-critères** : Nom, prénom, email, matricule, téléphone
+ * - **Filtrage réactif** : Mise à jour immédiate selon searchTerm
+ * - **Performance optimisée** : Filter() sur tableau local sans requête
+ * - **Sensibilité casse** : Recherche insensible à la casse (toLowerCase)
+ * - **Recherche partielle** : Utilisation d'includes() pour correspondance
+ *
+ * ### Gestion des états système
+ * - **État loading** : Spinner avec message "Chargement des employés..."
+ * - **État error** : Interface d'erreur avec bouton "Réessayer"
+ * - **État vide** : Message contextuel selon présence de searchTerm
+ *
+ * ### Actions employé intégrées
+ * - **Toggle activation** : Bouton contextuel Activer/Désactiver
+ * - **Couleurs contextuelles** : Rouge pour désactiver, vert pour activer
+ * - **Gestion async** : handleToggleActive avec gestion d'erreur
+ * - **Feedback utilisateur** : Changement visuel immédiat
+ *
+ * ## Interactions utilisateur
+ *
+ * ### Actions disponibles
+ * - **Refresh** : Bouton actualiser déclenche onRefresh()
+ * - **Toggle statut** : Bouton activer/désactiver par ligne
+ * - **Hover** : Mise en évidence des lignes sur survol
+ * - **Scroll** : Navigation horizontale sur petit écran
+ *
+ * @param {EmployesTableProps} props - Configuration de la table des employés
+ * @param {Employe[]} props.employes - Liste des employés à afficher
+ * @param {boolean} props.loading - État de chargement des données
+ * @param {string} props.searchTerm - Terme de recherche pour filtrage client
+ * @param {Function} props.onRefresh - Callback pour actualiser les données
+ * @param {string | null} props.error - Message d'erreur à afficher si présent
+ * @param {Function} props.handleToggleActive - Callback async pour changer statut employé
+ *
+ * @returns {JSX.Element} Table responsive avec liste filtrée des employés
+ *
+ * @see {@link EmployesManagement} - Composant parent fournissant les données
+ * @see {@link EmployesSearchAndFilters} - Composant fournissant searchTerm
+ * @see {@link Employe} - Interface TypeScript des données employé
+ * @see {@link EmployesTableRow} - Composant dédié pour lignes individuelles
+ *
+ */
 
 interface EmployesTableProps {
   employes: Employe[];
@@ -11,9 +71,6 @@ interface EmployesTableProps {
   handleToggleActive: (employeId: number) => Promise<void>;
 }
 
-/**
- * Composant de table pour afficher les employés
- */
 export default function EmployesTable({
   employes,
   loading,

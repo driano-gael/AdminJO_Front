@@ -1,0 +1,164 @@
+<!DOCTYPE html><html class="default" lang="en" data-base="../"><head><meta charset="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>default | AdminJO Front - Documentation API - v0.1.0</title><meta name="description" content="Documentation for AdminJO Front - Documentation API"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="../assets/style.css"/><link rel="stylesheet" href="../assets/highlight.css"/><script defer src="../assets/main.js"></script><script async src="../assets/icons.js" id="tsd-icons-script"></script><script async src="../assets/search.js" id="tsd-search-script"></script><script async src="../assets/navigation.js" id="tsd-nav-script"></script><script async src="../assets/hierarchy.js" id="tsd-hierarchy-script"></script></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os";document.body.style.display="none";setTimeout(() => window.app?app.showPage():document.body.style.removeProperty("display"),500)</script><header class="tsd-page-toolbar"><div class="tsd-toolbar-contents container"><a href="../index.html" class="title">AdminJO Front - Documentation API - v0.1.0</a><div id="tsd-toolbar-links"></div><button id="tsd-search-trigger" class="tsd-widget" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-search"></use></svg></button><dialog id="tsd-search" aria-label="Search"><input role="combobox" id="tsd-search-input" aria-controls="tsd-search-results" aria-autocomplete="list" aria-expanded="true" autocapitalize="off" autocomplete="off" placeholder="Search the docs" maxLength="100"/><ul role="listbox" id="tsd-search-results"></ul><div id="tsd-search-status" aria-live="polite" aria-atomic="true"><div>Preparing search index...</div></div></dialog><a href="#" class="tsd-widget menu" id="tsd-toolbar-menu-trigger" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-menu"></use></svg></a></div></header><div class="container container-main"><div class="col-content"><div class="tsd-page-title"><ul class="tsd-breadcrumb" aria-label="Breadcrumb"><li><a href="../modules/components_spinner.html">components/spinner</a></li><li><a href="" aria-current="page">default</a></li></ul><h1>Function default</h1></div><section class="tsd-panel"><ul class="tsd-signatures"><li class=""><div class="tsd-signature tsd-anchor-link" id="default"><span class="tsd-kind-call-signature">default</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">props</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">SpinnerProps</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Element</span><a href="#default" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div><div class="tsd-description"><div class="tsd-comment tsd-typography"><p>Composant Spinner - Indicateur de chargement universel AdminJO</p>
+<p>Ce composant fournit un indicateur de chargement animé complet et polyvalent pour
+l'application AdminJO des Jeux Olympiques 2024. Il combine animation CSS fluide,
+multiples variations de taille et couleur, support texte accompagnateur optionnel,
+et modes d'affichage inline ou plein écran. Conçu pour tous les cas d'usage de
+feedback utilisateur pendant les opérations asynchrones, il maintient la cohérence
+visuelle de l'écosystème AdminJO tout en offrant une flexibilité maximale pour
+s'adapter aux contextes d'attente variés de l'administration olympique.</p>
+<h2 id="architecture-animation-et-variations-visuelles" class="tsd-anchor-link">Architecture animation et variations visuelles<a href="#architecture-animation-et-variations-visuelles" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="🎯-animation-css-optimisée-et-performante" class="tsd-anchor-link">🎯 Animation CSS optimisée et performante<a href="#🎯-animation-css-optimisée-et-performante" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Keyframes CSS</strong> : Animation rotate 360° fluide avec règles CSS keyframes</li>
+<li><strong>Transform GPU</strong> : Utilisation transform pour accélération matérielle</li>
+<li><strong>Duration contrôlée</strong> : animation-duration 1s pour rotation uniforme</li>
+<li><strong>Loop infini</strong> : animation-iteration-count infinite pour continuité</li>
+<li><strong>Timing optimisé</strong> : ease-in-out pour mouvement naturel</li>
+<li><strong>Performance</strong> : Aucun JavaScript, pure CSS pour fluidité maximale</li>
+<li><strong>Responsive</strong> : Animation adaptée tous écrans et densités pixels</li>
+<li><strong>Accessibility</strong> : prefers-reduced-motion pour utilisateurs sensibles</li>
+</ul>
+<h3 id="🎨-système-de-tailles-graduées-et-contextuelles" class="tsd-anchor-link">🎨 Système de tailles graduées et contextuelles<a href="#🎨-système-de-tailles-graduées-et-contextuelles" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Small (4x4)</strong> : w-4 h-4 pour indicateurs inline compacts</li>
+<li><strong>Medium (6x6)</strong> : w-6 h-6 taille standard boutons et cards</li>
+<li><strong>Large (8x8)</strong> : w-8 h-8 pour sections importantes et modales</li>
+<li><strong>XLarge (12x12)</strong> : w-12 h-12 chargements plein écran critiques</li>
+<li><strong>Proportions cohérentes</strong> : Échelle géométrique design system</li>
+<li><strong>Context adaptation</strong> : Tailles optimisées selon usage prévu</li>
+<li><strong>Responsive scaling</strong> : Adaptabilité mobile ↔ desktop automatique</li>
+<li><strong>Visual hierarchy</strong> : Tailles communiquent importance opération</li>
+</ul>
+<h3 id="🌈-palette-couleurs-thématique-adminjo-enrichie" class="tsd-anchor-link">🌈 Palette couleurs thématique AdminJO enrichie<a href="#🌈-palette-couleurs-thématique-adminjo-enrichie" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Blue (défaut)</strong> : text-blue-600 couleur principale AdminJO</li>
+<li><strong>White</strong> : text-white pour overlays et backgrounds sombres</li>
+<li><strong>Gray</strong> : text-gray-500 pour états neutres et désactivés</li>
+<li><strong>Green</strong> : text-green-600 pour succès et validation en cours</li>
+<li><strong>Red</strong> : text-red-600 pour erreurs et opérations critiques</li>
+<li><strong>Yellow</strong> : text-yellow-600 pour avertissements et attention</li>
+<li><strong>Cohérence branding</strong> : Alignement palette officielle JO 2024</li>
+<li><strong>Contrast compliance</strong> : Ratios conformes WCAG accessibilité</li>
+</ul>
+<h2 id="fonctionnalités-avancées-et-modes-daffichage" class="tsd-anchor-link">Fonctionnalités avancées et modes d'affichage<a href="#fonctionnalités-avancées-et-modes-daffichage" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="📝-support-texte-accompagnateur-contextuel" class="tsd-anchor-link">📝 Support texte accompagnateur contextuel<a href="#📝-support-texte-accompagnateur-contextuel" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Text optionnel</strong> : Props text pour message explicatif</li>
+<li><strong>Positionnement</strong> : Texte sous spinner avec margin optimisée</li>
+<li><strong>Typography cohérente</strong> : text-gray-600 et text-sm alignées</li>
+<li><strong>Multiligne support</strong> : Gestion messages longs automatique</li>
+<li><strong>Contextualisation</strong> : Messages spécifiques opérations JO</li>
+<li><strong>Internationalisation</strong> : Prêt pour i18n multilingue</li>
+<li><strong>Accessibility</strong> : Screen readers lisent message complet</li>
+<li><strong>Responsive text</strong> : Adaptation taille selon viewport</li>
+</ul>
+<h3 id="🖥️-mode-fullscreen-pour-chargements-critiques" class="tsd-anchor-link">🖥️ Mode fullScreen pour chargements critiques<a href="#🖥️-mode-fullscreen-pour-chargements-critiques" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Overlay complet</strong> : fixed inset-0 couvre viewport entier</li>
+<li><strong>Background</strong> : bg-white bg-opacity-80 pour visibilité contrôlée</li>
+<li><strong>Z-index élevé</strong> : z-50 au-dessus tous éléments interface</li>
+<li><strong>Centrage parfait</strong> : flex items-center justify-center</li>
+<li><strong>Scroll prevention</strong> : Optionnel overflow-hidden sur body</li>
+<li><strong>Focus trap</strong> : Empêche interaction reste interface pendant</li>
+<li><strong>ESC handling</strong> : Fermeture optionnelle touche Échap</li>
+<li><strong>Loading priorities</strong> : Indique opérations critiques système</li>
+</ul>
+<h3 id="🎨-customisation-avancée-styling" class="tsd-anchor-link">🎨 Customisation avancée styling<a href="#🎨-customisation-avancée-styling" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>ClassName override</strong> : Props className pour styles custom</li>
+<li><strong>CSS-in-JS ready</strong> : Compatible styled-components si needed</li>
+<li><strong>Tailwind classes</strong> : Integration native utility-first</li>
+<li><strong>Custom animations</strong> : Extension keyframes personnalisées</li>
+<li><strong>Brand theming</strong> : Adaptation thèmes olympiques variés</li>
+<li><strong>Dark mode</strong> : Support automatique modes sombre/clair</li>
+<li><strong>High contrast</strong> : Adaptabilité besoins accessibilité</li>
+<li><strong>Custom colors</strong> : Extension palette au-delà prédéfinis</li>
+</ul>
+<h2 id="cas-dusage-adminjo-et-intégrations-olympiques" class="tsd-anchor-link">Cas d'usage AdminJO et intégrations olympiques<a href="#cas-dusage-adminjo-et-intégrations-olympiques" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="🏅-contextes-métier-jeux-olympiques-spécialisés" class="tsd-anchor-link">🏅 Contextes métier Jeux Olympiques spécialisés<a href="#🏅-contextes-métier-jeux-olympiques-spécialisés" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Chargement événements</strong> : Liste événements olympiques depuis API</li>
+<li><strong>Synchronisation disciplines</strong> : Import/export données CIO</li>
+<li><strong>Validation épreuves</strong> : Contrôles conformité règlements</li>
+<li><strong>Upload documents</strong> : Téléchargements certificats et dossiers</li>
+<li><strong>Génération rapports</strong> : Création analytics et statistiques</li>
+<li><strong>Authentication</strong> : Connexion organisateurs et officials</li>
+<li><strong>Real-time updates</strong> : Synchronisation scores et résultats</li>
+<li><strong>Batch operations</strong> : Traitements masse données olympiques</li>
+</ul>
+<h3 id="📱-responsive-design-et-contextes-dusage" class="tsd-anchor-link">📱 Responsive design et contextes d'usage<a href="#📱-responsive-design-et-contextes-dusage" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Mobile loading</strong> : Indicateurs tactiles smartphones organisateurs</li>
+<li><strong>Tablet interfaces</strong> : Chargements interfaces terrain tablettes</li>
+<li><strong>Desktop admin</strong> : Interfaces administration complètes PC</li>
+<li><strong>Kiosque public</strong> : Écrans information publique JO</li>
+<li><strong>Embedded widgets</strong> : Intégration sites partenaires officiels</li>
+<li><strong>Print interfaces</strong> : Chargements génération documents PDF</li>
+<li><strong>Accessibility stations</strong> : Interfaces adaptées handicaps</li>
+<li><strong>Multi-screen</strong> : Synchronisation écrans contrôle multiples</li>
+</ul>
+<h2 id="performance-et-optimisations-techniques" class="tsd-anchor-link">Performance et optimisations techniques<a href="#performance-et-optimisations-techniques" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="⚡-optimisations-rendering-et-animation" class="tsd-anchor-link">⚡ Optimisations rendering et animation<a href="#⚡-optimisations-rendering-et-animation" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Pure CSS</strong> : Aucun JavaScript requis pour animation</li>
+<li><strong>GPU acceleration</strong> : transform utilisé pour performance</li>
+<li><strong>Minimal DOM</strong> : Structure HTML légère et optimisée</li>
+<li><strong>Bundle impact</strong> : Code minimal impact taille bundle</li>
+<li><strong>Tree shaking</strong> : Import sélectif props utilisées seulement</li>
+<li><strong>Memory efficient</strong> : Pas de state local ou effects</li>
+<li><strong>Rerender optimal</strong> : Props stables évitent re-renders</li>
+<li><strong>CSS caching</strong> : Classes Tailwind compilées et cachées</li>
+</ul>
+<h3 id="🔒-accessibilité-et-standards-universels" class="tsd-anchor-link">🔒 Accessibilité et standards universels<a href="#🔒-accessibilité-et-standards-universels" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>ARIA compliance</strong> : role=&quot;status&quot; pour screen readers</li>
+<li><strong>Keyboard friendly</strong> : Pas d'interruption navigation clavier</li>
+<li><strong>Focus management</strong> : Préservation focus pendant chargement</li>
+<li><strong>Screen readers</strong> : Annonce état loading aux assistants</li>
+<li><strong>Reduced motion</strong> : Respect préférences animation utilisateur</li>
+<li><strong>High contrast</strong> : Support modes contraste système</li>
+<li><strong>Color blindness</strong> : Palette accessible daltoniens</li>
+<li><strong>WCAG AAA</strong> : Conformité standards accessibilité stricts</li>
+</ul>
+<h3 id="🧪-testabilité-et-maintenance-développeur" class="tsd-anchor-link">🧪 Testabilité et maintenance développeur<a href="#🧪-testabilité-et-maintenance-développeur" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Props interface</strong> : Structure claire pour tests unitaires</li>
+<li><strong>Visual testing</strong> : Snapshots rendus stables régression</li>
+<li><strong>Animation testing</strong> : Validation états animation Jest</li>
+<li><strong>Accessibility testing</strong> : Tests conformité a11y automatisés</li>
+<li><strong>Performance testing</strong> : Métriques rendering et animation</li>
+<li><strong>Cross-browser</strong> : Validation compatibilité navigateurs</li>
+<li><strong>Storybook ready</strong> : Documentation interactive composant</li>
+<li><strong>TypeScript strict</strong> : Validation types compilation stricte</li>
+</ul>
+<h2 id="extensions-futures-et-améliorations-envisageables" class="tsd-anchor-link">Extensions futures et améliorations envisageables<a href="#extensions-futures-et-améliorations-envisageables" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="🚀-évolutions-fonctionnelles-avancées" class="tsd-anchor-link">🚀 Évolutions fonctionnelles avancées<a href="#🚀-évolutions-fonctionnelles-avancées" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Progress indication</strong> : Pourcentage completion intégré</li>
+<li><strong>Multi-step loading</strong> : Indicateurs étapes processus</li>
+<li><strong>Estimated time</strong> : Prédiction durée restante IA</li>
+<li><strong>Cancellation</strong> : Bouton annulation opérations longues</li>
+<li><strong>Retry mechanism</strong> : Relance automatique si échec</li>
+<li><strong>Loading history</strong> : Historique opérations utilisateur</li>
+<li><strong>Contextual tips</strong> : Conseils pendant attente</li>
+<li><strong>Gamification</strong> : Éléments ludiques patience utilisateur</li>
+</ul>
+<h3 id="🎨-améliorations-visuelles-et-ux" class="tsd-anchor-link">🎨 Améliorations visuelles et UX<a href="#🎨-améliorations-visuelles-et-ux" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Skeleton loading</strong> : Aperçu structure avant contenu</li>
+<li><strong>Lottie animations</strong> : Animations vectorielles complexes</li>
+<li><strong>Particle effects</strong> : Effets visuels immersifs</li>
+<li><strong>Sound feedback</strong> : Audio discret confirmation actions</li>
+<li><strong>Haptic feedback</strong> : Vibrations mobiles pour confirmation</li>
+<li><strong>Contextual imagery</strong> : Images thématiques JO pendant attente</li>
+<li><strong>Progressive disclosure</strong> : Révélation graduelle information</li>
+<li><strong>Micro-interactions</strong> : Détails animation engagement</li>
+</ul>
+</div><div class="tsd-parameters"><h4 class="tsd-parameters-title">Parameters</h4><ul class="tsd-parameter-list"><li><span><span class="tsd-kind-parameter">props</span>: <span class="tsd-signature-type">SpinnerProps</span></span><div class="tsd-comment tsd-typography"><p>Configuration apparence et comportement spinner</p>
+</div><ul class="tsd-parameters"><li class="tsd-parameter"><h5><span>size</span></h5><div class="tsd-comment tsd-typography"><p>Taille spinner: small|medium|large|xlarge</p>
+</div></li><li class="tsd-parameter"><h5><span>color</span></h5><div class="tsd-comment tsd-typography"><p>Couleur: blue|white|gray|green|red|yellow</p>
+</div></li><li class="tsd-parameter"><h5><span>text</span></h5><div class="tsd-comment tsd-typography"><p>Texte accompagnateur optionnel sous spinner</p>
+</div></li><li class="tsd-parameter"><h5><span>className</span></h5><div class="tsd-comment tsd-typography"><p>Classes CSS Tailwind custom additionnelles</p>
+</div></li><li class="tsd-parameter"><h5><span>fullScreen</span></h5><div class="tsd-comment tsd-typography"><p>Mode plein écran avec overlay</p>
+</div></li></ul></li></ul></div><h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Element</span></h4><p>Indicateur chargement animé configuré AdminJO</p>
+<div class="tsd-comment tsd-typography"><div class="tsd-tag-see"><h4 class="tsd-anchor-link" id="see">See<a href="#see" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p>Notification - Composant messages feedback utilisateur</p>
+</div><div class="tsd-tag-since"><h4 class="tsd-anchor-link" id="since">Since<a href="#since" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p>1.0.0</p>
+</div><div class="tsd-tag-version"><h4 class="tsd-anchor-link" id="version">Version<a href="#version" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p>1.0.0</p>
+</div><div class="tsd-tag-example"><h4 class="tsd-anchor-link" id="example">Example<a href="#example" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><pre><code class="tsx"><span class="hl-0">// Spinner basique taille et couleur par défaut</span><br/><span class="hl-6">&lt;</span><span class="hl-7">Spinner</span><span class="hl-2"> </span><span class="hl-6">/&gt;</span>
+</code><button type="button">Copy</button></pre>
+
+</div><div class="tsd-tag-example"><h4 class="tsd-anchor-link" id="example-1">Example<a href="#example-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><pre><code class="tsx"><span class="hl-0">// Spinner avec texte explicatif contextuel</span><br/><span class="hl-6">&lt;</span><span class="hl-7">Spinner</span><br/><span class="hl-2">  </span><span class="hl-8">text</span><span class="hl-2">=</span><span class="hl-3">&quot;Chargement des événements olympiques...&quot;</span><br/><span class="hl-2">  </span><span class="hl-8">size</span><span class="hl-2">=</span><span class="hl-3">&quot;large&quot;</span><br/><span class="hl-6">/&gt;</span>
+</code><button type="button">Copy</button></pre>
+
+</div><div class="tsd-tag-example"><h4 class="tsd-anchor-link" id="example-2">Example<a href="#example-2" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><pre><code class="tsx"><span class="hl-0">// Mode plein écran pour opérations critiques</span><br/><span class="hl-6">&lt;</span><span class="hl-7">Spinner</span><br/><span class="hl-2">  </span><span class="hl-8">fullScreen</span><br/><span class="hl-2">  </span><span class="hl-8">text</span><span class="hl-2">=</span><span class="hl-3">&quot;Synchronisation avec la base CIO en cours...&quot;</span><br/><span class="hl-2">  </span><span class="hl-8">size</span><span class="hl-2">=</span><span class="hl-3">&quot;xlarge&quot;</span><br/><span class="hl-2">  </span><span class="hl-8">color</span><span class="hl-2">=</span><span class="hl-3">&quot;blue&quot;</span><br/><span class="hl-6">/&gt;</span>
+</code><button type="button">Copy</button></pre>
+
+</div><div class="tsd-tag-example"><h4 class="tsd-anchor-link" id="example-3">Example<a href="#example-3" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><pre><code class="tsx"><span class="hl-0">// Spinner contexte succès avec style custom</span><br/><span class="hl-6">&lt;</span><span class="hl-7">Spinner</span><br/><span class="hl-2">  </span><span class="hl-8">color</span><span class="hl-2">=</span><span class="hl-3">&quot;green&quot;</span><br/><span class="hl-2">  </span><span class="hl-8">size</span><span class="hl-2">=</span><span class="hl-3">&quot;medium&quot;</span><br/><span class="hl-2">  </span><span class="hl-8">text</span><span class="hl-2">=</span><span class="hl-3">&quot;Sauvegarde réussie !&quot;</span><br/><span class="hl-2">  </span><span class="hl-8">className</span><span class="hl-2">=</span><span class="hl-3">&quot;mb-4&quot;</span><br/><span class="hl-6">/&gt;</span>
+</code><button type="button">Copy</button></pre>
+
+</div><div class="tsd-tag-example"><h4 class="tsd-anchor-link" id="example-4">Example<a href="#example-4" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><pre><code class="tsx"><span class="hl-0">// Dans un bouton pendant action async</span><br/><span class="hl-6">&lt;</span><span class="hl-10">button</span><span class="hl-2"> </span><span class="hl-8">disabled</span><span class="hl-2">=</span><span class="hl-9">{</span><span class="hl-4">isLoading</span><span class="hl-9">}</span><span class="hl-6">&gt;</span><br/><span class="hl-2">  </span><span class="hl-9">{</span><span class="hl-4">isLoading</span><span class="hl-11"> </span><span class="hl-2">?</span><span class="hl-11"> (</span><br/><span class="hl-11">    </span><span class="hl-6">&lt;</span><span class="hl-10">div</span><span class="hl-11"> </span><span class="hl-8">className</span><span class="hl-2">=</span><span class="hl-3">&quot;flex items-center&quot;</span><span class="hl-6">&gt;</span><br/><span class="hl-11">      </span><span class="hl-6">&lt;</span><span class="hl-7">Spinner</span><span class="hl-11"> </span><span class="hl-8">size</span><span class="hl-2">=</span><span class="hl-3">&quot;small&quot;</span><span class="hl-11"> </span><span class="hl-8">color</span><span class="hl-2">=</span><span class="hl-3">&quot;white&quot;</span><span class="hl-11"> </span><span class="hl-8">className</span><span class="hl-2">=</span><span class="hl-3">&quot;mr-2&quot;</span><span class="hl-11"> </span><span class="hl-6">/&gt;</span><br/><span class="hl-11">      Traitement...</span><br/><span class="hl-11">    </span><span class="hl-6">&lt;/</span><span class="hl-10">div</span><span class="hl-6">&gt;</span><br/><span class="hl-11">  ) </span><span class="hl-2">:</span><span class="hl-11"> (</span><br/><span class="hl-11">    </span><span class="hl-3">&#39;Valider&#39;</span><br/><span class="hl-11">  )</span><span class="hl-9">}</span><br/><span class="hl-6">&lt;/</span><span class="hl-10">button</span><span class="hl-6">&gt;</span>
+</code><button type="button">Copy</button></pre>
+
+</div></div><aside class="tsd-sources"><ul><li>Defined in <a href="https://github.com/driano-gael/AdminJO_Front/blob/main/application/src/components/spinner.tsx#L226">components/spinner.tsx:226</a></li></ul></aside></div></li></ul></section></div><div class="col-sidebar"><div class="page-menu"><div class="tsd-navigation settings"><details class="tsd-accordion"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg><h3>Settings</h3></summary><div class="tsd-accordion-details"><div class="tsd-filter-visibility"><span class="settings-label">Member Visibility</span><ul id="tsd-filter-options"><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-protected" name="protected"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Protected</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li></ul></div><div class="tsd-theme-toggle"><label class="settings-label" for="tsd-theme">Theme</label><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div><details open class="tsd-accordion tsd-page-navigation"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg><h3>On This Page</h3></summary><div class="tsd-accordion-details"><a href="#architecture-animation-et-variations-visuelles"><span>Architecture animation et variations visuelles</span></a><ul><li><a href="#🎯-animation-css-optimisée-et-performante"><span>🎯 <wbr/>Animation <wbr/>CSS optimisée et performante</span></a></li><li><a href="#🎨-système-de-tailles-graduées-et-contextuelles"><span>🎨 <wbr/>Système de tailles graduées et contextuelles</span></a></li><li><a href="#🌈-palette-couleurs-thématique-adminjo-enrichie"><span>🌈 <wbr/>Palette couleurs thématique <wbr/>Admin<wbr/>JO enrichie</span></a></li></ul><a href="#fonctionnalités-avancées-et-modes-daffichage"><span>Fonctionnalités avancées et modes d&#39;affichage</span></a><ul><li><a href="#📝-support-texte-accompagnateur-contextuel"><span>📝 <wbr/>Support texte accompagnateur contextuel</span></a></li><li><a href="#🖥️-mode-fullscreen-pour-chargements-critiques"><span>🖥️ <wbr/>Mode full<wbr/>Screen pour chargements critiques</span></a></li><li><a href="#🎨-customisation-avancée-styling"><span>🎨 <wbr/>Customisation avancée styling</span></a></li></ul><a href="#cas-dusage-adminjo-et-intégrations-olympiques"><span>Cas d&#39;usage <wbr/>Admin<wbr/>JO et intégrations olympiques</span></a><ul><li><a href="#🏅-contextes-métier-jeux-olympiques-spécialisés"><span>🏅 <wbr/>Contextes métier <wbr/>Jeux <wbr/>Olympiques spécialisés</span></a></li><li><a href="#📱-responsive-design-et-contextes-dusage"><span>📱 <wbr/>Responsive design et contextes d&#39;usage</span></a></li></ul><a href="#performance-et-optimisations-techniques"><span>Performance et optimisations techniques</span></a><ul><li><a href="#⚡-optimisations-rendering-et-animation"><span>⚡ <wbr/>Optimisations rendering et animation</span></a></li><li><a href="#🔒-accessibilité-et-standards-universels"><span>🔒 <wbr/>Accessibilité et standards universels</span></a></li><li><a href="#🧪-testabilité-et-maintenance-développeur"><span>🧪 <wbr/>Testabilité et maintenance développeur</span></a></li></ul><a href="#extensions-futures-et-améliorations-envisageables"><span>Extensions futures et améliorations envisageables</span></a><ul><li><a href="#🚀-évolutions-fonctionnelles-avancées"><span>🚀 Évolutions fonctionnelles avancées</span></a></li><li><a href="#🎨-améliorations-visuelles-et-ux"><span>🎨 <wbr/>Améliorations visuelles et <wbr/>UX</span></a></li></ul></div></details></div><div class="site-menu"><nav class="tsd-navigation"><a href="../modules.html">AdminJO Front - Documentation API - v0.1.0</a><ul class="tsd-small-nested-navigation" id="tsd-nav-container"><li>Loading...</li></ul></nav></div></div></div><footer><p class="tsd-generator">Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></footer><div class="overlay"></div></body></html>

@@ -1,7 +1,7 @@
 ﻿import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import EvenementsTable from '@/components/componentsEvenement/evenements/EvenementsTable';
-import { ExtendEvenement } from '@/types/sportEvenement/evenement';
+import { ExtendEvenement, StatutEvenement } from '@/types/sportEvenement/evenement';
 import {Epreuve} from "@/types/sportEvenement/epreuve";
 
 describe('EvenementsTable', () => {
@@ -35,7 +35,7 @@ describe('EvenementsTable', () => {
       lieu: { id: 1, nom: 'Stade de France' },
       epreuves: [mockEpreuves[0]],
       sports: 'Athlétisme',
-      status: 'à venir',
+      status: StatutEvenement.A_VENIR,
       capacity: 80000,
       ticketsSold: 75000
     },
@@ -47,7 +47,7 @@ describe('EvenementsTable', () => {
       lieu: { id: 2, nom: 'Centre Aquatique' },
       epreuves: [mockEpreuves[1]],
       sports: 'Natation',
-      status: 'en cours',
+      status: StatutEvenement.EN_COURS,
       capacity: 15000,
       ticketsSold: 14500
     }

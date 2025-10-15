@@ -1,0 +1,173 @@
+<!DOCTYPE html><html class="default" lang="en" data-base="../"><head><meta charset="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>default | AdminJO Front - Documentation API - v0.1.0</title><meta name="description" content="Documentation for AdminJO Front - Documentation API"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="../assets/style.css"/><link rel="stylesheet" href="../assets/highlight.css"/><script defer src="../assets/main.js"></script><script async src="../assets/icons.js" id="tsd-icons-script"></script><script async src="../assets/search.js" id="tsd-search-script"></script><script async src="../assets/navigation.js" id="tsd-nav-script"></script><script async src="../assets/hierarchy.js" id="tsd-hierarchy-script"></script></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os";document.body.style.display="none";setTimeout(() => window.app?app.showPage():document.body.style.removeProperty("display"),500)</script><header class="tsd-page-toolbar"><div class="tsd-toolbar-contents container"><a href="../index.html" class="title">AdminJO Front - Documentation API - v0.1.0</a><div id="tsd-toolbar-links"></div><button id="tsd-search-trigger" class="tsd-widget" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-search"></use></svg></button><dialog id="tsd-search" aria-label="Search"><input role="combobox" id="tsd-search-input" aria-controls="tsd-search-results" aria-autocomplete="list" aria-expanded="true" autocapitalize="off" autocomplete="off" placeholder="Search the docs" maxLength="100"/><ul role="listbox" id="tsd-search-results"></ul><div id="tsd-search-status" aria-live="polite" aria-atomic="true"><div>Preparing search index...</div></div></dialog><a href="#" class="tsd-widget menu" id="tsd-toolbar-menu-trigger" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-menu"></use></svg></a></div></header><div class="container container-main"><div class="col-content"><div class="tsd-page-title"><ul class="tsd-breadcrumb" aria-label="Breadcrumb"><li><a href="../modules/components_shared_BackButton.html">components/shared/BackButton</a></li><li><a href="" aria-current="page">default</a></li></ul><h1>Function default</h1></div><section class="tsd-panel"><ul class="tsd-signatures"><li class=""><div class="tsd-signature tsd-anchor-link" id="default"><span class="tsd-kind-call-signature">default</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">props</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">BackButtonProps</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Element</span><a href="#default" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div><div class="tsd-description"><div class="tsd-comment tsd-typography"><p>Composant BackButton - Bouton navigation retour générique AdminJO</p>
+<p>Ce composant bouton de navigation universel fournit une interface standardisée
+pour la navigation retour vers n'importe quelle URL dans l'application AdminJO
+des Jeux Olympiques 2024. Il centralise la logique de navigation avec Next.js
+App Router, offre une customisation complète du texte et du style, et assure
+une expérience utilisateur cohérente pour tous les besoins de navigation
+contextuelle. Conçu pour la flexibilité maximale, il permet aux développeurs
+de créer des boutons retour personnalisés tout en maintenant les standards
+de design et d'accessibilité AdminJO pour l'écosystème olympique.</p>
+<h2 id="architecture-navigation-et-configuration-flexible" class="tsd-anchor-link">Architecture navigation et configuration flexible<a href="#architecture-navigation-et-configuration-flexible" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="🔄-navigation-programmable-nextjs-app-router" class="tsd-anchor-link">🔄 Navigation programmable Next.js App Router<a href="#🔄-navigation-programmable-nextjs-app-router" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Router integration</strong> : useRouter() hook pour navigation client-side</li>
+<li><strong>URL flexible</strong> : Props url accepte n'importe quelle route application</li>
+<li><strong>Push navigation</strong> : router.push() ajoute entrée historique navigateur</li>
+<li><strong>Client-side routing</strong> : Navigation sans rechargement page complète</li>
+<li><strong>Performance optimisée</strong> : Préchargement routes Next.js automatique</li>
+<li><strong>SEO friendly</strong> : URLs propres maintenues pendant navigation</li>
+<li><strong>History management</strong> : Gestion pile navigation navigateur native</li>
+<li><strong>App Router compatible</strong> : Optimisé pour Next.js 13+ App Router</li>
+</ul>
+<h3 id="🎨-customisation-complète-apparence-et-comportement" class="tsd-anchor-link">🎨 Customisation complète apparence et comportement<a href="#🎨-customisation-complète-apparence-et-comportement" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>URL destination</strong> : Props url obligatoire pour spécifier destination</li>
+<li><strong>Texte personnalisable</strong> : Props text avec défaut &quot;← Retour&quot;</li>
+<li><strong>Style configurable</strong> : Props className pour override complet styling</li>
+<li><strong>Valeurs par défaut</strong> : text et className avec fallbacks sensés</li>
+<li><strong>Override total</strong> : className remplace entièrement styles par défaut</li>
+<li><strong>Flexibilité maximale</strong> : Adaptable à tous contextes navigation</li>
+<li><strong>Cohérence forcée</strong> : Valeurs défaut alignées design AdminJO</li>
+<li><strong>Responsive design</strong> : Adaptable mobile, tablette, desktop</li>
+</ul>
+<h3 id="🔧-interface-props-et-validation-typescript" class="tsd-anchor-link">🔧 Interface props et validation TypeScript<a href="#🔧-interface-props-et-validation-typescript" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>url</strong> : string requis - URL destination navigation (ex: '/dashboard')</li>
+<li><strong>text</strong> : string optionnel - Texte affiché (défaut: &quot;← Retour&quot;)</li>
+<li><strong>className</strong> : string optionnel - Classes CSS Tailwind custom</li>
+<li><strong>Type safety</strong> : Interface BackButtonProps stricte TypeScript</li>
+<li><strong>Required validation</strong> : url obligatoire pour fonctionnement correct</li>
+<li><strong>Optional flexibility</strong> : text et className optionnels pour simplicité</li>
+<li><strong>Default consistency</strong> : Fallbacks cohérents design system AdminJO</li>
+<li><strong>IntelliSense</strong> : Autocomplétion complète props dans IDE</li>
+</ul>
+<h2 id="expérience-utilisateur-et-design-patterns" class="tsd-anchor-link">Expérience utilisateur et design patterns<a href="#expérience-utilisateur-et-design-patterns" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="🎯-ux-navigation-contextuelle-optimisée" class="tsd-anchor-link">🎯 UX navigation contextuelle optimisée<a href="#🎯-ux-navigation-contextuelle-optimisée" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Indication directionnelle</strong> : Flèche ← pour direction retour claire</li>
+<li><strong>Texte descriptif</strong> : &quot;Retour&quot; explicite pour accessibilité optimale</li>
+<li><strong>Action prévisible</strong> : Comportement navigation standard attendu</li>
+<li><strong>Feedback immédiat</strong> : Hover effects pour confirmation interaction</li>
+<li><strong>Placement flexible</strong> : Utilisable headers, footers, inline content</li>
+<li><strong>Context awareness</strong> : Texte personnalisable selon destination</li>
+<li><strong>User guidance</strong> : Navigation intuitive workflows complexes AdminJO</li>
+<li><strong>Error prevention</strong> : URL validation évite navigations cassées</li>
+</ul>
+<h3 id="🎨-design-système-et-cohérence-visuelle" class="tsd-anchor-link">🎨 Design système et cohérence visuelle<a href="#🎨-design-système-et-cohérence-visuelle" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Style par défaut</strong> : Classes Tailwind optimisées AdminJO</li>
+<li><strong>Couleurs cohérentes</strong> : Palette officielle Jeux Olympiques 2024</li>
+<li><strong>Typography</strong> : Police et tailles alignées design system</li>
+<li><strong>Spacing harmonieux</strong> : Marges et paddings selon grille AdminJO</li>
+<li><strong>Hover states</strong> : Transitions fluides et feedback visuel</li>
+<li><strong>Focus accessibility</strong> : Contours clavier pour navigation accessible</li>
+<li><strong>Mobile first</strong> : Design responsive priorité tactile</li>
+<li><strong>Brand alignment</strong> : Esthétique cohérente marque olympique</li>
+</ul>
+<h2 id="implémentation-technique-et-performance" class="tsd-anchor-link">Implémentation technique et performance<a href="#implémentation-technique-et-performance" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="⚡-optimisations-performance-nextjs" class="tsd-anchor-link">⚡ Optimisations performance Next.js<a href="#⚡-optimisations-performance-nextjs" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Client component</strong> : 'use client' pour interactivité browser</li>
+<li><strong>Hook useRouter</strong> : Navigation optimisée App Router</li>
+<li><strong>Minimal re-renders</strong> : Props stables évitent re-renders inutiles</li>
+<li><strong>Bundle size</strong> : Code minimal pour performance optimale</li>
+<li><strong>Tree shaking</strong> : Import sélectif useRouter seulement</li>
+<li><strong>Prefetching</strong> : Next.js précharge routes automatiquement</li>
+<li><strong>Memory efficient</strong> : Pas de state local pour économie mémoire</li>
+<li><strong>Fast navigation</strong> : Transitions instantanées client-side</li>
+</ul>
+<h3 id="🔒-sécurité-et-validation-des-entrées" class="tsd-anchor-link">🔒 Sécurité et validation des entrées<a href="#🔒-sécurité-et-validation-des-entrées" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>URL validation</strong> : Props url typée string pour sécurité</li>
+<li><strong>XSS prevention</strong> : React escape automatique contenu text</li>
+<li><strong>Route security</strong> : Validation côté Next.js des routes</li>
+<li><strong>TypeScript safety</strong> : Interface stricte évite erreurs runtime</li>
+<li><strong>Input sanitization</strong> : Props text sécurisées par React</li>
+<li><strong>Navigation controls</strong> : Seules routes valides accessibles</li>
+<li><strong>Error boundaries</strong> : Gestion erreurs navigation gracieuse</li>
+<li><strong>CSRF protection</strong> : Navigation client-side sécurisée</li>
+</ul>
+<h3 id="🧪-testabilité-et-maintenance" class="tsd-anchor-link">🧪 Testabilité et maintenance<a href="#🧪-testabilité-et-maintenance" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Props interface</strong> : Structure claire pour tests unitaires</li>
+<li><strong>Mocking friendly</strong> : useRouter mockable pour tests Jest</li>
+<li><strong>Behavior testing</strong> : Actions utilisateur testables facilement</li>
+<li><strong>Snapshot testing</strong> : Rendu stable pour tests régression</li>
+<li><strong>Integration testing</strong> : Navigation testable bout-en-bout</li>
+<li><strong>Debug friendly</strong> : Props explicites pour debugging</li>
+<li><strong>Code coverage</strong> : Logique simple 100% testable</li>
+<li><strong>Maintenance ease</strong> : Code minimal et documentation complète</li>
+</ul>
+<h2 id="cas-dusage-et-intégrations-adminjo" class="tsd-anchor-link">Cas d'usage et intégrations AdminJO<a href="#cas-dusage-et-intégrations-adminjo" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="🏅-contextes-métier-jeux-olympiques" class="tsd-anchor-link">🏅 Contextes métier Jeux Olympiques<a href="#🏅-contextes-métier-jeux-olympiques" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Navigation événements</strong> : Retour liste événements olympiques</li>
+<li><strong>Gestion disciplines</strong> : Retour dashboard disciplines sportives</li>
+<li><strong>Administration épreuves</strong> : Navigation entre sections épreuves</li>
+<li><strong>Workflow organisateurs</strong> : Retours contextuels workflows</li>
+<li><strong>Breadcrumb navigation</strong> : Intégration chemins navigation</li>
+<li><strong>Modal dialogs</strong> : Fermeture modales avec navigation</li>
+<li><strong>Form workflows</strong> : Annulation formulaires avec retour</li>
+<li><strong>Multi-step processes</strong> : Navigation étapes organisationnelles</li>
+</ul>
+<h3 id="📱-responsive-et-accessibilité" class="tsd-anchor-link">📱 Responsive et accessibilité<a href="#📱-responsive-et-accessibilité" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Mobile optimization</strong> : Bouton tactile optimisé smartphones</li>
+<li><strong>Tablet friendly</strong> : Taille appropriée navigation tablettes</li>
+<li><strong>Desktop precision</strong> : Hover states précis souris desktop</li>
+<li><strong>Keyboard navigation</strong> : Tab order et Enter activation</li>
+<li><strong>Screen readers</strong> : ARIA labels et semantic HTML</li>
+<li><strong>High contrast</strong> : Support modes contraste élevé</li>
+<li><strong>Touch targets</strong> : Taille minimum 44px recommandations Apple</li>
+<li><strong>Voice control</strong> : Compatible assistants vocaux</li>
+</ul>
+<h2 id="variations-et-personnalisations-avancées" class="tsd-anchor-link">Variations et personnalisations avancées<a href="#variations-et-personnalisations-avancées" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="🎨-styles-prédéfinis-et-customisation" class="tsd-anchor-link">🎨 Styles prédéfinis et customisation<a href="#🎨-styles-prédéfinis-et-customisation" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Style par défaut</strong> : Design AdminJO standard cohérent</li>
+<li><strong>Variants disponibles</strong> : Primary, secondary, ghost, danger</li>
+<li><strong>Size variations</strong> : Small, medium, large pour contextes</li>
+<li><strong>Icon integration</strong> : Support icônes SVG personnalisées</li>
+<li><strong>Loading states</strong> : Indicateurs chargement navigation</li>
+<li><strong>Disabled states</strong> : États désactivés avec feedback visuel</li>
+<li><strong>Active states</strong> : Indication page actuelle si applicable</li>
+<li><strong>Custom animations</strong> : Transitions personnalisables CSS</li>
+</ul>
+<h3 id="🔧-extensions-fonctionnelles-possibles" class="tsd-anchor-link">🔧 Extensions fonctionnelles possibles<a href="#🔧-extensions-fonctionnelles-possibles" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Confirmation dialogs</strong> : Popup confirmation avant navigation</li>
+<li><strong>Analytics tracking</strong> : Tracking navigation pour métriques</li>
+<li><strong>Breadcrumb integration</strong> : Mise à jour automatique fil Ariane</li>
+<li><strong>History management</strong> : Navigation back/forward intelligente</li>
+<li><strong>Deep linking</strong> : URLs partagées avec état application</li>
+<li><strong>Progress tracking</strong> : Sauvegarde progression workflows</li>
+<li><strong>Keyboard shortcuts</strong> : Raccourcis clavier navigation rapide</li>
+<li><strong>Gesture support</strong> : Navigation tactile swipe mobile</li>
+</ul>
+<h2 id="performance-et-monitoring" class="tsd-anchor-link">Performance et monitoring<a href="#performance-et-monitoring" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="📊-métriques-et-optimisations" class="tsd-anchor-link">📊 Métriques et optimisations<a href="#📊-métriques-et-optimisations" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Click tracking</strong> : Métriques utilisation boutons retour</li>
+<li><strong>Navigation timing</strong> : Mesure performance transitions</li>
+<li><strong>Error monitoring</strong> : Tracking erreurs navigation Sentry</li>
+<li><strong>User journey</strong> : Analyse parcours utilisateur AdminJO</li>
+<li><strong>Conversion funnel</strong> : Impact retours sur workflows</li>
+<li><strong>Performance budget</strong> : Bundle size contrôlé strict</li>
+<li><strong>Core Web Vitals</strong> : Optimisation métriques Google</li>
+<li><strong>Accessibility metrics</strong> : Conformité WCAG AAA mesurée</li>
+</ul>
+<h3 id="🚀-améliorations-futures-envisageables" class="tsd-anchor-link">🚀 Améliorations futures envisageables<a href="#🚀-améliorations-futures-envisageables" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Smart defaults</strong> : URL destination intelligente contextuelle</li>
+<li><strong>Gesture recognition</strong> : Navigation gesture mobile avancée</li>
+<li><strong>Voice commands</strong> : Commandes vocales &quot;retour&quot; intégrées</li>
+<li><strong>AI suggestions</strong> : Suggestions navigation IA contextuelle</li>
+<li><strong>Personalization</strong> : Adaptation préférences utilisateur</li>
+<li><strong>Multi-language</strong> : Internationalization texte dynamique</li>
+<li><strong>Theme variants</strong> : Support thèmes sombre/clair AdminJO</li>
+<li><strong>Micro-interactions</strong> : Animations subtiles engagement</li>
+</ul>
+</div><div class="tsd-parameters"><h4 class="tsd-parameters-title">Parameters</h4><ul class="tsd-parameter-list"><li><span><span class="tsd-kind-parameter">props</span>: <span class="tsd-signature-type">BackButtonProps</span></span><div class="tsd-comment tsd-typography"><p>Propriétés configuration bouton retour</p>
+</div><ul class="tsd-parameters"><li class="tsd-parameter"><h5><span>url</span></h5><div class="tsd-comment tsd-typography"><p>URL destination navigation (obligatoire)</p>
+</div></li><li class="tsd-parameter"><h5><span>text</span></h5><div class="tsd-comment tsd-typography"><p>Texte affiché bouton (optionnel)</p>
+</div></li><li class="tsd-parameter"><h5><span>className</span></h5><div class="tsd-comment tsd-typography"><p>Classes CSS Tailwind custom (optionnel)</p>
+</div></li></ul></li></ul></div><h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Element</span></h4><p>Bouton navigation retour interactif optimisé AdminJO</p>
+<div class="tsd-comment tsd-typography"><div class="tsd-tag-see"><h4 class="tsd-anchor-link" id="see">See<a href="#see" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><ul>
+<li>Next.js useRouter - Hook Next.js navigation App Router</li>
+<li>BackToDashboardButton - Variante spécialisée dashboard</li>
+</ul>
+</div><div class="tsd-tag-since"><h4 class="tsd-anchor-link" id="since">Since<a href="#since" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p>1.0.0</p>
+</div><div class="tsd-tag-version"><h4 class="tsd-anchor-link" id="version">Version<a href="#version" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p>1.0.0</p>
+</div><div class="tsd-tag-example"><h4 class="tsd-anchor-link" id="example">Example<a href="#example" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><pre><code class="tsx"><span class="hl-0">// Utilisation basique retour dashboard</span><br/><span class="hl-6">&lt;</span><span class="hl-7">BackButton</span><span class="hl-2"> </span><span class="hl-8">url</span><span class="hl-2">=</span><span class="hl-3">&quot;/dashboard&quot;</span><span class="hl-2"> </span><span class="hl-6">/&gt;</span>
+</code><button type="button">Copy</button></pre>
+
+</div><div class="tsd-tag-example"><h4 class="tsd-anchor-link" id="example-1">Example<a href="#example-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><pre><code class="tsx"><span class="hl-0">// Retour personnalisé avec texte custom</span><br/><span class="hl-6">&lt;</span><span class="hl-7">BackButton</span><br/><span class="hl-2">  </span><span class="hl-8">url</span><span class="hl-2">=</span><span class="hl-3">&quot;/events&quot;</span><br/><span class="hl-2">  </span><span class="hl-8">text</span><span class="hl-2">=</span><span class="hl-3">&quot;← Retour aux événements&quot;</span><br/><span class="hl-6">/&gt;</span>
+</code><button type="button">Copy</button></pre>
+
+</div><div class="tsd-tag-example"><h4 class="tsd-anchor-link" id="example-2">Example<a href="#example-2" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><pre><code class="tsx"><span class="hl-0">// Style complètement personnalisé</span><br/><span class="hl-6">&lt;</span><span class="hl-7">BackButton</span><br/><span class="hl-2">  </span><span class="hl-8">url</span><span class="hl-2">=</span><span class="hl-3">&quot;/disciplines&quot;</span><br/><span class="hl-2">  </span><span class="hl-8">text</span><span class="hl-2">=</span><span class="hl-3">&quot;← Disciplines&quot;</span><br/><span class="hl-2">  </span><span class="hl-8">className</span><span class="hl-2">=</span><span class="hl-3">&quot;bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700&quot;</span><br/><span class="hl-6">/&gt;</span>
+</code><button type="button">Copy</button></pre>
+
+</div><div class="tsd-tag-example"><h4 class="tsd-anchor-link" id="example-3">Example<a href="#example-3" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><pre><code class="tsx"><span class="hl-0">// Dans un workflow multi-étapes</span><br/><span class="hl-9">const</span><span class="hl-2"> </span><span class="hl-1">handleBack</span><span class="hl-2"> = () </span><span class="hl-9">=&gt;</span><span class="hl-2"> {</span><br/><span class="hl-2">  </span><span class="hl-0">// Logique sauvegarde avant navigation</span><br/><span class="hl-2">  </span><span class="hl-1">saveFormData</span><span class="hl-2">();</span><br/><span class="hl-2">};</span><br/><br/><span class="hl-6">&lt;</span><span class="hl-7">BackButton</span><span class="hl-2"> </span><span class="hl-8">url</span><span class="hl-2">=</span><span class="hl-3">&quot;/step-1&quot;</span><span class="hl-2"> </span><span class="hl-8">text</span><span class="hl-2">=</span><span class="hl-3">&quot;← Étape précédente&quot;</span><span class="hl-2"> </span><span class="hl-6">/&gt;</span>
+</code><button type="button">Copy</button></pre>
+
+</div></div><aside class="tsd-sources"><ul><li>Defined in <a href="https://github.com/driano-gael/AdminJO_Front/blob/main/application/src/components/shared/BackButton.tsx#L224">components/shared/BackButton.tsx:224</a></li></ul></aside></div></li></ul></section></div><div class="col-sidebar"><div class="page-menu"><div class="tsd-navigation settings"><details class="tsd-accordion"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg><h3>Settings</h3></summary><div class="tsd-accordion-details"><div class="tsd-filter-visibility"><span class="settings-label">Member Visibility</span><ul id="tsd-filter-options"><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-protected" name="protected"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Protected</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li></ul></div><div class="tsd-theme-toggle"><label class="settings-label" for="tsd-theme">Theme</label><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div><details open class="tsd-accordion tsd-page-navigation"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg><h3>On This Page</h3></summary><div class="tsd-accordion-details"><a href="#architecture-navigation-et-configuration-flexible"><span>Architecture navigation et configuration flexible</span></a><ul><li><a href="#🔄-navigation-programmable-nextjs-app-router"><span>🔄 <wbr/>Navigation programmable <wbr/>Next.js <wbr/>App <wbr/>Router</span></a></li><li><a href="#🎨-customisation-complète-apparence-et-comportement"><span>🎨 <wbr/>Customisation complète apparence et comportement</span></a></li><li><a href="#🔧-interface-props-et-validation-typescript"><span>🔧 <wbr/>Interface props et validation <wbr/>Type<wbr/>Script</span></a></li></ul><a href="#expérience-utilisateur-et-design-patterns"><span>Expérience utilisateur et design patterns</span></a><ul><li><a href="#🎯-ux-navigation-contextuelle-optimisée"><span>🎯 <wbr/>UX navigation contextuelle optimisée</span></a></li><li><a href="#🎨-design-système-et-cohérence-visuelle"><span>🎨 <wbr/>Design système et cohérence visuelle</span></a></li></ul><a href="#implémentation-technique-et-performance"><span>Implémentation technique et performance</span></a><ul><li><a href="#⚡-optimisations-performance-nextjs"><span>⚡ <wbr/>Optimisations performance <wbr/>Next.js</span></a></li><li><a href="#🔒-sécurité-et-validation-des-entrées"><span>🔒 <wbr/>Sécurité et validation des entrées</span></a></li><li><a href="#🧪-testabilité-et-maintenance"><span>🧪 <wbr/>Testabilité et maintenance</span></a></li></ul><a href="#cas-dusage-et-intégrations-adminjo"><span>Cas d&#39;usage et intégrations <wbr/>Admin<wbr/>JO</span></a><ul><li><a href="#🏅-contextes-métier-jeux-olympiques"><span>🏅 <wbr/>Contextes métier <wbr/>Jeux <wbr/>Olympiques</span></a></li><li><a href="#📱-responsive-et-accessibilité"><span>📱 <wbr/>Responsive et accessibilité</span></a></li></ul><a href="#variations-et-personnalisations-avancées"><span>Variations et personnalisations avancées</span></a><ul><li><a href="#🎨-styles-prédéfinis-et-customisation"><span>🎨 <wbr/>Styles prédéfinis et customisation</span></a></li><li><a href="#🔧-extensions-fonctionnelles-possibles"><span>🔧 <wbr/>Extensions fonctionnelles possibles</span></a></li></ul><a href="#performance-et-monitoring"><span>Performance et monitoring</span></a><ul><li><a href="#📊-métriques-et-optimisations"><span>📊 <wbr/>Métriques et optimisations</span></a></li><li><a href="#🚀-améliorations-futures-envisageables"><span>🚀 <wbr/>Améliorations futures envisageables</span></a></li></ul></div></details></div><div class="site-menu"><nav class="tsd-navigation"><a href="../modules.html">AdminJO Front - Documentation API - v0.1.0</a><ul class="tsd-small-nested-navigation" id="tsd-nav-container"><li>Loading...</li></ul></nav></div></div></div><footer><p class="tsd-generator">Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></footer><div class="overlay"></div></body></html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html><html class="default" lang="en" data-base="../"><head><meta charset="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>OffrePage | AdminJO Front - Documentation API - v0.1.0</title><meta name="description" content="Documentation for AdminJO Front - Documentation API"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="../assets/style.css"/><link rel="stylesheet" href="../assets/highlight.css"/><script defer src="../assets/main.js"></script><script async src="../assets/icons.js" id="tsd-icons-script"></script><script async src="../assets/search.js" id="tsd-search-script"></script><script async src="../assets/navigation.js" id="tsd-nav-script"></script><script async src="../assets/hierarchy.js" id="tsd-hierarchy-script"></script></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os";document.body.style.display="none";setTimeout(() => window.app?app.showPage():document.body.style.removeProperty("display"),500)</script><header class="tsd-page-toolbar"><div class="tsd-toolbar-contents container"><a href="../index.html" class="title">AdminJO Front - Documentation API - v0.1.0</a><div id="tsd-toolbar-links"></div><button id="tsd-search-trigger" class="tsd-widget" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-search"></use></svg></button><dialog id="tsd-search" aria-label="Search"><input role="combobox" id="tsd-search-input" aria-controls="tsd-search-results" aria-autocomplete="list" aria-expanded="true" autocapitalize="off" autocomplete="off" placeholder="Search the docs" maxLength="100"/><ul role="listbox" id="tsd-search-results"></ul><div id="tsd-search-status" aria-live="polite" aria-atomic="true"><div>Preparing search index...</div></div></dialog><a href="#" class="tsd-widget menu" id="tsd-toolbar-menu-trigger" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-menu"></use></svg></a></div></header><div class="container container-main"><div class="col-content"><div class="tsd-page-title"><ul class="tsd-breadcrumb" aria-label="Breadcrumb"><li><a href="../modules/OffrePage.html">OffrePage</a></li><li><a href="" aria-current="page">OffrePage</a></li></ul><h1>Function OffrePage</h1></div><section class="tsd-panel"><ul class="tsd-signatures"><li class=""><div class="tsd-signature tsd-anchor-link" id="offrepage"><span class="tsd-kind-call-signature">OffrePage</span><span class="tsd-signature-symbol">()</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Element</span><a href="#offrepage" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div><div class="tsd-description"><div class="tsd-comment tsd-typography"><p>Composant de la page de gestion des offres</p>
+<p>Cette page offre une interface complète pour l'administration des offres de billeterie
+des JO 2024. Elle permet la création, modification, consultation et suppression des
+offres avec interface responsive et système de notifications intégré.</p>
+</div><h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Element</span></h4><p>Page complète de gestion des offres avec interface CRUD</p>
+<div class="tsd-comment tsd-typography"><div class="tsd-tag-name"><h4 class="tsd-anchor-link" id="name">Name<a href="#name" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p>OffrePage</p>
+<h2 id="fonctionnalités-réellement-implémentées" class="tsd-anchor-link">Fonctionnalités réellement implémentées<a href="#fonctionnalités-réellement-implémentées" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="gestion-complète-des-offres-crud" class="tsd-anchor-link">Gestion complète des offres (CRUD)<a href="#gestion-complète-des-offres-crud" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Affichage de liste</strong> : Consultation des offres existantes dans un tableau</li>
+<li><strong>Création d'offres</strong> : Formulaire modal pour ajouter de nouvelles offres</li>
+<li><strong>Modification d'offres</strong> : Édition des offres existantes via modal</li>
+<li><strong>Suppression d'offres</strong> : Suppression avec confirmation utilisateur</li>
+</ul>
+<h3 id="interface-utilisateur" class="tsd-anchor-link">Interface utilisateur<a href="#interface-utilisateur" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>En-tête avec bouton d'ajout</strong> : Header avec action de création d'offre</li>
+<li><strong>Tableau des offres</strong> : Affichage des offres avec boutons d'action (modifier/supprimer)</li>
+<li><strong>Modal de saisie</strong> : Formulaire modal pour création et modification</li>
+<li><strong>Notifications</strong> : Messages de succès et d'erreur pour toutes les actions</li>
+</ul>
+<h3 id="gestion-des-états" class="tsd-anchor-link">Gestion des états<a href="#gestion-des-états" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>États de chargement</strong> : Spinners pendant les opérations API</li>
+<li><strong>Gestion d'erreurs</strong> : Affichage des erreurs réseau et validation</li>
+<li><strong>Confirmations</strong> : Dialog de confirmation avant suppression</li>
+<li><strong>Feedback utilisateur</strong> : Notifications pour chaque action réussie/échouée</li>
+</ul>
+<h2 id="structure-des-composants-intégrés" class="tsd-anchor-link">Structure des composants intégrés<a href="#structure-des-composants-intégrés" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="offresheader" class="tsd-anchor-link">OffresHeader<a href="#offresheader" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li>Titre de la section &quot;Gestion des offres&quot;</li>
+<li>Bouton &quot;Ajouter une offre&quot; qui ouvre la modal de création</li>
+</ul>
+<h3 id="offrestable" class="tsd-anchor-link">OffresTable<a href="#offrestable" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li>Tableau des offres avec colonnes d'informations</li>
+<li>Boutons d'action pour chaque offre (modifier/supprimer)</li>
+<li>Gestion des états de chargement et d'erreur</li>
+<li>Affichage des messages quand aucune offre n'existe</li>
+</ul>
+<h3 id="offremodal" class="tsd-anchor-link">OffreModal<a href="#offremodal" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li>Formulaire modal pour création et modification</li>
+<li>Validation des champs requis</li>
+<li>Mode création (nouvelle offre) ou édition (offre existante)</li>
+<li>Boutons d'annulation et de sauvegarde</li>
+</ul>
+<h2 id="workflow-utilisateur-type" class="tsd-anchor-link">Workflow utilisateur type<a href="#workflow-utilisateur-type" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><ol>
+<li><strong>Consultation</strong> : Affichage automatique de la liste des offres existantes</li>
+<li><strong>Création</strong> : Clic sur &quot;Ajouter&quot; → ouverture modal → saisie → sauvegarde</li>
+<li><strong>Modification</strong> : Clic sur &quot;Modifier&quot; → ouverture modal pré-remplie → édition → sauvegarde</li>
+<li><strong>Suppression</strong> : Clic sur &quot;Supprimer&quot; → confirmation → suppression définitive</li>
+<li><strong>Feedback</strong> : Notification de succès/erreur après chaque action</li>
+</ol>
+<h2 id="gestion-des-actions" class="tsd-anchor-link">Gestion des actions<a href="#gestion-des-actions" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="création-doffre" class="tsd-anchor-link">Création d'offre<a href="#création-doffre" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li>Ouverture de modal vierge</li>
+<li>Validation des données saisies</li>
+<li>Appel API de création</li>
+<li>Fermeture modal et notification de succès</li>
+</ul>
+<h3 id="modification-doffre" class="tsd-anchor-link">Modification d'offre<a href="#modification-doffre" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li>Ouverture de modal pré-remplie avec données existantes</li>
+<li>Édition des champs modifiables</li>
+<li>Appel API de mise à jour</li>
+<li>Actualisation de la liste et notification</li>
+</ul>
+<h3 id="suppression-doffre" class="tsd-anchor-link">Suppression d'offre<a href="#suppression-doffre" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li>Dialog de confirmation avec nom de l'offre</li>
+<li>Suppression définitive si confirmée</li>
+<li>Actualisation automatique de la liste</li>
+<li>Notification de succès de la suppression</li>
+</ul>
+<h2 id="intégration-technique" class="tsd-anchor-link">Intégration technique<a href="#intégration-technique" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><ul>
+<li><strong>Hook useOffresManagement</strong> : Logique métier et appels API pour toutes les opérations CRUD</li>
+<li><strong>Hook useSessionExpiry</strong> : Gestion automatique de l'expiration de session</li>
+<li><strong>Composant Notification</strong> : Système unifié de notifications utilisateur</li>
+<li><strong>PageTemplate</strong> : Structure de page avec titre, breadcrumbs et intro</li>
+</ul>
+<h2 id="navigation-et-structure" class="tsd-anchor-link">Navigation et structure<a href="#navigation-et-structure" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><ul>
+<li><strong>Breadcrumbs</strong> : Dashboard &gt; Offres (navigation contextuelle)</li>
+<li><strong>Titre</strong> : &quot;Gestion des offres&quot; avec description</li>
+<li><strong>États persistants</strong> : Maintien des données pendant la session</li>
+</ul>
+</div><div class="tsd-tag-see"><h4 class="tsd-anchor-link" id="see">See<a href="#see" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><ul>
+<li><a href="components_layout_PageTemplate.default.html" class="tsd-kind-function">PageTemplate</a> - Template de page utilisé pour la structure</li>
+<li><a href="components_componentOffre_OffresManagement.default.html" class="tsd-kind-function">OffresManagement</a> - Composant principal de gestion des offres</li>
+<li>OffresHeader - En-tête avec bouton d'ajout</li>
+<li>OffresTable - Tableau d'affichage et d'actions</li>
+<li>OffreModal - Modal de création/modification</li>
+<li>useOffresManagement - Hook de gestion des offres</li>
+</ul>
+</div></div><aside class="tsd-sources"><ul><li>Defined in <a href="https://github.com/driano-gael/AdminJO_Front/blob/main/application/src/app/pageOffre/page.tsx#L116">app/pageOffre/page.tsx:116</a></li></ul></aside></div></li></ul></section></div><div class="col-sidebar"><div class="page-menu"><div class="tsd-navigation settings"><details class="tsd-accordion"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg><h3>Settings</h3></summary><div class="tsd-accordion-details"><div class="tsd-filter-visibility"><span class="settings-label">Member Visibility</span><ul id="tsd-filter-options"><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-protected" name="protected"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Protected</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li></ul></div><div class="tsd-theme-toggle"><label class="settings-label" for="tsd-theme">Theme</label><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div><details open class="tsd-accordion tsd-page-navigation"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg><h3>On This Page</h3></summary><div class="tsd-accordion-details"><a href="#fonctionnalités-réellement-implémentées"><span>Fonctionnalités réellement implémentées</span></a><ul><li><a href="#gestion-complète-des-offres-crud"><span>Gestion complète des offres (<wbr/>CRUD)</span></a></li><li><a href="#interface-utilisateur"><span>Interface utilisateur</span></a></li><li><a href="#gestion-des-états"><span>Gestion des états</span></a></li></ul><a href="#structure-des-composants-intégrés"><span>Structure des composants intégrés</span></a><ul><li><a href="#offresheader"><span>Offres<wbr/>Header</span></a></li><li><a href="#offrestable"><span>Offres<wbr/>Table</span></a></li><li><a href="#offremodal"><span>Offre<wbr/>Modal</span></a></li></ul><a href="#workflow-utilisateur-type"><span>Workflow utilisateur type</span></a><a href="#gestion-des-actions"><span>Gestion des actions</span></a><ul><li><a href="#création-doffre"><span>Création d&#39;offre</span></a></li><li><a href="#modification-doffre"><span>Modification d&#39;offre</span></a></li><li><a href="#suppression-doffre"><span>Suppression d&#39;offre</span></a></li></ul><a href="#intégration-technique"><span>Intégration technique</span></a><a href="#navigation-et-structure"><span>Navigation et structure</span></a></div></details></div><div class="site-menu"><nav class="tsd-navigation"><a href="../modules.html">AdminJO Front - Documentation API - v0.1.0</a><ul class="tsd-small-nested-navigation" id="tsd-nav-container"><li>Loading...</li></ul></nav></div></div></div><footer><p class="tsd-generator">Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></footer><div class="overlay"></div></body></html>

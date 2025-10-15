@@ -1,0 +1,146 @@
+<!DOCTYPE html><html class="default" lang="en" data-base="../"><head><meta charset="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>default | AdminJO Front - Documentation API - v0.1.0</title><meta name="description" content="Documentation for AdminJO Front - Documentation API"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="../assets/style.css"/><link rel="stylesheet" href="../assets/highlight.css"/><script defer src="../assets/main.js"></script><script async src="../assets/icons.js" id="tsd-icons-script"></script><script async src="../assets/search.js" id="tsd-search-script"></script><script async src="../assets/navigation.js" id="tsd-nav-script"></script><script async src="../assets/hierarchy.js" id="tsd-hierarchy-script"></script></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os";document.body.style.display="none";setTimeout(() => window.app?app.showPage():document.body.style.removeProperty("display"),500)</script><header class="tsd-page-toolbar"><div class="tsd-toolbar-contents container"><a href="../index.html" class="title">AdminJO Front - Documentation API - v0.1.0</a><div id="tsd-toolbar-links"></div><button id="tsd-search-trigger" class="tsd-widget" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-search"></use></svg></button><dialog id="tsd-search" aria-label="Search"><input role="combobox" id="tsd-search-input" aria-controls="tsd-search-results" aria-autocomplete="list" aria-expanded="true" autocapitalize="off" autocomplete="off" placeholder="Search the docs" maxLength="100"/><ul role="listbox" id="tsd-search-results"></ul><div id="tsd-search-status" aria-live="polite" aria-atomic="true"><div>Preparing search index...</div></div></dialog><a href="#" class="tsd-widget menu" id="tsd-toolbar-menu-trigger" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-menu"></use></svg></a></div></header><div class="container container-main"><div class="col-content"><div class="tsd-page-title"><ul class="tsd-breadcrumb" aria-label="Breadcrumb"><li><a href="../modules/components_componentsEvenement_lieux_LieuxTableRow.html">components/componentsEvenement/lieux/LieuxTableRow</a></li><li><a href="" aria-current="page">default</a></li></ul><h1>Function default</h1></div><section class="tsd-panel"><ul class="tsd-signatures"><li class=""><div class="tsd-signature tsd-anchor-link" id="default"><span class="tsd-kind-call-signature">default</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">props</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Props</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Element</span><a href="#default" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div><div class="tsd-description"><div class="tsd-comment tsd-typography"><p>Composant LieuxTableRow - Ligne de tableau pour lieu olympique AdminJO</p>
+<p>Ce composant représente une ligne individuelle dans le tableau des lieux olympiques
+des Jeux Olympiques 2024. Il affiche les informations essentielles d'un lieu (nom
+de l'établissement olympique) avec les actions CRUD directes via boutons intégrés.
+Conçu pour l'interface d'administration des Jeux Olympiques 2024, il suit les
+standards de design AdminJO avec states hover interactifs et gestion optimisée
+des établissements sportifs olympiques (Stade de France, Centre Aquatique, etc.).</p>
+<h2 id="données-affichées-réellement-implémentées" class="tsd-anchor-link">Données affichées réellement implémentées<a href="#données-affichées-réellement-implémentées" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="🏟️-nom-du-lieu-olympique-principal" class="tsd-anchor-link">🏟️ Nom du lieu olympique principal<a href="#🏟️-nom-du-lieu-olympique-principal" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Nom établissement</strong> : <code>lieu.nom</code> avec typographie medium accentuée</li>
+<li><strong>Contenu officiel</strong> : Désignation officielle lieu olympique (ex: &quot;Stade de France&quot;, &quot;Centre Aquatique&quot;)</li>
+<li><strong>Style</strong> : text-sm font-medium text-gray-900 pour lisibilité optimale</li>
+<li><strong>Colonne dédiée</strong> : Première colonne tableau avec largeur adaptative</li>
+<li><strong>Contenu structuré</strong> : div wrapper pour cohérence layout et alignement</li>
+<li><strong>Typographie</strong> : Police medium pour hiérarchie visuelle informations</li>
+<li><strong>Importance</strong> : Identifiant principal du lieu pour utilisateurs administrateurs</li>
+</ul>
+<h2 id="actions-utilisateur-crud-intégrées" class="tsd-anchor-link">Actions utilisateur CRUD intégrées<a href="#actions-utilisateur-crud-intégrées" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="✏️-action-de-modification-lieu" class="tsd-anchor-link">✏️ Action de modification lieu<a href="#✏️-action-de-modification-lieu" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Bouton &quot;Modifier&quot;</strong> : Déclenche édition lieu olympique complet</li>
+<li><strong>Callback</strong> : <code>onEdit(lieu)</code> avec objet lieu complet</li>
+<li><strong>Style</strong> : text-blue-600 hover:text-blue-900 pour feedback visuel</li>
+<li><strong>Position</strong> : Première action dans colonne Actions</li>
+<li><strong>Espacement</strong> : mr-3 pour séparation avec bouton suppression</li>
+<li><strong>Interaction</strong> : Hover effect avec assombrissement couleur</li>
+<li><strong>Accessibilité</strong> : Texte explicite &quot;Modifier&quot; pour lecteurs écran</li>
+<li><strong>Données complètes</strong> : Transmission objet avec toutes propriétés lieu</li>
+</ul>
+<h3 id="🗑️-action-de-suppression-lieu" class="tsd-anchor-link">🗑️ Action de suppression lieu<a href="#🗑️-action-de-suppression-lieu" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Bouton &quot;Supprimer&quot;</strong> : Déclenche suppression lieu olympique</li>
+<li><strong>Callback</strong> : <code>onDelete(lieu.id)</code> avec ID numérique lieu</li>
+<li><strong>Style</strong> : text-red-600 hover:text-red-900 couleur danger</li>
+<li><strong>Position</strong> : Seconde action dans colonne Actions</li>
+<li><strong>Feedback visuel</strong> : Rouge pour action destructive standard</li>
+<li><strong>Confirmation</strong> : Gestion confirmations dans composants parents</li>
+<li><strong>Sécurité</strong> : Transmission ID uniquement pour limitation exposition</li>
+<li><strong>Impact métier</strong> : Suppression lieu affecte événements associés</li>
+</ul>
+<h2 id="structure-et-layout-ligne-tableau" class="tsd-anchor-link">Structure et layout ligne tableau<a href="#structure-et-layout-ligne-tableau" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="🎨-design-ligne-interactive-spécialisée-lieux" class="tsd-anchor-link">🎨 Design ligne interactive spécialisée lieux<a href="#🎨-design-ligne-interactive-spécialisée-lieux" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Élément HTML</strong> : <code>&lt;tr&gt;</code> sémantique pour structure tableau</li>
+<li><strong>Hover effect</strong> : hover:bg-gray-50 pour feedback survol ligne</li>
+<li><strong>Colonnes</strong> : 2 colonnes (Nom lieu, Actions) - Structure simplifiée</li>
+<li><strong>Padding cellules</strong> : px-6 py-4 pour respiration optimale</li>
+<li><strong>Espacement</strong> : whitespace-nowrap sur données principales</li>
+<li><strong>Style cohérent</strong> : Alignement avec headers tableau parent</li>
+<li><strong>Compacité</strong> : Structure épurée focalisée sur essentiel</li>
+</ul>
+<h3 id="📱-responsive-et-accessibilité" class="tsd-anchor-link">📱 Responsive et accessibilité<a href="#📱-responsive-et-accessibilité" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Layout adaptatif</strong> : Colonnes s'adaptent largeur container</li>
+<li><strong>Overflow</strong> : Gestion débordement via container parent</li>
+<li><strong>Touch-friendly</strong> : Boutons dimensionnés interaction tactile</li>
+<li><strong>Contraste</strong> : Couleurs respectant standards WCAG AA</li>
+<li><strong>Sémantique</strong> : Structure <code>&lt;td&gt;</code> correcte pour lecteurs écran</li>
+<li><strong>Navigation</strong> : Ordre tabulation logique gauche-droite</li>
+<li><strong>Simplicité</strong> : Interface épurée pour gestion efficace lieux</li>
+</ul>
+<h2 id="spécificités-métier-lieux-olympiques" class="tsd-anchor-link">Spécificités métier lieux olympiques<a href="#spécificités-métier-lieux-olympiques" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="🏅-contexte-métier-lieux-jo-2024" class="tsd-anchor-link">🏅 Contexte métier lieux JO 2024<a href="#🏅-contexte-métier-lieux-jo-2024" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Terminologie</strong> : &quot;Lieu&quot; pour établissements sportifs olympiques</li>
+<li><strong>Exemples concrets</strong> : Stade de France, Centre Aquatique, Arena Bercy</li>
+<li><strong>Relations</strong> : Lieux → Événements (1-N), base infrastructure JO</li>
+<li><strong>Hiérarchie</strong> : Lieux niveau infrastructure pour événements/épreuves</li>
+<li><strong>Gestion organisateurs</strong> : Interface back-office équipes logistique JO</li>
+<li><strong>Standards CIO</strong> : Respect nomenclature officielle établissements</li>
+<li><strong>Importance critique</strong> : Infrastructure physique pour compétitions</li>
+</ul>
+<h3 id="📊-types-de-données-lieu-gérées" class="tsd-anchor-link">📊 Types de données lieu gérées<a href="#📊-types-de-données-lieu-gérées" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Nom lieu</strong> : string - Désignation officielle établissement olympique</li>
+<li><strong>ID lieu</strong> : number - Identifiant unique lieu</li>
+<li><strong>Structure</strong> : Type Lieu importé depuis types/sportEvenement</li>
+<li><strong>Validation</strong> : Types TypeScript strictes pour sécurité</li>
+<li><strong>Relations futures</strong> : Extensible pour capacités, coordonnées, etc.</li>
+<li><strong>Standards JO</strong> : Nomenclature alignée organisation olympique</li>
+</ul>
+<h2 id="performance-et-optimisations" class="tsd-anchor-link">Performance et optimisations<a href="#performance-et-optimisations" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="⚡-optimisations-actuelles" class="tsd-anchor-link">⚡ Optimisations actuelles<a href="#⚡-optimisations-actuelles" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Composant pur</strong> : Pas d'état local pour performance</li>
+<li><strong>Props stables</strong> : Dépendances minimales re-rendering</li>
+<li><strong>CSS statique</strong> : Classes Tailwind pré-compilées</li>
+<li><strong>Callbacks externes</strong> : Gestion state dans composants parents</li>
+<li><strong>Sélecteur optimal</strong> : Accès direct propriétés sans calculs</li>
+<li><strong>Structure simple</strong> : Minimal DOM pour performance maximale</li>
+</ul>
+<h3 id="🔄-gestion-re-renders-optimisée" class="tsd-anchor-link">🔄 Gestion re-renders optimisée<a href="#🔄-gestion-re-renders-optimisée" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Mémorisation</strong> : Candidat React.memo si nécessaire</li>
+<li><strong>Props drilling minimal</strong> : Callbacks ciblés</li>
+<li><strong>Immutabilité</strong> : Props objets stables entre renders</li>
+<li><strong>Keys stables</strong> : <a href="http://lieu.id">lieu.id</a> pour optimisation React keys</li>
+<li><strong>Conditional logic</strong> : Minimal pour éviter re-calculs</li>
+<li><strong>Lightweight</strong> : Composant léger pour listes importantes</li>
+</ul>
+<h2 id="sécurité-et-validation" class="tsd-anchor-link">Sécurité et validation<a href="#sécurité-et-validation" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="🔒-aspects-sécuritaires" class="tsd-anchor-link">🔒 Aspects sécuritaires<a href="#🔒-aspects-sécuritaires" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Validation props</strong> : Interface TypeScript stricte</li>
+<li><strong>Sanitisation</strong> : Affichage sécurisé données textuelles</li>
+<li><strong>ID transmission</strong> : Seul ID transmis pour suppression</li>
+<li><strong>XSS prevention</strong> : React échappe automatiquement contenu</li>
+<li><strong>Type safety</strong> : Interfaces Lieu et Props strictes</li>
+<li><strong>Data consistency</strong> : Structure données garantie par types TS</li>
+</ul>
+<h3 id="✅-validation-des-données-affichées" class="tsd-anchor-link">✅ Validation des données affichées<a href="#✅-validation-des-données-affichées" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Nom lieu</strong> : Affichage string avec échappement auto</li>
+<li><strong>Actions callbacks</strong> : Validation types paramètres</li>
+<li><strong>Cohérence</strong> : Structure données garantie par interfaces</li>
+<li><strong>Robustesse</strong> : Gestion défensive propriétés lieu</li>
+<li><strong>Intégrité</strong> : Validation ID lieu pour actions</li>
+</ul>
+<h2 id="améliorations-et-extensions-possibles" class="tsd-anchor-link">Améliorations et extensions possibles<a href="#améliorations-et-extensions-possibles" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="🚀-améliorations-fonctionnelles" class="tsd-anchor-link">🚀 Améliorations fonctionnelles<a href="#🚀-améliorations-fonctionnelles" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Informations étendues</strong> : Capacité, adresse, coordonnées</li>
+<li><strong>Actions supplémentaires</strong> : Duplication, archivage lieu</li>
+<li><strong>Liens navigation</strong> : Navigation vers détail lieu</li>
+<li><strong>Statut lieu</strong> : Indicateurs disponibilité/maintenance</li>
+<li><strong>Actions groupées</strong> : Sélection multiple lieux</li>
+<li><strong>Export données</strong> : Export liste lieux sélectionnés</li>
+</ul>
+<h3 id="🎨-améliorations-visuelles" class="tsd-anchor-link">🎨 Améliorations visuelles<a href="#🎨-améliorations-visuelles" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Icônes lieux</strong> : Symboles visuels type établissement</li>
+<li><strong>Animations</strong> : Transitions smooth sur hover states</li>
+<li><strong>Loading states</strong> : Squelettes pendant chargements</li>
+<li><strong>Badges statut</strong> : Indicateurs visuels état lieu</li>
+<li><strong>Density modes</strong> : Options affichage compact/standard</li>
+<li><strong>Color coding</strong> : Couleurs thématiques par type lieu</li>
+<li><strong>Images lieux</strong> : Miniatures établissements olympiques</li>
+</ul>
+<h3 id="🔧-optimisations-techniques" class="tsd-anchor-link">🔧 Optimisations techniques<a href="#🔧-optimisations-techniques" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Virtual scrolling</strong> : Rendu virtuel grandes listes lieux</li>
+<li><strong>Memoization</strong> : React.memo pour éviter re-renders inutiles</li>
+<li><strong>Code splitting</strong> : Chargement différé si logique complexifiée</li>
+<li><strong>Prefetching</strong> : Pré-chargement détails lieux probables</li>
+<li><strong>Caching intelligent</strong> : Cache local lieux fréquents</li>
+<li><strong>Intersection observer</strong> : Lazy loading images lieux</li>
+</ul>
+</div><div class="tsd-parameters"><h4 class="tsd-parameters-title">Parameters</h4><ul class="tsd-parameter-list"><li><span><span class="tsd-kind-parameter">props</span>: <span class="tsd-signature-type">Props</span></span><div class="tsd-comment tsd-typography"><p>Propriétés du composant</p>
+</div><ul class="tsd-parameters"><li class="tsd-parameter"><h5><span>lieu</span></h5><div class="tsd-comment tsd-typography"><p>Objet lieu olympique à afficher</p>
+</div></li><li class="tsd-parameter"><h5><span>onDelete</span></h5><div class="tsd-comment tsd-typography"><p>Callback suppression avec ID lieu</p>
+</div></li><li class="tsd-parameter"><h5><span>onEdit</span></h5><div class="tsd-comment tsd-typography"><p>Callback édition avec objet lieu complet</p>
+</div></li></ul></li></ul></div><h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Element</span></h4><p>Ligne de tableau interactive avec données lieu et actions</p>
+<div class="tsd-comment tsd-typography"><div class="tsd-tag-see"><h4 class="tsd-anchor-link" id="see">See<a href="#see" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><ul>
+<li>LieuxTable - Tableau parent contenant les lignes</li>
+<li><a href="../interfaces/types_sportEvenement_lieu.Lieu.html" class="tsd-kind-interface">Lieu</a> - Interface TypeScript de l'objet lieu</li>
+<li>LieuxManagement - Gestionnaire principal fournissant callbacks</li>
+</ul>
+</div><div class="tsd-tag-since"><h4 class="tsd-anchor-link" id="since">Since<a href="#since" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p>1.0.0</p>
+</div><div class="tsd-tag-version"><h4 class="tsd-anchor-link" id="version">Version<a href="#version" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p>1.0.0</p>
+</div><div class="tsd-tag-example"><h4 class="tsd-anchor-link" id="example">Example<a href="#example" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><pre><code class="tsx"><span class="hl-0">// Utilisation dans LieuxTable</span><br/><span class="hl-2">{</span><span class="hl-4">lieux</span><span class="hl-2">.</span><span class="hl-1">map</span><span class="hl-2">((</span><span class="hl-4">lieu</span><span class="hl-2">) </span><span class="hl-9">=&gt;</span><span class="hl-2"> (</span><br/><span class="hl-2">  </span><span class="hl-6">&lt;</span><span class="hl-7">LieuxTableRow</span><br/><span class="hl-2">    </span><span class="hl-8">key</span><span class="hl-2">=</span><span class="hl-9">{</span><span class="hl-4">lieu</span><span class="hl-11">.</span><span class="hl-4">id</span><span class="hl-9">}</span><br/><span class="hl-2">    </span><span class="hl-8">lieu</span><span class="hl-2">=</span><span class="hl-9">{</span><span class="hl-4">lieu</span><span class="hl-9">}</span><br/><span class="hl-2">    </span><span class="hl-8">onDelete</span><span class="hl-2">=</span><span class="hl-9">{</span><span class="hl-4">handleDelete</span><span class="hl-9">}</span><br/><span class="hl-2">    </span><span class="hl-8">onEdit</span><span class="hl-2">=</span><span class="hl-9">{</span><span class="hl-4">handleEdit</span><span class="hl-9">}</span><br/><span class="hl-2">  </span><span class="hl-6">/&gt;</span><br/><span class="hl-2">))}</span>
+</code><button type="button">Copy</button></pre>
+
+</div><div class="tsd-tag-example"><h4 class="tsd-anchor-link" id="example-1">Example<a href="#example-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><pre><code class="tsx"><span class="hl-0">// Structure objet lieu attendu</span><br/><span class="hl-9">const</span><span class="hl-2"> </span><span class="hl-5">lieu</span><span class="hl-2">: </span><span class="hl-7">Lieu</span><span class="hl-2"> = {</span><br/><span class="hl-2">  </span><span class="hl-4">id:</span><span class="hl-2"> </span><span class="hl-12">1</span><span class="hl-2">,</span><br/><span class="hl-2">  </span><span class="hl-4">nom:</span><span class="hl-2"> </span><span class="hl-3">&quot;Stade de France&quot;</span><br/><span class="hl-2">};</span>
+</code><button type="button">Copy</button></pre>
+
+</div></div><aside class="tsd-sources"><ul><li>Defined in <a href="https://github.com/driano-gael/AdminJO_Front/blob/main/application/src/components/componentsEvenement/lieux/LieuxTableRow.tsx#L189">components/componentsEvenement/lieux/LieuxTableRow.tsx:189</a></li></ul></aside></div></li></ul></section></div><div class="col-sidebar"><div class="page-menu"><div class="tsd-navigation settings"><details class="tsd-accordion"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg><h3>Settings</h3></summary><div class="tsd-accordion-details"><div class="tsd-filter-visibility"><span class="settings-label">Member Visibility</span><ul id="tsd-filter-options"><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-protected" name="protected"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Protected</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li></ul></div><div class="tsd-theme-toggle"><label class="settings-label" for="tsd-theme">Theme</label><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div><details open class="tsd-accordion tsd-page-navigation"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg><h3>On This Page</h3></summary><div class="tsd-accordion-details"><a href="#données-affichées-réellement-implémentées"><span>Données affichées réellement implémentées</span></a><ul><li><a href="#🏟️-nom-du-lieu-olympique-principal"><span>🏟️ <wbr/>Nom du lieu olympique principal</span></a></li></ul><a href="#actions-utilisateur-crud-intégrées"><span>Actions utilisateur <wbr/>CRUD intégrées</span></a><ul><li><a href="#✏️-action-de-modification-lieu"><span>✏️ <wbr/>Action de modification lieu</span></a></li><li><a href="#🗑️-action-de-suppression-lieu"><span>🗑️ <wbr/>Action de suppression lieu</span></a></li></ul><a href="#structure-et-layout-ligne-tableau"><span>Structure et layout ligne tableau</span></a><ul><li><a href="#🎨-design-ligne-interactive-spécialisée-lieux"><span>🎨 <wbr/>Design ligne interactive spécialisée lieux</span></a></li><li><a href="#📱-responsive-et-accessibilité"><span>📱 <wbr/>Responsive et accessibilité</span></a></li></ul><a href="#spécificités-métier-lieux-olympiques"><span>Spécificités métier lieux olympiques</span></a><ul><li><a href="#🏅-contexte-métier-lieux-jo-2024"><span>🏅 <wbr/>Contexte métier lieux <wbr/>JO 2024</span></a></li><li><a href="#📊-types-de-données-lieu-gérées"><span>📊 <wbr/>Types de données lieu gérées</span></a></li></ul><a href="#performance-et-optimisations"><span>Performance et optimisations</span></a><ul><li><a href="#⚡-optimisations-actuelles"><span>⚡ <wbr/>Optimisations actuelles</span></a></li><li><a href="#🔄-gestion-re-renders-optimisée"><span>🔄 <wbr/>Gestion re-<wbr/>renders optimisée</span></a></li></ul><a href="#sécurité-et-validation"><span>Sécurité et validation</span></a><ul><li><a href="#🔒-aspects-sécuritaires"><span>🔒 <wbr/>Aspects sécuritaires</span></a></li><li><a href="#✅-validation-des-données-affichées"><span>✅ <wbr/>Validation des données affichées</span></a></li></ul><a href="#améliorations-et-extensions-possibles"><span>Améliorations et extensions possibles</span></a><ul><li><a href="#🚀-améliorations-fonctionnelles"><span>🚀 <wbr/>Améliorations fonctionnelles</span></a></li><li><a href="#🎨-améliorations-visuelles"><span>🎨 <wbr/>Améliorations visuelles</span></a></li><li><a href="#🔧-optimisations-techniques"><span>🔧 <wbr/>Optimisations techniques</span></a></li></ul></div></details></div><div class="site-menu"><nav class="tsd-navigation"><a href="../modules.html">AdminJO Front - Documentation API - v0.1.0</a><ul class="tsd-small-nested-navigation" id="tsd-nav-container"><li>Loading...</li></ul></nav></div></div></div><footer><p class="tsd-generator">Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></footer><div class="overlay"></div></body></html>

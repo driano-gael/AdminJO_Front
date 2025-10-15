@@ -1,5 +1,7 @@
 'use client';
 
+import {JSX} from "react";
+
 interface Props {
   searchTerm: string;
   onSearchChange: (term: string) => void;
@@ -8,14 +10,74 @@ interface Props {
 }
 
 /**
- * Composant de recherche et filtres pour les clients
+ * Composant ClientsSearchAndFilters - Interface de recherche et filtrage des clients AdminJO
+ *
+ * Ce composant fournit une interface complète de recherche textuelle et de filtrage par statut
+ * pour la gestion des clients. Il s'agit d'un composant contrôlé qui gère la saisie utilisateur
+ * et les sélections de filtre via des callbacks vers le composant parent.
+ *
+ * ## Fonctionnalités réellement implémentées
+ *
+ * ### Recherche textuelle en temps réel
+ * - **Champ de recherche** : Input avec placeholder explicite et icône de loupe
+ * - **Recherche multi-critères** : Nom, prénom, téléphone ou email
+ * - **Temps réel** : Mise à jour instantanée lors de la saisie
+ * - **Icône visuelle** : Emoji loupe (🔍) dans le champ de saisie
+ * - **Focus states** : États visuels avec bordure bleue et ring sur focus
+ *
+ * ### Filtrage par statut d'activation
+ * - **Trois options** : Tous, Actifs, Inactifs
+ * - **État sélectionné**
+ *
+ * ### Indicateur de fonctionnement
+ * - **Texte informatif** : "Recherche en temps réel"
+ * - **Position** : Côté droit de l'interface
+ * - **Information utilisateur** : Clarification du comportement
+ *
+ *
+ * ### Composant contrôlé
+ * - **Search term** : Valeur contrôlée par le parent
+ * - **Status filter** : Sélection gérée par le parent
+ * - **Callbacks** : Remontée des changements via props
+ * - **Réactivité** : Mise à jour immédiate sur interaction
+ *
+ * ### Types de filtres
+ * - **'all'** : Affiche tous les clients sans distinction
+ * - **'active'** : Filtre sur client.user.is_active = true
+ * - **'inactive'** : Filtre sur client.user.is_active = false
+ *
+ * ## Interactions utilisateur
+ *
+ * ### Saisie de recherche
+ * - **Event handling** : onChange avec e.target.value
+ * - **Callback immédiat** : onSearchChange appelé à chaque keystroke
+ * - **Debouncing** : Non implémenté (géré par le parent si nécessaire)
+ * - **Vide autorisé** : Possibilité de vider la recherche
+ *
+ * ### Sélection de filtre
+ * - **Click handlers** : onClick sur chaque bouton de statut
+ * - **État exclusif** : Un seul filtre actif à la fois
+ * - **Feedback visuel** : Changement immédiat d'apparence
+ *
+ * @param {Props} props - Configuration du composant de recherche et filtre
+ * @param {string} props.searchTerm - Terme de recherche actuel (contrôlé)
+ * @param {Function} props.onSearchChange - Callback appelé lors du changement de recherche
+ * @param {'all' | 'active' | 'inactive'} props.statusFilter - Filtre de statut actuel
+ * @param {Function} props.onStatusFilterChange - Callback pour changement de filtre statut
+ *
+ * @returns {JSX.Element} Interface de recherche et filtrage avec layout responsive
+ *
+ * @see {@link ClientsManagement} - Composant parent gérant l'état et la logique
+ * @see {@link ClientsTable} - Composant affichant les résultats filtrés
+ * @see {@link Client} - Type des données client recherchées et filtrées
+ *
  */
-export default function ClientsSearchAndFilters({
+export function ClientsSearchAndFilters({
   searchTerm,
   onSearchChange,
   statusFilter,
   onStatusFilterChange
-}: Props) {
+}: Props): JSX.Element {
   return (
     <div className="bg-white rounded-lg shadow-md p-6">
       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between space-y-4 lg:space-y-0 lg:space-x-6">
@@ -80,3 +142,4 @@ export default function ClientsSearchAndFilters({
     </div>
   );
 }
+export default ClientsSearchAndFilters;

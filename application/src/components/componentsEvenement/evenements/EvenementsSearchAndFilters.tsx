@@ -25,7 +25,91 @@ interface SearchAndFiltersProps {
   onDateFinChange: (date: string | undefined) => void;
 }
 
-export default function SearchAndFilters({ 
+/**
+ * Composant SearchAndFilters - Interface de recherche et filtrage avancé en cascade pour événements olympiques AdminJO
+ *
+ * Ce composant fournit une interface complète et sophistiquée de recherche et filtrage multicritères
+ * pour les événements sportifs des Jeux Olympiques 2024. Il implémente un système de filtrage en cascade
+ * intelligent où les options disponibles dans chaque filtre se mettent à jour dynamiquement selon les
+ * sélections précédentes. Il combine recherche textuelle, filtrage temporel (dates JO), et filtres
+ * relationnels (lieu → discipline → épreuve → statut) avec logique de réinitialisation automatique
+ * des filtres dépendants. Conçu pour l'administration JO avec UX optimisée et performance.
+ *
+ * ## Fonctionnalités de recherche et filtrage avancées implémentées
+ *
+ * ### Recherche textuelle événements olympiques
+ * - **Input contrôlé** : Champ de saisie entièrement contrôlé par état parent
+ * - **Feedback immédiat** : onChange déclenche recherche instantanée
+ * - **Placeholder contextuel** : "Rechercher un événement..." pour guidance spécifique
+ * - **Synchronisation** : État searchTerm synchronisé avec hook parent
+ *
+ * ### Filtrage temporel JO 2024 (dates événements)
+ * - **Dates par défaut** : '2024-07-01' à '2024-09-01' pour période JO Paris 2024
+ * - **Input dates dédiés** : Date de début et date de fin séparés
+ * - **Format natif** : type="date" pour sélecteurs natifs navigateur
+ * - **Callbacks distincts** : onDateDebutChange et onDateFinChange séparés
+ * - **Valeurs par défaut** : Dates JO automatiques si aucune sélection
+ *
+ * ### 🏟Filtrage en cascade lieu → discipline → épreuve → statut
+ * - **Filtre lieu (racine)** : Sélection lieu olympique (Stade de France, etc.)
+ * - **Disciplines dépendantes** : Liste disciplines disponibles selon lieu sélectionné
+ * - **Épreuves dépendantes** : Liste épreuves filtrées par lieu ET discipline
+ * - **Statuts dépendants** : Statuts disponibles selon tous filtres précédents
+ * - **Réinitialisation automatique** : Filtres enfants reset si parent change
+ *
+ * ## Architecture filtrage en cascade complexe
+ *
+ * ### Logique de filtrage en cascade implémentée
+ * - **Étape 1** : Filtrage événements par lieu si sélectionné
+ * - **Étape 2** : Calcul disciplines disponibles selon lieu
+ * - **Étape 3** : Calcul épreuves disponibles selon lieu ET discipline
+ * - **Étape 4** : Calcul statuts disponibles selon tous filtres actifs
+ *
+ * ### Algorithmes de calcul options disponibles
+ * - **disciplinesDisponibles** : Array.from(new Set()) pour disciplines uniques
+ * - **epreuvesDisponibles** : Filtrage multicritères + tri alphabétique
+ * - **statutsDisponibles** : Extraction statuts selon filtres en cascade
+ *
+ * ### Gestion relations complexes événements
+ * - **Événements → Lieux** : Relation 1-1 via event.lieu.id
+ * - **Événements → Épreuves** : Relation 1-N via event.epreuves array
+ * - **Épreuves → Disciplines** : Relation 1-1 via epreuve.discipline.id
+ * - **Événements → Statuts** : Propriété event.status calculée dynamiquement
+ * - **Intégrité** : Vérifications conditionnelles pour relations manquantes
+ * - **Performance** : Pas de jointures, données pré-chargées
+ *
+ * @param {SearchAndFiltersProps} props - Configuration recherche et filtres en cascade
+ * @param {string} props.searchTerm - Terme de recherche textuelle actuel
+ * @param {function} props.onSearch - Callback changement terme recherche
+ * @param {Epreuve[]} props.epreuves - Array toutes épreuves pour calculs cascade
+ * @param {Lieu[]} props.lieux - Array lieux olympiques pour filtre racine
+ * @param {Discipline[]} props.disciplines - Array disciplines pour filtre cascade
+ * @param {ExtendEvenement[]} props.events - Array événements pour calculs disponibilité
+ * @param {boolean} [props.loading] - État chargement pour désactivation filtres
+ * @param {number} [props.selectedLieu] - ID lieu sélectionné pour cascade
+ * @param {number} [props.selectedDiscipline] - ID discipline sélectionnée
+ * @param {number} [props.selectedEpreuve] - ID épreuve sélectionnée
+ * @param {string} [props.selectedStatut] - Statut sélectionné
+ * @param {string} [props.dateDebut] - Date début période filtrage
+ * @param {string} [props.dateFin] - Date fin période filtrage
+ * @param {function} props.onLieuChange - Callback changement lieu avec reset cascade
+ * @param {function} props.onDisciplineChange - Callback changement discipline
+ * @param {function} props.onEpreuveChange - Callback changement épreuve
+ * @param {function} props.onStatutChange - Callback changement statut
+ * @param {function} props.onDateDebutChange - Callback changement date début
+ * @param {function} props.onDateFinChange - Callback changement date fin
+ *
+ * @returns {JSX.Element} Interface recherche et filtrage multicritères en cascade
+ *
+ * @see {@link EvenementsManagement} - Composant parent orchestrateur
+ * @see {@link EvenementsTable} - Tableau affichant résultats filtrés
+ * @see {@link ExtendEvenement} - Interface événements avec relations
+ * @see {@link Lieu} - Interface lieux olympiques
+ * @see {@link Discipline} - Interface disciplines sportives
+ * @see {@link Epreuve} - Interface épreuves compétitives
+ *
+ */
+export default function SearchAndFilters({
   searchTerm, 
   onSearch, 
   epreuves, 
