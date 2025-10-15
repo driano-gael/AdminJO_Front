@@ -2,6 +2,15 @@
 
 > Interface web moderne pour l'administration des Jeux Olympiques 2024
 
+## Sommaire
+
+- [À propos du projet](#à-propos-du-projet)
+- [Fonctionnalités principales](#fonctionnalités-principales)
+- [Technologies](#technologies)
+- [Sécurité](#sécurité)
+- [Architecture du projet](#architecture-du-projet)
+- [Axes d'évolution futures](#axes-dévolution-futures)
+
 ## À propos du projet
 
 AdminJO Front est l'interface d'administration officielle pour la gestion des Jeux Olympiques 2024. Cette application web permet aux administrateurs de gérer l'ensemble de l'écosystème olympique : événements sportifs, infrastructures, personnel et services commerciaux.
@@ -21,7 +30,6 @@ AdminJO Front est l'interface d'administration officielle pour la gestion des Je
 ### Gestion commerciale
 - Administration des offres de billetterie
 
-
 ## Technologies
 
 **Frontend moderne**
@@ -35,24 +43,79 @@ AdminJO Front est l'interface d'administration officielle pour la gestion des Je
 - **Tests automatisés** - Jest & Testing Library
 - **Documentation** - TypeDoc intégrée
 
-## Démarrage rapide
+## Sécurité
 
-```bash
-# Installation
-npm install
+### Authentification JWT
 
-# Développement
-npm run dev
+Le système d'authentification repose sur des **tokens JWT (JSON Web Tokens)** avec une architecture à double token :
 
-# Tests
-npm run test
+- **Token d'accès** : JWT courte durée pour les requêtes API authentifiées
+- **Token de rafraîchissement** : Token longue durée pour renouveler automatiquement l'accès
 
-# Documentation
-npm run docs
+### Gestion sécurisée des tokens
 
-# Build production
-npm run build
-```
+**Stockage local sécurisé**
+- Stockage des tokens dans le `localStorage` avec clés configurables via variables d'environnement
+- Nettoyage automatique des tokens en cas d'expiration ou d'erreur
+- Protection côté serveur avec vérifications `typeof window === 'undefined'`
+
+**Validation automatique**
+- Vérification de l'intégrité des tokens JWT via décodage Base64
+- Contrôle de la date d'expiration (`exp`) avant chaque utilisation
+- Gestion des erreurs de parsing avec fallback sécurisé
+
+### Protection des routes et API
+
+**Authentification automatique**
+- Ajout automatique de l'en-tête `Authorization: Bearer <token>` sur toutes les requêtes authentifiées
+- Middleware de protection des pages via le hook `useAuthenticatedPage`
+- Redirection automatique vers la page de connexion pour les utilisateurs non authentifiés
+
+**Gestion de l'expiration de session**
+- Détection automatique des erreurs 401 (Unauthorized)
+- Tentative de rafraîchissement automatique du token d'accès
+- Nettoyage de session et notification utilisateur en cas d'échec du refresh
+- Modal d'expiration de session pour informer l'utilisateur
+
+### Architecture de sécurité
+
+**Service d'authentification centralisé**
+- Module `authService` dédié pour login, logout et refresh token
+- Gestion centralisée des erreurs d'authentification
+- Interface TypeScript stricte pour les credentials et réponses
+
+**Contexte d'authentification React**
+- État global d'authentification avec `AuthContext`
+- Gestion du rôle utilisateur (vérification rôle 'admin' requis)
+- Persistance sécurisée de l'état entre les rechargements de page
+
+**Wrappers de requêtes sécurisés**
+- Fonction `fetchApi` avec gestion automatique de l'authentification
+- Retry automatique avec nouveau token en cas de 401
+- Gestion des erreurs HTTP avec messages détaillés et logging
+
+### Variables d'environnement
+
+**Configuration sécurisée**
+- `NEXT_PUBLIC_API_URL` : URL de base de l'API backend
+- `NEXT_PUBLIC_AUTH_TOKEN_KEY` : Clé de stockage du token d'accès
+- `NEXT_PUBLIC_AUTH_REFRESH_TOKEN_KEY` : Clé de stockage du token de rafraîchissement
+
+**Validation au démarrage**
+- Vérification obligatoire de la présence des variables d'environnement critiques
+- Erreurs explicites en cas de configuration manquante
+
+### Protection côté client
+
+**Hooks de protection**
+- `useAuthenticatedPage` : Protection automatique des pages sensibles
+- `useSessionExpiry` : Surveillance continue de l'expiration de session
+- `useAuth` : Accès sécurisé au contexte d'authentification
+
+**Gestion des événements de sécurité**
+- Événement `tokenRefreshed` pour synchroniser les composants
+- Callback `sessionExpired` pour notifications utilisateur
+- Nettoyage automatique en cas de tokens compromis
 
 ## Architecture du projet
 
@@ -66,21 +129,12 @@ application/
 │   ├── types/           # Définitions TypeScript
 │   └── utils/           # Fonctions utilitaires
 ├── __tests__/           # Tests unitaires et d'intégration
-├── docs/                # Documentation générée
 └── public/              # Assets statiques
 ```
-
-## Liens utiles
-
-- **Documentation API** : `./docs/index.html` (après `npm run docs`)
 
 ## Axes d'évolution futures
 
 ### Améliorations techniques
-
-#### Performance et optimisation
-- **Mise en cache avancée** : Implémentation de React Query/TanStack Query pour la gestion optimisée du cache des données API
-- **Lazy loading intelligent** : Chargement différé des modules métier selon les permissions utilisateur
 
 #### Sécurité renforcée
 - **Authentification multi-facteurs (2FA)** : Renforcement de la sécurité pour les comptes administrateurs
@@ -119,4 +173,3 @@ application/
 
 ---
 
-> 💡 **Note** : Ces évolutions seront priorisées selon les besoins opérationnels des Jeux Olympiques 2024 et les retours des utilisateurs finaux.
