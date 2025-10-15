@@ -1,0 +1,278 @@
+===============================================================================
+                    GUIDE D'UTILISATION - AdminJO Front
+                Interface d'Administration des Jeux Olympiques 2024
+===============================================================================
+
+SOMMAIRE
+--------
+1. Présentation générale
+2. Première connexion
+3. Navigation dans l'interface
+4. Gestion des événements sportifs
+5. Gestion du personnel
+6. Gestion des clients
+7. Gestion des offres commerciales
+8. Conseils pratiques
+9. Résolution de problèmes courants
+
+===============================================================================
+1. PRÉSENTATION GÉNÉRALE
+===============================================================================
+
+AdminJO Front est votre outil de gestion centralisé pour l'administration des
+Jeux Olympiques 2024. Cette interface vous permet de :
+
+• Organiser tous les événements sportifs
+• Gérer le personnel et les clients
+• Administrer les offres de billetterie
+• Suivre les opérations en temps réel
+
+L'interface est conçue pour être simple et intuitive, même sans formation
+technique préalable.
+
+===============================================================================
+2. PREMIÈRE CONNEXION
+===============================================================================
+
+ÉTAPES DE CONNEXION :
+1. Ouvrez votre navigateur web (Chrome, Firefox, Safari, Edge)
+2. Saisissez l'adresse de l'application fournie par votre administrateur
+3. Entrez vos identifiants de connexion :
+   - Email professionnel
+   - Mot de passe
+4. Cliquez sur "Se connecter"
+
+PREMIÈRE UTILISATION :
+• Vous arriverez sur le tableau de bord principal
+• Prenez le temps de découvrir les différentes sections
+• Toutes les données sont sauvegardées automatiquement
+
+SÉCURITÉ :
+• Déconnectez-vous toujours après utilisation
+• Ne partagez jamais vos identifiants
+• Changez votre mot de passe régulièrement
+
+===============================================================================
+3. NAVIGATION DANS L'INTERFACE
+===============================================================================
+
+TABLEAU DE BORD PRINCIPAL :
+Le tableau de bord vous donne accès aux 4 sections principales :
+
+🏟️ ÉVÉNEMENTS SPORTIFS (carte bleue)
+   → Gestion complète des compétitions olympiques
+
+👥 PERSONNEL (carte verte)
+   → Administration des employés
+
+👤 CLIENTS (carte orange)
+   → Gestion des spectateurs et clients
+
+💼 OFFRES COMMERCIALES (carte violette)
+   → Administration de la billetterie
+
+NAVIGATION :
+• Cliquez sur une carte pour accéder à la section
+• Utilisez le bouton "Retour" pour revenir au tableau de bord
+• Le menu principal reste toujours accessible en haut de page
+
+===============================================================================
+4. GESTION DES ÉVÉNEMENTS SPORTIFS
+===============================================================================
+
+Cette section vous permet d'organiser toutes les compétitions olympiques.
+
+SOUS-SECTIONS DISPONIBLES :
+
+📍 LIEUX :
+• Ajouter/modifier les sites de compétition
+• Gérer les capacités et adresses
+• Exemple : "Stade de France", "Centre Aquatique"
+
+🏃 DISCIPLINES :
+• Organiser les sports olympiques
+• Ajouter des icônes pour chaque sport
+• Exemple : "Athlétisme", "Natation", "Basketball"
+
+🏅 ÉPREUVES :
+• Créer les compétitions spécifiques
+• Associer aux disciplines
+• Exemple : "100m masculin", "Relais 4x100m féminin"
+
+📅 ÉVÉNEMENTS :
+• Programmer les compétitions
+• Définir dates, heures et lieux
+• Associer les épreuves aux événements
+
+WORKFLOW RECOMMANDÉ :
+1. Créez d'abord les LIEUX
+2. Ajoutez les DISCIPLINES
+3. Créez les ÉPREUVES par discipline
+4. Programmez les ÉVÉNEMENTS finaux
+
+===============================================================================
+5. GESTION DU PERSONNEL
+===============================================================================
+
+Cette section gère tous les employés de l'organisation olympique.
+
+FONCTIONNALITÉS :
+
+AJOUTER UN EMPLOYÉ :
+• Cliquez sur "Ajouter un employé"
+• Remplissez les informations :
+  - Nom et prénom
+  - Email professionnel
+  - Téléphone
+  - Matricule (généré automatiquement)
+• Validez avec "Enregistrer"
+
+RECHERCHER UN EMPLOYÉ :
+• Utilisez la barre de recherche en haut
+• Recherche possible par : nom, email, matricule
+• Les résultats s'affichent en temps réel
+
+MODIFIER UN EMPLOYÉ :
+• Cliquez sur l'employé dans la liste
+• Modifiez les informations nécessaires
+• Sauvegardez avec "Mettre à jour"
+
+ACTIVER/DÉSACTIVER :
+• Utilisez le bouton de statut pour activer/désactiver un compte
+• Les comptes désactivés ne peuvent plus se connecter
+
+===============================================================================
+6. GESTION DES CLIENTS
+===============================================================================
+
+Cette section administre les spectateurs et clients des JO.
+
+FONCTIONNALITÉS :
+
+VOIR LES CLIENTS :
+• Liste de tous les clients enregistrés
+• Informations : nom, email, téléphone, statut
+
+RECHERCHER UN CLIENT :
+• Barre de recherche disponible
+• Filtres par statut : Tous / Actifs / Inactifs
+
+GÉRER LES STATUTS :
+• Activez/désactivez les comptes clients
+• Les clients inactifs ne peuvent plus faire d'achats
+• Utile pour gérer les suspensions temporaires
+
+INFORMATIONS AFFICHÉES :
+• Nom et prénom du client
+• Email de contact
+• Numéro de téléphone
+• Statut du compte (actif/inactif)
+• Date d'inscription
+
+===============================================================================
+7. GESTION DES OFFRES COMMERCIALES
+===============================================================================
+
+Cette section gère tous les packages et offres de billetterie.
+
+CRÉER UNE OFFRE :
+• Cliquez sur "Nouvelle offre"
+• Renseignez :
+  - Nom de l'offre (ex: "Pack Famille Natation")
+  - Description détaillée
+  - Prix en euros
+  - Nombre de personnes maximum
+• Validez avec "Créer l'offre"
+
+TYPES D'OFFRES COURANTS :
+• Billets individuels
+• Packages familiaux
+• Offres VIP
+• Formules groupes
+• Packages multi-sports
+
+MODIFIER UNE OFFRE :
+• Sélectionnez l'offre dans la liste
+• Modifiez les informations
+• Les prix peuvent être ajustés selon la demande
+• Sauvegardez les modifications
+
+DÉSACTIVER UNE OFFRE :
+• Utilisez le bouton de statut
+• Les offres désactivées ne sont plus vendues
+• Conserve l'historique des ventes passées
+
+===============================================================================
+8. CONSEILS PRATIQUES
+===============================================================================
+
+BONNES PRATIQUES :
+
+SAISIE DE DONNÉES :
+• Vérifiez toujours vos saisies avant validation
+• Utilisez des noms clairs et explicites
+• Respectez les formats demandés (dates, prix, etc.)
+
+ORGANISATION :
+• Créez d'abord les éléments de base (lieux, disciplines)
+• Puis les éléments plus spécifiques (épreuves, événements)
+• Testez vos créations avant la mise en production
+
+SAUVEGARDE :
+• L'application sauvegarde automatiquement
+• Attendez la confirmation avant de quitter une page
+• En cas de doute, utilisez le bouton "Actualiser"
+
+RECHERCHE EFFICACE :
+• Utilisez des mots-clés précis
+• Profitez des filtres disponibles
+• La recherche fonctionne sur tous les champs visibles
+
+===============================================================================
+9. RÉSOLUTION DE PROBLÈMES COURANTS
+===============================================================================
+
+PROBLÈME : "Je ne peux pas me connecter"
+SOLUTION :
+• Vérifiez votre email et mot de passe
+• Assurez-vous que votre compte est actif
+• Contactez l'administrateur si nécessaire
+
+PROBLÈME : "L'interface est lente"
+SOLUTION :
+• Fermez les autres onglets du navigateur
+• Actualisez la page (F5)
+• Videz le cache du navigateur si nécessaire
+
+PROBLÈME : "Mes modifications ne se sauvegardent pas"
+SOLUTION :
+• Vérifiez votre connexion internet
+• Attendez l'affichage du message de confirmation
+• Réessayez la sauvegarde
+
+PROBLÈME : "Je ne trouve pas une fonctionnalité"
+SOLUTION :
+• Utilisez la barre de recherche
+• Vérifiez que vous êtes dans la bonne section
+• Consultez ce guide ou contactez le support
+
+CONTACT SUPPORT :
+• Email : support-adminjo@olympiques2024.fr
+• Téléphone : [À renseigner]
+• Disponibilité : Lundi-Vendredi, 9h-18h
+
+===============================================================================
+INFORMATIONS COMPLÉMENTAIRES
+===============================================================================
+
+VERSION DU GUIDE : 1.0
+DATE DE MISE À JOUR : Octobre 2024
+COMPATIBILITÉ : Tous navigateurs modernes
+FORMATION : Formation disponible sur demande
+
+Ce guide sera mis à jour régulièrement selon les évolutions de l'application.
+Pour toute suggestion d'amélioration, contactez l'équipe de développement.
+
+Bonne utilisation d'AdminJO Front !
+
+===============================================================================

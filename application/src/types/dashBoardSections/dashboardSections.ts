@@ -6,7 +6,6 @@
  *
  * @module DashboardSections
  * @category Types
- * @since 1.0.0
  */
 
 /**
@@ -18,16 +17,6 @@
  * @interface DashboardSection
  * @category Dashboard
  *
- * @example
- * ```typescript
- * const eventSection: DashboardSection = {
- *   url: '/pagesEvenements',
- *   title: 'Gestion des événements sportifs',
- *   description: 'Gérer événements, lieux, disciplines et épreuves',
- *   icon: '📅',
- *   color: 'bg-indigo-500 hover:bg-indigo-600'
- * };
- * ```
  */
 export interface DashboardSection {
   /**
@@ -36,7 +25,6 @@ export interface DashboardSection {
    * Route Next.js vers laquelle l'utilisateur sera redirigé lors du clic sur la carte.
    * Doit commencer par '/' et correspondre à une page existante dans l'application.
    *
-   * @example '/pagesEvenements', '/employees', '/pageOffre'
    */
   url: string;
 
@@ -46,7 +34,6 @@ export interface DashboardSection {
    * Texte principal qui apparaît sur la carte. Doit être concis et descriptif
    * du module fonctionnel représenté.
    *
-   * @example 'Gestion des événements sportifs', 'Administration des employés'
    */
   title: string;
 
@@ -56,7 +43,6 @@ export interface DashboardSection {
    * Texte explicatif qui apparaît sous le titre pour donner plus de contexte
    * sur les fonctionnalités disponibles dans cette section.
    *
-   * @example 'Gérer événements, lieux, disciplines et épreuves'
    */
   description: string;
 
@@ -66,7 +52,6 @@ export interface DashboardSection {
    * Emoji ou caractère Unicode qui représente visuellement le domaine métier
    * de la section. Affiché en grande taille sur la carte.
    *
-   * @example '📅' pour les événements, '👥' pour les employés, '🎫' pour les offres
    */
   icon: string;
 
@@ -76,7 +61,6 @@ export interface DashboardSection {
    * Classes TailwindCSS définissant la couleur de base et la couleur au survol.
    * Utilise le format 'bg-{color}-{intensity} hover:bg-{color}-{intensity+100}'.
    *
-   * @example 'bg-indigo-500 hover:bg-indigo-600', 'bg-green-500 hover:bg-green-600'
    */
   color: string;
 }
@@ -94,18 +78,10 @@ export interface DashboardSection {
  * - **Offres de billeterie** : Configuration des offres et tarifications
  * - **Employés** : Administration du personnel et gestion RH
  * - **Utilisateurs** : Gestion de la clientèle et des comptes utilisateurs
- * - **Statistiques** : Rapports et métriques de performance
  *
  * Configuration constante des sections du tableau de bord
  * @type {DashboardSection[]}
  *
- * @example
- * ```typescript
- * // Utilisation dans un composant React
- * {dashboardSections.map((section) => (
- *   <DashboardCard key={section.url} section={section} />
- * ))}
- * ```
  */
 export const dashboardSections: DashboardSection[] = [
   {
@@ -136,20 +112,6 @@ export const dashboardSections: DashboardSection[] = [
     icon: '🧑‍🤝‍🧑',
     color: 'bg-blue-500 hover:bg-blue-600'
   },
-  {
-    url: '/statistics',
-    title: 'Statistiques et Rapports',
-    description: 'Métriques de performance, rapports de vente et analytics détaillés',
-    icon: '📊',
-    color: 'bg-orange-500 hover:bg-orange-600'
-  },
-  {
-    url: '/settings',
-    title: 'Paramètres Système',
-    description: 'Configuration générale de l\'application et paramètres administratifs',
-    icon: '⚙️',
-    color: 'bg-gray-500 hover:bg-gray-600'
-  }
 ];
 
 /**
@@ -160,11 +122,6 @@ export const dashboardSections: DashboardSection[] = [
  *
  * @type {string}
  *
- * @example
- * ```typescript
- * type ValidRoutes = typeof dashboardSections[number]['url'];
- * // Résultat: '/pagesEvenements' | '/pageOffre' | '/employees' | ...
- * ```
  */
 export type DashboardSectionUrl = (typeof dashboardSections)[number]['url'];
 
@@ -187,13 +144,6 @@ export type DashboardSectionColor = (typeof dashboardSections)[number]['color'];
  * @param {string} url - L'URL de la section à rechercher
  * @returns {DashboardSection | undefined} La section trouvée ou undefined
  *
- * @example
- * ```typescript
- * const eventSection = getDashboardSectionByUrl('/pagesEvenements');
- * if (eventSection) {
- *   console.log(eventSection.title); // "Gestion des événements sportifs"
- * }
- * ```
  *
  * @since 1.0.0
  */
