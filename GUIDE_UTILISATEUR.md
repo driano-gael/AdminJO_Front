@@ -21,10 +21,9 @@
 
 **AdminJO Front** est votre outil de gestion centralisé pour l'administration des Jeux Olympiques 2024. Cette interface vous permet de :
 
-- ✅ Organiser tous les événements sportifs
-- ✅ Gérer le personnel et les clients  
-- ✅ Administrer les offres de billetterie
-- ✅ Suivre les opérations en temps réel
+- Organiser tous les événements sportifs
+- Gérer le personnel et les clients  
+- Administrer les offres de billetterie
 
 > **Note importante :** L'interface est conçue pour être simple et intuitive, même sans formation technique préalable.
 
@@ -37,7 +36,7 @@
 1. **Ouvrir le navigateur** : Chrome, Firefox, Safari ou Edge
 2. **Saisir l'adresse** de l'application fournie par votre administrateur
 3. **Entrer vos identifiants** :
-   - Email professionnel
+   - Email administrateur
    - Mot de passe
 4. **Cliquer** sur "Se connecter"
 
@@ -45,9 +44,8 @@
 
 - Vous arriverez sur le **tableau de bord principal**
 - Prenez le temps de découvrir les différentes sections
-- Toutes les données sont **sauvegardées automatiquement**
 
-### 🔒 Consignes de sécurité
+### Consignes de sécurité
 
 | ⚠️ À faire | ❌ À éviter |
 |------------|-------------|
@@ -104,16 +102,13 @@ Cette section vous permet d'organiser toutes les compétitions olympiques.
 - Définir dates, heures et lieux
 - Associer les épreuves aux événements
 
-### 🎯 Workflow recommandé
+### Workflow recommandé
 
 ```
-1. Créez d'abord les LIEUX ──────────────────────────┐
-                                                     │
-2. Ajoutez les DISCIPLINES ─────────────────────────►│
-                                                     │
-3. Créez les ÉPREUVES par discipline ──────────────►│
-                                                     │
-4. Programmez les ÉVÉNEMENTS finaux ───────────────►│
+1. Créez d'abord les LIEUX
+2. Ajoutez les DISCIPLINES
+3. Créez les ÉPREUVES par discipline 
+4. Programmez les ÉVÉNEMENTS finaux 
 ```
 
 ---
@@ -151,7 +146,7 @@ Cette section gère tous les employés de l'organisation olympique.
 
 ## 6. Gestion des clients
 
-Cette section administre les spectateurs et clients des JO.
+Cette section administre les clients des JO.
 
 ### Vue d'ensemble
 
@@ -165,7 +160,6 @@ Cette section administre les spectateurs et clients des JO.
 
 #### ⚙️ **Gérer les statuts**
 - Activer/désactiver les comptes clients
-- Les clients inactifs ne peuvent plus faire d'achats
 - Utile pour gérer les **suspensions temporaires**
 
 ### Informations client disponibles
@@ -182,7 +176,7 @@ Cette section administre les spectateurs et clients des JO.
 
 ## 7. Gestion des offres commerciales
 
-Cette section gère tous les packages et offres de billetterie.
+Cette section gère toutes les offres de billetterie.
 
 ### Créer une offre
 
@@ -210,13 +204,8 @@ Cette section gère tous les packages et offres de billetterie.
 #### **Modifier une offre**
 1. Sélectionner l'offre dans la liste
 2. Modifier les informations
-3. Les prix peuvent être ajustés selon la demande
+3. Les prix peuvent être ajustés selon la demande.
 4. Sauvegarder les modifications
-
-#### **Désactiver une offre**
-- Utiliser le **bouton de statut**
-- Les offres désactivées ne sont plus vendues
-- ✅ Conserve l'historique des ventes passées
 
 ---
 
@@ -235,7 +224,7 @@ Cette section gère tous les packages et offres de billetterie.
 3. **Tester** les créations avant la mise en production
 
 #### **Sauvegarde et sécurité**
-- L'application sauvegarde **automatiquement**
+- L'application sauvegarde **automatiquement** via l'API en backend
 - Attendre la confirmation avant de quitter une page
 - En cas de doute, utiliser le bouton **"Actualiser"**
 
